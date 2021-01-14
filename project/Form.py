@@ -21,3 +21,12 @@ class Form:
             texts = detection_result['words_result']
             for text in texts:
                 self.text_compos.append(Text(text['words'], text['location']))
+
+    def visualize_texts(self, color=(255,0,0)):
+        board = self.img.copy()
+        for text in self.text_compos:
+            loc = text.location
+            cv2.rectangle(board, (loc['left'], loc['top']), (loc['left'] + loc['width'], loc['top'] + loc['height']), color, 1)
+        cv2.imshow('texts', board)
+        cv2.waitKey()
+        cv2.destroyAllWindows()
