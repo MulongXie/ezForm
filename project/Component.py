@@ -5,3 +5,4 @@ class Component:
     def __init__(self, type, location):
         self.type = type
         self.location = location
+        self.contour = None
