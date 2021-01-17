@@ -63,6 +63,7 @@ def is_rectangle(contour):
                     k = slopes.pop()
                     pop_pre = True
                     gap_to_pre = 0
+                # leave out noises
                 else:
                     gap_to_pre += 1
                     side = [p]
@@ -78,9 +79,9 @@ def is_rectangle(contour):
             side.append(p)
     sides.append(side)
     slopes.append(k_pre)
-    print('Side Number:', len(sides))
     if len(sides) != 4:
         return False
+    print('Side Number:', len(sides))
     lens = [len(s) for s in sides]
     # lens = sorted([len(s) for s in sides])
     print('Side Lengths:', lens, ' Side Slopes:', slopes)
@@ -91,11 +92,9 @@ def is_rectangle(contour):
 
 img = cv2.imread('1.jpg')
 bin = binarization(img, 2, show=False)
-draw_contour = img.copy()
 _, contours,hierarchy=cv2.findContours(bin,cv2.RETR_TREE,cv2.CHAIN_APPROX_NONE)
 for i, cnt in enumerate(contours):
-    if abs(cv2.contourArea(cnt)) > 100:
-        print(i, is_rectangle(cnt))
+    if abs(cv2.contourArea(cnt)) > 100 and is_rectangle(cnt):
         draw_contour_bin = np.zeros((img.shape[0], img.shape[1]))
         draw_contour = img.copy()
         cv2.drawContours(draw_contour_bin, cnt, -1, (255,0,0))
