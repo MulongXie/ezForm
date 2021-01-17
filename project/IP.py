@@ -32,14 +32,16 @@ def binarization(org, grad_min, show=False, write_path=None, wait_key=0):
 
 def is_rectangle(contour):
     contour = np.reshape(contour, (-1, 2))
-    sides = []
-    side = [contour[0], contour[1]]
-
     # calculate the slope k (y2-y1)/(x2-x1) the first between two neighboor points
     if contour[0][0] == contour[1][0]:
         k_pre = 'v'
     else:
         k_pre = (contour[0][1] - contour[1][1]) / (contour[0][0] - contour[1][0])
+
+    sides = []
+    slopes = []
+    side = [contour[0], contour[1]]
+    pop_pre = False
 
     for i, p in enumerate(contour[2:]):
         # calculate the slope k between two neighboor points
@@ -50,18 +52,31 @@ def is_rectangle(contour):
         # check if the two points on the same side
         if k != k_pre:
             # leave out noises
-            if len(side) >= 4:
+            if len(side) < 4:
+                if len(sides) > 0 and not pop_pre:
+                    # continue using the last side
+                    if k == slopes[-1]:
+                        side = sides.pop()
+                        k = slopes.pop()
+                        pop_pre = True
+            # count as valid side and store it in sides
+            else:
                 sides.append(side)
-            side = [p]
+                slopes.append(k_pre)
+                side = [p]
+                pop_pre = False
             k_pre = k
         else:
             side.append(p)
     sides.append(side)
-    print(len(sides))
+    slopes.append(k_pre)
+    print('Side Number:', len(sides))
     if len(sides) != 4:
         return False
-    lens = sorted([len(s) for s in sides])
-    if (abs(lens[0] - lens[1]) < 5) and (abs(lens[2] - lens[3]) < 5):
+    lens = [len(s) for s in sides]
+    # lens = sorted([len(s) for s in sides])
+    print('Side Lengths:', lens, ' Side Slopes:', slopes)
+    if (abs(lens[0] - lens[2]) < 4) and (abs(lens[1] - lens[3]) < 4):
         return True
     return False
 
@@ -72,7 +87,7 @@ draw_contour = img.copy()
 _, contours,hierarchy=cv2.findContours(bin,cv2.RETR_TREE,cv2.CHAIN_APPROX_NONE)
 for i, cnt in enumerate(contours):
     if abs(cv2.contourArea(cnt)) > 100:
-        print(is_rectangle(cnt))
+        print(i, is_rectangle(cnt))
         draw_contour_bin = np.zeros((img.shape[0], img.shape[1]))
         draw_contour = img.copy()
         cv2.drawContours(draw_contour_bin, cnt, -1, (255,0,0))
