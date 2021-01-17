@@ -92,13 +92,13 @@ def is_rectangle(contour):
 
 img = cv2.imread('1.jpg')
 bin = binarization(img, 2, show=False)
+draw_contour_bin = np.zeros((img.shape[0], img.shape[1]))
+draw_contour = img.copy()
 _, contours,hierarchy=cv2.findContours(bin,cv2.RETR_TREE,cv2.CHAIN_APPROX_NONE)
 for i, cnt in enumerate(contours):
-    if abs(cv2.contourArea(cnt)) > 100 and is_rectangle(cnt):
-        draw_contour_bin = np.zeros((img.shape[0], img.shape[1]))
-        draw_contour = img.copy()
+    if cv2.contourArea(cnt) > 100 and is_rectangle(cnt):
         cv2.drawContours(draw_contour_bin, cnt, -1, (255,0,0))
         cv2.drawContours(draw_contour, cnt, -1, (255,0,0))
-        cv2.imshow("contour_bin", draw_contour_bin)
-        cv2.imshow("contour", draw_contour)
-        cv2.waitKey(0)
+cv2.imshow("contour_bin", draw_contour_bin)
+cv2.imshow("contour", draw_contour)
+cv2.waitKey(0)
