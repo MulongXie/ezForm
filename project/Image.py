@@ -78,7 +78,13 @@ class Image:
         return self.rectangle_elements
 
     def detect_line_elements(self):
-        pass
+        if len(self.all_elements) == 0:
+            self.get_elements()
+        for ele in self.all_elements:
+            if ele.is_line():
+                ele.type = 'line'
+                self.line_elements.append(ele)
+        return self.line_elements
 
     '''
     ***********************
@@ -87,11 +93,13 @@ class Image:
     '''
 
     def visualize_elements_contours(self, element_opt='all', board_opt='org',
-                                    contours=None, window_name='contour', color=(255, 0, 0)):
+                                    contours=None, board=None,
+                                    window_name='contour', color=(255, 0, 0)):
         '''
         :param element_opt: 'all'/'rectangle'/'line'
         :param board_opt: 'org'/'binary'
         :param contours: input contours, if none, check element_opt and use inner elements
+        :param board: board image to draw on
         :return: drawn image
         '''
         if contours is None:
@@ -104,14 +112,17 @@ class Image:
             else:
                 print("element_opt: 'all'/'rectangle'/'line'")
                 return
-        if board_opt == 'org':
-            board = self.img.copy()
-        elif board_opt == 'binary':
-            board = np.zeros((self.img_shape[0], self.img_shape[1]))
-        else:
-            print("board_opt: 'org'/'binary'")
-            return
+        if board is None:
+            if board_opt == 'org':
+                board = self.img.copy()
+            elif board_opt == 'binary':
+                board = np.zeros((self.img_shape[0], self.img_shape[1]))
+            else:
+                print("board_opt: 'org'/'binary'")
+                return
         cv2.drawContours(board, contours, -1, color)
         cv2.imshow(window_name, board)
         cv2.waitKey()
         cv2.destroyWindow(window_name)
+
+        return board

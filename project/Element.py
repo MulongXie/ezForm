@@ -1,4 +1,5 @@
 import numpy as np
+import cv2
 
 
 class Element:
@@ -6,12 +7,25 @@ class Element:
                  type=None, contour=None, location=None, words=None):
         self.type = type            # text/rectangle/line
         self.contour = contour      # format of findContours
-        self.location = location    # dictionary
+
+        self.location = location    # dictionary {left, right, top, bottom}
+        self.width = None
+        self.height = None
+        self.get_bound_from_contour()
 
         self.word = words           # for text
 
-        self.width = None
-        self.height = None
+    def get_bound_from_contour(self):
+        if self.contour is not None:
+            bound = cv2.boundingRect(self.contour)
+            self.width = bound[2]
+            self.height = bound[3]
+            self.location = {'left': bound[0], 'top': bound[2], 'right': bound[0] + bound[2], 'bottom': bound[1] + bound[3]}
+
+    def is_line(self, max_thickness=4):
+        if self.height <= max_thickness or self.width <= max_thickness:
+            return True
+        return False
 
     def is_rectangle(self):
         '''
