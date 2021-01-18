@@ -1,7 +1,6 @@
 from Text import Text
 from Image import Image
 import ocr
-import ip
 
 import cv2
 

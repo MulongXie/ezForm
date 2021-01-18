@@ -1,5 +1,3 @@
-import ip
-
 import cv2
 import numpy as np
 
@@ -18,6 +16,9 @@ class Image:
         self.rectangle_elements_contour = []
         self.line_elements_contour = []
 
+    '''
+    **** Pre-processing ****
+    '''
     def get_gradient_map(self):
         '''
         :return: gradient map
@@ -45,6 +46,9 @@ class Image:
         self.binary_map = morph
         return morph
 
+    '''
+    **** Element Detection ****
+    '''
     def get_elements_contour(self, min_area=100):
         if self.binary_map is None:
             self.get_binary_map()
@@ -55,10 +59,73 @@ class Image:
         return self.all_elements_contour
 
     def detect_rectangle_elements(self):
+        def is_rectangle(contour):
+            '''
+            Rectangle recognition by checking slopes between adjacent points
+            :param contour: contour
+            :return: boolean
+            '''
+            contour = np.reshape(contour, (-1, 2))
+            # calculate the slope k (y2-y1)/(x2-x1) the first between two neighboor points
+            if contour[0][0] == contour[1][0]:
+                k_pre = 'v'
+            else:
+                k_pre = (contour[0][1] - contour[1][1]) / (contour[0][0] - contour[1][0])
+
+            sides = []
+            slopes = []
+            side = [contour[0], contour[1]]
+            # variables for checking if it's valid to continue using the previous side
+            pop_pre = False
+            gap_to_pre = 0
+            for i, p in enumerate(contour[2:]):
+                # calculate the slope k between two neighboor points
+                if contour[i][0] == contour[i - 1][0]:
+                    k = 'v'
+                else:
+                    k = (contour[i][1] - contour[i - 1][1]) / (contour[i][0] - contour[i - 1][0])
+                # print(side, k_pre, gap_to_pre)
+                # check if the two points on the same side
+                if k != k_pre:
+                    # leave out noises
+                    if len(side) < 4:
+                        # continue using the last side
+                        if len(sides) > 0 and k == slopes[-1] \
+                                and not pop_pre and gap_to_pre < 4:
+                            side = sides.pop()
+                            side.append(p)
+                            k = slopes.pop()
+                            pop_pre = True
+                            gap_to_pre = 0
+                        # leave out noises
+                        else:
+                            gap_to_pre += 1
+                            side = [p]
+                    # count as valid side and store it in sides
+                    else:
+                        sides.append(side)
+                        slopes.append(k_pre)
+                        side = [p]
+                        pop_pre = False
+                        gap_to_pre = 0
+                    k_pre = k
+                else:
+                    side.append(p)
+            sides.append(side)
+            slopes.append(k_pre)
+            if len(sides) != 4:
+                return False
+            # print('Side Number:', len(sides))
+            lens = [len(s) for s in sides]
+            # print('Side Lengths:', lens, ' Side Slopes:', slopes)
+            if (abs(lens[0] - lens[2]) < 4) and (abs(lens[1] - lens[3]) < 4):
+                return True
+            return False
+
         if len(self.all_elements_contour) == 0:
             self.get_elements_contour()
         for cnt in self.all_elements_contour:
-            if ip.is_rectangle(cnt):
+            if is_rectangle(cnt):
                 self.rectangle_elements_contour.append(cnt)
         return self.rectangle_elements_contour
 
@@ -80,7 +147,6 @@ class Image:
             else:
                 print("element_opt: 'all'/'rectangle'/'line'")
                 return
-
         if board_opt == 'org':
             board = self.img.copy()
         elif board_opt == 'binary':
@@ -88,7 +154,6 @@ class Image:
         else:
             print("board_opt: 'org'/'binary'")
             return
-
         cv2.drawContours(board, contours, -1, color)
         cv2.imshow(window_name, board)
         cv2.waitKey()
