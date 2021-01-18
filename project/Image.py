@@ -1,3 +1,5 @@
+import ip
+
 import cv2
 import numpy as np
 
@@ -12,7 +14,9 @@ class Image:
         self.gradient_map = None
         self.binary_map = None
 
-        self.elements = []
+        self.all_elements_contour = []
+        self.rectangle_elements_contour = []
+        self.line_elements_contour = []
 
     def get_gradient_map(self):
         '''
@@ -29,7 +33,7 @@ class Image:
         self.gradient_map = gradient
         return gradient
 
-    def get_binary_map(self, min_grad):
+    def get_binary_map(self, min_grad=2):
         '''
         :param min_grad: if a pixel is bigger than this, then count it as foreground (255)
         :return: binary map
@@ -41,18 +45,51 @@ class Image:
         self.binary_map = morph
         return morph
 
-    def get_elements(self, min_area):
-        _, contours, hierarchy = cv2.findContours(bin, cv2.RETR_TREE, cv2.CHAIN_APPROX_NONE)
+    def get_elements_contour(self, min_area=100):
+        if self.binary_map is None:
+            self.get_binary_map()
+        _, contours, hierarchy = cv2.findContours(self.binary_map, cv2.RETR_TREE, cv2.CHAIN_APPROX_NONE)
         for cnt in contours:
             if cv2.contourArea(cnt) > min_area:
-                self.elements.append(cnt)
+                self.all_elements_contour.append(cnt)
+        return self.all_elements_contour
 
-    def visualize_elements(self, color=(255,0,0)):
-        board_bin = np.zeros((self.img_shape[0], self.img_shape[0]))
-        board_org = self.img.copy()
-        cv2.drawContours(board_bin, self.elements, -1, color)
-        cv2.drawContours(board_org, self.elements, -1, color)
-        cv2.imshow("contour_bin", board_bin)
-        cv2.imshow("contour", board_org)
-        cv2.waitKey(0)
-        cv2.destroyAllWindows()
+    def detect_rectangle_elements(self):
+        if len(self.all_elements_contour) == 0:
+            self.get_elements_contour()
+        for cnt in self.all_elements_contour:
+            if ip.is_rectangle(cnt):
+                self.rectangle_elements_contour.append(cnt)
+        return self.rectangle_elements_contour
+
+    def visualize_elements_contours(self, element_opt='all', board_opt='org',
+                                    contours=None, window_name='contour', color=(255, 0, 0)):
+        '''
+        :param element_opt: 'all'/'rectangle'/'line'
+        :param board_opt: 'org'/'binary'
+        :param contours: input contours, if none, check element_opt and use inner elements
+        :return: drawn image
+        '''
+        if contours is None:
+            if element_opt == 'all':
+                contours = self.all_elements_contour
+            elif element_opt == 'rectangle':
+                contours = self.rectangle_elements_contour
+            elif element_opt == 'line':
+                contours = self.line_elements_contour
+            else:
+                print("element_opt: 'all'/'rectangle'/'line'")
+                return
+
+        if board_opt == 'org':
+            board = self.img.copy()
+        elif board_opt == 'binary':
+            board = np.zeros((self.img_shape[0], self.img_shape[1]))
+        else:
+            print("board_opt: 'org'/'binary'")
+            return
+
+        cv2.drawContours(board, contours, -1, color)
+        cv2.imshow(window_name, board)
+        cv2.waitKey()
+        cv2.destroyWindow(window_name)

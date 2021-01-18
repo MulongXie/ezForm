@@ -1,9 +1,7 @@
-from Component import Component
-
-
 # text component
-class Text(Component):
+class Text:
     def __init__(self, word, location):
-        Component.__init__(self, 'text', location)
+        self.type = 'text'
+        self.location = location
         self.word = word
 
