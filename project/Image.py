@@ -70,11 +70,20 @@ class Image:
                 self.all_elements.append(ele)
         return self.all_elements
 
-    def detect_rectangle_elements(self):
+    def detect_rectangle_elements(self, hollow=True):
         if len(self.all_elements) == 0:
             self.get_elements()
         for ele in self.all_elements:
             if ele.is_rectangle():
+                if hollow:
+                    bin_clip = self.binary_map[ele.location['top']: ele.location['bottom'], ele.location['left']: ele.location['right']]
+                    white_ratio = (np.sum(bin_clip) / 255) / (ele.width * ele.height)
+                    # if too much white region, count as filled
+                    if white_ratio > 0.5:
+                        continue
+                    # print(white_ratio)
+                    # cv2.imshow('hollow', bin_clip)
+                    # cv2.waitKey()
                 ele.type = 'rectangle'
                 self.rectangle_elements.append(ele)
         return self.rectangle_elements
