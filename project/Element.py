@@ -4,9 +4,10 @@ import cv2
 
 class Element:
     def __init__(self,
-                 type=None, contour=None, location=None, words=None):
+                 type=None, contour=None, location=None, clip_img=None):
         self.type = type            # text/rectangle/line
         self.contour = contour      # format of findContours
+        self.clip_img = clip_img
 
         self.location = location    # dictionary {left, right, top, bottom}
         self.width = None
@@ -19,6 +20,9 @@ class Element:
             self.width = bound[2]
             self.height = bound[3]
             self.location = {'left': bound[0], 'top': bound[1], 'right': bound[0] + bound[2], 'bottom': bound[1] + bound[3]}
+
+    def get_clip(self, org_img):
+        self.clip_img = org_img[self.location['top']: self.location['bottom'], self.location['left']: self.location['right']]
 
     def is_line(self, max_thickness=4):
         if self.height <= max_thickness or self.width <= max_thickness:
@@ -87,3 +91,10 @@ class Element:
         if (abs(lens[0] - lens[2]) < 4) and (abs(lens[1] - lens[3]) < 4):
             return True
         return False
+
+    def visualize_clip(self):
+        if self.clip_img is None:
+            print('No clip image stored, call get_clip() first')
+        cv2.imshow('clip', self.clip_img)
+        cv2.waitKey()
+        cv2.destroyWindow('clip')

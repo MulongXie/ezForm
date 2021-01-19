@@ -65,7 +65,9 @@ class Image:
         _, contours, hierarchy = cv2.findContours(self.binary_map, cv2.RETR_TREE, cv2.CHAIN_APPROX_NONE)
         for cnt in contours:
             if cv2.contourArea(cnt) > min_area:
-                self.all_elements.append(Element(contour=cnt))
+                ele = Element(contour=cnt)
+                ele.get_clip(self.img)
+                self.all_elements.append(ele)
         return self.all_elements
 
     def detect_rectangle_elements(self):
