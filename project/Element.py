@@ -13,14 +13,12 @@ class Element:
         self.height = None
         self.get_bound_from_contour()
 
-        self.word = words           # for text
-
     def get_bound_from_contour(self):
         if self.contour is not None:
             bound = cv2.boundingRect(self.contour)
             self.width = bound[2]
             self.height = bound[3]
-            self.location = {'left': bound[0], 'top': bound[2], 'right': bound[0] + bound[2], 'bottom': bound[1] + bound[3]}
+            self.location = {'left': bound[0], 'top': bound[1], 'right': bound[0] + bound[2], 'bottom': bound[1] + bound[3]}
 
     def is_line(self, max_thickness=4):
         if self.height <= max_thickness or self.width <= max_thickness:

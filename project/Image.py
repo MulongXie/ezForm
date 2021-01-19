@@ -124,5 +124,4 @@ class Image:
         cv2.imshow(window_name, board)
         cv2.waitKey()
         cv2.destroyWindow(window_name)
-
         return board
