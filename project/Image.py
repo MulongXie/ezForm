@@ -38,7 +38,7 @@ class Image:
         self.gradient_map = gradient
         return gradient
 
-    def get_binary_map(self, min_grad=2):
+    def get_binary_map(self, min_grad=20):
         '''
         :param min_grad: if a pixel is bigger than this, then count it as foreground (255)
         :return: binary map
@@ -81,9 +81,6 @@ class Image:
                     # if too much white region, count as filled
                     if white_ratio > 0.5:
                         continue
-                    # print(white_ratio)
-                    # cv2.imshow('hollow', bin_clip)
-                    # cv2.waitKey()
                 ele.type = 'rectangle'
                 self.rectangle_elements.append(ele)
         return self.rectangle_elements
@@ -102,7 +99,6 @@ class Image:
     **** Visualization ****
     ***********************
     '''
-
     def visualize_elements_contours(self, element_opt='all', board_opt='org',
                                     contours=None, board=None,
                                     window_name='contour', color=(255, 0, 0)):

@@ -17,7 +17,6 @@ def get_access_token():
 
 
 def ocr_detection(img_file_path):
-    start = time.clock()
     access_token = get_access_token()
     url = 'https://aip.baidubce.com/rest/2.0/ocr/v1/accurate?access_token=' + access_token
     f = open(img_file_path, 'rb')
@@ -28,7 +27,6 @@ def ocr_detection(img_file_path):
     detection_result = response.read().decode(encoding='UTF8')
     if detection_result:
         detection_result = json.loads(detection_result)
-    print('*** OCR Processing Time:%.3f s***' % (time.clock() - start))
     return detection_result
 
 

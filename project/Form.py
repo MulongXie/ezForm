@@ -3,6 +3,7 @@ from Image import Image
 import ocr
 
 import cv2
+import time
 
 
 class Form:
@@ -17,14 +18,18 @@ class Form:
         self.lines = []
 
     def text_detection(self):
+        start = time.clock()
         detection_result = ocr.ocr_detection(self.img_file_name)
         texts = detection_result['words_result']
         for text in texts:
             self.texts.append(Text(text['words'], text['location']))
+        print('*** OCR Processing Time:%.3f s***' % (time.clock() - start))
 
     def element_detection(self):
+        start = time.clock()
         self.rectangles = self.img.detect_rectangle_elements()
         self.lines = self.img.detect_line_elements()
+        print('*** Element Detection Time:%.3f s***' % (time.clock() - start))
 
     def visualize(self):
         board = self.img.img.copy()
