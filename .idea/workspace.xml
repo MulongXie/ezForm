@@ -1,7 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="866c7d34-205d-4de3-879f-0db0fbcbb180" name="Default Changelist" comment="" />
+    <list default="true" id="866c7d34-205d-4de3-879f-0db0fbcbb180" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/backlog.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fh/project/.ipynb_checkpoints/Untitled-checkpoint.ipynb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fh/project/1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fh/project/2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fh/project/3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fh/project/Element.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fh/project/Form.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fh/project/Image.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fh/project/Text.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fh/project/Untitled.ipynb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fh/project/ocr.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fh/project/test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/Untitled.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/project/Untitled.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/Form2App.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/test/Form2App.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/data/Untitled.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/test/data/Untitled.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/test-ip.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/test/test-ip.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/viewer/cnt_approx.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/viewer/cnt_approx.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/viewer/cnt_approx_uiedpre.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/viewer/cnt_approx_uiedpre.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/viewer/cnt_uied_rectangle.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/viewer/cnt_uied_rectangle.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -19,19 +40,32 @@
   </component>
   <component name="JupyterTrust" id="2ce0fe3c-0081-4dca-a6a6-b1219d650764" />
   <component name="ProjectId" id="1mzWms3iUMCXccKZCFIGHvEE6Jt" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
     <option name="showMembers" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../UIED" />
   </component>
-  <component name="RunManager">
-    <configuration name="ocr" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\git_file\github\doing\SamrtForm\test\viewer" />
+      <recent name="D:\git_file\github\doing\SamrtForm\project" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\git_file\github\doing\SamrtForm\test\viewer" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Python.cnt_approx_uiedpre">
+    <configuration name="cnt_approx" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="SamrtForm" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -39,12 +73,100 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test/viewer" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ocr.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test/viewer/cnt_approx.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="cnt_approx_uiedpre" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="SamrtForm" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test/viewer" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test/viewer/cnt_approx_uiedpre.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="test" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="SamrtForm" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/project" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/project/test.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="trackbar-uied" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="SamrtForm" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test/viewer" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test/viewer/trackbar-uied.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="trackbar" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="SamrtForm" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test/viewer" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test/viewer/trackbar.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -55,7 +177,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.ocr" />
+        <item itemvalue="Python.cnt_approx_uiedpre" />
+        <item itemvalue="Python.test" />
+        <item itemvalue="Python.trackbar-uied" />
+        <item itemvalue="Python.trackbar" />
+        <item itemvalue="Python.cnt_approx" />
       </list>
     </recent_temporary>
   </component>
@@ -70,40 +196,111 @@
       <option name="presentableId" value="Default" />
       <updated>1610497061963</updated>
       <workItem from="1610497063452" duration="3405000" />
-      <workItem from="1610580207035" duration="886000" />
+      <workItem from="1610580207035" duration="14648000" />
+      <workItem from="1610668153058" duration="13264000" />
+      <workItem from="1610760074371" duration="9980000" />
+      <workItem from="1610838389482" duration="1570000" />
+      <workItem from="1610840584910" duration="3330000" />
+      <workItem from="1610844235970" duration="893000" />
+      <workItem from="1610845142413" duration="1027000" />
+      <workItem from="1610919013398" duration="5475000" />
+      <workItem from="1610926415282" duration="3959000" />
+      <workItem from="1610930391701" duration="3090000" />
+      <workItem from="1610933507034" duration="12728000" />
+      <workItem from="1611011797532" duration="14403000" />
+      <workItem from="1611098495516" duration="14128000" />
+      <workItem from="1611987142305" duration="80000" />
+      <workItem from="1613358963519" duration="4000" />
+      <workItem from="1613467673234" duration="1256000" />
+      <workItem from="1613780570284" duration="637000" />
+      <workItem from="1613956787351" duration="970000" />
+      <workItem from="1614316697618" duration="1521000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="2" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
   <component name="WindowStateProjectService">
+    <state x="690" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1610944661472">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="690" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/1920.0.1280.693/0.0.1920.1040/3840.0.1280.984@0.0.1920.1040" timestamp="1610944661472" />
     <state width="1699" height="466" key="DebuggerActiveHint" timestamp="1610498489611">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1699" height="466" key="DebuggerActiveHint/1920.-64.1280.693/0.0.1920.1040@0.0.1920.1040" timestamp="1610498489611" />
-    <state width="1877" height="348" key="GridCell.Tab.0.bottom" timestamp="1610522078422">
+    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1613467729861">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="348" key="GridCell.Tab.0.bottom/1920.-64.1280.693/0.0.1920.1040@0.0.1920.1040" timestamp="1610522078422" />
-    <state width="1877" height="348" key="GridCell.Tab.0.center" timestamp="1610522078421">
+    <state x="740" y="275" key="FileChooserDialogImpl/1920.0.1280.693/0.0.1920.1040/3840.0.1280.984@0.0.1920.1040" timestamp="1613467729861" />
+    <state x="740" y="275" key="FileChooserDialogImpl/1920.0.1280.693/3840.0.1280.984/0.0.1920.1040@0.0.1920.1040" timestamp="1611101203603" />
+    <state width="1877" height="183" key="GridCell.Tab.0.bottom" timestamp="1611387255791">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="348" key="GridCell.Tab.0.center/1920.-64.1280.693/0.0.1920.1040@0.0.1920.1040" timestamp="1610522078421" />
-    <state width="1877" height="348" key="GridCell.Tab.0.left" timestamp="1610522078420">
+    <state width="1877" height="183" key="GridCell.Tab.0.bottom/1920.-64.1280.693/0.0.1920.1040@0.0.1920.1040" timestamp="1611387255791" />
+    <state width="1237" height="238" key="GridCell.Tab.0.bottom/1920.-64.1280.693/0.0.1920.1040@1920.-64.1280.693" timestamp="1610772962349" />
+    <state width="1877" height="235" key="GridCell.Tab.0.bottom/1920.0.1280.693/0.0.1920.1040/3840.0.1280.984@0.0.1920.1040" timestamp="1610952691666" />
+    <state width="1877" height="183" key="GridCell.Tab.0.bottom/1920.0.1280.693/3840.0.1280.984/0.0.1920.1040@0.0.1920.1040" timestamp="1611207986666" />
+    <state width="1877" height="183" key="GridCell.Tab.0.center" timestamp="1611387255791">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="348" key="GridCell.Tab.0.left/1920.-64.1280.693/0.0.1920.1040@0.0.1920.1040" timestamp="1610522078420" />
-    <state width="1877" height="348" key="GridCell.Tab.0.right" timestamp="1610522078422">
+    <state width="1877" height="183" key="GridCell.Tab.0.center/1920.-64.1280.693/0.0.1920.1040@0.0.1920.1040" timestamp="1611387255791" />
+    <state width="1237" height="238" key="GridCell.Tab.0.center/1920.-64.1280.693/0.0.1920.1040@1920.-64.1280.693" timestamp="1610772962349" />
+    <state width="1877" height="235" key="GridCell.Tab.0.center/1920.0.1280.693/0.0.1920.1040/3840.0.1280.984@0.0.1920.1040" timestamp="1610952691666" />
+    <state width="1877" height="183" key="GridCell.Tab.0.center/1920.0.1280.693/3840.0.1280.984/0.0.1920.1040@0.0.1920.1040" timestamp="1611207986666" />
+    <state width="1877" height="183" key="GridCell.Tab.0.left" timestamp="1611387255791">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="348" key="GridCell.Tab.0.right/1920.-64.1280.693/0.0.1920.1040@0.0.1920.1040" timestamp="1610522078422" />
+    <state width="1877" height="183" key="GridCell.Tab.0.left/1920.-64.1280.693/0.0.1920.1040@0.0.1920.1040" timestamp="1611387255791" />
+    <state width="1237" height="238" key="GridCell.Tab.0.left/1920.-64.1280.693/0.0.1920.1040@1920.-64.1280.693" timestamp="1610772962349" />
+    <state width="1877" height="235" key="GridCell.Tab.0.left/1920.0.1280.693/0.0.1920.1040/3840.0.1280.984@0.0.1920.1040" timestamp="1610952691666" />
+    <state width="1877" height="183" key="GridCell.Tab.0.left/1920.0.1280.693/3840.0.1280.984/0.0.1920.1040@0.0.1920.1040" timestamp="1611207986665" />
+    <state width="1877" height="183" key="GridCell.Tab.0.right" timestamp="1611387255791">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="183" key="GridCell.Tab.0.right/1920.-64.1280.693/0.0.1920.1040@0.0.1920.1040" timestamp="1611387255791" />
+    <state width="1237" height="238" key="GridCell.Tab.0.right/1920.-64.1280.693/0.0.1920.1040@1920.-64.1280.693" timestamp="1610772962349" />
+    <state width="1877" height="235" key="GridCell.Tab.0.right/1920.0.1280.693/0.0.1920.1040/3840.0.1280.984@0.0.1920.1040" timestamp="1610952691666" />
+    <state width="1877" height="183" key="GridCell.Tab.0.right/1920.0.1280.693/3840.0.1280.984/0.0.1920.1040@0.0.1920.1040" timestamp="1611207986666" />
     <state width="968" height="528" key="XDebugger.FullValuePopup" timestamp="1610498423423">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="968" height="528" key="XDebugger.FullValuePopup/1920.-64.1280.693/0.0.1920.1040@0.0.1920.1040" timestamp="1610498423423" />
+    <state x="1920" y="-64" width="1294" height="763" key="dock-window-1" timestamp="1610840571421">
+      <screen x="1920" y="-64" width="1280" height="693" />
+    </state>
+    <state x="1920" y="-64" width="1294" height="763" key="dock-window-1/1920.-64.1280.693/0.0.1920.1040@0.0.1920.1040" timestamp="1610840571421" />
+    <state x="3840" y="0" width="1296" height="730" maximized="true" key="dock-window-1/1920.0.1280.693/3840.0.1280.984/0.0.1920.1040@0.0.1920.1040" timestamp="1610688379753" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/test/viewer/cnt_approx.py</url>
+          <line>18</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/SamrtForm$ocr.coverage" NAME="ocr Coverage Results" MODIFIED="1610499452240" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/SamrtForm$cnt_approx_uiedpre.coverage" NAME="cnt_approx_uiedpre Coverage Results" MODIFIED="1614319070829" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test/viewer" />
+    <SUITE FILE_PATH="coverage/SamrtForm$cnt_uied_line.coverage" NAME="cnt_uied_line Coverage Results" MODIFIED="1610952234418" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test/viewer" />
+    <SUITE FILE_PATH="coverage/SamrtForm$cnt_approx.coverage" NAME="cnt_approx Coverage Results" MODIFIED="1611018659477" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test/viewer" />
+    <SUITE FILE_PATH="coverage/SamrtForm$trackbar.coverage" NAME="trackbar Coverage Results" MODIFIED="1611019194728" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test/viewer" />
+    <SUITE FILE_PATH="coverage/SamrtForm$ip__1_.coverage" NAME="ip (1) Coverage Results" MODIFIED="1610680622387" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/uied-ip" />
+    <SUITE FILE_PATH="coverage/SamrtForm$test.coverage" NAME="test Coverage Results" MODIFIED="1611207986650" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/project" />
+    <SUITE FILE_PATH="coverage/SamrtForm$uied_bin.coverage" NAME="uied_bin Coverage Results" MODIFIED="1610845191471" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test/viewer" />
+    <SUITE FILE_PATH="coverage/SamrtForm$view_contours__1_.coverage" NAME="view_contours (1) Coverage Results" MODIFIED="1610691888096" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test/viewer" />
+    <SUITE FILE_PATH="coverage/SamrtForm$trackbar_uied.coverage" NAME="trackbar-uied Coverage Results" MODIFIED="1611100937991" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test/viewer" />
+    <SUITE FILE_PATH="coverage/SamrtForm$ocr__1_.coverage" NAME="ocr (1) Coverage Results" MODIFIED="1610583447637" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/project" />
+    <SUITE FILE_PATH="coverage/SamrtForm$cnt_uied_rectangle.coverage" NAME="cnt_uied_rectangle Coverage Results" MODIFIED="1610941743013" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test/viewer" />
+    <SUITE FILE_PATH="coverage/SamrtForm$view_contours.coverage" NAME="view_contours Coverage Results" MODIFIED="1610845222579" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test/viewer" />
+    <SUITE FILE_PATH="coverage/SamrtForm$ip.coverage" NAME="ip Coverage Results" MODIFIED="1610919080508" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/project" />
   </component>
 </project>

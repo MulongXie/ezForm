@@ -3,3 +3,13 @@
 		Text + 右边 Rectangle -> group -> input unit 
 	b. 纵向：
 		Text + 下方 Rectangle + 左对齐 -> group -> input unit 
+
+
+2. Elements 之间的基本操作
+	a. 位置判断
+		i.  相邻
+		ii. 对齐
+	b. 是否包含
+
+
+3. 表格gouping
