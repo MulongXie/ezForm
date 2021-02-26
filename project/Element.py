@@ -12,6 +12,12 @@ class Element:
         self.location = location    # dictionary {left, right, top, bottom}
         self.width = None
         self.height = None
+        self.init_bound()
+
+    def init_bound(self):
+        if self.location is not None:
+            self.width = self.location['right'] - self.location['left']
+            self.height = self.location['bottom'] - self.location['top']
         self.get_bound_from_contour()
 
     def get_bound_from_contour(self):

@@ -1,0 +1,2 @@
+26/2/2021
+1. Make Element class as the parent class of the Text class 
