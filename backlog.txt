@@ -1,0 +1,5 @@
+1. Input Unit Grouping
+	a. 横向
+		Text + 右边 Rectangle -> group -> input unit 
+	b. 纵向：
+		Text + 下方 Rectangle + 左对齐 -> group -> input unit 
