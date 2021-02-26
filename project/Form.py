@@ -33,19 +33,16 @@ class Form:
         self.lines = self.img.detect_line_elements()
         print('*** Element Detection Time:%.3f s***' % (time.clock() - start))
 
-    def visualize(self):
+    def visualize_all_elements(self):
         board = self.img.img.copy()
         for text in self.texts:
-            loc = text.location
-            cv2.rectangle(board, (loc['left'], loc['top']), (loc['right'], loc['bottom']), (255, 0, 0), 1)
+            text.visualize_element(board, color=(255, 0, 0))
 
         for rec in self.rectangles:
-            loc = rec.location
-            cv2.rectangle(board, (loc['left'], loc['top']), (loc['right'], loc['bottom']), (0, 255, 0), 1)
+            rec.visualize_element(board, color=(0, 255, 0))
 
         for line in self.lines:
-            loc = line.location
-            cv2.rectangle(board, (loc['left'], loc['top']), (loc['right'], loc['bottom']), (0, 0, 255), 1)
+            line.visualize_element(board, color=(0, 0, 255))
 
         cv2.imshow('form', board)
         cv2.waitKey()

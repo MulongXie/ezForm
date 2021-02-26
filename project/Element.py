@@ -104,3 +104,10 @@ class Element:
         cv2.imshow('clip', self.clip_img)
         cv2.waitKey()
         cv2.destroyWindow('clip')
+
+    def visualize_element(self, image, color=(0,0,255), line=1, show=False):
+        cv2.rectangle(image, (self.location['left'], self.location['top']), (self.location['right'], self.location['bottom']), color, line)
+        if show:
+            cv2.imshow('element', image)
+            cv2.waitKey()
+            cv2.destroyWindow('element')
