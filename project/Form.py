@@ -12,10 +12,9 @@ class Form:
         self.img = Image(img_file_name)
 
         self.texts = []
-        self.tables = []
-
         self.rectangles = []
         self.lines = []
+        self.tables = []
 
     def text_detection(self):
         start = time.clock()
