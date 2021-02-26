@@ -33,6 +33,14 @@ class Form:
         self.lines = self.img.detect_line_elements()
         print('*** Element Detection Time:%.3f s***' % (time.clock() - start))
 
+    def sort_elements(self, direction='h'):
+        elements = self.texts + self.rectangles + self.lines
+        # horizontally
+        if direction == 'h':
+            return sorted(elements, key=lambda x: x.location['top'])
+        elif direction == 'v':
+            return sorted(elements, key=lambda x: x.location['left'])
+
     def visualize_all_elements(self):
         board = self.img.img.copy()
         for text in self.texts:
