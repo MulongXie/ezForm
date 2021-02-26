@@ -12,12 +12,14 @@ class Element:
         self.location = location    # dictionary {left, right, top, bottom}
         self.width = None
         self.height = None
+        self.area = None
         self.init_bound()
 
     def init_bound(self):
         if self.location is not None:
             self.width = self.location['right'] - self.location['left']
             self.height = self.location['bottom'] - self.location['top']
+            self.area = self.width * self.height
         self.get_bound_from_contour()
 
     def get_bound_from_contour(self):
@@ -25,6 +27,7 @@ class Element:
             bound = cv2.boundingRect(self.contour)
             self.width = bound[2]
             self.height = bound[3]
+            self.area = self.width * self.height
             self.location = {'left': bound[0], 'top': bound[1], 'right': bound[0] + bound[2], 'bottom': bound[1] + bound[3]}
 
     def get_clip(self, org_img):
@@ -97,6 +100,42 @@ class Element:
         if (abs(lens[0] - lens[2]) < 4) and (abs(lens[1] - lens[3]) < 4):
             return True
         return False
+
+    def element_relation(self, element):
+        '''
+        Calculate the relation between two elements by iou
+        :return:
+        -1  : a in b
+         0  : a, b are not intersected
+         1  : b in a
+         2  : a, b are intersected
+        '''
+        l_a = self.location
+        l_b = element.location
+
+        left_in = max(l_a['left'], l_b['left'])
+        top_in = max(l_a['top'], l_b['top'])
+        right_in = min(l_a['right'], l_b['right'])
+        bottom_in = min(l_a['bottom'], l_b['bottom'])
+
+        w_in = max(0, right_in - left_in)
+        h_in = max(0, bottom_in - top_in)
+        area_in = w_in * h_in
+        # area of intersection is 0
+        if area_in == 0:
+            return 0
+
+        ioa = area_in / self.area
+        iob = area_in / element.area
+
+        print('ioa:%.3f; iob:%.3f' % (ioa, iob))
+        # a in b
+        if ioa == 1:
+            return -1
+        # b in a
+        if iob == 1:
+            return 1
+        return 2
 
     def visualize_clip(self):
         if self.clip_img is None:
