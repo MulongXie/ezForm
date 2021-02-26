@@ -11,6 +11,9 @@ canny_result=cv2.Canny(th_blur,50,200)
 _, contours,hierarchy=cv2.findContours(canny_result,cv2.RETR_TREE,cv2.CHAIN_APPROX_NONE)
 draw_contour = img.copy()
 draw_prox = img.copy()
+
+cv2.imshow('bin', canny_result)
+
 for cont in contours:
     perimeter = cv2.arcLength(cont,True)
     epsilon = 0.02*cv2.arcLength(cont,True)
