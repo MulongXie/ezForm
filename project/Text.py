@@ -1,8 +1,9 @@
+from Element import Element
+
+
 # text component
-class Text:
+class Text(Element):
     def __init__(self, word, location):
+        super().__init__(type='text', location=location)
         self.type = 'text'
         self.word = word
-        self.location = location            # {left, top, width, height}
-        self.width = location['width']
-        self.height = location['height']

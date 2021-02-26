@@ -21,7 +21,10 @@ class Form:
         detection_result = ocr.ocr_detection(self.img_file_name)
         texts = detection_result['words_result']
         for text in texts:
-            self.texts.append(Text(text['words'], text['location']))
+            location = {'left': text['location']['left'], 'top': text['location']['top'],
+                        'right': text['location']['left'] + text['location']['width'],
+                        'bottom': text['location']['top'] + text['location']['height']}
+            self.texts.append(Text(text['words'], location))
         print('*** OCR Processing Time:%.3f s***' % (time.clock() - start))
 
     def element_detection(self):
@@ -34,7 +37,7 @@ class Form:
         board = self.img.img.copy()
         for text in self.texts:
             loc = text.location
-            cv2.rectangle(board, (loc['left'], loc['top']), (loc['left'] + loc['width'], loc['top'] + loc['height']), (255, 0, 0), 1)
+            cv2.rectangle(board, (loc['left'], loc['top']), (loc['right'], loc['bottom']), (255, 0, 0), 1)
 
         for rec in self.rectangles:
             loc = rec.location
