@@ -42,6 +42,7 @@ class Form:
         '''
         If a rectangle contains only one text in it, then recategorize the rect as type of 'textbox'
         '''
+        start = time.clock()
         # iteratively check the relationship between texts and rectangles
         for text in self.texts:
             board = self.img.img.copy()
@@ -59,9 +60,10 @@ class Form:
 
         # if the rectangle contains only one text, label it as type of textbox
         for rec in self.rectangles:
-            if rec.contains == 1:
+            if len(rec.contains) == 1:
                 rec.type = 'textbox'
                 rec.contains[0].in_box = True
+        print('*** Element Detection Time:%.3f s***' % (time.clock() - start))
 
     '''
     **************************
@@ -83,16 +85,22 @@ class Form:
         elif direction == 'v':
             return sorted(elements, key=lambda x: x.location['left'])
 
-    def visualize_all_elements(self):
+    def visualize_all_elements(self, line=2):
         board = self.img.img.copy()
         for text in self.texts:
-            text.visualize_element(board, color=(255, 0, 0))
+            if not text.in_box:
+                text.visualize_element(board, color=(255, 0, 0), line=line)
 
         for rec in self.rectangles:
-            rec.visualize_element(board, color=(0, 255, 0))
+            color = None
+            if rec.type == 'rectangle':
+                color = (0, 255, 0)
+            elif rec.type == 'textbox':
+                color = (0, 50, 255)
+            rec.visualize_element(board, color=color, line=line)
 
         for line in self.lines:
-            line.visualize_element(board, color=(0, 0, 255))
+            line.visualize_element(board, color=(0, 0, 255), line=line)
 
         cv2.imshow('form', board)
         cv2.waitKey()

@@ -131,7 +131,7 @@ class Element:
         ioa = area_in / self.area
         iob = area_in / element.area
 
-        print('ioa:%.3f; iob:%.3f' % (ioa, iob))
+        # print('ioa:%.3f; iob:%.3f' % (ioa, iob))
         # a in b
         if ioa > 0.6:
             return -1

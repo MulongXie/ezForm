@@ -7,3 +7,4 @@ class Text(Element):
         super().__init__(type='text', location=location)
         self.type = 'text'
         self.word = word
+        self.in_box = False     # whether be contained in a textbox
