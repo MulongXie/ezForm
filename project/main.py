@@ -10,7 +10,8 @@ form.visualize_all_elements()
 form.textbox_recognition()
 form.visualize_all_elements()
 
-form.guideword_recognition()
+form.group_elements_to_units()
+form.visualize_units()
 
 board = form.img.img.copy()
 

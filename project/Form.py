@@ -11,10 +11,15 @@ class Form:
         self.img_file_name = img_file_name
         self.img = Image(img_file_name)
 
-        self.texts = []
-        self.rectangles = []
-        self.lines = []
-        self.tables = []
+        # form elements
+        self.texts = []         # detected by ocr
+        self.rectangles = []    # detected by cv
+        self.lines = []         # detected by cv
+        self.tables = []        # recognize by grouping rectangles
+
+        # units for input bar, grouped from the above elements
+        self.text_units = []    # text (not contained) + textbox
+        self.bar_units = []     # rectangles (not textbox) + lines + tables
 
     '''
     *************************
@@ -69,25 +74,6 @@ class Form:
         '''
         Recognize guide words for input unit
         '''
-        text_units = []
-        input_bars = []
-        board = self.img.img.copy()
-        # Remove texts contained in textbox, count
-        for text in self.texts:
-            if not text.in_box:
-                text_units.append(text_units)
-                text.visualize_element(board, color=(255, 0, 0))
-        for ele in self.rectangles + self.lines:
-            # leave out textboxes
-            if ele.type in ('line', 'rectangle'):
-                input_bars.append(ele)
-                ele.visualize_element(board, color=(0, 255, 0))
-            elif ele.type == 'textbox':
-                text_units.append(ele)
-                ele.visualize_element(board, color=(255, 0, 0))
-
-        cv2.imshow('tidied', board)
-        cv2.waitKey()
 
     '''
     **************************
@@ -109,6 +95,21 @@ class Form:
         elif direction == 'v':
             return sorted(elements, key=lambda x: x.location['left'])
 
+    def group_elements_to_units(self):
+        '''
+        text_units: text (not contained) + textbox
+        bar_units: rectangles (not textbox) + lines + tables
+        '''
+        for text in self.texts:
+            if not text.in_box:
+                self.text_units.append(text)
+
+        for ele in self.rectangles + self.lines:
+            if ele.type in ('line', 'rectangle'):
+                self.bar_units.append(ele)
+            elif ele.type == 'textbox':
+                self.text_units.append(ele)
+
     '''
     *********************
     *** Visualization ***
@@ -129,3 +130,12 @@ class Form:
         cv2.imshow('form', board)
         cv2.waitKey()
         cv2.destroyAllWindows()
+
+    def visualize_units(self):
+        board = self.img.img.copy()
+        for text_unit in self.text_units:
+            text_unit.visualize_element(board, color=(0, 255, 0))
+        for bar_unit in self.bar_units:
+            bar_unit.visualize_element(board, color=(255, 0, 0))
+        cv2.imshow('tidied', board)
+        cv2.waitKey()
