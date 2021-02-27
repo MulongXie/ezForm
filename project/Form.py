@@ -53,8 +53,8 @@ class Form:
 
                 # if the text is contained in the rectangle box
                 if relation == -1:
-                    text.visualize_element(board, (0, 255, 0), 2)
-                    rec.visualize_element(board, (0, 0, 255), 2, show=True)
+                    # text.visualize_element(board, (0, 255, 0), 2)
+                    # rec.visualize_element(board, (0, 0, 255), 2, show=True)
                     rec.contains.append(text)
 
         # if the rectangle contains only one text, label it as type of textbox
