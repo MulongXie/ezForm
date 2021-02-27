@@ -89,18 +89,13 @@ class Form:
         board = self.img.img.copy()
         for text in self.texts:
             if not text.in_box:
-                text.visualize_element(board, color=(255, 0, 0), line=line)
+                text.visualize_element(board, line=line)
 
         for rec in self.rectangles:
-            color = None
-            if rec.type == 'rectangle':
-                color = (0, 255, 0)
-            elif rec.type == 'textbox':
-                color = (0, 50, 255)
-            rec.visualize_element(board, color=color, line=line)
+            rec.visualize_element(board, line=line)
 
         for line in self.lines:
-            line.visualize_element(board, color=(0, 0, 255), line=line)
+            line.visualize_element(board, line=line)
 
         cv2.imshow('form', board)
         cv2.waitKey()

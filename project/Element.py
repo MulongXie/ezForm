@@ -147,7 +147,16 @@ class Element:
         cv2.waitKey()
         cv2.destroyWindow('clip')
 
-    def visualize_element(self, image, color=(0,0,255), line=1, show=False):
+    def visualize_element(self, image, color=None, line=1, show=False):
+        if color is None:
+            if self.type == 'text':
+                color = (255, 0, 0)
+            elif self.type == 'rectangle':
+                color = (0, 255, 0)
+            elif self.type == 'line':
+                color = (0, 0, 255)
+            elif self.type == 'textbox':
+                color = (211, 85, 186)
         cv2.rectangle(image, (self.location['left'], self.location['top']), (self.location['right'], self.location['bottom']), color, line)
         if show:
             cv2.imshow('element', image)
