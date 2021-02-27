@@ -4,10 +4,13 @@ import cv2
 
 class Element:
     def __init__(self,
-                 type=None, contour=None, location=None, clip_img=None):
-        self.type = type            # text/rectangle/line
+                 id=None, type=None, contour=None, location=None, clip_img=None):
+        self.id = id
+        self.type = type            # text/rectangle/line/textbox
         self.contour = contour      # format of findContours
         self.clip_img = clip_img
+
+        self.contains = []          # list of elements that are contained in the element
 
         self.location = location    # dictionary {left, right, top, bottom}
         self.width = None
@@ -130,7 +133,7 @@ class Element:
 
         print('ioa:%.3f; iob:%.3f' % (ioa, iob))
         # a in b
-        if ioa == 1:
+        if ioa > 0.6:
             return -1
         # b in a
         if iob == 1:

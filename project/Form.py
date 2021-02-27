@@ -16,6 +16,11 @@ class Form:
         self.lines = []
         self.tables = []
 
+    '''
+    *************************
+    *** Element Detection ***
+    *************************
+    '''
     def text_detection(self):
         start = time.clock()
         detection_result = ocr.ocr_detection(self.img_file_name)
@@ -33,8 +38,45 @@ class Form:
         self.lines = self.img.detect_line_elements()
         print('*** Element Detection Time:%.3f s***' % (time.clock() - start))
 
+    def textbox_detection(self):
+        '''
+        If a rectangle contains only one text in it, then recategorize the rect as type of 'textbox'
+        '''
+        # iteratively check the relationship between texts and rectangles
+        for text in self.texts:
+            board = self.img.img.copy()
+            for rec in self.rectangles:
+                relation = text.element_relation(rec)
+                # if text.element_relation(rec) != 0:
+                #     text.visualize_element(board, (0, 255, 0), 2)
+                #     rec.visualize_element(board, (0, 0, 255), 2, show=True)
+
+                # if the text is contained in the rectangle box
+                if relation == -1:
+                    text.visualize_element(board, (0, 255, 0), 2)
+                    rec.visualize_element(board, (0, 0, 255), 2, show=True)
+                    rec.contains.append(text)
+
+        # if the rectangle contains only one text, label it as type of textbox
+        for rec in self.rectangles:
+            if rec.contains == 1:
+                rec.type = 'textbox'
+                rec.contains[0].in_box = True
+
+    '''
+    **************************
+    *** Element Processing ***
+    **************************
+    '''
+    def get_all_elements(self):
+        return self.texts + self.rectangles + self.lines + self.tables
+
+    def assign_ele_ids(self):
+        for i, ele in enumerate(self.get_all_elements()):
+            ele.id = i
+
     def sort_elements(self, direction='h'):
-        elements = self.texts + self.rectangles + self.lines
+        elements = self.get_all_elements()
         # horizontally
         if direction == 'h':
             return sorted(elements, key=lambda x: x.location['top'])
