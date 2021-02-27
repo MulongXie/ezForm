@@ -147,7 +147,7 @@ class Element:
         cv2.waitKey()
         cv2.destroyWindow('clip')
 
-    def visualize_element(self, image, color=None, line=1, show=False):
+    def visualize_element(self, image, color=None, line=2, show=False):
         if color is None:
             if self.type == 'text':
                 color = (255, 0, 0)

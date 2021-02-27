@@ -6,17 +6,21 @@ form = Form('data/3.jpg')
 form.text_detection()
 form.element_detection()
 form.visualize_all_elements()
-form.textbox_detection()
+
+form.textbox_recognition()
 form.visualize_all_elements()
+
+form.guideword_recognition()
+
 board = form.img.img.copy()
 
 # ******* show sorted elements ********
-elements = form.sort_elements()
-for ele in elements:
-    print(ele.location)
-    ele.visualize_element(board, line=2)
-    cv2.imshow('b', board)
-    cv2.waitKey()
+# elements = form.sort_elements()
+# for ele in elements:
+#     print(ele.location)
+#     ele.visualize_element(board)
+#     cv2.imshow('b', board)
+#     cv2.waitKey()
 
 
 # ******* show elements relationship ********

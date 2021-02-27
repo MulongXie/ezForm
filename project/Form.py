@@ -38,7 +38,7 @@ class Form:
         self.lines = self.img.detect_line_elements()
         print('*** Element Detection Time:%.3f s***' % (time.clock() - start))
 
-    def textbox_detection(self):
+    def textbox_recognition(self):
         '''
         If a rectangle contains only one text in it, then recategorize the rect as type of 'textbox'
         '''
@@ -65,6 +65,30 @@ class Form:
                 rec.contains[0].in_box = True
         print('*** Element Detection Time:%.3f s***' % (time.clock() - start))
 
+    def guideword_recognition(self):
+        '''
+        Recognize guide words for input unit
+        '''
+        text_units = []
+        input_bars = []
+        board = self.img.img.copy()
+        # Remove texts contained in textbox, count
+        for text in self.texts:
+            if not text.in_box:
+                text_units.append(text_units)
+                text.visualize_element(board, color=(255, 0, 0))
+        for ele in self.rectangles + self.lines:
+            # leave out textboxes
+            if ele.type in ('line', 'rectangle'):
+                input_bars.append(ele)
+                ele.visualize_element(board, color=(0, 255, 0))
+            elif ele.type == 'textbox':
+                text_units.append(ele)
+                ele.visualize_element(board, color=(255, 0, 0))
+
+        cv2.imshow('tidied', board)
+        cv2.waitKey()
+
     '''
     **************************
     *** Element Processing ***
@@ -85,17 +109,22 @@ class Form:
         elif direction == 'v':
             return sorted(elements, key=lambda x: x.location['left'])
 
-    def visualize_all_elements(self, line=2):
+    '''
+    *********************
+    *** Visualization ***
+    *********************
+    '''
+    def visualize_all_elements(self):
         board = self.img.img.copy()
         for text in self.texts:
             if not text.in_box:
-                text.visualize_element(board, line=line)
+                text.visualize_element(board)
 
         for rec in self.rectangles:
-            rec.visualize_element(board, line=line)
+            rec.visualize_element(board)
 
         for line in self.lines:
-            line.visualize_element(board, line=line)
+            line.visualize_element(board)
 
         cv2.imshow('form', board)
         cv2.waitKey()
