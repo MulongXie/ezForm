@@ -7,6 +7,8 @@ class Element:
                  id=None, type=None, contour=None, location=None, clip_img=None):
         self.id = id
         self.type = type            # text/rectangle/line/textbox
+        self.unit_type = None       # text_unit/bar_unit
+
         self.contour = contour      # format of findContours
         self.clip_img = clip_img
 
@@ -18,6 +20,11 @@ class Element:
         self.area = None
         self.init_bound()
 
+    '''
+    *******************
+    *** Basic Bound ***
+    *******************
+    '''
     def init_bound(self):
         if self.location is not None:
             self.width = self.location['right'] - self.location['left']
@@ -36,6 +43,11 @@ class Element:
     def get_clip(self, org_img):
         self.clip_img = org_img[self.location['top']: self.location['bottom'], self.location['left']: self.location['right']]
 
+    '''
+    *************************
+    *** Shape Recognition ***
+    *************************
+    '''
     def is_line(self, max_thickness=4):
         if self.height <= max_thickness or self.width <= max_thickness:
             return True
@@ -104,6 +116,11 @@ class Element:
             return True
         return False
 
+    '''
+    *******************************
+    *** Relation with Other Ele ***
+    *******************************
+    '''
     def element_relation(self, element):
         '''
         Calculate the relation between two elements by iou
@@ -140,6 +157,35 @@ class Element:
             return 1
         return 2
 
+    def in_alignment(self, ele_b, direction='v'):
+        '''
+        Check if the element is in alignment with another
+        :param direction:
+             - 'v': up and down, then check if (a_left <= b_left <= a_right) | (a_left <= b_right <= a_right)
+             - 'h': left and right, then check if (a_top <= b_top <= a_bottom) | (a_top <= b_bottom <= a_bottom)
+        :return: Boolean that indicate the two are in alignment or not
+        '''
+        l_a = self.location
+        l_b = ele_b.location
+        if direction == 'v':
+            if max(l_a['left'], l_b['left']) < min(l_a['right'], l_b['right']):
+                print('In Alignment Vertically')
+                return True
+        elif direction == 'h':
+            if max(l_a['top'], l_b['top']) < min(l_a['bottom'], l_b['bottom']):
+                print('In Alignment Horizontally')
+                return True
+        else:
+            print("Direction: 'v' or 'h'")
+            return
+        print('Not in Alignment')
+        return False
+
+    '''
+    *********************
+    *** Visualization ***
+    *********************
+    '''
     def visualize_clip(self):
         if self.clip_img is None:
             print('No clip image stored, call get_clip() first')
