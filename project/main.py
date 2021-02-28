@@ -5,18 +5,20 @@ import cv2
 form = Form('data/3.jpg')
 form.text_detection()
 form.element_detection()
-form.visualize_all_elements()
+# form.visualize_all_elements()
 
 form.textbox_recognition()
-form.visualize_all_elements()
+# form.visualize_all_elements()
 
 form.group_elements_to_units()
-form.visualize_units()
+# form.visualize_units()
+
+form.guideword_recognition()
 
 board = form.img.img.copy()
 
 # ******* show sorted elements ********
-# elements = form.sort_elements()
+# elements = form.sort_elements(direction='v')
 # for ele in elements:
 #     print(ele.location)
 #     ele.visualize_element(board)

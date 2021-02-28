@@ -157,7 +157,7 @@ class Element:
             return 1
         return 2
 
-    def in_alignment(self, ele_b, direction='v', bias=1):
+    def in_alignment(self, ele_b, direction='v', bias=2):
         '''
         Check if the element is in alignment with another
         :param bias: to remove insignificant intersection
@@ -170,16 +170,16 @@ class Element:
         l_b = ele_b.location
         if direction == 'v':
             if max(l_a['left'], l_b['left']) + bias < min(l_a['right'], l_b['right']) - bias:
-                print('In Alignment Vertically')
+                # print('In Alignment Vertically')
                 return True
         elif direction == 'h':
             if max(l_a['top'], l_b['top']) + bias < min(l_a['bottom'], l_b['bottom']) - bias:
-                print('In Alignment Horizontally')
+                # print('In Alignment Horizontally')
                 return True
         else:
             print("Direction: 'v' or 'h'")
             return
-        print('Not in Alignment')
+        # print('Not in Alignment')
         return False
 
     '''
