@@ -72,9 +72,51 @@ class Form:
 
     def guideword_recognition(self):
         '''
-        Recognize guide words for input unit
+        Recognize guide words for input
         '''
+        if len(self.text_units) + len(self.bar_units) == 0:
+            self.group_elements_to_units()
 
+        units = self.text_units + self.bar_units
+        # from top to bottom
+        units = sorted(units, key=lambda x: x.location['top'])
+        for i, unit in enumerate(units):
+            board = self.img.img.copy()
+            if unit.unit_type == 'text_unit':
+                unit.visualize_element(board, color=(0,0,255))
+
+                for j in range(i+1, len(units)):
+                    units[j].visualize_element(board, color=(255, 0, 0))
+                    if unit.in_alignment(units[j], direction='v'):
+                        if unit.unit_type == 'bar_unit':
+                            unit.is_guide_word = True
+                        else:
+                            unit.is_guide_word = False
+                        break
+                    cv2.imshow('alignment', board)
+                    cv2.waitKey()
+                cv2.imshow('alignment', board)
+                cv2.waitKey()
+
+        # from left to right
+        units = sorted(units, key=lambda x: x.location['left'])
+        for i, unit in enumerate(units):
+            board = self.img.img.copy()
+            if unit.unit_type == 'text_unit':
+                unit.visualize_element(board, color=(0,0,255))
+
+                for j in range(i+1, len(units)):
+                    units[j].visualize_element(board, color=(255, 0, 0))
+                    if unit.in_alignment(units[j], direction='h'):
+                        if unit.unit_type == 'bar_unit':
+                            unit.is_guide_word = True
+                        else:
+                            unit.is_guide_word = False
+                        break
+                    cv2.imshow('alignment', board)
+                    cv2.waitKey()
+                cv2.imshow('alignment', board)
+                cv2.waitKey()
     '''
     **************************
     *** Element Processing ***
@@ -87,13 +129,12 @@ class Form:
         for i, ele in enumerate(self.get_all_elements()):
             ele.id = i
 
-    def sort_elements(self, direction='h'):
+    def sort_elements(self, direction='left'):
+        '''
+        :param direction: 'left' or 'top'
+        '''
         elements = self.get_all_elements()
-        # horizontally
-        if direction == 'h':
-            return sorted(elements, key=lambda x: x.location['top'])
-        elif direction == 'v':
-            return sorted(elements, key=lambda x: x.location['left'])
+        return sorted(elements, key=lambda x: x.location[direction])
 
     def group_elements_to_units(self):
         '''
@@ -102,12 +143,14 @@ class Form:
         '''
         for text in self.texts:
             if not text.in_box:
+                text.unit_type = 'text_unit'
                 self.text_units.append(text)
-
         for ele in self.rectangles + self.lines:
             if ele.type in ('line', 'rectangle'):
+                ele.unit_type = 'bar_unit'
                 self.bar_units.append(ele)
             elif ele.type == 'textbox':
+                ele.unit_type = 'text_unit'
                 self.text_units.append(ele)
 
     '''
@@ -139,3 +182,4 @@ class Form:
             bar_unit.visualize_element(board, color=(255, 0, 0))
         cv2.imshow('tidied', board)
         cv2.waitKey()
+        cv2.destroyAllWindows()
