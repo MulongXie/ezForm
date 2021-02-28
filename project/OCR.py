@@ -5,8 +5,8 @@ import time
 
 
 def get_access_token():
-    API_Key = "v6cd6adVIU9WlfSFB2XNiu95"
-    Secret_Key = "CQ033fD5YdfArKI96sEBQOqGFBlDjSZC"
+    API_Key = "v6cd6adVIU9WlfSFB2XNiu95"  # iyyblNxLrtFBowE8FfRNo3Fm
+    Secret_Key = "CQ033fD5YdfArKI96sEBQOqGFBlDjSZC"  # MNTGdNPpvyhZC5CUcOQ5y4Yj1HbQ1t5m
     host = 'https://aip.baidubce.com/oauth/2.0/token?grant_type=client_credentials&client_id=' + API_Key + '&client_secret=' + Secret_Key
     request = urllib.request.Request(host, headers={'Content-Type':'application/json; charset=UTF-8'})
     response = urllib.request.urlopen(request)
