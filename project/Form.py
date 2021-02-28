@@ -4,6 +4,7 @@ import ocr
 
 import cv2
 import time
+import numpy as np
 
 
 class Form:
@@ -73,11 +74,14 @@ class Form:
     def guideword_recognition(self):
         '''
         Recognize guide words for input
+        If a text_unit's closet element in alignment is bar_unit, then count it as a guide word
         '''
         if len(self.text_units) + len(self.bar_units) == 0:
             self.group_elements_to_units()
 
         units = self.text_units + self.bar_units
+        marked = np.full(len(units), False)     # prevent bar_units from being used multiple times
+
         # from left to right
         units = sorted(units, key=lambda x: x.location['left'])
         for i, unit in enumerate(units):
@@ -86,15 +90,24 @@ class Form:
                 unit.visualize_element(board, color=(0,0,255))
 
                 for j in range(i+1, len(units)):
-                    if unit.in_alignment(units[j], direction='h'):
+                    if not marked[j] and unit.in_alignment(units[j], direction='h'):
                         if units[j].unit_type == 'bar_unit':
                             unit.is_guide_word = True
                             units[j].visualize_element(board, color=(255, 0, 0))
+                            marked[j] = True
                         else:
                             unit.is_guide_word = False
                         break
                 cv2.imshow('alignment', board)
                 cv2.waitKey()
+
+        # remove marked elements
+        unused_units = []
+        for i, unit in enumerate(units):
+            if not marked[i]:
+                unused_units.append(unit)
+        units = unused_units
+        marked = np.full(len(units), False)     # prevent bar_units from being used multiple times
 
         # from top to bottom
         units = sorted(units, key=lambda x: x.location['top'])
@@ -105,9 +118,10 @@ class Form:
 
                 for j in range(i + 1, len(units)):
                     if unit.in_alignment(units[j], direction='v'):
-                        if units[j].unit_type == 'bar_unit':
+                        if not marked[j] and units[j].unit_type == 'bar_unit':
                             unit.is_guide_word = True
                             units[j].visualize_element(board, color=(255, 0, 0))
+                            marked[j] = True
                         else:
                             unit.is_guide_word = False
                         break
