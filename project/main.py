@@ -1,5 +1,5 @@
-from Form import Form
-from Image import Image
+from obj.Form import Form
+from obj.Image import Image
 import cv2
 
 form = Form('data/3.jpg')

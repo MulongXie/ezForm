@@ -1,4 +1,4 @@
-from Element import Element
+from obj.Element import Element
 
 
 # text component

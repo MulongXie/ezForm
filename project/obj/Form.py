@@ -1,6 +1,6 @@
-from Text import Text
-from Image import Image
-import ocr
+from obj.Text import Text
+from obj.Image import Image
+import obj.ocr as ocr
 
 import cv2
 import time
