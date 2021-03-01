@@ -8,4 +8,4 @@ class Text(Element):
         self.type = 'text'
         self.word = word
         self.in_box = False         # whether be contained in a textbox
-        self.is_guide_word = False     # whether the text leads an input unit
+        self.is_guide_text = False     # whether the text guides an input unit

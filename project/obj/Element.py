@@ -7,7 +7,7 @@ class Element:
                  id=None, type=None, contour=None, location=None, clip_img=None):
         self.id = id
         self.type = type            # text/rectangle/line/textbox
-        self.unit_type = None       # text_unit/bar_unit
+        self.unit_type = None       # text_unit(text or textbox)/bar_unit
 
         self.contour = contour      # format of findContours
         self.clip_img = clip_img
@@ -30,7 +30,8 @@ class Element:
             self.width = self.location['right'] - self.location['left']
             self.height = self.location['bottom'] - self.location['top']
             self.area = self.width * self.height
-        self.get_bound_from_contour()
+        else:
+            self.get_bound_from_contour()
 
     def get_bound_from_contour(self):
         if self.contour is not None:

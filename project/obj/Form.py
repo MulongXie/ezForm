@@ -18,8 +18,8 @@ class Form:
         self.lines = []         # detected by cv
         self.tables = []        # recognize by grouping rectangles
 
-        # units for input bar, grouped from the above elements
-        self.text_units = []    # text (not contained) + textbox
+        # units for input, grouped from the above elements
+        self.text_units = []    # text (not in box) + textbox
         self.bar_units = []     # rectangles (not textbox) + lines + tables
 
     '''
@@ -71,10 +71,10 @@ class Form:
                 rec.contains[0].in_box = True
         print('*** Textbox Recognition Time:%.3f s***' % (time.clock() - start))
 
-    def guideword_recognition(self):
+    def guidetext_recognition(self):
         '''
-        Recognize guide words for input
-        If a text_unit's closet element in alignment is bar_unit, then count it as a guide word
+        Recognize guide text for input
+        If a text_unit's closet element in alignment is bar_unit, then count it as a guide text
         '''
         if len(self.text_units) + len(self.bar_units) == 0:
             self.group_elements_to_units()
@@ -92,11 +92,11 @@ class Form:
                 for j in range(i+1, len(units)):
                     if not marked[j] and unit.in_alignment(units[j], direction='h'):
                         if units[j].unit_type == 'bar_unit':
-                            unit.is_guide_word = True
+                            unit.is_guide_text = True
                             units[j].visualize_element(board, color=(255, 0, 0))
                             marked[j] = True
                         else:
-                            unit.is_guide_word = False
+                            unit.is_guide_text = False
                         break
                 cv2.imshow('alignment', board)
                 cv2.waitKey()
@@ -119,11 +119,11 @@ class Form:
                 for j in range(i + 1, len(units)):
                     if unit.in_alignment(units[j], direction='v'):
                         if not marked[j] and units[j].unit_type == 'bar_unit':
-                            unit.is_guide_word = True
+                            unit.is_guide_text = True
                             units[j].visualize_element(board, color=(255, 0, 0))
                             marked[j] = True
                         else:
-                            unit.is_guide_word = False
+                            unit.is_guide_text = False
                         break
                 cv2.imshow('alignment', board)
                 cv2.waitKey()
