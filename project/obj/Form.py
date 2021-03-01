@@ -51,7 +51,6 @@ class Form:
         '''
         If a rectangle contains only one text in it, then recategorize the rect as type of 'textbox'
         '''
-        start = time.clock()
         # iteratively check the relationship between texts and rectangles
         for text in self.texts:
             board = self.img.img.copy()
@@ -72,7 +71,7 @@ class Form:
             if len(rec.contains) == 1:
                 rec.type = 'textbox'
                 rec.contains[0].in_box = True
-        print('*** Textbox Recognition Time:%.3f s***' % (time.clock() - start))
+        # print('*** Textbox Recognition Time:%.3f s***' % (time.clock() - start))
 
     def input_unit_recognition(self):
         '''
