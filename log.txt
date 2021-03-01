@@ -1,2 +1,22 @@
 26/2/2021
-1. Make Element class as the parent class of the Text class 
+1. Make Element class as the parent class of the Text class
+
+2. Add element relation check
+
+3. Count the rectangles that only contains one text as textbox
+
+4. Get input units from form elements
+    text_units: text (not contained) + textbox
+    bar_units: rectangles (not textbox) + lines + tables
+
+
+28/2/2021
+1. Add in alignment check for elements
+
+2. Check guide text by nearest neighbour in alignment
+
+
+1/3/2021
+1. Add Input class for input element that consists of guide text and input field
+
+2. Add Input elements in a Form object
