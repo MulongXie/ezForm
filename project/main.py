@@ -13,7 +13,7 @@ form.visualize_all_elements()
 form.group_elements_to_units()
 form.visualize_units()
 
-form.input_unit_recognition()
+form.input_compound_recognition()
 form.visualize_inputs()
 
 # board = form.img.img.copy()

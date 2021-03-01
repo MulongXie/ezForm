@@ -3,12 +3,18 @@
   <component name="ChangeListManager">
     <list default="true" id="866c7d34-205d-4de3-879f-0db0fbcbb180" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fh/backlog.txt" beforeDir="false" afterPath="$PROJECT_DIR$/fh/backlog.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fh/project/.ipynb_checkpoints/Untitled-checkpoint.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fh/project/1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fh/project/2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fh/project/3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fh/project/Element.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fh/project/Form.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fh/project/Image.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fh/project/Text.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fh/project/Untitled.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fh/project/ocr.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fh/project/test.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/log.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/obj/Form.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/obj/Form.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/obj/Input.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/obj/Input.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/test.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/project/test.ipynb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,13 +49,14 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../UIED" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\git_file\github\doing\SamrtForm\test\viewer" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\git_file\github\doing\SamrtForm" />
       <recent name="D:\git_file\github\doing\SamrtForm\fh" />
       <recent name="D:\git_file\github\doing\SamrtForm\test\viewer" />
       <recent name="D:\git_file\github\doing\SamrtForm\project" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\git_file\github\doing\SamrtForm\test\viewer" />
     </key>
   </component>
   <component name="RunManager" selected="Python.main">
@@ -205,7 +212,8 @@
       <workItem from="1614316697618" duration="11300000" />
       <workItem from="1614387887342" duration="12094000" />
       <workItem from="1614469377672" duration="7157000" />
-      <workItem from="1614554133440" duration="12245000" />
+      <workItem from="1614554133440" duration="18120000" />
+      <workItem from="1614637277225" duration="1516000" />
     </task>
     <servers />
   </component>
@@ -229,34 +237,34 @@
     </state>
     <state x="740" y="275" key="FileChooserDialogImpl/1920.0.1280.693/0.0.1920.1040/3840.0.1280.984@0.0.1920.1040" timestamp="1613467729861" />
     <state x="740" y="275" key="FileChooserDialogImpl/1920.0.1280.693/3840.0.1280.984/0.0.1920.1040@0.0.1920.1040" timestamp="1614327263982" />
-    <state width="1877" height="165" key="GridCell.Tab.0.bottom" timestamp="1614570790750">
+    <state width="1877" height="165" key="GridCell.Tab.0.bottom" timestamp="1614581023437">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="165" key="GridCell.Tab.0.bottom/1920.-64.1280.693/0.0.1920.1040@0.0.1920.1040" timestamp="1614481903194" />
+    <state width="1877" height="165" key="GridCell.Tab.0.bottom/1920.-64.1280.693/0.0.1920.1040@0.0.1920.1040" timestamp="1614581023437" />
     <state width="1237" height="238" key="GridCell.Tab.0.bottom/1920.-64.1280.693/0.0.1920.1040@1920.-64.1280.693" timestamp="1610772962349" />
     <state width="1877" height="235" key="GridCell.Tab.0.bottom/1920.0.1280.693/0.0.1920.1040/3840.0.1280.984@0.0.1920.1040" timestamp="1610952691666" />
-    <state width="1877" height="165" key="GridCell.Tab.0.bottom/1920.0.1280.693/3840.0.1280.984/0.0.1920.1040@0.0.1920.1040" timestamp="1614570790750" />
-    <state width="1877" height="165" key="GridCell.Tab.0.center" timestamp="1614570790749">
+    <state width="1877" height="165" key="GridCell.Tab.0.bottom/1920.0.1280.693/3840.0.1280.984/0.0.1920.1040@0.0.1920.1040" timestamp="1614575385549" />
+    <state width="1877" height="165" key="GridCell.Tab.0.center" timestamp="1614581023437">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="165" key="GridCell.Tab.0.center/1920.-64.1280.693/0.0.1920.1040@0.0.1920.1040" timestamp="1614481903194" />
+    <state width="1877" height="165" key="GridCell.Tab.0.center/1920.-64.1280.693/0.0.1920.1040@0.0.1920.1040" timestamp="1614581023437" />
     <state width="1237" height="238" key="GridCell.Tab.0.center/1920.-64.1280.693/0.0.1920.1040@1920.-64.1280.693" timestamp="1610772962349" />
     <state width="1877" height="235" key="GridCell.Tab.0.center/1920.0.1280.693/0.0.1920.1040/3840.0.1280.984@0.0.1920.1040" timestamp="1610952691666" />
-    <state width="1877" height="165" key="GridCell.Tab.0.center/1920.0.1280.693/3840.0.1280.984/0.0.1920.1040@0.0.1920.1040" timestamp="1614570790749" />
-    <state width="1877" height="165" key="GridCell.Tab.0.left" timestamp="1614570790749">
+    <state width="1877" height="165" key="GridCell.Tab.0.center/1920.0.1280.693/3840.0.1280.984/0.0.1920.1040@0.0.1920.1040" timestamp="1614575385549" />
+    <state width="1877" height="165" key="GridCell.Tab.0.left" timestamp="1614581023437">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="165" key="GridCell.Tab.0.left/1920.-64.1280.693/0.0.1920.1040@0.0.1920.1040" timestamp="1614481903194" />
+    <state width="1877" height="165" key="GridCell.Tab.0.left/1920.-64.1280.693/0.0.1920.1040@0.0.1920.1040" timestamp="1614581023437" />
     <state width="1237" height="238" key="GridCell.Tab.0.left/1920.-64.1280.693/0.0.1920.1040@1920.-64.1280.693" timestamp="1610772962349" />
     <state width="1877" height="235" key="GridCell.Tab.0.left/1920.0.1280.693/0.0.1920.1040/3840.0.1280.984@0.0.1920.1040" timestamp="1610952691666" />
-    <state width="1877" height="165" key="GridCell.Tab.0.left/1920.0.1280.693/3840.0.1280.984/0.0.1920.1040@0.0.1920.1040" timestamp="1614570790749" />
-    <state width="1877" height="165" key="GridCell.Tab.0.right" timestamp="1614570790749">
+    <state width="1877" height="165" key="GridCell.Tab.0.left/1920.0.1280.693/3840.0.1280.984/0.0.1920.1040@0.0.1920.1040" timestamp="1614575385549" />
+    <state width="1877" height="165" key="GridCell.Tab.0.right" timestamp="1614581023437">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="165" key="GridCell.Tab.0.right/1920.-64.1280.693/0.0.1920.1040@0.0.1920.1040" timestamp="1614481903194" />
+    <state width="1877" height="165" key="GridCell.Tab.0.right/1920.-64.1280.693/0.0.1920.1040@0.0.1920.1040" timestamp="1614581023437" />
     <state width="1237" height="238" key="GridCell.Tab.0.right/1920.-64.1280.693/0.0.1920.1040@1920.-64.1280.693" timestamp="1610772962349" />
     <state width="1877" height="235" key="GridCell.Tab.0.right/1920.0.1280.693/0.0.1920.1040/3840.0.1280.984@0.0.1920.1040" timestamp="1610952691666" />
-    <state width="1877" height="165" key="GridCell.Tab.0.right/1920.0.1280.693/3840.0.1280.984/0.0.1920.1040@0.0.1920.1040" timestamp="1614570790749" />
+    <state width="1877" height="165" key="GridCell.Tab.0.right/1920.0.1280.693/3840.0.1280.984/0.0.1920.1040@0.0.1920.1040" timestamp="1614575385549" />
     <state width="968" height="528" key="XDebugger.FullValuePopup" timestamp="1610498423423">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -292,7 +300,7 @@
     <SUITE FILE_PATH="coverage/SamrtForm$ocr__1_.coverage" NAME="ocr (1) Coverage Results" MODIFIED="1610583447637" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/project" />
     <SUITE FILE_PATH="coverage/SamrtForm$cnt_uied_rectangle.coverage" NAME="cnt_uied_rectangle Coverage Results" MODIFIED="1610941743013" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test/viewer" />
     <SUITE FILE_PATH="coverage/SamrtForm$view_contours.coverage" NAME="view_contours Coverage Results" MODIFIED="1610845222579" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test/viewer" />
-    <SUITE FILE_PATH="coverage/SamrtForm$main.coverage" NAME="main Coverage Results" MODIFIED="1614570790738" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/project" />
+    <SUITE FILE_PATH="coverage/SamrtForm$main.coverage" NAME="main Coverage Results" MODIFIED="1614640018420" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/project" />
     <SUITE FILE_PATH="coverage/SamrtForm$ip.coverage" NAME="ip Coverage Results" MODIFIED="1610919080508" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/project" />
   </component>
 </project>

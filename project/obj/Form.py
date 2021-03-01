@@ -73,7 +73,7 @@ class Form:
                 rec.contains[0].in_box = True
         # print('*** Textbox Recognition Time:%.3f s***' % (time.clock() - start))
 
-    def input_unit_recognition(self):
+    def input_compound_recognition(self):
         '''
         Recognize input unit that consists of guide text and input field
         First recognize guide text for input:
