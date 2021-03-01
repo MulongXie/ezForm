@@ -80,7 +80,6 @@ class Form:
             self.group_elements_to_units()
 
         units = self.text_units + self.bar_units
-        marked = np.full(len(units), False)     # prevent bar_units from being used multiple times
 
         # from left to right
         units = sorted(units, key=lambda x: x.location['left'])
@@ -90,38 +89,40 @@ class Form:
                 unit.visualize_element(board, color=(0,0,255))
 
                 for j in range(i+1, len(units)):
-                    if not marked[j] and unit.in_alignment(units[j], direction='h'):
+                    if not units[j].is_input_part and unit.in_alignment(units[j], direction='h'):
                         if units[j].unit_type == 'bar_unit':
                             unit.is_guide_text = True
+                            unit.is_input_part = True
+                            units[j].is_input_part = True
                             units[j].visualize_element(board, color=(255, 0, 0))
-                            marked[j] = True
                         else:
                             unit.is_guide_text = False
                         break
-                cv2.imshow('alignment', board)
-                cv2.waitKey()
+                # cv2.imshow('alignment', board)
+                # cv2.waitKey()
 
         # remove marked elements
-        unused_units = []
-        for i, unit in enumerate(units):
-            if not marked[i]:
-                unused_units.append(unit)
-        units = unused_units
-        marked = np.full(len(units), False)     # prevent bar_units from being used multiple times
+        # unused_units = []
+        # for i, unit in enumerate(units):
+        #     if not marked[i]:
+        #         unused_units.append(unit)
+        # units = unused_units
+        # marked = np.full(len(units), False)     # prevent bar_units from being used multiple times
 
         # from top to bottom
         units = sorted(units, key=lambda x: x.location['top'])
         for i, unit in enumerate(units):
             board = self.img.img.copy()
-            if unit.unit_type == 'text_unit':
+            if not unit.is_input_part and unit.unit_type == 'text_unit':
                 unit.visualize_element(board, color=(0, 0, 255))
 
                 for j in range(i + 1, len(units)):
                     if unit.in_alignment(units[j], direction='v'):
-                        if not marked[j] and units[j].unit_type == 'bar_unit':
+                        if not units[j].is_input_part and units[j].unit_type == 'bar_unit':
                             unit.is_guide_text = True
+                            unit.is_input_part = True
+                            units[j].is_input_part = True
                             units[j].visualize_element(board, color=(255, 0, 0))
-                            marked[j] = True
                         else:
                             unit.is_guide_text = False
                         break
