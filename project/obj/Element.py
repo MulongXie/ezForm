@@ -6,14 +6,15 @@ class Element:
     def __init__(self,
                  id=None, type=None, contour=None, location=None, clip_img=None):
         self.id = id
+
         self.type = type            # text/rectangle/line/textbox
-        self.unit_type = None       # text_unit(text or textbox)/bar_unit
+        self.unit_type = None       # text_unit(text or textbox)/bar_unit(rectangle, line or table)
 
-        self.contour = contour      # format of findContours
-        self.clip_img = clip_img
-
+        self.is_input_part = False   # if the element is grouped as part of an input element (guide text or input field)
         self.contains = []          # list of elements that are contained in the element
 
+        self.clip_img = clip_img
+        self.contour = contour      # format of findContours
         self.location = location    # dictionary {left, right, top, bottom}
         self.width = None
         self.height = None
