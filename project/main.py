@@ -5,17 +5,18 @@ import cv2
 form = Form('data/3.jpg')
 form.text_detection()
 form.element_detection()
-# form.visualize_all_elements()
+form.visualize_all_elements()
 
 form.textbox_recognition()
-# form.visualize_all_elements()
+form.visualize_all_elements()
 
 form.group_elements_to_units()
-# form.visualize_units()
+form.visualize_units()
 
-form.guideword_recognition()
+form.input_unit_recognition()
+form.visualize_inputs()
 
-board = form.img.img.copy()
+# board = form.img.img.copy()
 
 # ******* show sorted elements ********
 # elements = form.sort_elements(direction='v')
@@ -24,7 +25,6 @@ board = form.img.img.copy()
 #     ele.visualize_element(board)
 #     cv2.imshow('b', board)
 #     cv2.waitKey()
-
 
 # ******* show elements relationship ********
 # for text in form.texts:

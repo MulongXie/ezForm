@@ -4,9 +4,9 @@ from obj.Element import Element
 # Input element consisting of two parts(units): guide text & input field (rectangle or line)
 class Input(Element):
     def __init__(self, guide_text, input_field):
-        super().__init__()
         self.guide_text = guide_text       # text/textbox
         self.input_field = input_field      # rectangle/line
+        super().__init__()
 
     def init_bound(self):
         '''

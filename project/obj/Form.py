@@ -1,5 +1,6 @@
 from obj.Text import Text
 from obj.Image import Image
+from obj.Input import Input
 import obj.ocr as ocr
 
 import cv2
@@ -21,6 +22,8 @@ class Form:
         # units for input, grouped from the above elements
         self.text_units = []    # text (not in box) + textbox
         self.bar_units = []     # rectangles (not textbox) + lines + tables
+
+        self.inputs = []        # input elements that consists of guide text (text|textbox) and input filed (rectangle|line)
 
     '''
     *************************
@@ -71,22 +74,23 @@ class Form:
                 rec.contains[0].in_box = True
         print('*** Textbox Recognition Time:%.3f s***' % (time.clock() - start))
 
-    def guidetext_recognition(self):
+    def input_unit_recognition(self):
         '''
-        Recognize guide text for input
-        If a text_unit's closet element in alignment is bar_unit, then count it as a guide text
+        Recognize input unit that consists of guide text and input field
+        First recognize guide text for input:
+            If a text_unit's closet element in alignment is bar_unit, then count it as a guide text
+        Second compound the guide text and its bar unit (input field) as an Input element
         '''
         if len(self.text_units) + len(self.bar_units) == 0:
             self.group_elements_to_units()
 
         units = self.text_units + self.bar_units
-
         # from left to right
         units = sorted(units, key=lambda x: x.location['left'])
         for i, unit in enumerate(units):
-            board = self.img.img.copy()
+            # board = self.img.img.copy()
             if unit.unit_type == 'text_unit':
-                unit.visualize_element(board, color=(0,0,255))
+                # unit.visualize_element(board, color=(0,0,255))
 
                 for j in range(i+1, len(units)):
                     if not units[j].is_input_part and unit.in_alignment(units[j], direction='h'):
@@ -94,27 +98,20 @@ class Form:
                             unit.is_guide_text = True
                             unit.is_input_part = True
                             units[j].is_input_part = True
-                            units[j].visualize_element(board, color=(255, 0, 0))
+                            self.inputs.append(Input(unit, units[j]))
+                            # units[j].visualize_element(board, color=(255, 0, 0))
                         else:
                             unit.is_guide_text = False
                         break
                 # cv2.imshow('alignment', board)
                 # cv2.waitKey()
 
-        # remove marked elements
-        # unused_units = []
-        # for i, unit in enumerate(units):
-        #     if not marked[i]:
-        #         unused_units.append(unit)
-        # units = unused_units
-        # marked = np.full(len(units), False)     # prevent bar_units from being used multiple times
-
         # from top to bottom
         units = sorted(units, key=lambda x: x.location['top'])
         for i, unit in enumerate(units):
             board = self.img.img.copy()
             if not unit.is_input_part and unit.unit_type == 'text_unit':
-                unit.visualize_element(board, color=(0, 0, 255))
+                # unit.visualize_element(board, color=(0, 0, 255))
 
                 for j in range(i + 1, len(units)):
                     if unit.in_alignment(units[j], direction='v'):
@@ -122,12 +119,13 @@ class Form:
                             unit.is_guide_text = True
                             unit.is_input_part = True
                             units[j].is_input_part = True
-                            units[j].visualize_element(board, color=(255, 0, 0))
+                            self.inputs.append(Input(unit, units[j]))
+                            # units[j].visualize_element(board, color=(255, 0, 0))
                         else:
                             unit.is_guide_text = False
                         break
-                cv2.imshow('alignment', board)
-                cv2.waitKey()
+                # cv2.imshow('alignment', board)
+                # cv2.waitKey()
 
     '''
     **************************
@@ -192,6 +190,14 @@ class Form:
             text_unit.visualize_element(board, color=(0, 255, 0))
         for bar_unit in self.bar_units:
             bar_unit.visualize_element(board, color=(255, 0, 0))
+        cv2.imshow('tidied', board)
+        cv2.waitKey()
+        cv2.destroyAllWindows()
+
+    def visualize_inputs(self):
+        board = self.img.img.copy()
+        for ipt in self.inputs:
+            ipt.visualize_element(board, color=(0,255,0), line=2)
         cv2.imshow('tidied', board)
         cv2.waitKey()
         cv2.destroyAllWindows()
