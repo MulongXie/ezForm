@@ -1,3 +1,13 @@
+Bottoleneck Issues
+Detection:
+1. Rectangle/line detection		√
+2. Guide word detection			√
+3. Input unit detection			√
+4. Table detection
+5. Reliable OCR
+6. Layout segmentation
+
+
 22/2/2021
 1. Input Unit Grouping
 	a. 横向
@@ -12,7 +22,6 @@
 	b. 是否包含
 
 3. 表格gouping
-
 
 
 

@@ -197,7 +197,8 @@ class Form:
     def visualize_inputs(self):
         board = self.img.img.copy()
         for ipt in self.inputs:
-            ipt.visualize_element(board, color=(0,255,0), line=2)
-        cv2.imshow('tidied', board)
+            ipt.visualize_element(board, color=(255, 0, 0), line=2)
+            # ipt.visualize_input_overlay(board)
+        cv2.imshow('Input', board)
         cv2.waitKey()
         cv2.destroyAllWindows()
