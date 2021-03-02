@@ -164,8 +164,8 @@ class Element:
         Check if the element is in alignment with another
         :param bias: to remove insignificant intersection
         :param direction:
-             - 'v': up and down, then check if (a_left <= b_left <= a_right) | (a_left <= b_right <= a_right)
-             - 'h': left and right, then check if (a_top <= b_top <= a_bottom) | (a_top <= b_bottom <= a_bottom)
+             - 'v': vertical up-down alignment
+             - 'h': horizontal left-right alignment
         :return: Boolean that indicate the two are in alignment or not
         '''
         l_a = self.location
