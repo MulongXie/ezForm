@@ -26,6 +26,42 @@ class Form:
         self.inputs = []        # input elements that consists of guide text (text|textbox) and input filed (rectangle|line)
 
     '''
+    **************************
+    *** Element Processing ***
+    **************************
+    '''
+    def get_all_elements(self):
+        return self.texts + self.rectangles + self.lines + self.tables
+
+    def assign_ele_ids(self):
+        for i, ele in enumerate(self.get_all_elements()):
+            ele.id = i
+
+    def sort_elements(self, direction='left'):
+        '''
+        :param direction: 'left' or 'top'
+        '''
+        elements = self.get_all_elements()
+        return sorted(elements, key=lambda x: x.location[direction])
+
+    def group_elements_to_units(self):
+        '''
+        text_units: text (not contained) + textbox
+        bar_units: rectangles (not textbox) + lines + tables
+        '''
+        for text in self.texts:
+            if not text.in_box:
+                text.unit_type = 'text_unit'
+                self.text_units.append(text)
+        for ele in self.rectangles + self.lines:
+            if ele.type in ('line', 'rectangle'):
+                ele.unit_type = 'bar_unit'
+                self.bar_units.append(ele)
+            elif ele.type == 'textbox':
+                ele.unit_type = 'text_unit'
+                self.text_units.append(ele)
+
+    '''
     *************************
     *** Element Detection ***
     *************************
@@ -75,7 +111,7 @@ class Form:
 
     def input_compound_recognition(self):
         '''
-        Recognize input unit that consists of guide text and input field
+        Recognize input unit that consists of [guide text] and [input field]
         First recognize guide text for input:
             If a text_unit's closet element in alignment is bar_unit, then count it as a guide text
         Second compound the guide text and its bar unit (input field) as an Input element
@@ -125,42 +161,6 @@ class Form:
                         break
                 # cv2.imshow('alignment', board)
                 # cv2.waitKey()
-
-    '''
-    **************************
-    *** Element Processing ***
-    **************************
-    '''
-    def get_all_elements(self):
-        return self.texts + self.rectangles + self.lines + self.tables
-
-    def assign_ele_ids(self):
-        for i, ele in enumerate(self.get_all_elements()):
-            ele.id = i
-
-    def sort_elements(self, direction='left'):
-        '''
-        :param direction: 'left' or 'top'
-        '''
-        elements = self.get_all_elements()
-        return sorted(elements, key=lambda x: x.location[direction])
-
-    def group_elements_to_units(self):
-        '''
-        text_units: text (not contained) + textbox
-        bar_units: rectangles (not textbox) + lines + tables
-        '''
-        for text in self.texts:
-            if not text.in_box:
-                text.unit_type = 'text_unit'
-                self.text_units.append(text)
-        for ele in self.rectangles + self.lines:
-            if ele.type in ('line', 'rectangle'):
-                ele.unit_type = 'bar_unit'
-                self.bar_units.append(ele)
-            elif ele.type == 'textbox':
-                ele.unit_type = 'text_unit'
-                self.text_units.append(ele)
 
     '''
     *********************
