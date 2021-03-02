@@ -55,8 +55,8 @@ class Form:
         for text in self.texts:
             board = self.img.img.copy()
             for rec in self.rectangles:
-                relation = text.element_relation(rec)
-                # if text.element_relation(rec) != 0:
+                relation = text.pos_relation(rec)
+                # if text.pos_relation(rec) != 0:
                 #     text.visualize_element(board, (0, 255, 0), 2)
                 #     rec.visualize_element(board, (0, 0, 255), 2, show=True)
 
@@ -92,7 +92,7 @@ class Form:
                 # unit.visualize_element(board, color=(0,0,255))
 
                 for j in range(i+1, len(units)):
-                    if not units[j].is_input_part and unit.in_alignment(units[j], direction='h'):
+                    if not units[j].is_input_part and unit.is_in_alignment(units[j], direction='h'):
                         if units[j].unit_type == 'bar_unit':
                             unit.is_guide_text = True
                             unit.is_input_part = True
@@ -113,7 +113,7 @@ class Form:
                 # unit.visualize_element(board, color=(0, 0, 255))
 
                 for j in range(i + 1, len(units)):
-                    if unit.in_alignment(units[j], direction='v'):
+                    if unit.is_in_alignment(units[j], direction='v'):
                         if not units[j].is_input_part and units[j].unit_type == 'bar_unit':
                             unit.is_guide_text = True
                             unit.is_input_part = True

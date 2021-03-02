@@ -123,7 +123,7 @@ class Element:
     *** Relation with Other Ele ***
     *******************************
     '''
-    def element_relation(self, element):
+    def pos_relation(self, element):
         '''
         Calculate the relation between two elements by iou
         :return:
@@ -159,7 +159,7 @@ class Element:
             return 1
         return 2
 
-    def in_alignment(self, ele_b, direction='v', bias=2):
+    def is_in_alignment(self, ele_b, direction='v', bias=2):
         '''
         Check if the element is in alignment with another
         :param bias: to remove insignificant intersection
