@@ -1,6 +1,7 @@
 from obj.Text import Text
 from obj.Image import Image
 from obj.Input import Input
+from obj.Table import Table
 import obj.ocr as ocr
 
 import cv2
@@ -14,14 +15,19 @@ class Form:
         self.img = Image(img_file_name)
 
         # form elements
-        self.texts = []         # detected by ocr
-        self.rectangles = []    # detected by cv
-        self.lines = []         # detected by cv
-        self.tables = []        # recognize by grouping rectangles
+        self.texts = []             # detected by ocr
+        self.rectangles = []        # detected by cv
+        self.lines = []             # detected by cv
+        self.tables = []            # recognize by grouping rectangles
+        self.elements_dict = {}     # {id: element object}
 
         # units for input, grouped from the above elements
         self.text_units = []    # text (not in box) + textbox
         self.bar_units = []     # rectangles (not textbox) + lines + tables
+        self.all_units = []
+
+        self.sorted_left_unit_ids = []
+        self.sorted_top_unit_ids = []
 
         self.inputs = []        # input elements that consists of guide text (text|textbox) and input filed (rectangle|line)
 
@@ -33,16 +39,23 @@ class Form:
     def get_all_elements(self):
         return self.texts + self.rectangles + self.lines + self.tables
 
-    def assign_ele_ids(self):
+    def assign_and_map_element_ids(self):
+        '''
+        Assign an unique id to each element and store the id mapping
+        '''
         for i, ele in enumerate(self.get_all_elements()):
             ele.id = i
+            self.elements_dict[i] = ele
 
-    def sort_elements(self, direction='left'):
+    def sort_units(self):
         '''
-        :param direction: 'left' or 'top'
+        Sort all units by left and top respectively, and store the result in id lists
         '''
-        elements = self.get_all_elements()
-        return sorted(elements, key=lambda x: x.location[direction])
+        units_left = sorted(self.all_units, key=lambda x: x.location['left'])
+        units_top = sorted(self.all_units, key=lambda x: x.location['top'])
+        for i in range(len(units_left)):
+            self.sorted_left_unit_ids.append(units_left[i].id)
+            self.sorted_top_unit_ids.append(units_top[i].id)
 
     def group_elements_to_units(self):
         '''
@@ -60,6 +73,7 @@ class Form:
             elif ele.type == 'textbox':
                 ele.unit_type = 'text_unit'
                 self.text_units.append(ele)
+        self.all_units = self.text_units + self.bar_units
 
     '''
     *************************
