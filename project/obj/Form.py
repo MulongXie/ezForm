@@ -19,15 +19,14 @@ class Form:
         self.rectangles = []        # detected by cv
         self.lines = []             # detected by cv
         self.tables = []            # recognize by grouping rectangles
-        self.elements_dict = {}     # {id: element object}
 
         # units for input, grouped from the above elements
         self.text_units = []    # text (not in box) + textbox
         self.bar_units = []     # rectangles (not textbox) + lines + tables
         self.all_units = []
 
-        self.sorted_left_unit_ids = []
-        self.sorted_top_unit_ids = []
+        self.sorted_left_unit = []
+        self.sorted_top_unit = []
 
         self.inputs = []        # input elements that consists of guide text (text|textbox) and input filed (rectangle|line)
 
@@ -39,23 +38,19 @@ class Form:
     def get_all_elements(self):
         return self.texts + self.rectangles + self.lines + self.tables
 
-    def assign_and_map_element_ids(self):
+    def assign_element_ids(self):
         '''
         Assign an unique id to each element and store the id mapping
         '''
         for i, ele in enumerate(self.get_all_elements()):
             ele.id = i
-            self.elements_dict[i] = ele
 
     def sort_units(self):
         '''
         Sort all units by left and top respectively, and store the result in id lists
         '''
-        units_left = sorted(self.all_units, key=lambda x: x.location['left'])
-        units_top = sorted(self.all_units, key=lambda x: x.location['top'])
-        for i in range(len(units_left)):
-            self.sorted_left_unit_ids.append(units_left[i].id)
-            self.sorted_top_unit_ids.append(units_top[i].id)
+        self.sorted_left_unit = sorted(self.all_units, key=lambda x: x.location['left'])
+        self.sorted_top_unit = sorted(self.all_units, key=lambda x: x.location['top'])
 
     def group_elements_to_units(self):
         '''
@@ -132,10 +127,11 @@ class Form:
         '''
         if len(self.text_units) + len(self.bar_units) == 0:
             self.group_elements_to_units()
+        if len(self.sorted_left_unit) + len(self.sorted_top_unit) == 0:
+            self.sort_units()
 
-        units = self.text_units + self.bar_units
         # from left to right
-        units = sorted(units, key=lambda x: x.location['left'])
+        units = self.sorted_left_unit
         for i, unit in enumerate(units):
             # board = self.img.img.copy()
             if unit.unit_type == 'text_unit':
@@ -156,7 +152,7 @@ class Form:
                 # cv2.waitKey()
 
         # from top to bottom
-        units = sorted(units, key=lambda x: x.location['top'])
+        units = self.sorted_top_unit
         for i, unit in enumerate(units):
             board = self.img.img.copy()
             if not unit.is_input_part and unit.unit_type == 'text_unit':
