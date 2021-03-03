@@ -70,6 +70,21 @@ class Form:
                 self.text_units.append(ele)
         self.all_units = self.text_units + self.bar_units
 
+    def find_neighbour_unit(self, element, direction='right', bias=2):
+        if direction == 'right':
+            # check is there any connected unit on the right
+            for u in self.sorted_left_unit:
+                # pass those on the left
+                if u.id != element.id and u.location['left'] - bias >= element.location['right']:
+                    return u
+        elif direction == 'below':
+            # check is there any connected unit on the right
+            for u in self.sorted_top_unit:
+                # pass those on the left
+                if u.id != element.id and u.location['top'] - bias >= element.location['bottom']:
+                    return u
+        return None
+
     '''
     *************************
     *** Element Detection ***
