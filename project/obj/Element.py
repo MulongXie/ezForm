@@ -178,11 +178,27 @@ class Element:
             if max(l_a['top'], l_b['top']) + bias < min(l_a['bottom'], l_b['bottom']) - bias:
                 # print('In Alignment Horizontally')
                 return True
-        else:
-            print("Direction: 'v' or 'h'")
-            return
         # print('Not in Alignment')
         return False
+
+    def is_connected(self, ele_b, direction='v', bias=2):
+        l_a = self.location
+        l_b = ele_b.location
+        # connected vertically - up and below
+        if direction == 'v':
+            # left and right should be justified
+            if abs(l_a['left'] - l_b['left']) < bias and abs(l_a['right'] - l_b['right']) < bias:
+                # top and bottom should be connected
+                if abs(l_a['bottom'] - l_b['top']) < bias or abs(l_a['top'] - l_b['right']) < bias:
+                    return True
+            return False
+        elif direction == 'h':
+            # top and bottom should be justified
+            if abs(l_a['top'] - l_b['top']) < bias and abs(l_a['bottom'] - l_b['bottom']) < bias:
+                # top and bottom should be connected
+                if abs(l_a['right'] - l_b['left']) < bias or abs(l_a['left'] - l_b['right']) < bias:
+                    return True
+            return False
 
     '''
     *********************
