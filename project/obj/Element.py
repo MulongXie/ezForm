@@ -182,6 +182,13 @@ class Element:
         return False
 
     def is_connected(self, ele_b, direction='v', bias=2):
+        '''
+        Check if the element is connected with ele_b
+        :param direction:
+             - 'v': vertical up-down connection
+             - 'h': horizontal left-right connection
+        :return:
+        '''
         l_a = self.location
         l_b = ele_b.location
         # connected vertically - up and below

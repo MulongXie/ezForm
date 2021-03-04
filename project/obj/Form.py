@@ -70,19 +70,23 @@ class Form:
                 self.text_units.append(ele)
         self.all_units = self.text_units + self.bar_units
 
-    def find_neighbour_unit(self, element, direction='right', bias=2):
+    def find_neighbour_unit(self, unit, direction='right', bias=2):
         if direction == 'right':
             # check is there any connected unit on the right
             for u in self.sorted_left_unit:
-                # pass those on the left
-                if u.id != element.id and u.location['left'] - bias >= element.location['right']:
-                    return u
+                # find the first one one the left if they are neighbours
+                if u.id != unit.id and u.location['left'] + bias >= unit.location['right']:
+                    # the tow should be justified
+                    if unit.is_in_alignment(u, direction='h'):
+                        return u
         elif direction == 'below':
             # check is there any connected unit on the right
             for u in self.sorted_top_unit:
                 # pass those on the left
-                if u.id != element.id and u.location['top'] - bias >= element.location['bottom']:
-                    return u
+                if u.id != unit.id and u.location['top'] + bias >= unit.location['bottom']:
+                    # the tow should be justified if they are neighbours
+                    if unit.is_in_alignment(u, direction='v'):
+                        return u
         return None
 
     '''
