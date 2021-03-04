@@ -2,6 +2,7 @@ from obj.Text import Text
 from obj.Image import Image
 from obj.Input import Input
 from obj.Table import Table
+from obj.Row import Row
 import obj.ocr as ocr
 
 import cv2
@@ -70,7 +71,14 @@ class Form:
                 self.text_units.append(ele)
         self.all_units = self.text_units + self.bar_units
 
-    def find_neighbour_unit(self, unit, direction='right', bias=3, show=False):
+    def find_neighbour_unit(self, unit, direction='right', bias=3):
+        '''
+        Find the first unit next to and in alignment with the target
+        :param direction:
+            -> right: find right neighbour
+            -> below: find below neighbour
+        :return:
+        '''
         if direction == 'right':
             # check is there any connected unit on the right
             for u in self.sorted_left_unit:
@@ -78,13 +86,6 @@ class Form:
                 if u.id != unit.id and u.location['left'] + bias >= unit.location['right']:
                     # the tow should be justified
                     if unit.is_in_alignment(u, direction='h'):
-                        if show:
-                            board = self.img.img.copy()
-                            unit.visualize_element(board, color=(0, 0, 255))
-                            u.visualize_element(board, color=(0, 255, 0))
-                            cv2.imshow('neighbour', board)
-                            cv2.waitKey()
-                            cv2.destroyWindow('neighbour')
                         return u
         elif direction == 'below':
             # check is there any connected unit on the right
@@ -93,13 +94,6 @@ class Form:
                 if u.id != unit.id and u.location['top'] + bias >= unit.location['bottom']:
                     # the tow should be justified if they are neighbours
                     if unit.is_in_alignment(u, direction='v'):
-                        if show:
-                            board = self.img.img.copy()
-                            unit.visualize_element(board, color=(0, 0, 255))
-                            u.visualize_element(board, color=(0, 255, 0))
-                            cv2.imshow('neighbour', board)
-                            cv2.waitKey()
-                            cv2.destroyWindow('neighbour')
                         return u
         return None
 
@@ -205,22 +199,27 @@ class Form:
                 # cv2.imshow('alignment', board)
                 # cv2.waitKey()
 
-    def row_detection(self, unit, show=False):
-        row = [unit]  # list of units on the same row
+    def row_detection(self, unit):
+        '''
+        Detect row through grouping all left-right connected and justified elements
+        :param unit: start unit
+        '''
+        row = Row()
         neighbour_right = self.find_neighbour_unit(unit, 'right')
+        is_row = False
+        # if there is a connected neighbour, add it and the current unit to a Row
         while neighbour_right is not None and unit.is_connected(neighbour_right, 'h'):
-            neighbour_right.visualize_element(self.img.img.copy(), (0,255,0))
-            row.append(neighbour_right)
+            row.add_element(unit)
+            # if the neighbour is already in a row, then simply add the current one to the row
+            if neighbour_right.in_row is not None:
+                row.concat_row(neighbour_right.in_row)
+                break
+
+            is_row = True
             unit = neighbour_right
             neighbour_right = self.find_neighbour_unit(neighbour_right, 'right')
-
-        if show:
-            board = self.img.img.copy()
-            for u in row:
-                u.visualize_element(board, color=(0,255,0))
-            cv2.imshow('row', board)
-            cv2.waitKey()
-            cv2.destroyWindow('row')
+        if is_row:
+            row.add_element(unit)
         return row
 
 
