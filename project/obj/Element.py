@@ -159,7 +159,7 @@ class Element:
             return 1
         return 2
 
-    def is_in_alignment(self, ele_b, direction='v', bias=2):
+    def is_in_alignment(self, ele_b, direction='v', bias=3):
         '''
         Check if the element is in alignment with another
         :param bias: to remove insignificant intersection
@@ -181,7 +181,7 @@ class Element:
         # print('Not in Alignment')
         return False
 
-    def is_connected(self, ele_b, direction='v', bias=2):
+    def is_connected(self, ele_b, direction='h', bias=3):
         '''
         Check if the element is connected with ele_b
         :param direction:
