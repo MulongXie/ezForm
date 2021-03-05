@@ -184,9 +184,9 @@ class Element:
         # print('Not in Alignment')
         return False
 
-    def is_connected(self, ele_b, direction='h', bias=3):
+    def is_on_same_row(self, ele_b, direction='h', bias=3):
         '''
-        Check if the element is connected with ele_b
+        Check if the element is on the same row with ele_b
         :param direction:
              - 'v': vertical up-down connection
              - 'h': horizontal left-right connection
