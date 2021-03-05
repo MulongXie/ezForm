@@ -4,16 +4,31 @@ from obj.Table import Table
 
 class Row:
     def __init__(self, elements=None):
-        self.elements = elements if elements is not None else []
         self.parent_table = None
-        if elements is not None and len(elements) > 0:
+        self.location = None
+
+        self.elements = elements
+        if elements is not None:
             for ele in elements:
                 ele.in_row = self
+            self.sort_elements()
+            self.init_bound()
+
+    def init_bound(self):
+        left = min([e.location['left'] for e in self.elements])
+        top = min([e.location['top'] for e in self.elements])
+        right = max([e.location['right'] for e in self.elements])
+        bottom = min([e.location['bottom'] for e in self.elements])
+        self.location = {'left':left, 'right':right, 'top':top, 'bottom':bottom}
+
+    def sort_elements(self):
+        self.elements = sorted(self.elements, key=lambda x: x.location['left'])  # sort from left to right
 
     def add_element(self, element):
         element.in_row = self
         self.elements.append(element)
-        self.elements = sorted(self.elements, key=lambda x: x.location['left'])
+        self.sort_elements()
+        self.init_bound()
 
     def concat_row(self, row):
         for ele in row.elements:
