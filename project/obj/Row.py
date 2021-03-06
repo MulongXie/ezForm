@@ -7,12 +7,14 @@ class Row:
         self.parent_table = None
         self.location = None
 
-        self.elements = elements
         if elements is not None:
+            self.elements = elements
             for ele in elements:
                 ele.in_row = self
             self.sort_elements()
             self.init_bound()
+        else:
+            self.elements = []
 
     def init_bound(self):
         left = min([e.location['left'] for e in self.elements])
