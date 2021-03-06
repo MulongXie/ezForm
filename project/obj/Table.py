@@ -1,3 +1,6 @@
+import cv2
+
+
 class Table:
     def __init__(self, rows=None):
         self.location = None
@@ -43,3 +46,11 @@ class Table:
         if len(self.rows) == 0:
             return True
         return False
+
+    def visualize_table(self, board, color=(0, 255, 0), line=2, show=False):
+        for row in self.rows:
+            row.visualize_row(board, color=color, line=line)
+        if show:
+            cv2.imshow('row', board)
+            cv2.waitKey()
+            cv2.destroyWindow('row')
