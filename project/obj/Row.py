@@ -32,6 +32,11 @@ class Row:
         self.sort_elements()
         self.init_bound()
 
+    def is_empty(self):
+        if len(self.elements) == 0:
+            return True
+        return False
+
     def concat_row(self, row):
         for ele in row.elements:
             self.add_element(ele)
@@ -68,6 +73,32 @@ class Row:
                     else:
                         break
         return None
+
+    def is_matched(self, row_b, bias=3):
+        '''
+        Match tow rows bu checking continuously justified elements
+        Return whether they are matched
+        '''
+        row_a_eles = self.elements
+        row_b_eles = row_b.elements
+        for i, re1 in enumerate(row_a_eles):
+            for j, re2 in enumerate(row_b_eles):
+                # if tow cells from the two rows match, take them as the start points and match forward
+                if abs(re1.location['left'] - re2.location['left']) < bias and abs(re1.location['right'] - re2.location['right']) < bias:
+                    col_start = [i, j]
+                    k = 1
+                    while (i + k) < len(row_a_eles) and (j + k) < len(row_b_eles):
+                        rek1 = row_a_eles[i + k]
+                        rek2 = row_b_eles[j + k]
+                        if abs(rek1.location['left'] - rek2.location['left']) < bias and abs(rek1.location['right'] - rek2.location['right']) < bias:
+                            k += 1
+                        else:
+                            break
+                    if k > 2:
+                        return True
+                    else:
+                        break
+        return False
 
     def visualize_row(self, board, color=(0, 255, 0), line=2, show=False):
         for ele in self.elements:
