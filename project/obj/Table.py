@@ -2,12 +2,14 @@ class Table:
     def __init__(self, rows=None):
         self.location = None
 
-        self.rows = rows
         if rows is not None:
+            self.rows = rows
             for row in rows:
                 row.parent_table = self
             self.sort_rows()
             self.init_bound()
+        else:
+            self.rows = []
 
     def init_bound(self):
         left = min([r.location['left'] for r in self.rows])
@@ -25,7 +27,19 @@ class Table:
         self.sort_rows()
         self.init_bound()
 
+    def add_rows(self, rows):
+        for row in rows:
+            row.parent_table = self
+            self.rows.append(row)
+        self.sort_rows()
+        self.init_bound()
+
     def concat_table_by_rows(self, table):
         for row in table.rows:
             self.add_row(row)
         return self
+
+    def is_empty(self):
+        if len(self.rows) == 0:
+            return True
+        return False
