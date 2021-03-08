@@ -43,17 +43,17 @@ class Row:
         self.sort_elements()
         self.init_bound()
 
-    def is_empty(self):
-        if len(self.elements) == 0:
-            return True
-        return False
-
     def merge_row(self, row):
         for ele in row.elements:
             self.add_element(ele, reorder=False)
         self.sort_elements()
         self.init_bound()
         return self
+
+    def is_empty(self):
+        if len(self.elements) == 0:
+            return True
+        return False
 
     def match_rows(self, row_b, bias=3):
         '''

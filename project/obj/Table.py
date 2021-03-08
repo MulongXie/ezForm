@@ -24,22 +24,24 @@ class Table:
     def sort_rows(self):
         self.rows = sorted(self.rows, key=lambda x: x.location['top'])  # sort from top to bottom
 
-    def add_row(self, row):
+    def add_row(self, row, reorder=True):
         row.parent_table = self
         self.rows.append(row)
-        self.sort_rows()
-        self.init_bound()
+        if reorder:
+            self.sort_rows()
+            self.init_bound()
 
     def add_rows(self, rows):
         for row in rows:
-            row.parent_table = self
-            self.rows.append(row)
+            self.add_row(row, reorder=False)
         self.sort_rows()
         self.init_bound()
 
-    def concat_table_by_rows(self, table):
+    def merge_table(self, table):
         for row in table.rows:
-            self.add_row(row)
+            self.add_row(row, reorder=False)
+        self.sort_rows()
+        self.init_bound()
         return self
 
     def is_empty(self):
