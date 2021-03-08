@@ -34,6 +34,7 @@ class Form:
         self.inputs = []        # input elements that consists of guide text (text|textbox) and input filed (rectangle|line)
 
         self.row_id = 0
+        self.table_id = 0
 
     '''
     **************************
@@ -277,6 +278,7 @@ class Form:
     def table_detection(self):
         tables = []
         recorded_row_ids = []
+        recorded_table_ids = []
         for unit in self.all_units:
             if unit.type == 'rectangle' and unit.unit_type == 'bar_unit':
                 # if an element has right(same row) and below(same column) connected elements
@@ -289,15 +291,21 @@ class Form:
                     else:
                         recorded_row_ids.append(row.row_id)
 
+                    if row.parent_table is not None:
+                        if row.parent_table.table_id in recorded_table_ids:
+                            continue
+                        table = row.parent_table
+                    else:
+                        table = Table(self.table_id)
+                        recorded_table_ids.append(self.table_id)
+                        self.table_id += 1
+
+                    # *** detect down forwards ***
                     unit_a = unit
                     unit_b = self.find_neighbour_unit(unit_a, 'below')
                     if unit_b.type != 'rectangle' or unit_b.unit_type != 'bar_unit':
                         continue
                     row_a = row
-                    if row.parent_table is not None:
-                        table = row.parent_table
-                    else:
-                        table = Table()
                     # check if the unit has neighbour on the same colunm
                     while unit_a.is_on_same_line(unit_b, direction='v'):
                         row_b = self.row_detection(unit_b)
@@ -316,6 +324,32 @@ class Form:
                             unit_b = self.find_neighbour_unit(unit_a, 'below')
                         else:
                             break
+
+                    # *** detect up forwards ***
+                    unit_a = unit
+                    unit_b = self.find_neighbour_unit(unit_a, 'top')
+                    if unit_b.type != 'rectangle' or unit_b.unit_type != 'bar_unit':
+                        continue
+                    row_a = row
+                    # check if the unit has neighbour on the same colunm
+                    while unit_a.is_on_same_line(unit_b, direction='v'):
+                        row_b = self.row_detection(unit_b)
+                        # check if its row and the row below it matches
+                        # merge matched parts of the two rows to a table
+                        if row_b is not None and row_a.is_matched(row_b):
+                            if row_b.parent_table is not None:
+                                table.merge_table(row_b.parent_table)
+                            else:
+                                if table.is_empty():
+                                    table.add_rows([row_a, row_b])
+                                else:
+                                    table.add_row(row_b)
+                            unit_a = unit_b
+                            row_a = row_b
+                            unit_b = self.find_neighbour_unit(unit_a, 'top')
+                        else:
+                            break
+
                     if not table.is_empty():
                         board = self.get_img_copy()
                         table.visualize_table(board)
