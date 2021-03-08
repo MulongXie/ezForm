@@ -252,7 +252,6 @@ class Form:
         neighbour_left = self.find_neighbour_unit(unit, 'left')
         # if there is neighbour on the same row, add it and the current unit to a Row
         while neighbour_left is not None and unit.is_on_same_line(neighbour_left, 'h'):
-            print('left row')
             neighbour_left.visualize_element(self.get_img_copy(), show=True)
             if not is_row:
                 row.add_element(unit)
@@ -280,7 +279,7 @@ class Form:
         return self.img.img.copy()
 
     def visualize_all_elements(self):
-        board = self.img.img.copy()
+        board = self.get_img_copy()
         for text in self.texts:
             if not text.in_box:
                 text.visualize_element(board)
@@ -296,7 +295,7 @@ class Form:
         cv2.destroyAllWindows()
 
     def visualize_units(self):
-        board = self.img.img.copy()
+        board = self.get_img_copy()
         for text_unit in self.text_units:
             text_unit.visualize_element(board, color=(0, 255, 0))
         for bar_unit in self.bar_units:
@@ -306,7 +305,7 @@ class Form:
         cv2.destroyAllWindows()
 
     def visualize_inputs(self):
-        board = self.img.img.copy()
+        board = self.get_img_copy()
         for ipt in self.inputs:
             ipt.visualize_element(board, color=(255, 0, 0), line=2)
             # ipt.visualize_input_overlay(board)
