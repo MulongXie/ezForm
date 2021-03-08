@@ -27,7 +27,9 @@ class Form:
         self.all_units = []
 
         self.sorted_left_unit = []
+        self.sorted_right_unit = []
         self.sorted_top_unit = []
+        self.sorted_bottom_unit = []
 
         self.inputs = []        # input elements that consists of guide text (text|textbox) and input filed (rectangle|line)
 
@@ -51,7 +53,12 @@ class Form:
         Sort all units by left and top respectively, and store the result in id lists
         '''
         self.sorted_left_unit = sorted(self.all_units, key=lambda x: x.location['left'])
+        self.sorted_right_unit = self.sorted_left_unit.copy()
+        self.sorted_right_unit.reverse()
+
         self.sorted_top_unit = sorted(self.all_units, key=lambda x: x.location['top'])
+        self.sorted_bottom_unit = self.sorted_top_unit.copy()
+        self.sorted_bottom_unit.reverse()
 
     def group_elements_to_units(self):
         '''
@@ -75,23 +82,37 @@ class Form:
         '''
         Find the first unit next to and in alignment with the target
         :param direction:
+            -> left: find left neighbour
             -> right: find right neighbour
+            -> top: find top neighbour
             -> below: find below neighbour
         :return:
         '''
         if direction == 'right':
             # check is there any connected unit on the right
             for u in self.sorted_left_unit:
-                # find the first one one the left if they are neighbours
                 if u.id != unit.id and u.location['left'] + bias >= unit.location['right']:
                     # the tow should be justified
                     if unit.is_in_alignment(u, direction='h'):
                         return u
+        elif direction == 'left':
+            # check is there any connected unit on the left
+            for u in self.sorted_right_unit:
+                if u.id != unit.id and unit.location['left'] + bias >= u.location['right']:
+                    # the tow should be justified
+                    if unit.is_in_alignment(u, direction='h'):
+                        return u
         elif direction == 'below':
-            # check is there any connected unit on the right
+            # check is there any connected unit below
             for u in self.sorted_top_unit:
-                # pass those on the left
                 if u.id != unit.id and u.location['top'] + bias >= unit.location['bottom']:
+                    # the tow should be justified if they are neighbours
+                    if unit.is_in_alignment(u, direction='v'):
+                        return u
+        elif direction == 'top':
+            # check is there any connected unit above
+            for u in self.sorted_bottom_unit:
+                if u.id != unit.id and unit.location['top'] + bias >= u.location['bottom']:
                     # the tow should be justified if they are neighbours
                     if unit.is_in_alignment(u, direction='v'):
                         return u
@@ -204,24 +225,47 @@ class Form:
         Detect row through grouping all left-right connected and justified elements
         :param unit: start unit
         '''
+        # if already are detected in a row
+        if unit.in_row is not None:
+            return unit.in_row
+
         row = Row()
+        # right forward
         neighbour_right = self.find_neighbour_unit(unit, 'right')
         is_row = False
         # if there is a connected neighbour, add it and the current unit to a Row
-        while neighbour_right is not None and unit.is_connected(neighbour_right, 'h'):
-            row.add_element(unit)
+        while neighbour_right is not None and unit.is_on_same_line(neighbour_right, 'h'):
+            if not is_row:
+                row.add_element(unit)
+                is_row = True
             # if the neighbour is already in a row, then simply add the current one to the row
             if neighbour_right.in_row is not None:
-                row.concat_row(neighbour_right.in_row)
+                row.merge_row(neighbour_right.in_row)
                 break
-
-            is_row = True
+            row.add_element(neighbour_right)
             unit = neighbour_right
             neighbour_right = self.find_neighbour_unit(neighbour_right, 'right')
-        if is_row:
-            row.add_element(unit)
-        return row
 
+        # left forward
+        neighbour_left = self.find_neighbour_unit(unit, 'left')
+        is_row = False
+        # if there is neighbour on the same row, add it and the current unit to a Row
+        while neighbour_left is not None and unit.is_on_same_line(neighbour_left, 'h'):
+            if not is_row:
+                row.add_element(unit)
+                is_row = True
+            # if the neighbour is already in a row, then simply add the current one to the row
+            if neighbour_left.in_row is not None:
+                row.merge_row(neighbour_left.in_row)
+                break
+            row.add_element(neighbour_left)
+            unit = neighbour_left
+            neighbour_left = self.find_neighbour_unit(neighbour_left, 'left')
+
+        if len(row.elements) > 1:
+            return row
+        else:
+            return None
 
     '''
     *********************
