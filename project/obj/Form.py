@@ -33,6 +33,8 @@ class Form:
 
         self.inputs = []        # input elements that consists of guide text (text|textbox) and input filed (rectangle|line)
 
+        self.row_id = 0
+
     '''
     **************************
     *** Element Processing ***
@@ -230,7 +232,8 @@ class Form:
             return unit.in_row
         unit_org = unit
 
-        row = Row()
+        row = Row(self.row_id)
+        self.row_id += 1
         # right forward
         neighbour_right = self.find_neighbour_unit(unit, 'right')
         is_row = False
@@ -252,7 +255,6 @@ class Form:
         neighbour_left = self.find_neighbour_unit(unit, 'left')
         # if there is neighbour on the same row, add it and the current unit to a Row
         while neighbour_left is not None and unit.is_on_same_line(neighbour_left, 'h'):
-            neighbour_left.visualize_element(self.get_img_copy(), show=True)
             if not is_row:
                 row.add_element(unit)
                 is_row = True

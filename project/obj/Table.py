@@ -5,10 +5,12 @@ class Table:
     def __init__(self, rows=None):
         self.location = None
 
+        self.row_ids = []
         if rows is not None:
             self.rows = rows
             for row in rows:
                 row.parent_table = self
+                self.row_ids.append(row.row_id)
             self.sort_rows()
             self.init_bound()
         else:
@@ -25,8 +27,11 @@ class Table:
         self.rows = sorted(self.rows, key=lambda x: x.location['top'])  # sort from top to bottom
 
     def add_row(self, row, reorder=True):
+        if row.row_id in self.row_ids:
+            return
         row.parent_table = self
         self.rows.append(row)
+        self.row_ids.append(row.row_id)
         if reorder:
             self.sort_rows()
             self.init_bound()

@@ -3,7 +3,8 @@ from obj.Table import Table
 
 
 class Row:
-    def __init__(self, elements=None):
+    def __init__(self, row_id, elements=None):
+        self.row_id = row_id
         self.parent_table = None
         self.location = None
 
@@ -33,6 +34,7 @@ class Row:
             return
         element.in_row = self
         self.elements.append(element)
+        self.ele_ids.append(element.id)
         if reorder:
             self.sort_elements()
             self.init_bound()
