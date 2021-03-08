@@ -7,10 +7,12 @@ class Row:
         self.parent_table = None
         self.location = None
 
+        self.ele_ids = []
         if elements is not None:
             self.elements = elements
             for ele in elements:
                 ele.in_row = self
+                self.ele_ids.append(ele.id)
             self.sort_elements()
             self.init_bound()
         else:
@@ -27,6 +29,8 @@ class Row:
         self.elements = sorted(self.elements, key=lambda x: x.location['left'])  # sort from left to right
 
     def add_element(self, element, reorder=True):
+        if element.id in self.ele_ids:
+            return
         element.in_row = self
         self.elements.append(element)
         if reorder:
@@ -45,10 +49,8 @@ class Row:
         return False
 
     def merge_row(self, row):
-        ele_ids = [e.id for e in self.elements]
         for ele in row.elements:
-            if ele.id not in ele_ids:
-                self.add_element(ele, reorder=False)
+            self.add_element(ele, reorder=False)
         self.sort_elements()
         self.init_bound()
         return self
