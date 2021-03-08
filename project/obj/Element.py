@@ -199,7 +199,7 @@ class Element:
             # left and right should be justified
             if abs(l_a['left'] - l_b['left']) < bias and abs(l_a['right'] - l_b['right']) < bias:
                 # top and bottom should be connected
-                if abs(l_a['bottom'] - l_b['top']) < bias or abs(l_a['top'] - l_b['right']) < bias:
+                if abs(l_a['bottom'] - l_b['top']) < bias or abs(l_a['top'] - l_b['bottom']) < bias:
                     return True
             return False
         elif direction == 'h':
