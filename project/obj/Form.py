@@ -228,6 +228,7 @@ class Form:
         # if already are detected in a row
         if unit.in_row is not None:
             return unit.in_row
+        unit_org = unit
 
         row = Row()
         # right forward
@@ -247,10 +248,12 @@ class Form:
             neighbour_right = self.find_neighbour_unit(neighbour_right, 'right')
 
         # left forward
+        unit = unit_org
         neighbour_left = self.find_neighbour_unit(unit, 'left')
-        is_row = False
         # if there is neighbour on the same row, add it and the current unit to a Row
         while neighbour_left is not None and unit.is_on_same_line(neighbour_left, 'h'):
+            print('left row')
+            neighbour_left.visualize_element(self.get_img_copy(), show=True)
             if not is_row:
                 row.add_element(unit)
                 is_row = True
@@ -263,6 +266,7 @@ class Form:
             neighbour_left = self.find_neighbour_unit(neighbour_left, 'left')
 
         if len(row.elements) > 1:
+            # row.visualize_row(self.img.img.copy(), show=True)
             return row
         else:
             return None
@@ -272,6 +276,9 @@ class Form:
     *** Visualization ***
     *********************
     '''
+    def get_img_copy(self):
+        return self.img.img.copy()
+
     def visualize_all_elements(self):
         board = self.img.img.copy()
         for text in self.texts:
