@@ -26,9 +26,16 @@ class Row:
     def sort_elements(self):
         self.elements = sorted(self.elements, key=lambda x: x.location['left'])  # sort from left to right
 
-    def add_element(self, element):
+    def add_element(self, element, reorder=True):
         element.in_row = self
         self.elements.append(element)
+        if reorder:
+            self.sort_elements()
+            self.init_bound()
+
+    def add_elements(self, elements):
+        for ele in elements:
+            self.add_element(ele, reorder=False)
         self.sort_elements()
         self.init_bound()
 
@@ -37,9 +44,13 @@ class Row:
             return True
         return False
 
-    def concat_row(self, row):
+    def merge_row(self, row):
+        ele_ids = [e.id for e in self.elements]
         for ele in row.elements:
-            self.add_element(ele)
+            if ele.id not in ele_ids:
+                self.add_element(ele, reorder=False)
+        self.sort_elements()
+        self.init_bound()
         return self
 
     def match_rows(self, row_b, bias=3):
