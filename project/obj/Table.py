@@ -10,7 +10,7 @@ class Table:
         if rows is not None:
             self.rows = rows
             for row in rows:
-                row.parent_table = self
+                row.add_parent_table(self)
                 self.row_ids.append(row.row_id)
             self.sort_rows()
             self.init_bound()
@@ -30,7 +30,7 @@ class Table:
     def add_row(self, row, reorder=True):
         if row.row_id in self.row_ids:
             return
-        row.parent_table = self
+        row.add_parent_table(self)
         self.rows.append(row)
         self.row_ids.append(row.row_id)
         if reorder:
@@ -58,6 +58,7 @@ class Table:
     def visualize_table(self, board, color=(0, 255, 0), line=2, show=False):
         for row in self.rows:
             row.visualize_row(board, color=color, line=line)
+        # cv2.rectangle(board, (self.location['left'], self.location['top']), (self.location['right'], self.location['bottom']), color, line)
         if show:
             cv2.imshow('row', board)
             cv2.waitKey()
