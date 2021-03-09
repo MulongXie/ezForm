@@ -162,7 +162,7 @@ class Element:
             return 1
         return 2
 
-    def is_in_alignment(self, ele_b, direction='v', bias=3):
+    def is_in_alignment(self, ele_b, direction='v', bias=4):
         '''
         Check if the element is in alignment with another
         :param bias: to remove insignificant intersection
@@ -184,7 +184,7 @@ class Element:
         # print('Not in Alignment')
         return False
 
-    def is_on_same_line(self, ele_b, direction='h', bias=3):
+    def is_on_same_line(self, ele_b, direction='h', bias=4):
         '''
         Check if the element is on the same row(direction='h') or column(direction='v') with ele_b
         :param direction:
