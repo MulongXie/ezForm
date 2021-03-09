@@ -21,7 +21,7 @@ class Table:
         left = min([r.location['left'] for r in self.rows])
         top = min([r.location['top'] for r in self.rows])
         right = max([r.location['right'] for r in self.rows])
-        bottom = min([r.location['bottom'] for r in self.rows])
+        bottom = max([r.location['bottom'] for r in self.rows])
         self.location = {'left':left, 'right':right, 'top':top, 'bottom':bottom}
 
     def sort_rows(self):
@@ -58,7 +58,7 @@ class Table:
     def visualize_table(self, board, color=(0, 255, 0), line=2, show=False):
         for row in self.rows:
             row.visualize_row(board, color=color, line=line)
-        # cv2.rectangle(board, (self.location['left'], self.location['top']), (self.location['right'], self.location['bottom']), color, line)
+        cv2.rectangle(board, (self.location['left'], self.location['top']), (self.location['right'], self.location['bottom']), color, line)
         if show:
             cv2.imshow('row', board)
             cv2.waitKey()
