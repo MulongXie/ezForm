@@ -73,6 +73,8 @@ class Form:
                 text.unit_type = 'text_unit'
                 self.text_units.append(text)
         for ele in self.rectangles + self.lines:
+            if ele.in_table is not None:
+                continue
             if ele.type in ('line', 'rectangle'):
                 ele.unit_type = 'bar_unit'
                 self.bar_units.append(ele)
@@ -205,7 +207,7 @@ class Form:
         # from top to bottom
         units = self.sorted_top_unit
         for i, unit in enumerate(units):
-            board = self.img.img.copy()
+            # board = self.img.img.copy()
             if not unit.is_input_part and unit.unit_type == 'text_unit':
                 # unit.visualize_element(board, color=(0, 0, 255))
 
@@ -276,7 +278,6 @@ class Form:
             return None
 
     def table_detection(self):
-        tables = []
         recorded_row_ids = []
         recorded_table_ids = []
         for unit in self.all_units:
@@ -354,8 +355,8 @@ class Form:
                         board = self.get_img_copy()
                         table.visualize_table(board)
                         unit.visualize_element(board, color=(0,0,255), show=True)
-                        tables.append(table)
-        return tables
+                        self.tables.append(table)
+        return self.tables
 
     '''
     *********************
@@ -377,6 +378,9 @@ class Form:
         for line in self.lines:
             line.visualize_element(board)
 
+        for table in self.tables:
+            table.visualize_table(board, color=(255,255,0))
+
         cv2.imshow('form', board)
         cv2.waitKey()
         cv2.destroyAllWindows()
@@ -387,7 +391,7 @@ class Form:
             text_unit.visualize_element(board, color=(0, 255, 0))
         for bar_unit in self.bar_units:
             bar_unit.visualize_element(board, color=(255, 0, 0))
-        cv2.imshow('tidied', board)
+        cv2.imshow('Units', board)
         cv2.waitKey()
         cv2.destroyAllWindows()
 
