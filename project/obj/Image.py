@@ -50,6 +50,10 @@ class Image:
         self.binary_map = morph
         return morph
 
+    def get_binary_map_canny(self):
+        self.binary_map = cv2.Canny(self.grey_img, 20, 20)
+        return self.binary_map
+
     '''
     ***************************
     **** Element Detection ****
@@ -62,6 +66,7 @@ class Image:
         '''
         if self.binary_map is None:
             self.get_binary_map()
+            # self.get_binary_map_canny()
         _, contours, hierarchy = cv2.findContours(self.binary_map, cv2.RETR_TREE, cv2.CHAIN_APPROX_NONE)
         for cnt in contours:
             if cv2.contourArea(cnt) > min_area:
@@ -130,5 +135,41 @@ class Image:
         cv2.drawContours(board, contours, -1, color)
         cv2.imshow(window_name, board)
         cv2.waitKey()
+        cv2.destroyWindow(window_name)
+        return board
+
+    def visualize_elements_contours_individual(self, element_opt='all', board_opt='org',
+                                               contours=None, board=None,
+                                               window_name='contour', color=(255, 0, 0)):
+        '''
+        :param element_opt: 'all'/'rectangle'/'line'
+        :param board_opt: 'org'/'binary'
+        :param contours: input contours, if none, check element_opt and use inner elements
+        :param board: board image to draw on
+        :return: drawn image
+        '''
+        if contours is None:
+            if element_opt == 'all':
+                contours = [ele.contour for ele in self.all_elements]
+            elif element_opt == 'rectangle':
+                contours = [ele.contour for ele in self.rectangle_elements]
+            elif element_opt == 'line':
+                contours = [ele.contour for ele in self.line_elements]
+            else:
+                print("element_opt: 'all'/'rectangle'/'line'")
+                return
+        if board is None:
+            if board_opt == 'org':
+                board = self.img.copy()
+            elif board_opt == 'binary':
+                board = np.zeros((self.img_shape[0], self.img_shape[1]))
+            else:
+                print("board_opt: 'org'/'binary'")
+                return
+
+        for cnt in contours:
+            cv2.drawContours(board, [cnt], -1, color)
+            cv2.imshow(window_name, board)
+            cv2.waitKey()
         cv2.destroyWindow(window_name)
         return board
