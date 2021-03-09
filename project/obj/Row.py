@@ -57,6 +57,11 @@ class Row:
             return True
         return False
 
+    def add_parent_table(self, table):
+        self.parent_table = table
+        for ele in self.elements:
+            ele.in_table = table
+
     def match_rows(self, row_b, bias=3):
         '''
         Match tow rows bu checking continuously justified elements
