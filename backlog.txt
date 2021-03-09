@@ -1,11 +1,15 @@
 Bottoleneck Issues
-Detection:
+I. Detection
 1. Rectangle/line detection		√
 2. Guide word detection			√
 3. Input unit detection			√
-4. Table detection
+4. Table detection				√
 5. Reliable OCR
 6. Layout segmentation
+
+II. Generation
+
+III. Intelligence
 
 
 22/2/2021
@@ -26,7 +30,7 @@ Detection:
 
 
 1/3/2021
-1. bottleneck: ocr
+1. Bottleneck: ocr
 	a. Other ocr (google)
 	b. Resize/Preprocess input image
 
@@ -34,3 +38,9 @@ Detection:
 
 
 
+8/3/2021
+1. Google OCR: word - line merge
+
+2. Testing
+
+3. Layout segmentation

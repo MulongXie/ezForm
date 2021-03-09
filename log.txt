@@ -1,22 +1,64 @@
 26/2/2021
 1. Make Element class as the parent class of the Text class
 
-2. Add element relation check
+2. Add [element relation check]
 
-3. Count the rectangles that only contains one text as textbox
+3. Count the rectangles that only contains one text as [textbox]
 
-4. Get input units from form elements
+4. Get [input units] from form elements
     text_units: text (not contained) + textbox
     bar_units: rectangles (not textbox) + lines + tables
 
 
 28/2/2021
-1. Add in alignment check for elements
+1. Add [in alignment check] for elements
 
-2. Check guide text by nearest neighbour in alignment
+2. Check [guide text] by nearest neighbour in alignment
 
 
 1/3/2021
-1. Add Input class for input element that consists of guide text and input field
+1. Add [Input class] for input element that consists of guide text and input field
 
-2. Add Input unit recognition in a Form object
+2. Add [Input unit recognition] in a Form object
+
+
+2/3/2021
+1. Add [table class] for aggrate rectangles to row and columns
+
+2. Add [elements mapping dictinonary {id:element}] in Form object
+
+3. Store [sort result] in form of ids in list in Form object
+
+
+3/3/2021
+1. For a object in multiple lists, change any list will affect the others. So it's ok to sotre the sorting result directly in a list instead of storing elements' ids.
+
+2. Add [find neighbour unit]
+
+
+4/3/2021
+1. Add [row detection]
+
+2. Add [Row object] with function of [row similarity]
+
+
+5/3/2021
+1. Add [in_row] attr in elements to indicate whether the element belongs to a row
+
+2. Add [concat row] function in Row object
+
+3. In row detection, if an element is already in a row, concatenate the previous row
+
+4. Add [match tow row] function to match rows that should in the same table
+
+
+8/3/2021
+1. Detect both left forward and right forward in [row detection]
+
+2. Merge previous table of neigbour row if there is one
+
+3. Detect table in both [top and below] directions
+
+
+9/3/2021
+1. Add [in_table] in element object
