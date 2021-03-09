@@ -83,7 +83,7 @@ class Form:
                 self.text_units.append(ele)
         self.all_units = self.text_units + self.bar_units
 
-    def find_neighbour_unit(self, unit, direction='right', bias=3):
+    def find_neighbour_unit(self, unit, direction='right', bias=4):
         '''
         Find the first unit next to and in alignment with the target
         :param direction:
