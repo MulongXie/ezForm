@@ -189,7 +189,7 @@ class Element:
         # print('Not in Alignment')
         return False
 
-    def is_on_same_line(self, ele_b, direction='h', bias=4):
+    def is_on_same_line(self, ele_b, direction='h', bias_gap=4, bias_justify=4):
         '''
         Check if the element is on the same row(direction='h') or column(direction='v') with ele_b
         :param direction:
@@ -202,16 +202,16 @@ class Element:
         # connected vertically - up and below
         if direction == 'v':
             # left and right should be justified
-            if abs(l_a['left'] - l_b['left']) < bias and abs(l_a['right'] - l_b['right']) < bias:
-                # top and bottom should be connected
-                if abs(l_a['bottom'] - l_b['top']) < bias or abs(l_a['top'] - l_b['bottom']) < bias:
+            if abs(l_a['left'] - l_b['left']) < bias_justify and abs(l_a['right'] - l_b['right']) < bias_justify:
+                # top and bottom should be connected (small gap)
+                if abs(l_a['bottom'] - l_b['top']) < bias_gap or abs(l_a['top'] - l_b['bottom']) < bias_gap:
                     return True
             return False
         elif direction == 'h':
             # top and bottom should be justified
-            if abs(l_a['top'] - l_b['top']) < bias and abs(l_a['bottom'] - l_b['bottom']) < bias:
-                # top and bottom should be connected
-                if abs(l_a['right'] - l_b['left']) < bias or abs(l_a['left'] - l_b['right']) < bias:
+            if abs(l_a['top'] - l_b['top']) < bias_justify and abs(l_a['bottom'] - l_b['bottom']) < bias_justify:
+                # top and bottom should be connected (small gap)
+                if abs(l_a['right'] - l_b['left']) < bias_gap or abs(l_a['left'] - l_b['right']) < bias_gap:
                     return True
             return False
 
