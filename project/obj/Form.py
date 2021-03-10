@@ -295,7 +295,6 @@ class Form:
 
     def table_detection(self):
         recorded_row_ids = []
-        recorded_table_ids = []
         for unit in self.all_units:
             if unit.type == 'rectangle' and unit.unit_type == 'bar_unit':
                 # if an element has right(same row) and below(same column) connected elements
@@ -309,12 +308,9 @@ class Form:
                         recorded_row_ids.append(row.row_id)
 
                     if row.parent_table is not None:
-                        if row.parent_table.table_id in recorded_table_ids:
-                            continue
-                        table = row.parent_table
+                        continue
                     else:
                         table = Table(self.table_id)
-                        recorded_table_ids.append(self.table_id)
                         self.table_id += 1
 
                     # *** detect down forwards ***
