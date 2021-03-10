@@ -144,16 +144,41 @@ class Form:
     *** Element Detection ***
     *************************
     '''
-    def text_detection(self):
+    def text_detection(self, method='Google'):
+        if method == 'Baidu':
+            self.Baidu_OCR_text_detection()
+        elif method == 'Google':
+            self.Google_OCR_text_detection()
+        else:
+            print('Please choose a detection method from Google and Baidu')
+
+    def Baidu_OCR_text_detection(self):
         start = time.clock()
-        detection_result = ocr.ocr_detection(self.img_file_name)
+        detection_result = ocr.ocr_detection_baidu(self.img_file_name)
         texts = detection_result['words_result']
         for text in texts:
             location = {'left': text['location']['left'], 'top': text['location']['top'],
                         'right': text['location']['left'] + text['location']['width'],
                         'bottom': text['location']['top'] + text['location']['height']}
             self.texts.append(Text(text['words'], location))
-        print('*** OCR Processing Time:%.3f s***' % (time.clock() - start))
+        print('*** Baidu OCR Processing Time:%.3f s***' % (time.clock() - start))
+
+    def Google_OCR_text_detection(self):
+        start = time.clock()
+        detection_results = ocr.ocr_detection_google(self.img_file_name)
+        for result in detection_results:
+            x_coordinates = []
+            y_coordinates = []
+            text_location = result['boundingPoly']['vertices']
+            text = result['description']
+            for loc in text_location:
+                x_coordinates.append(loc['x'])
+                y_coordinates.append(loc['y'])
+            location = {'left': min(x_coordinates), 'top': min(y_coordinates),
+                        'right': max(x_coordinates), 'bottom': max(y_coordinates)}
+            self.texts.append(Text(text, location))
+        # self.Google_OCR_sentences_recognition()
+        print('*** Google OCR Processing Time:%.3f s***' % (time.clock() - start))
 
     def element_detection(self):
         start = time.clock()
