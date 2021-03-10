@@ -10,11 +10,11 @@ class Element:
         self.type = type            # text/rectangle/line/textbox
         self.unit_type = None       # text_unit(text or textbox)/bar_unit(rectangle, line or table)
 
-        self.is_input_part = False  # if the element is grouped as part of an input element (guide text or input field)
         self.contains = []          # list of elements that are contained in the element
 
         self.in_row = None          # Row object, does the element belong to any table row
         self.in_table = None        # Table object, does the element belong to any table
+        self.in_input = None        # Input object, if the element is grouped as part of an input element (guide text or input field)
 
         self.neighbour_top = None
         self.neighbour_bottom = None

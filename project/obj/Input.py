@@ -7,9 +7,12 @@ import cv2
 # Input element consisting of two parts(units): guide text & input field (rectangle or line)
 class Input(Element):
     def __init__(self, guide_text, input_field):
-        self.guide_text = guide_text       # text/textbox
-        self.input_field = input_field      # rectangle/line
+        self.guide_text = guide_text        # text/textbox element
+        self.input_field = input_field      # rectangle/line element
         super().__init__()
+
+        self.guide_text.in_input = self
+        self.input_field.in_input = self
 
     def init_bound(self):
         '''

@@ -207,11 +207,10 @@ class Form:
                 # unit.visualize_element(board, color=(0,0,255))
 
                 for j in range(i+1, len(units)):
-                    if not units[j].is_input_part and unit.is_in_alignment(units[j], direction='h'):
+                    if units[j].in_input is None and unit.is_in_alignment(units[j], direction='h'):
+                        # if the text unit is connected and justified with a bar unit, then form them as an input object
                         if units[j].unit_type == 'bar_unit':
                             unit.is_guide_text = True
-                            unit.is_input_part = True
-                            units[j].is_input_part = True
                             self.inputs.append(Input(unit, units[j]))
                             # units[j].visualize_element(board, color=(255, 0, 0))
                         else:
@@ -224,15 +223,14 @@ class Form:
         units = self.sorted_top_unit
         for i, unit in enumerate(units):
             # board = self.img.img.copy()
-            if not unit.is_input_part and unit.unit_type == 'text_unit':
+            if unit.in_input is None and unit.unit_type == 'text_unit':
                 # unit.visualize_element(board, color=(0, 0, 255))
 
                 for j in range(i + 1, len(units)):
                     if unit.is_in_alignment(units[j], direction='v'):
-                        if not units[j].is_input_part and units[j].unit_type == 'bar_unit':
+                        # if the text unit is connected and justified with a bar unit, then form them as an input object
+                        if units[j].in_input is None and units[j].unit_type == 'bar_unit':
                             unit.is_guide_text = True
-                            unit.is_input_part = True
-                            units[j].is_input_part = True
                             self.inputs.append(Input(unit, units[j]))
                             # units[j].visualize_element(board, color=(255, 0, 0))
                         else:
