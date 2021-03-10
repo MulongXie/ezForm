@@ -8,6 +8,7 @@ import obj.ocr as ocr
 import cv2
 import time
 import numpy as np
+import string
 
 
 class Form:
@@ -177,8 +178,29 @@ class Form:
             location = {'left': min(x_coordinates), 'top': min(y_coordinates),
                         'right': max(x_coordinates), 'bottom': max(y_coordinates)}
             self.texts.append(Text(text, location))
-        # self.Google_OCR_sentences_recognition()
+        self.Google_OCR_sentences_recognition()
         print('*** Google OCR Processing Time:%.3f s***' % (time.clock() - start))
+
+    def Google_OCR_sentences_recognition(self):
+        '''
+        Merge separate words detected by Google ocr into a sentence
+        '''
+        changed = True
+        while changed:
+            changed = False
+            temp_set = []
+            for text_a in self.texts:
+                merged = False
+                for text_b in temp_set:
+                    if text_a.is_on_same_line(text_b, 'h', bias_justify=3, bias_gap=10):
+                        text_b.merge_text(text_a)
+                        merged = True
+                        changed = True
+                        break
+                if not merged:
+                    temp_set.append(text_a)
+            self.texts = temp_set.copy()
+            # self.visualize_all_elements()
 
     def element_detection(self):
         start = time.clock()
