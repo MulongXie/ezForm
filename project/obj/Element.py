@@ -59,7 +59,7 @@ class Element:
     *************************
     '''
     def is_line(self, max_thickness=4):
-        if self.height <= max_thickness or self.width <= max_thickness:
+        if self.height <= max_thickness:
             return True
         return False
 
@@ -179,11 +179,11 @@ class Element:
         l_a = self.location
         l_b = ele_b.location
         if direction == 'v':
-            if max(l_a['left'], l_b['left']) + bias < min(l_a['right'], l_b['right']) - bias:
+            if max(l_a['left'], l_b['left']) + bias < min(l_a['right'], l_b['right']):
                 # print('In Alignment Vertically')
                 return True
         elif direction == 'h':
-            if max(l_a['top'], l_b['top']) + bias < min(l_a['bottom'], l_b['bottom']) - bias:
+            if max(l_a['top'], l_b['top']) + bias < min(l_a['bottom'], l_b['bottom']):
                 # print('In Alignment Horizontally')
                 return True
         # print('Not in Alignment')
