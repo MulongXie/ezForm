@@ -94,32 +94,48 @@ class Form:
         :return:
         '''
         if direction == 'right':
+            if unit.neighbour_right is not None:
+                return unit.neighbour_right
             # check is there any connected unit on the right
             for u in self.sorted_left_unit:
                 if u.id != unit.id and u.location['left'] + bias >= unit.location['right']:
                     # the tow should be justified
                     if unit.is_in_alignment(u, direction='h'):
+                        unit.neighbour_right = u
+                        u.neighbour_left = unit
                         return u
         elif direction == 'left':
+            if unit.neighbour_left is not None:
+                return unit.neighbour_left
             # check is there any connected unit on the left
             for u in self.sorted_right_unit:
                 if u.id != unit.id and unit.location['left'] + bias >= u.location['right']:
                     # the tow should be justified
                     if unit.is_in_alignment(u, direction='h'):
+                        unit.neighbour_left = u
+                        u.neighbour_right = unit
                         return u
         elif direction == 'below':
+            if unit.neighbour_bottom is not None:
+                return unit.neighbour_bottom
             # check is there any connected unit below
             for u in self.sorted_top_unit:
                 if u.id != unit.id and u.location['top'] + bias >= unit.location['bottom']:
                     # the tow should be justified if they are neighbours
                     if unit.is_in_alignment(u, direction='v'):
+                        unit.neighbour_bottom = u
+                        u.neighbour_top = unit
                         return u
         elif direction == 'top':
+            if unit.neighbour_top is not None:
+                return unit.neighbour_top
             # check is there any connected unit above
             for u in self.sorted_bottom_unit:
                 if u.id != unit.id and unit.location['top'] + bias >= u.location['bottom']:
                     # the tow should be justified if they are neighbours
                     if unit.is_in_alignment(u, direction='v'):
+                        unit.neighbour_top = u
+                        u.neighbour_bottom = unit
                         return u
         return None
 

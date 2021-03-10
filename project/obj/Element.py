@@ -16,6 +16,11 @@ class Element:
         self.in_row = None          # Row object, does the element belong to any table row
         self.in_table = None        # Table object, does the element belong to any table
 
+        self.neighbour_top = None
+        self.neighbour_bottom = None
+        self.neighbour_left = None
+        self.neighbour_right = None
+
         self.clip_img = clip_img
         self.contour = contour      # format of findContours
         self.location = location    # dictionary {left, right, top, bottom}
