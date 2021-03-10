@@ -31,3 +31,6 @@ class Text(Element):
         right = right_element.location['right']
         bottom = int((left_element.location['bottom'] + right_element.location['bottom']) / 2)
         self.location = {'left': left, 'top': top, 'right': right, 'bottom': bottom}
+        self.width = self.location['right'] - self.location['left']
+        self.height = self.location['bottom'] - self.location['top']
+        self.area = self.width * self.height
