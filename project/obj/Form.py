@@ -207,7 +207,8 @@ class Form:
                 # unit.visualize_element(board, color=(0,0,255))
 
                 for j in range(i+1, len(units)):
-                    if units[j].in_input is None and unit.is_in_alignment(units[j], direction='h'):
+                    if units[j].in_input is None and units[j].in_table is None and\
+                            unit.is_in_alignment(units[j], direction='h'):
                         # if the text unit is connected and justified with a bar unit, then form them as an input object
                         if units[j].unit_type == 'bar_unit':
                             unit.is_guide_text = True
@@ -229,7 +230,8 @@ class Form:
                 for j in range(i + 1, len(units)):
                     if unit.is_in_alignment(units[j], direction='v'):
                         # if the text unit is connected and justified with a bar unit, then form them as an input object
-                        if units[j].in_input is None and units[j].unit_type == 'bar_unit':
+                        if units[j].in_input is None and units[j].in_table is None and\
+                                units[j].unit_type == 'bar_unit':
                             unit.is_guide_text = True
                             self.inputs.append(Input(unit, units[j]))
                             # units[j].visualize_element(board, color=(255, 0, 0))
