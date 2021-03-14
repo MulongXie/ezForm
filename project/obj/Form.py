@@ -275,12 +275,12 @@ class Form:
                 # unit.visualize_element(board, color=(0, 0, 255))
 
                 for j in range(i + 1, len(units)):
-                    # units of an input compound with vertical alignment should be left justifying
-                    if abs(unit.location['left'] - units[j].location['left']) < bias and \
-                            unit.is_in_alignment(units[j], direction='v', bias=bias):
+                    if unit.is_in_alignment(units[j], direction='v', bias=bias):
                         # if the text unit is connected and justified with a bar unit, then form them as an input object
+                        # units of an input compound with vertical alignment should be left justifying
                         if units[j].in_input is None and units[j].in_table is None and\
-                                units[j].unit_type == 'bar_unit':
+                                units[j].unit_type == 'bar_unit' and\
+                                abs(unit.location['left'] - units[j].location['left']) < bias:
                             unit.is_guide_text = True
                             self.inputs.append(Input(unit, units[j]))
                             # units[j].visualize_element(board, color=(255, 0, 0))
