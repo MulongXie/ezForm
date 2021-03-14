@@ -234,7 +234,7 @@ class Form:
                 rec.contains[0].in_box = True
         # print('*** Textbox Recognition Time:%.3f s***' % (time.clock() - start))
 
-    def input_compound_recognition(self):
+    def input_compound_recognition(self, bias=4):
         '''
         Recognize input unit that consists of [guide text] and [input field]
         First recognize guide text for input:
@@ -275,7 +275,9 @@ class Form:
                 # unit.visualize_element(board, color=(0, 0, 255))
 
                 for j in range(i + 1, len(units)):
-                    if unit.is_in_alignment(units[j], direction='v'):
+                    # units of an input compound with vertical alignment should be left justifying
+                    if abs(unit.location['left'] - units[j].location['left']) < bias and \
+                            unit.is_in_alignment(units[j], direction='v', bias=bias):
                         # if the text unit is connected and justified with a bar unit, then form them as an input object
                         if units[j].in_input is None and units[j].in_table is None and\
                                 units[j].unit_type == 'bar_unit':
@@ -411,9 +413,9 @@ class Form:
                             break
 
                     if not table.is_empty():
-                        board = self.get_img_copy()
-                        table.visualize_table(board)
-                        unit.visualize_element(board, color=(0,0,255), show=True)
+                        # board = self.get_img_copy()
+                        # table.visualize_table(board)
+                        # unit.visualize_element(board, color=(0,0,255), show=True)
                         self.tables.append(table)
         return self.tables
 
