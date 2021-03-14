@@ -13,14 +13,16 @@ form.visualize_all_elements()
 form.textbox_recognition()
 form.visualize_all_elements()
 
-# *** 3. Units grouping***
+# *** 3. Units grouping ***
 form.group_elements_to_units()
 form.sort_units()
 form.visualize_units()
+
+# *** 4. Table detection ***
 form.table_detection()
 form.visualize_all_elements()
 
-# *** 4. Input compound ***
+# *** 5. Input compound recognition ***
 form.input_compound_recognition()
 form.visualize_inputs()
 
