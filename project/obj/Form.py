@@ -1,4 +1,5 @@
 from obj.Text import Text
+from obj.Element import Element
 from obj.Image import Image
 from obj.Input import Input
 from obj.Table import Table
@@ -86,7 +87,7 @@ class Form:
 
     def find_neighbour_unit(self, unit, direction='right', bias=4):
         '''
-        Find the first unit next to and in alignment with the target
+        Find the first unit 1.next to and 2.in alignment with the target
         :param direction:
             -> left: find left neighbour
             -> right: find right neighbour
@@ -347,6 +348,29 @@ class Form:
         else:
             return None
 
+    def detect_table_heading(self, table, max_gap=20):
+        '''
+        Detect heading row for each table
+        :param max_gap: max gop between the top row of a table and its top neighbour
+        '''
+        neighbours = []
+        top_row = table.rows[0]
+        # record all neighbours above the top row elements
+        for ele in top_row.elements:
+            n = self.find_neighbour_unit(ele, direction='top')
+            if n is not None and \
+                    n.unit_type == 'text_unit' and abs(ele.location['top'] - n.location['bottom']) < max_gap:
+                neighbours.append(n)
+            else:
+                neighbours.append(None)
+
+        heading = Row(row_id=self.row_id)
+        self.row_id += 1
+        for ele in neighbours:
+            if ele is not None:
+                heading.add_element(ele)
+        table.add_heading(heading)
+
     def table_detection(self):
         '''
         Detect table by detecting continuously matched rows
@@ -427,11 +451,23 @@ class Form:
                         # unit.visualize_element(board, color=(0,0,255), show=True)
                         self.tables.append(table)
 
-        # *** Merge elements that are not grouped but contained in a table
-        for unit in self.all_units:
-            if unit.in_row is not None or unit.in_table is not None:
-                continue
-            for table in self.tables:
+        # *** Merge elements that are not grouped but contained in a table ***
+        for table in self.tables:
+            for unit in self.all_units:
+                if unit.in_row is not None or unit.in_table is not None:
+                    continue
+                if table.is_ele_contained_in_table(unit):
+                    table.insert_element(unit)
+
+        # *** Heading detection for table ***
+        for table in self.tables:
+            self.detect_table_heading(table)
+
+        # *** Merge elements that are not grouped but contained in the table with heading ***
+        for table in self.tables:
+            for unit in self.all_units:
+                if unit.in_row is not None or unit.in_table is not None:
+                    continue
                 if table.is_ele_contained_in_table(unit):
                     table.insert_element(unit)
         return self.tables

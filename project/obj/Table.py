@@ -16,6 +16,7 @@ class Table:
             self.init_bound()
         else:
             self.rows = []
+        self.heading = None
 
     def init_bound(self):
         left = min([r.location['left'] for r in self.rows])
@@ -43,6 +44,10 @@ class Table:
         self.sort_rows()
         self.init_bound()
 
+    def add_heading(self, heading):
+        self.heading = heading
+        self.add_row(heading)
+
     def merge_table(self, table):
         for row in table.rows:
             self.add_row(row, reorder=False)
@@ -55,7 +60,7 @@ class Table:
             return True
         return False
 
-    def is_ele_contained_in_table(self, element, bias=2):
+    def is_ele_contained_in_table(self, element, bias=4):
         '''
         Check if the element is contained in the table
         '''
@@ -72,8 +77,9 @@ class Table:
         :param element: the element should be contained in the table
         '''
         for row in self.rows:
-            if element.is_in_alignment(row, direction='h'):
+            if element.is_in_alignment(row, direction='h', bias=1):
                 row.add_element(element)
+                return
 
     def visualize_table(self, board, color=(0, 255, 0), line=2, show=False):
         for row in self.rows:
