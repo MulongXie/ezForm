@@ -343,6 +343,10 @@ class Form:
             return None
 
     def table_detection(self):
+        '''
+        Detect table by detecting continuously matched rows
+        '''
+        # *** Detect table ***
         recorded_row_ids = []
         for unit in self.all_units:
             if unit.type == 'rectangle' and unit.unit_type == 'bar_unit':
@@ -417,6 +421,14 @@ class Form:
                         # table.visualize_table(board)
                         # unit.visualize_element(board, color=(0,0,255), show=True)
                         self.tables.append(table)
+
+        # *** Merge elements that are not grouped but contained in a table
+        for unit in self.all_units:
+            if unit.in_row is not None or unit.in_table is not None:
+                continue
+            for table in self.tables:
+                if table.is_ele_contained_in_table(unit):
+                    table.insert_element(unit)
         return self.tables
 
     '''

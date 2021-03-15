@@ -33,6 +33,7 @@ class Row:
         if element.id in self.ele_ids:
             return
         element.in_row = self
+        element.in_table = self.parent_table
         self.elements.append(element)
         self.ele_ids.append(element.id)
         if reorder:

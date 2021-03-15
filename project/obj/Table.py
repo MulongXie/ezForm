@@ -55,6 +55,26 @@ class Table:
             return True
         return False
 
+    def is_ele_contained_in_table(self, element, bias=2):
+        '''
+        Check if the element is contained in the table
+        '''
+        l_a = self.location
+        l_e = element.location
+        if l_a['left'] - bias < l_e['left'] and l_a['right'] + bias > l_e['right'] and\
+            l_a['top'] - bias < l_e['top'] and l_a['bottom'] + bias > l_e['bottom']:
+            return True
+        return False
+
+    def insert_element(self, element):
+        '''
+        Insert element into the table, find a most matched row to store it
+        :param element: the element should be contained in the table
+        '''
+        for row in self.rows:
+            if element.is_in_alignment(row):
+                row.add_element(element)
+
     def visualize_table(self, board, color=(0, 255, 0), line=2, show=False):
         for row in self.rows:
             row.visualize_row(board, color=color, line=line)
