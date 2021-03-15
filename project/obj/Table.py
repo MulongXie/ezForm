@@ -55,6 +55,10 @@ class Table:
         self.init_bound()
         return self
 
+    def merge_vertical_texts_in_cell(self):
+        for row in self.rows:
+            row.merge_vertical_texts_in_cell()
+
     def is_empty(self):
         if len(self.rows) == 0:
             return True

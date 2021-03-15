@@ -375,7 +375,7 @@ class Form:
         '''
         Detect table by detecting continuously matched rows
         '''
-        # *** Detect table ***
+        # *** Step 1. Detect table ***
         recorded_row_ids = []
         for unit in self.all_units:
             if unit.type == 'rectangle' and unit.unit_type == 'bar_unit':
@@ -451,7 +451,7 @@ class Form:
                         # unit.visualize_element(board, color=(0,0,255), show=True)
                         self.tables.append(table)
 
-        # *** Merge elements that are not grouped but contained in a table ***
+        # *** Step 2. Merge elements that are not grouped but contained in a table ***
         for table in self.tables:
             for unit in self.all_units:
                 if unit.in_row is not None or unit.in_table is not None:
@@ -459,17 +459,21 @@ class Form:
                 if table.is_ele_contained_in_table(unit):
                     table.insert_element(unit)
 
-        # *** Heading detection for table ***
+        # *** Step 3. Heading detection for table ***
         for table in self.tables:
             self.detect_table_heading(table)
 
-        # *** Merge elements that are not grouped but contained in the table with heading ***
+        # *** Step 4. Merge elements that are not grouped but contained in the table with heading ***
         for table in self.tables:
             for unit in self.all_units:
                 if unit.in_row is not None or unit.in_table is not None:
                     continue
                 if table.is_ele_contained_in_table(unit):
                     table.insert_element(unit)
+
+        # *** Step 5. Merge vertically intersected elements in one cell ***
+        for table in self.tables:
+            table.merge_vertical_texts_in_cell()
         return self.tables
 
     '''
