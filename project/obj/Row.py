@@ -23,7 +23,7 @@ class Row:
         left = min([e.location['left'] for e in self.elements])
         top = min([e.location['top'] for e in self.elements])
         right = max([e.location['right'] for e in self.elements])
-        bottom = min([e.location['bottom'] for e in self.elements])
+        bottom = max([e.location['bottom'] for e in self.elements])
         self.location = {'left':left, 'right':right, 'top':top, 'bottom':bottom}
 
     def sort_elements(self):
