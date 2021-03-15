@@ -72,7 +72,7 @@ class Table:
         :param element: the element should be contained in the table
         '''
         for row in self.rows:
-            if element.is_in_alignment(row):
+            if element.is_in_alignment(row, direction='h'):
                 row.add_element(element)
 
     def visualize_table(self, board, color=(0, 255, 0), line=2, show=False):
