@@ -234,6 +234,11 @@ class Form:
                 rec.contains[0].in_box = True
         # print('*** Textbox Recognition Time:%.3f s***' % (time.clock() - start))
 
+    '''
+    *************************************
+    *** Compound Components Detection ***
+    *************************************
+    '''
     def input_compound_recognition(self, bias=4):
         '''
         Recognize input unit that consists of [guide text] and [input field]
