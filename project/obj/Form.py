@@ -233,6 +233,7 @@ class Form:
             if len(rec.contains) == 1:
                 rec.type = 'textbox'
                 rec.contains[0].in_box = True
+                rec.textbox_extract_texts_content()
         # print('*** Textbox Recognition Time:%.3f s***' % (time.clock() - start))
 
     '''

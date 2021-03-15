@@ -11,6 +11,7 @@ class Element:
         self.unit_type = None       # text_unit(text or textbox)/bar_unit(rectangle, line or table)
 
         self.contains = []          # list of elements that are contained in the element
+        self.content = None         # for Textbox, the content of text contained
 
         self.in_row = None          # Row object, does the element belong to any table row
         self.in_table = None        # Table object, does the element belong to any table
@@ -214,6 +215,25 @@ class Element:
                 if abs(l_a['right'] - l_b['left']) < bias_gap or abs(l_a['left'] - l_b['right']) < bias_gap:
                     return True
             return False
+
+    def textbox_extract_texts_content(self):
+        '''
+        For Textbox, extract the text content
+        '''
+        texts = []
+        non_texts = []
+        for ele in self.contains:
+            if ele.type == 'text':
+                texts.append(ele)
+            else:
+                non_texts.append(ele)
+
+        text_merged = texts[0]
+        for i in range(1, len(texts)):
+            text_merged.merge_text(texts[i], direction='v')
+
+        self.contains = [texts] + non_texts
+        self.content = text_merged.content
 
     '''
     *********************
