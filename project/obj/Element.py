@@ -190,6 +190,28 @@ class Element:
         # print('Not in Alignment')
         return False
 
+    def is_justified(self, ele_b, direction='h', max_bias_justify=4):
+        '''
+        Check if the element is justified
+        :param max_bias_justify: maximum bias if two elements to be justified
+        :param direction:
+             - 'v': vertical up-down connection
+             - 'h': horizontal left-right connection
+        '''
+        l_a = self.location
+        l_b = ele_b.location
+        # connected vertically - up and below
+        if direction == 'v':
+            # left and right should be justified
+            if abs(l_a['left'] - l_b['left']) < max_bias_justify and abs(l_a['right'] - l_b['right']) < max_bias_justify:
+                return True
+            return False
+        elif direction == 'h':
+            # top and bottom should be justified
+            if abs(l_a['top'] - l_b['top']) < max_bias_justify and abs(l_a['bottom'] - l_b['bottom']) < max_bias_justify:
+                return True
+            return False
+
     def is_on_same_line(self, ele_b, direction='h', bias_gap=4, bias_justify=4):
         '''
         Check if the element is on the same row(direction='h') or column(direction='v') with ele_b
@@ -203,14 +225,14 @@ class Element:
         # connected vertically - up and below
         if direction == 'v':
             # left and right should be justified
-            if abs(l_a['left'] - l_b['left']) < bias_justify and abs(l_a['right'] - l_b['right']) < bias_justify:
+            if self.is_justified(ele_b, direction='v', max_bias_justify=bias_justify):
                 # top and bottom should be connected (small gap)
                 if abs(l_a['bottom'] - l_b['top']) < bias_gap or abs(l_a['top'] - l_b['bottom']) < bias_gap:
                     return True
             return False
         elif direction == 'h':
             # top and bottom should be justified
-            if abs(l_a['top'] - l_b['top']) < bias_justify and abs(l_a['bottom'] - l_b['bottom']) < bias_justify:
+            if self.is_justified(ele_b, direction='h', max_bias_justify=bias_justify):
                 # top and bottom should be connected (small gap)
                 if abs(l_a['right'] - l_b['left']) < bias_gap or abs(l_a['left'] - l_b['right']) < bias_gap:
                     return True
