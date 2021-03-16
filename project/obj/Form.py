@@ -475,6 +475,11 @@ class Form:
         # *** Step 5. Merge vertically intersected elements in one cell ***
         for table in self.tables:
             table.merge_vertical_texts_in_cell()
+
+        # *** Step 6. Split columns of a table according to the heading ***
+        for table in self.tables:
+            table.split_columns()
+
         return self.tables
 
     '''

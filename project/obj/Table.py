@@ -15,8 +15,9 @@ class Table:
             self.sort_rows()
             self.init_bound()
         else:
-            self.rows = []
-        self.heading = None
+            self.rows = []            # List of Row objects
+        self.heading = None           # Row object
+        self.columns = []             # List of lists of Element objects, use a list of Element objects to rep a column
 
     def init_bound(self):
         left = min([r.location['left'] for r in self.rows])
@@ -27,6 +28,11 @@ class Table:
 
     def sort_rows(self):
         self.rows = sorted(self.rows, key=lambda x: x.location['top'])  # sort from top to bottom
+
+    def is_empty(self):
+        if len(self.rows) == 0:
+            return True
+        return False
 
     def add_row(self, row, reorder=True):
         if row.row_id in self.row_ids:
@@ -59,10 +65,20 @@ class Table:
         for row in self.rows:
             row.merge_vertical_texts_in_cell()
 
-    def is_empty(self):
-        if len(self.rows) == 0:
-            return True
-        return False
+    def split_columns(self):
+        '''
+        Spilt columns according to the heading
+        Column: A list of Element objects
+        '''
+        for head in self.heading.elements:
+            col = [head]
+            max_bias_justify = int(head.width / 2)
+            for row in self.rows[1:]:
+                for ele in row.elements:
+                    if head.is_justified(ele, direction='v', max_bias_justify=max_bias_justify):
+                        col.append(ele)
+                        break
+            self.columns.append(col)
 
     def is_ele_contained_in_table(self, element, bias=4):
         '''
@@ -84,6 +100,15 @@ class Table:
             if element.is_in_alignment(row, direction='h', bias=1):
                 row.add_element(element)
                 return
+
+    def visualize_columns(self, board):
+        for col in self.columns:
+            b = board.copy()
+            for ele in col:
+                ele.visualize_element(b)
+            cv2.imshow('col', b)
+            cv2.waitKey()
+            cv2.destroyWindow('col')
 
     def visualize_table(self, board, color=(0, 255, 0), line=2, show=False):
         for row in self.rows:
