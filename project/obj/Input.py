@@ -12,7 +12,10 @@ class Input(Element):
         super().__init__()
 
         self.guide_text.in_input = self
+        self.guide_text.is_guide_text = True
+        self.guide_text.is_module_part = True
         self.input_field.in_input = self
+        self.input_field.is_module_part = True
 
     def init_bound(self):
         '''

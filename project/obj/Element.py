@@ -6,18 +6,18 @@ class Element:
     def __init__(self,
                  id=None, type=None, contour=None, location=None, clip_img=None):
         self.id = id
-        self.is_abandoned = False   # if the element has been merged or defined as noise
+        self.is_abandoned = False       # if the element has been merged or defined as noise
 
-        self.type = type            # text/rectangle/line/textbox
-        self.unit_type = None       # text_unit(text or textbox)/bar_unit(rectangle, line or table)
+        self.type = type                # text/rectangle/line/textbox
+        self.unit_type = None           # text_unit(text or textbox)/bar_unit(rectangle, line or table)
 
-        self.contains = []          # list of elements that are contained in the element
-        self.content = None         # for Textbox, the content of text contained
+        self.contains = []              # list of elements that are contained in the element
+        self.content = None             # for Textbox, the content of text contained
 
-        self.is_valid_cell = False
-        self.in_row = None          # Row object, does the element belong to any table row
-        self.in_table = None        # Table object, does the element belong to any table
-        self.in_input = None        # Input object, if the element is grouped as part of an input element (guide text or input field)
+        self.is_module_part = False     # if the element is part of input/table
+        self.in_row = None              # Row object, does the element belong to any table row
+        self.in_table = None            # Table object, does the element belong to any table
+        self.in_input = None            # Input object, if the element is grouped as part of an input element (guide text or input field)
 
         self.neighbour_top = None
         self.neighbour_bottom = None
@@ -25,8 +25,8 @@ class Element:
         self.neighbour_right = None
 
         self.clip_img = clip_img
-        self.contour = contour      # format of findContours
-        self.location = location    # dictionary {left, right, top, bottom}
+        self.contour = contour          # format of findContours
+        self.location = location        # dictionary {left, right, top, bottom}
         self.width = None
         self.height = None
         self.area = None

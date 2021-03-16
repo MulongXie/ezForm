@@ -52,7 +52,7 @@ class Table:
 
     def add_heading(self, heading):
         for head in heading.elements:
-            head.is_valid_cell = True
+            head.is_module_part = True
         self.heading = heading
         self.add_row(heading)
 
@@ -98,9 +98,9 @@ class Table:
             max_bias_justify = int(head.width / 2)
             for row in self.rows[1:]:
                 for ele in row.elements:
-                    if not ele.is_valid_cell and\
+                    if not ele.is_module_part and\
                             head.is_justified(ele, direction='v', max_bias_justify=max_bias_justify):
-                        ele.is_valid_cell = True
+                        ele.is_module_part = True
                         col.append(ele)
                         break
             self.columns.append(col)
@@ -112,7 +112,7 @@ class Table:
         for row in self.rows[1:]:
             valid_eles = []
             for ele in row.elements:
-                if ele.is_valid_cell:
+                if ele.is_module_part:
                     valid_eles.append(ele)
                 else:
                     ele.is_abandoned = True
