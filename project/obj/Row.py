@@ -46,6 +46,11 @@ class Row:
         self.sort_elements()
         self.init_bound()
 
+    def update_all_elements(self, new_elements):
+        self.elements = []
+        self.ele_ids = []
+        self.add_elements(new_elements)
+
     def merge_row(self, row):
         for ele in row.elements:
             self.add_element(ele, reorder=False)
