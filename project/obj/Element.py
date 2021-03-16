@@ -6,6 +6,7 @@ class Element:
     def __init__(self,
                  id=None, type=None, contour=None, location=None, clip_img=None):
         self.id = id
+        self.is_abandoned = False   # if the element has been merged or defined as noise
 
         self.type = type            # text/rectangle/line/textbox
         self.unit_type = None       # text_unit(text or textbox)/bar_unit(rectangle, line or table)

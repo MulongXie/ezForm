@@ -14,6 +14,7 @@ class Text(Element):
 
     def merge_text(self, text_b, direction='h'):
         text_a = self
+        text_b.is_abandoned = True
 
         top = min(text_a.location['top'], text_b.location['top'])
         left = min(text_a.location['left'], text_b.location['left'])

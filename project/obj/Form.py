@@ -215,17 +215,11 @@ class Form:
         '''
         # iteratively check the relationship between texts and rectangles
         for text in self.texts:
-            board = self.img.img.copy()
             for rec in self.rectangles:
                 relation = text.pos_relation(rec)
-                # if text.pos_relation(rec) != 0:
-                #     text.visualize_element(board, (0, 255, 0), 2)
-                #     rec.visualize_element(board, (0, 0, 255), 2, show=True)
 
                 # if the text is contained in the rectangle box
                 if relation == -1:
-                    # text.visualize_element(board, (0, 255, 0), 2)
-                    # rec.visualize_element(board, (0, 0, 255), 2, show=True)
                     rec.contains.append(text)
 
         # if the rectangle contains only one text, label it as type of textbox
@@ -493,14 +487,16 @@ class Form:
     def visualize_all_elements(self):
         board = self.get_img_copy()
         for text in self.texts:
-            if not text.in_box:
+            if not text.in_box and not text.is_abandoned:
                 text.visualize_element(board)
 
         for rec in self.rectangles:
-            rec.visualize_element(board)
+            if not rec.is_abandoned:
+                rec.visualize_element(board)
 
         for line in self.lines:
-            line.visualize_element(board)
+            if not line.is_abandoned:
+                line.visualize_element(board)
 
         for table in self.tables:
             table.visualize_table(board, color=(255,255,0))
