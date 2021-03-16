@@ -238,9 +238,9 @@ class Form:
     def input_compound_recognition(self, bias=4):
         '''
         Recognize input unit that consists of [guide text] and [input field]
-        First recognize guide text for input:
+        First. recognize guide text for input:
             If a text_unit's closet element in alignment is bar_unit, then count it as a guide text
-        Second compound the guide text and its bar unit (input field) as an Input element
+        Second. compound the guide text and its bar unit (input field) as an Input element
         '''
         if len(self.text_units) + len(self.bar_units) == 0:
             self.group_elements_to_units()
@@ -250,46 +250,24 @@ class Form:
         # from left to right
         units = self.sorted_left_unit
         for i, unit in enumerate(units):
-            # board = self.img.img.copy()
             if unit.unit_type == 'text_unit':
-                # unit.visualize_element(board, color=(0,0,255))
-
-                for j in range(i+1, len(units)):
-                    if units[j].in_input is None and units[j].in_table is None and\
-                            unit.is_in_alignment(units[j], direction='h'):
-                        # if the text unit is connected and justified with a bar unit, then form them as an input object
-                        if units[j].unit_type == 'bar_unit':
-                            unit.is_guide_text = True
-                            self.inputs.append(Input(unit, units[j]))
-                            # units[j].visualize_element(board, color=(255, 0, 0))
-                        else:
-                            unit.is_guide_text = False
-                        break
-                # cv2.imshow('alignment', board)
-                # cv2.waitKey()
+                neighbour_right = self.find_neighbour_unit(unit, direction='right')
+                if neighbour_right is not None and\
+                        neighbour_right.unit_type == 'bar_unit' and\
+                        neighbour_right.in_input is None and neighbour_right.in_table is None:
+                    self.inputs.append(Input(unit, neighbour_right))
 
         # from top to bottom
         units = self.sorted_top_unit
         for i, unit in enumerate(units):
-            # board = self.img.img.copy()
             if unit.in_input is None and unit.unit_type == 'text_unit':
-                # unit.visualize_element(board, color=(0, 0, 255))
-
-                for j in range(i + 1, len(units)):
-                    if unit.is_in_alignment(units[j], direction='v', bias=bias):
-                        # if the text unit is connected and justified with a bar unit, then form them as an input object
-                        # units of an input compound with vertical alignment should be left justifying
-                        if units[j].in_input is None and units[j].in_table is None and\
-                                units[j].unit_type == 'bar_unit' and\
-                                abs(unit.location['left'] - units[j].location['left']) < bias:
-                            unit.is_guide_text = True
-                            self.inputs.append(Input(unit, units[j]))
-                            # units[j].visualize_element(board, color=(255, 0, 0))
-                        else:
-                            unit.is_guide_text = False
-                        break
-                # cv2.imshow('alignment', board)
-                # cv2.waitKey()
+                neighbour_below = self.find_neighbour_unit(unit, direction='below')
+                # units of an input compound with vertical alignment should be left justifying
+                if neighbour_below is not None and\
+                        neighbour_below.unit_type == 'bar_unit' and\
+                        neighbour_below.in_input is None and neighbour_below.in_table is None and\
+                        abs(unit.location['left'] - neighbour_below.location['left']) < bias:
+                    self.inputs.append(Input(unit, neighbour_below))
 
     def row_detection(self, unit):
         '''
