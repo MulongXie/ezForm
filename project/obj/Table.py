@@ -65,21 +65,6 @@ class Table:
         for row in self.rows:
             row.merge_vertical_texts_in_cell()
 
-    def split_columns(self):
-        '''
-        Spilt columns according to the heading
-        Column: A list of Element objects
-        '''
-        for head in self.heading.elements:
-            col = [head]
-            max_bias_justify = int(head.width / 2)
-            for row in self.rows[1:]:
-                for ele in row.elements:
-                    if head.is_justified(ele, direction='v', max_bias_justify=max_bias_justify):
-                        col.append(ele)
-                        break
-            self.columns.append(col)
-
     def is_ele_contained_in_table(self, element, bias=4):
         '''
         Check if the element is contained in the table
@@ -100,6 +85,21 @@ class Table:
             if element.is_in_alignment(row, direction='h', bias=1):
                 row.add_element(element)
                 return
+
+    def split_columns(self):
+        '''
+        Spilt columns according to the heading
+        Column: A list of Element objects
+        '''
+        for head in self.heading.elements:
+            col = [head]
+            max_bias_justify = int(head.width / 2)
+            for row in self.rows[1:]:
+                for ele in row.elements:
+                    if head.is_justified(ele, direction='v', max_bias_justify=max_bias_justify):
+                        col.append(ele)
+                        break
+            self.columns.append(col)
 
     def visualize_columns(self, board):
         for col in self.columns:
