@@ -474,6 +474,10 @@ class Form:
         for table in self.tables:
             table.split_columns()
 
+        # *** Step 7. Remove noises according to column ***
+        for table in self.tables:
+            table.rm_noisy_element()
+
         return self.tables
 
     '''

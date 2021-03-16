@@ -14,6 +14,7 @@ class Element:
         self.contains = []          # list of elements that are contained in the element
         self.content = None         # for Textbox, the content of text contained
 
+        self.is_valid_cell = False
         self.in_row = None          # Row object, does the element belong to any table row
         self.in_table = None        # Table object, does the element belong to any table
         self.in_input = None        # Input object, if the element is grouped as part of an input element (guide text or input field)
