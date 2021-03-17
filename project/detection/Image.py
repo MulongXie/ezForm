@@ -1,7 +1,7 @@
 import cv2
 import numpy as np
 
-from obj.Element import Element
+from detection.Element import Element
 
 
 class Image:

@@ -1,8 +1,8 @@
-from obj.Form import Form
-from obj.Image import Image
+from detection.Form import Form
+from detection.Image import Image
 import cv2
 
-# *** 1. Elements detection ***
+# *** 1. Elements obj ***
 form = Form('data/1.jpg')
 form.text_detection()
 form.element_detection()
@@ -18,7 +18,7 @@ form.group_elements_to_units()
 form.sort_units()
 form.visualize_units()
 
-# *** 4. Table detection ***
+# *** 4. Table obj ***
 form.table_detection()
 form.table_refine()
 form.visualize_all_elements()

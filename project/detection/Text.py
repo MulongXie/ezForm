@@ -1,4 +1,4 @@
-from obj.Element import Element
+from detection.Element import Element
 
 import string
 

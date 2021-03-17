@@ -1,10 +1,10 @@
-from obj.Text import Text
-from obj.Element import Element
-from obj.Image import Image
-from obj.Input import Input
-from obj.Table import Table
-from obj.Row import Row
-import obj.ocr as ocr
+from detection.Text import Text
+from detection.Element import Element
+from detection.Image import Image
+from detection.Input import Input
+from detection.Table import Table
+from detection.Row import Row
+import detection.ocr as ocr
 
 import cv2
 import time

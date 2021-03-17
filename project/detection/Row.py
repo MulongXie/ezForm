@@ -1,5 +1,5 @@
 import cv2
-from obj.Table import Table
+from detection.Table import Table
 
 
 class Row:
