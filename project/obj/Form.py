@@ -348,7 +348,6 @@ class Form:
         '''
         Detect table by detecting continuously matched rows
         '''
-        # *** Step 1. Detect table ***
         recorded_row_ids = []
         for unit in self.all_units:
             if unit.type == 'rectangle' and unit.unit_type == 'bar_unit':
@@ -423,8 +422,10 @@ class Form:
                         # table.visualize_table(board)
                         # unit.visualize_element(board, color=(0,0,255), show=True)
                         self.tables.append(table)
+        return self.tables
 
-        # *** Step 2. Merge elements that are not grouped but contained in a table ***
+    def table_refine(self):
+        # *** Step 1. Merge elements that are not grouped but contained in a table ***
         for table in self.tables:
             for unit in self.all_units:
                 if unit.in_row is not None or unit.in_table is not None:
@@ -432,11 +433,11 @@ class Form:
                 if table.is_ele_contained_in_table(unit):
                     table.insert_element(unit)
 
-        # *** Step 3. Heading detection for table ***
+        # *** Step 2. Heading detection for table ***
         for table in self.tables:
             self.detect_table_heading(table)
 
-        # *** Step 4. Merge elements that are not grouped but contained in the table with heading ***
+        # *** Step 3. Merge elements that are not grouped but contained in the table with heading ***
         for table in self.tables:
             for unit in self.all_units:
                 if unit.in_row is not None or unit.in_table is not None:
@@ -444,19 +445,17 @@ class Form:
                 if table.is_ele_contained_in_table(unit):
                     table.insert_element(unit)
 
-        # *** Step 5. Merge vertically intersected elements in one cell ***
+        # *** Step 4. Merge vertically intersected elements in one cell ***
         for table in self.tables:
             table.merge_vertical_texts_in_cell()
 
-        # *** Step 6. Split columns of a table according to the heading ***
+        # *** Step 5. Split columns of a table according to the heading ***
         for table in self.tables:
             table.split_columns()
 
-        # *** Step 7. Remove noises according to column ***
+        # *** Step 6. Remove noises according to column ***
         for table in self.tables:
             table.rm_noisy_element()
-
-        return self.tables
 
     '''
     *********************

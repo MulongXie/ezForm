@@ -20,6 +20,7 @@ form.visualize_units()
 
 # *** 4. Table detection ***
 form.table_detection()
+form.table_refine()
 form.visualize_all_elements()
 
 # *** 5. Input compound recognition ***
