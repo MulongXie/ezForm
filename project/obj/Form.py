@@ -235,7 +235,7 @@ class Form:
     *** Compound Components Detection ***
     *************************************
     '''
-    def input_compound_recognition(self, bias=4, max_gap_h=50, max_gap_v=20):
+    def input_compound_recognition(self, max_gap_h=50, max_gap_v=30, max_left_justify=8):
         '''
         Recognize input unit that consists of [guide text] and [input field]
         First. recognize guide text for input:
@@ -268,7 +268,7 @@ class Form:
                         neighbour_below.unit_type == 'bar_unit' and\
                         neighbour_below.in_input is None and neighbour_below.in_table is None and \
                         neighbour_below.location['top'] - unit.location['bottom'] < max_gap_v and\
-                        abs(unit.location['left'] - neighbour_below.location['left']) < bias:
+                        abs(unit.location['left'] - neighbour_below.location['left']) < max_left_justify:
                     self.inputs.append(Input(unit, neighbour_below))
 
     def row_detection(self, unit):

@@ -3,7 +3,7 @@ from obj.Image import Image
 import cv2
 
 # *** 1. Elements detection ***
-form = Form('data/3.jpg')
+form = Form('data/1.jpg')
 form.text_detection()
 form.element_detection()
 form.assign_element_ids()
@@ -25,6 +25,7 @@ form.visualize_all_elements()
 
 # *** 5. Input compound recognition ***
 form.input_compound_recognition()
+form.input_refine()
 form.visualize_inputs()
 
 
