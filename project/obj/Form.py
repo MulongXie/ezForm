@@ -426,6 +426,11 @@ class Form:
                         self.tables.append(table)
         return self.tables
 
+    '''
+    *************************
+    *** Module Refinement ***
+    *************************
+    '''
     def table_refine(self):
         # *** Step 1. Merge elements that are not grouped but contained in a table ***
         for table in self.tables:
@@ -458,6 +463,38 @@ class Form:
         # *** Step 6. Remove noises according to column ***
         for table in self.tables:
             table.rm_noisy_element()
+
+    def input_refine(self):
+        # merge intersected text into guide_text
+        for ipt in self.inputs:
+            changed = True
+            while changed:
+                changed = False
+                for text in self.text_units:
+                    if not text.is_module_part and not text.is_abandoned and\
+                            ipt.guide_text.pos_relation(text) != 0:
+                        ipt.merge_guide_text(text)
+                        changed = True
+                        break
+
+            changed = True
+            while changed:
+                changed = False
+                for bar in self.bar_units:
+                    if not bar.is_module_part and not bar.is_abandoned and bar.type == 'rectangle' and\
+                            ipt.is_connected_field(bar):
+                        ipt.merge_input_field(bar)
+                        changed = True
+                        break
+
+            # for text in self.text_units:
+            #     if not text.is_guide_text and ipt.is_ele_intersected_with_input(text):
+            #         ipt.merge_guide_text(text)
+
+            # for bar in self.bar_units:
+            #     if not bar.is_module_part and not bar.is_abandoned and bar.type == 'rectangle' and\
+            #             ipt.is_connected_field(bar):
+            #         ipt.merge_input_field(bar)
 
     '''
     *********************
