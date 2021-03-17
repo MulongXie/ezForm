@@ -235,7 +235,7 @@ class Form:
     *** Compound Components Detection ***
     *************************************
     '''
-    def input_compound_recognition(self, max_gap_h=50, max_gap_v=30, max_left_justify=8):
+    def input_compound_recognition(self, max_gap_h=100, max_gap_v=30, max_left_justify=8):
         '''
         Recognize input unit that consists of [guide text] and [input field]
         First. recognize guide text for input:
@@ -538,8 +538,32 @@ class Form:
     def visualize_inputs(self):
         board = self.get_img_copy()
         for ipt in self.inputs:
-            ipt.visualize_element(board, color=(255, 0, 0), line=2)
+            ipt.visualize_element(board, color=(255, 0, 255), line=2)
             # ipt.visualize_input_overlay(board)
         cv2.imshow('Input', board)
+        cv2.waitKey()
+        cv2.destroyAllWindows()
+
+    def visualize_detection_result(self):
+        board = self.get_img_copy()
+        for text in self.texts:
+            if not text.in_box and not text.is_abandoned and not text.is_module_part:
+                text.visualize_element(board)
+
+        for rec in self.rectangles:
+            if not rec.is_abandoned and not rec.is_module_part:
+                rec.visualize_element(board)
+
+        for line in self.lines:
+            if not line.is_abandoned and not line.is_module_part:
+                line.visualize_element(board)
+
+        for table in self.tables:
+            table.visualize_table(board, color=(255, 255, 0))
+
+        for ipt in self.inputs:
+            ipt.visualize_element(board, color=(255, 0, 255))
+
+        cv2.imshow('form', board)
         cv2.waitKey()
         cv2.destroyAllWindows()

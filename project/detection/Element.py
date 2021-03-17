@@ -273,14 +273,14 @@ class Element:
 
     def visualize_element(self, image, color=None, line=2, show=False):
         if color is None:
-            if self.type == 'text':
+            if self.type == 'text' or self.type == 'textbox':
                 color = (255, 0, 0)
             elif self.type == 'rectangle':
                 color = (0, 255, 0)
             elif self.type == 'line':
                 color = (0, 0, 255)
-            elif self.type == 'textbox':
-                color = (211, 85, 186)
+            # elif self.type == 'textbox':
+            #     color = (211, 85, 186)
         cv2.rectangle(image, (self.location['left'], self.location['top']), (self.location['right'], self.location['bottom']), color, line)
         if show:
             cv2.imshow('element', image)
