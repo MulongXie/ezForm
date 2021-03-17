@@ -4,12 +4,16 @@ I. Detection
 2. Guide word detection			√
 3. Input unit detection			√
 4. Table detection				√
-5. Reliable OCR
-6. Layout segmentation
+5. Reliable OCR					√
+6. Testing + Bug fixing
+	i. Data variant
+	ii. Testing
 
 II. Generation
+1. Layout segmentation
 
 III. Intelligence
+
 
 
 22/2/2021
@@ -44,3 +48,27 @@ III. Intelligence
 2. Testing
 
 3. Layout segmentation
+
+
+
+13/3/2021
+1. Gather and test more samples
+
+2. Collect data variant
+
+3. Create more rules/algorithm
+
+4. Table heading recognition
+
+5. Trivial bugs fix
+
+
+
+18/3/2021 - 1/4/2021
+0. Geberation Complete
+
+
+
+1/4/2021 - 11/4/2021
+0. Draft paper
+0. Intelligence - Rule based

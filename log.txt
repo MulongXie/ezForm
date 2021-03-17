@@ -62,3 +62,55 @@
 
 9/3/2021
 1. Add [in_table] in element object
+
+
+10/3/2021
+1. Test canny as binarization # Canny is not controllable, solution denied
+
+2. Store [neighbours] in element object
+
+3. Store related input object in [in_input] of element object
+
+4. Add [Google OCR]
+
+5. Add [Combine words to sentence] for Google OCR
+
+
+12/3/2021
+1. Input compound bug fix
+
+2. Multiple time run bug of table detection
+
+3. Merge Google OCR
+
+
+15/3/2021
+1. Insert elements [contained by a table] to a most matched row
+
+2. Add [heading detection] in table-detection
+
+3. Add [merge vertically intersected elements] in the same row
+
+
+16/3/2021
+1. Add [extract text content] for Textbox
+
+2. Separate [is justified] in element object
+
+3. Add [split column] according to the heading in a table
+
+4. [Remove noisy elements] that are not in some columns in a table
+
+
+17/3/2021
+1. Add [is_module_part] to show if the element is part of input or table
+
+1. Separate table refine
+
+2. Separate input refine
+
+3. [Merge text] to guide_text in an input module
+
+4. Store list of fields in an input module
+
+5. [Merge field] to input_filed in an input module
