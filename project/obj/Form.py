@@ -85,7 +85,7 @@ class Form:
                 self.text_units.append(ele)
         self.all_units = self.text_units + self.bar_units
 
-    def find_neighbour_unit(self, unit, direction='right', bias=4):
+    def find_neighbour_unit(self, unit, direction='right', connect_bias=4, align_bias=4):
         '''
         Find the first unit 1.next to and 2.in alignment with the target
         :param direction:
@@ -100,9 +100,9 @@ class Form:
                 return unit.neighbour_right
             # check is there any connected unit on the right
             for u in self.sorted_left_unit:
-                if u.id != unit.id and u.location['left'] + bias >= unit.location['right']:
+                if u.id != unit.id and u.location['left'] + connect_bias >= unit.location['right']:
                     # the tow should be justified
-                    if unit.is_in_alignment(u, direction='h'):
+                    if unit.is_in_alignment(u, direction='h', bias=align_bias):
                         unit.neighbour_right = u
                         u.neighbour_left = unit
                         return u
@@ -111,9 +111,9 @@ class Form:
                 return unit.neighbour_left
             # check is there any connected unit on the left
             for u in self.sorted_right_unit:
-                if u.id != unit.id and unit.location['left'] + bias >= u.location['right']:
+                if u.id != unit.id and unit.location['left'] + connect_bias >= u.location['right']:
                     # the tow should be justified
-                    if unit.is_in_alignment(u, direction='h'):
+                    if unit.is_in_alignment(u, direction='h', bias=align_bias):
                         unit.neighbour_left = u
                         u.neighbour_right = unit
                         return u
@@ -122,9 +122,9 @@ class Form:
                 return unit.neighbour_bottom
             # check is there any connected unit below
             for u in self.sorted_top_unit:
-                if u.id != unit.id and u.location['top'] + bias >= unit.location['bottom']:
+                if u.id != unit.id and u.location['top'] + connect_bias >= unit.location['bottom']:
                     # the tow should be justified if they are neighbours
-                    if unit.is_in_alignment(u, direction='v'):
+                    if unit.is_in_alignment(u, direction='v', bias=align_bias):
                         unit.neighbour_bottom = u
                         u.neighbour_top = unit
                         return u
@@ -133,9 +133,9 @@ class Form:
                 return unit.neighbour_top
             # check is there any connected unit above
             for u in self.sorted_bottom_unit:
-                if u.id != unit.id and unit.location['top'] + bias >= u.location['bottom']:
+                if u.id != unit.id and unit.location['top'] + connect_bias >= u.location['bottom']:
                     # the tow should be justified if they are neighbours
-                    if unit.is_in_alignment(u, direction='v'):
+                    if unit.is_in_alignment(u, direction='v', bias=align_bias):
                         unit.neighbour_top = u
                         u.neighbour_bottom = unit
                         return u
@@ -235,7 +235,7 @@ class Form:
     *** Compound Components Detection ***
     *************************************
     '''
-    def input_compound_recognition(self, bias=4):
+    def input_compound_recognition(self, bias=4, max_gap_h=50, max_gap_v=20):
         '''
         Recognize input unit that consists of [guide text] and [input field]
         First. recognize guide text for input:
@@ -251,21 +251,23 @@ class Form:
         units = self.sorted_left_unit
         for i, unit in enumerate(units):
             if unit.unit_type == 'text_unit':
-                neighbour_right = self.find_neighbour_unit(unit, direction='right')
+                neighbour_right = self.find_neighbour_unit(unit, direction='right', align_bias=0)
                 if neighbour_right is not None and\
                         neighbour_right.unit_type == 'bar_unit' and\
-                        neighbour_right.in_input is None and neighbour_right.in_table is None:
+                        neighbour_right.in_input is None and neighbour_right.in_table is None and\
+                        neighbour_right.location['left'] - unit.location['right'] < max_gap_h:
                     self.inputs.append(Input(unit, neighbour_right))
 
         # from top to bottom
         units = self.sorted_top_unit
         for i, unit in enumerate(units):
             if unit.in_input is None and unit.unit_type == 'text_unit':
-                neighbour_below = self.find_neighbour_unit(unit, direction='below')
+                neighbour_below = self.find_neighbour_unit(unit, direction='below', align_bias=0)
                 # units of an input compound with vertical alignment should be left justifying
                 if neighbour_below is not None and\
                         neighbour_below.unit_type == 'bar_unit' and\
-                        neighbour_below.in_input is None and neighbour_below.in_table is None and\
+                        neighbour_below.in_input is None and neighbour_below.in_table is None and \
+                        neighbour_below.location['top'] - unit.location['bottom'] < max_gap_v and\
                         abs(unit.location['left'] - neighbour_below.location['left']) < bias:
                     self.inputs.append(Input(unit, neighbour_below))
 
