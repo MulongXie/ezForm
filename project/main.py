@@ -3,7 +3,7 @@ from detection.Image import Image
 import cv2
 
 # *** 1. Elements obj ***
-form = Form('data/1.jpg')
+form = Form('data/3.jpg')
 form.text_detection()
 form.element_detection()
 form.assign_element_ids()
@@ -27,6 +27,8 @@ form.visualize_all_elements()
 form.input_compound_recognition()
 form.input_refine()
 form.visualize_inputs()
+
+form.visualize_detection_result()
 
 
 # board = form.img.img.copy()

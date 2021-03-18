@@ -114,3 +114,5 @@
 4. Store list of fields in an input module
 
 5. [Merge field] to input_filed in an input module
+
+6. ****** Reorgnize the folder for generation ******

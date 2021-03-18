@@ -11,8 +11,13 @@ I. Detection
 
 II. Generation
 1. Layout segmentation
+2. Functional
+3. Non-functional
+4. Refill to the original form
 
 III. Intelligence
+
+IV. APP (Mobile/Web)
 
 
 
@@ -61,6 +66,23 @@ III. Intelligence
 4. Table heading recognition
 
 5. Trivial bugs fix
+
+
+
+18/3/2021
+I. Detection
+1. Various Data
+	i. Input box (guide text + input filed in the same rectangle) - 1.jpg, 5.jpg
+	ii. Character level input field - 5.jpg, 7.jpg
+	iii. Tick box - 7.jpg, 8.jpg
+	iv. Line mis-recog
+
+2. 	Text analysis (: ...)
+
+II. Generation
+1. Non-functional text/rect : Put on the same location
+
+2. Functional input/table : Reformat
 
 
 
