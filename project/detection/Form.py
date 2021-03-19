@@ -12,6 +12,37 @@ import numpy as np
 import string
 
 
+def form_compo_detection(form_img_file_name):
+    # *** 1. Elements obj ***
+    form = Form(form_img_file_name)
+    form.text_detection()
+    form.element_detection()
+    form.assign_element_ids()
+    # form.visualize_all_elements()
+
+    # *** 2. Special element recognition ***
+    form.textbox_recognition()
+    # form.visualize_all_elements()
+
+    # *** 3. Units grouping ***
+    form.group_elements_to_units()
+    form.sort_units()
+    # form.visualize_units()
+
+    # *** 4. Table obj ***
+    form.table_detection()
+    form.table_refine()
+    # form.visualize_all_elements()
+
+    # *** 5. Input compound recognition ***
+    form.input_compound_recognition()
+    form.input_refine()
+    # form.visualize_inputs()
+
+    # form.visualize_detection_result()
+    return form
+
+
 class Form:
     def __init__(self, img_file_name):
         self.img_file_name = img_file_name
