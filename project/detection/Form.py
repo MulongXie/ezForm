@@ -53,6 +53,32 @@ class Form:
         for i, ele in enumerate(self.get_all_elements()):
             ele.id = i
 
+    def get_detection_result(self):
+        '''
+        Get all non-noisy independent elements (not in any modules) and modules (table, input compound)
+        :return: A list of Elements
+        '''
+        detection_result = []
+        for text in self.texts:
+            if not text.in_box and not text.is_abandoned and not text.is_module_part:
+                detection_result.append(text)
+
+        for rec in self.rectangles:
+            if not rec.is_abandoned and not rec.is_module_part:
+                detection_result.append(rec)
+
+        for line in self.lines:
+            if not line.is_abandoned and not line.is_module_part:
+                detection_result.append(line)
+
+        for table in self.tables:
+            detection_result.append(table)
+
+        for ipt in self.inputs:
+            detection_result.append(ipt)
+
+        return detection_result
+
     def sort_units(self):
         '''
         Sort all units by left and top respectively, and store the result in id lists
