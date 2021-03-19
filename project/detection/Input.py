@@ -16,7 +16,7 @@ class Input(Element):
         self.guide_text = guide_text                    # text/textbox element
         self.input_fields = [input_field]               # list of rectangle/line elements
         self.fields_location = input_field.location
-        super().__init__()
+        super().__init__(type='input')
 
     def init_bound(self):
         '''

@@ -4,6 +4,7 @@ import cv2
 class Table:
     def __init__(self, table_id, rows=None):
         self.table_id = table_id
+        self.type = 'type'
         self.location = None
 
         self.row_ids = []

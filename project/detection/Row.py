@@ -4,6 +4,7 @@ from detection.Table import Table
 
 class Row:
     def __init__(self, row_id, elements=None):
+        self.type = 'row'
         self.row_id = row_id
         self.parent_table = None
         self.location = None
