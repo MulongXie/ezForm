@@ -10,7 +10,13 @@ class HTML:
         self.close = True
 
         self.html_script = None
-        self.generate_html()
+
+        if self.tag == 'tb':
+            self.generate_html_table()
+        elif self.tag == 'input':
+            self.generate_html_input()
+        else:
+            self.generate_html()
 
     def init_by_input_attr(self, attr, non_exist_alt=None):
         if attr in self.attrs:
@@ -38,6 +44,12 @@ class HTML:
         else:
             html[-1] = '/>\n'
         self.html_script = html
+
+    def generate_html_input(self):
+        pass
+
+    def generate_html_table(self):
+        pass
 
     def add_child(self, child):
         '''
