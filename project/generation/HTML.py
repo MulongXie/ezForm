@@ -1,4 +1,3 @@
-
 class HTML:
     def __init__(self, tag, **kwargs):
         self.tag = tag
@@ -6,7 +5,7 @@ class HTML:
 
         self.class_name = self.init_by_input_attr('class_name')
         self.id = self.init_by_input_attr('id')
-        self.children = self.init_by_input_attr('children', '')   # html script
+        self.children = self.init_by_input_attr('children', '')  # html script
         self.close = True
 
         self.html_script = None
@@ -37,13 +36,11 @@ class HTML:
         if self.class_name is not None:
             html += " class=\"" + self.class_name + "\""
         html += ">\n"
-
         # body
         if self.children is not None:
             # indent
             children = '\t' + self.children.replace('\n', '\n\t')
             html += children[:-1]
-
         # close
         if self.close:
             html += "</" + self.tag + ">\n"
@@ -59,16 +56,18 @@ class HTML:
         if self.class_name is not None:
             html += " class=\"" + self.class_name + "\""
         html += ">"
-
         # body
         html += self.content
-
         # close
         html += "</p>\n"
         self.html_script = html
 
     def generate_html_input(self):
-        pass
+        # guide text
+        html = '<label for="' + self.id + '">' + self.guide_text.content + '</label>\n'
+        # input filed
+        html += '<input type="text" id="' + self.id + '">\n'
+        self.html_script = html
 
     def generate_html_table(self):
         pass
