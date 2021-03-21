@@ -6,15 +6,21 @@ class HTML:
 
         self.class_name = self.init_by_input_attr('class_name')
         self.id = self.init_by_input_attr('id')
-        self.children = self.init_by_input_attr('children', '')  # html script
+        self.children = self.init_by_input_attr('children', '')   # html script
         self.close = True
 
         self.html_script = None
+
+        self.content = self.init_by_input_attr('content', '')    # text content for [p]
+        self.heading = self.init_by_input_attr('heading')        # heading for [tb]
+        self.guide_text = self.init_by_input_attr('guide_text')  # guide text for [input]
 
         if self.tag == 'tb':
             self.generate_html_table()
         elif self.tag == 'input':
             self.generate_html_input()
+        elif self.tag == 'p':
+            self.generate_html_p()
         else:
             self.generate_html()
 
@@ -43,6 +49,22 @@ class HTML:
             html += "</" + self.tag + ">\n"
         else:
             html[-1] = '/>\n'
+        self.html_script = html
+
+    def generate_html_p(self):
+        # start
+        html = "<p"
+        if self.id is not None:
+            html += " id=\"" + self.id + "\""
+        if self.class_name is not None:
+            html += " class=\"" + self.class_name + "\""
+        html += ">"
+
+        # body
+        html += self.content
+
+        # close
+        html += "</p>\n"
         self.html_script = html
 
     def generate_html_input(self):
