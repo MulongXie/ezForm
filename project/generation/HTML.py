@@ -11,8 +11,8 @@ class HTML:
         self.html_script = None
 
         self.content = self.init_by_input_attr('content', '')    # text content for [p]
-        self.table = self.init_by_input_attr('table')            # heading for [tb]
-        self.guide_text = self.init_by_input_attr('guide_text')  # guide text for [input]
+        self.table = self.init_by_input_attr('table')            # Table obj for [tb]
+        self.input = self.init_by_input_attr('input')            # Input obj for [input]
 
         if self.tag == 'tb':
             self.generate_html_table()
@@ -64,7 +64,7 @@ class HTML:
 
     def generate_html_input(self):
         # guide text
-        html = '<label for="' + self.id + '">' + self.guide_text.content + '</label>\n'
+        html = '<label for="' + self.id + '">' + self.input.guide_text.content + '</label>\n'
         # input filed
         html += '<input type="text" id="' + self.id + '">\n'
         self.html_script = html

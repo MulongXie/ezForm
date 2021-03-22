@@ -25,7 +25,7 @@ class HTMLCompo:
             self.html = HTML(tag='tb', table=self.element, id='tb-'+str(self.element.id))
         elif self.type == 'input':
             self.html_tag = 'input'
-            self.html = HTML(tag='input', guide_text=self.element.guide_text, id='input-'+str(self.element.id))
+            self.html = HTML(tag='input', input=self.element, id='input-'+str(self.element.id))
         # ignore rectangle and line at this stage
         elif self.type == 'rectangle' or self.type == 'line':
             self.html_tag = 'div'
