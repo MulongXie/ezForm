@@ -522,18 +522,19 @@ class Form:
             table.rm_noisy_element()
 
     def input_refine(self):
-        # merge intersected text into guide_text
         for ipt in self.inputs:
+            # merge intersected text into guide_text
             changed = True
             while changed:
                 changed = False
                 for text in self.text_units:
                     if not text.is_module_part and not text.is_abandoned and\
-                            ipt.guide_text.pos_relation(text) != 0:
+                            ipt.pos_relation(text) != 0:
                         ipt.merge_guide_text(text)
                         changed = True
                         break
 
+            # merged vertically connected input field
             changed = True
             while changed:
                 changed = False
