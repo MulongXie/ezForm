@@ -46,7 +46,7 @@ class Page:
 
     def add_compo_html(self, compos_html):
         '''
-        :param compo_html: sting of html script
+        :param compos_html: sting of html script
         '''
         self.compos_html += compos_html
         for html in compos_html:
