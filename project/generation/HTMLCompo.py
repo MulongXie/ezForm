@@ -5,6 +5,7 @@ from generation.CSS import CSS
 class HTMLCompo:
     def __init__(self, element):
         self.id = element.id
+        self.location = element.location    # dictionary {left, right, top, bottom}
         self.element = element      # Element/Table object of detected form element
         self.type = element.type
 
@@ -46,7 +47,6 @@ class HTMLCompo:
         elif self.type == 'input':
             id = '.input-'+str(self.element.id)
             self.css['input'] = CSS(name='input', margin='5px')
-
         elif self.type == 'rectangle' or self.type == 'line':
             id = '.div-' + str(self.element.id)
 

@@ -24,6 +24,7 @@ class Generator:
     def init_html_compos(self):
         for compo in self.compos:
             self.html_compos.append(HTMLCompo(compo))
+        self.html_compos = sorted(self.html_compos, key=lambda x: x.location['top'])
 
     def init_page_html(self):
         if self.page is None:
