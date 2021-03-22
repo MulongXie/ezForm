@@ -72,3 +72,8 @@ class Generator:
 
     def export_page(self, export_dir='data/output/', html_file_name='xml.html', css_file_name='xml.css'):
         return self.page.export(directory=export_dir, html_file_name=html_file_name, css_file_name=css_file_name)
+
+    def visualize_blocks(self, img):
+        for blk in self.blocks:
+            board = img.copy()
+            blk.visualize_block(board)
