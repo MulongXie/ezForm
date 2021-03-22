@@ -5,7 +5,7 @@ class HTML:
 
         self.class_name = self.init_by_input_attr('class_name')
         self.id = self.init_by_input_attr('id')
-        self.children = self.init_by_input_attr('children', '')  # html script
+        self.children = self.init_by_input_attr('children', [])  # list of string, html script
         self.close = True
 
         self.html_script = None
@@ -37,10 +37,10 @@ class HTML:
             html += " class=\"" + self.class_name + "\""
         html += ">\n"
         # body
-        if self.children is not None:
+        for child in self.children:
             # indent
-            children = '\t' + self.children.replace('\n', '\n\t')
-            html += children[:-1]
+            child = '\t' + child.replace('\n', '\n\t')
+            html += child[:-1]
         # close
         if self.close:
             html += "</" + self.tag + ">\n"
@@ -92,7 +92,7 @@ class HTML:
         '''
         :param child: string, html script
         '''
-        self.children += child
+        self.children.append(child)
         self.generate_html()
 
     def indent(self, indent_num=1):
