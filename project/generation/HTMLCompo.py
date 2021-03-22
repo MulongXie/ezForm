@@ -3,6 +3,7 @@ from generation.HTML import HTML
 
 class HTMLCompo:
     def __init__(self, element):
+        self.id = element.id
         self.element = element      # Element/Table object of detected form element
         self.type = element.type
 
@@ -18,10 +19,10 @@ class HTMLCompo:
     def init_HTML(self):
         if self.type == 'text' or self.type == 'textbox':
             self.html_tag = 'p'
-            self.html = HTML(tag='p', content=self.element.content)
+            self.html = HTML(tag='p', content=self.element.content, id='p-'+str(self.element.id))
         elif self.type == 'table':
             self.html_tag = 'tb'
-            self.html = HTML(tag='tb', heading=self.element.heading)
+            self.html = HTML(tag='tb', table=self.element, id='tb-'+str(self.element.id))
         elif self.type == 'input':
             self.html_tag = 'input'
             self.html = HTML(tag='input', guide_text=self.element.guide_text, id='input-'+str(self.element.id))

@@ -11,7 +11,7 @@ class HTML:
         self.html_script = None
 
         self.content = self.init_by_input_attr('content', '')    # text content for [p]
-        self.heading = self.init_by_input_attr('heading')        # heading for [tb]
+        self.table = self.init_by_input_attr('table')            # heading for [tb]
         self.guide_text = self.init_by_input_attr('guide_text')  # guide text for [input]
 
         if self.tag == 'tb':
@@ -70,7 +70,23 @@ class HTML:
         self.html_script = html
 
     def generate_html_table(self):
-        pass
+        heads = [h.content for h in self.table.heading.elements]
+        col_num = len(heads)
+        html = '<table id="' + self.id + '">\n'
+        # heading
+        thead = self.indent() + '<thead>\n' + self.indent(2) + '<tr>\n'
+        for h in heads:
+            thead += self.indent(3) + '<th>' + h + '</th>\n'
+        thead += self.indent(2) + '</tr>\n'
+
+        # body
+        tbody = self.indent() + '<tbody>\n' + self.indent(2) + '<tr>\n'
+        for i in range(col_num):
+            tbody += self.indent(3) + '<td></td>\n'
+        tbody += self.indent(2) + '</tr>\n'
+
+        html += thead + tbody + '</table>\n'
+        self.html_script = html
 
     def add_child(self, child):
         '''
@@ -78,3 +94,9 @@ class HTML:
         '''
         self.children += child
         self.generate_html()
+
+    def indent(self, indent_num=1):
+        indent = ''
+        for i in range(indent_num):
+            indent += '\t'
+        return indent
