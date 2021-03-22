@@ -5,20 +5,27 @@ from generation.HTML import HTML
 from generation.CSS import CSS
 
 
-def visualize_blocks(blocks, board):
-    for blk in blocks:
-        blk.visualize_block(board)
-    
-
 class Block:
     def __init__(self, block_id):
         self.block_id = block_id
-        self.html_compos = []   # list of HTMLCompos constituting the block
+        self.html_compos = []    # list of HTMLCompos constituting the block
         self.is_abandoned = False
+
+        self.html = None         # HTML object to represent the entire block
+        self.html_script = None  # string to represent the HTML script
+        self.css = {}            # directory of all CSS objs, {'.class'/'#id' : CSS obj}
+
+        self.init_html()
+
+    def init_html(self):
+        self.html = HTML(tag='div', id='blk-'+str(self.block_id))
+        self.html_script = self.html.html_script
 
     def add_compo(self, compo):
         compo.parent_block = self
         self.html_compos.append(compo)
+        self.html.add_child(compo.html_script)
+        self.html_script = self.html.html_script
 
     def add_compos(self, compos):
         for compo in compos:
