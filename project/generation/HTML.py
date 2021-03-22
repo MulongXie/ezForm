@@ -66,7 +66,7 @@ class HTML:
         # guide text
         html = '<label for="' + self.id + '">' + self.input.guide_text.content + '</label>\n'
         # input filed
-        html += '<input type="text" id="' + self.id + '">\n'
+        html += '<input type="text" id="' + self.id + '"><br>\n'
         self.html_script = html
 
     def generate_html_table(self):
