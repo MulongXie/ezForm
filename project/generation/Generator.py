@@ -31,5 +31,4 @@ class Generator:
             self.html_page.add_compo_html(compo.html_script)
 
     def export_page(self, export_dir='data/output/', html_file_name='xml.html', css_file_name='xml.css'):
-        os.makedirs(export_dir, exist_ok=True)
-        return self.html_page.export(export_dir)
+        return self.html_page.export(directory=export_dir, html_file_name=html_file_name, css_file_name=css_file_name)

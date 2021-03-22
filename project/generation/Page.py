@@ -63,8 +63,6 @@ class Page:
 
     def export(self, directory='page', html_file_name='xml.html', css_file_name='xml.css'):
         os.makedirs(directory, exist_ok=True)
-        html_path = os.path.join(directory, html_file_name)
-        css_path = os.path.join(directory, css_file_name)
-        open(html_path, 'w').write(self.page_html)
-        open(css_path, 'w').write(self.page_css)
+        open(os.path.join(directory, html_file_name), 'w').write(self.page_html)
+        open(os.path.join(directory, css_file_name), 'w').write(self.page_css)
         return self.page_html, self.page_css
