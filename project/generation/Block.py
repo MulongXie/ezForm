@@ -1,6 +1,14 @@
 import cv2
 import numpy as np
 
+from generation.HTML import HTML
+from generation.CSS import CSS
+
+
+def visualize_blocks(blocks, board):
+    for blk in blocks:
+        blk.visualize_block(board)
+    
 
 class Block:
     def __init__(self, block_id):
