@@ -38,7 +38,7 @@ def form_compo_detection(form_img_file_name):
     form.input_compound_recognition()
     form.input_refine()
     # form.visualize_inputs()
-
+    form.text_refine()
     # form.visualize_detection_result()
     return form
 
@@ -292,7 +292,7 @@ class Form:
     *** Compound Components Detection ***
     *************************************
     '''
-    def input_compound_recognition(self, max_gap_h=100, max_gap_v=30, max_left_justify=8):
+    def input_compound_recognition(self, max_gap_h=30, max_gap_v=30, max_left_justify=8):
         '''
         Recognize input unit that consists of [guide text] and [input field]
         First. recognize guide text for input:
@@ -552,6 +552,36 @@ class Form:
             #     if not bar.is_module_part and not bar.is_abandoned and bar.type == 'rectangle' and\
             #             ipt.is_connected_field(bar):
             #         ipt.merge_input_field(bar)
+
+    def text_refine(self):
+        '''
+        Merge intersected ungrouped texts
+        '''
+        texts = []
+        others = []
+        for text in self.texts:
+            if not text.in_box and not text.is_abandoned and not text.is_module_part:
+                texts.append(text)
+            else:
+                others.append(text)
+
+        changed = True
+        while changed:
+            changed = False
+            temp_set = []
+            for text_a in texts:
+                merged = False
+                for text_b in temp_set:
+                    if text_a.pos_relation(text_b) != 0:
+                        text_b.merge_text(text_a, direction='v')
+                        merged = True
+                        changed = True
+                        break
+                if not merged:
+                    temp_set.append(text_a)
+            texts = temp_set.copy()
+
+        self.texts = texts + others
 
     '''
     *********************
