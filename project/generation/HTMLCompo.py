@@ -10,9 +10,8 @@ class HTMLCompo:
         self.html_tag = None
         self.html_class = None
         self.html_id = None
-
-        self.html = None
-        self.html_script = None
+        self.html = None            # HTML obj
+        self.html_script = None     # string
 
         self.init_HTML()
 
