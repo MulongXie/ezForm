@@ -2,27 +2,20 @@ import os
 
 
 class Page:
-    def __init__(self, compos_html=None, compos_css=None, title='Title',
-                 html_file_name='xml.html', css_file_name='xml.css'):
+    def __init__(self, title='Title', html_file_name='xml.html', css_file_name='xml.css'):
         self.html_file_name = html_file_name
         self.css_file_name = css_file_name
 
-        if compos_html is None:
-            self.compos_html = []   # list of sting, HTML script
-        else:
-            self.compos_html = compos_html if type(compos_html) is list else [compos_html]
-        if compos_css is None:
-            self.compos_css = []    # list of css, CSS script
-        else:
-            self.compos_css = compos_css if type(compos_css) is list else [compos_css]
+        self.compos_html = []   # list of HTML objs
+        self.compos_css = {}    # directory of CSS objs, {'.class'/'#id' : CSS obj}
 
         self.title = title
         self.html_header = None
         self.html_body = None
         self.html_end = "</body>\n</html>"
 
-        self.page_html = ''
-        self.page_css = ''
+        self.html_script = ''
+        self.css_script = ''
         self.init_page_html()
         self.init_page_css()
 
@@ -35,34 +28,32 @@ class Page:
         # body
         self.html_body = "<body>\n"
         for html in self.compos_html:
-            self.html_body += html
+            self.html_body += html.html_script
         # assembly
-        self.page_html = self.html_header + self.html_body + self.html_end
+        self.html_script = self.html_header + self.html_body + self.html_end
 
     def init_page_css(self):
-        self.page_css = 'ul{\n\tlist-style: None;\n\tpadding: 0;\n\tmargin:0;\n}'
-        for css in self.compos_css:
-            self.page_css += css
+        self.css_script = 'ul{\n\tlist-style: None;\n\tpadding: 0;\n\tmargin:0;\n}\n'
+        for css_name in self.compos_css:
+            self.css_script += self.compos_css[css_name].css_script
 
-    def add_compo_html(self, compos_html):
+    def add_compo_html(self, compo_html):
         '''
-        :param compos_html: sting of html script
+        :param compo_html: HTML obj in a compo
         '''
-        self.compos_html += compos_html
-        for html in compos_html:
-            self.html_body += html
-        self.page_html = self.html_header + self.html_body + self.html_end
+        self.compos_html += [compo_html]
+        self.html_body += compo_html.html_script
+        self.html_script = self.html_header + self.html_body + self.html_end
 
     def add_compo_css(self, compo_css):
         '''
-        :param compo_css: string of css script
+        :param compo_css: directory of CSS objs, {'.class'/'#id' : CSS obj}
         '''
-        self.compos_css += compo_css
-        for css in compo_css:
-            self.page_css += css
+        self.compos_css.update(compo_css)
+        self.init_page_css()
 
     def export(self, directory='page', html_file_name='xml.html', css_file_name='xml.css'):
         os.makedirs(directory, exist_ok=True)
-        open(os.path.join(directory, html_file_name), 'w').write(self.page_html)
-        open(os.path.join(directory, css_file_name), 'w').write(self.page_css)
-        return self.page_html, self.page_css
+        open(os.path.join(directory, html_file_name), 'w').write(self.html_script)
+        open(os.path.join(directory, css_file_name), 'w').write(self.css_script)
+        return self.html_script, self.css_script
