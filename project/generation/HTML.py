@@ -57,7 +57,7 @@ class HTML:
             html += " class=\"" + self.class_name + "\""
         html += ">"
         # body
-        html += self.content
+        html += self.content.replace('\n', '</br>')
         # close
         html += "</p>\n"
         self.html_script = html

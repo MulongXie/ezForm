@@ -45,9 +45,6 @@ class Text(Element):
                 top_element = text_b
                 bottom_element = text_a
 
-            if bottom_element.content[0] in string.punctuation:
-                self.content = top_element.content + bottom_element.content
-            else:
-                self.content = top_element.content + ' ' + bottom_element.content
+            self.content = top_element.content + '\n' + bottom_element.content
 
 
