@@ -14,6 +14,14 @@ class HTML:
         self.table = self.init_by_input_attr('table')            # Table obj for [tb]
         self.input = self.init_by_input_attr('input')            # Input obj for [input]
 
+        self.init_html()
+
+    def init_by_input_attr(self, attr, non_exist_alt=None):
+        if attr in self.attrs:
+            return self.attrs[attr]
+        return non_exist_alt
+
+    def init_html(self):
         if self.tag == 'tb':
             self.generate_html_table()
         elif self.tag == 'input':
@@ -22,11 +30,6 @@ class HTML:
             self.generate_html_p()
         else:
             self.generate_html()
-
-    def init_by_input_attr(self, attr, non_exist_alt=None):
-        if attr in self.attrs:
-            return self.attrs[attr]
-        return non_exist_alt
 
     def generate_html(self):
         # start
