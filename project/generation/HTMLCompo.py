@@ -41,6 +41,7 @@ class HTMLCompo:
     def init_css(self):
         if self.type == 'text' or self.type == 'textbox':
             id = '.p-'+str(self.element.id)
+            self.css['p'] = CSS(name='p', margin='5px')
         elif self.type == 'table':
             id = '.tb-'+str(self.element.id)
             self.css['table'] = CSS(name='table', width='100%', border='1px solid black')
@@ -51,4 +52,4 @@ class HTMLCompo:
             self.css['input'] = CSS(name='input', margin='5px')
         elif self.type == 'rectangle' or self.type == 'line':
             id = '.div-' + str(self.element.id)
-            self.css['.border-line'] = CSS(name='.border-line', border='1px solid black', width='100%')
+            self.css['.border-line'] = CSS(name='.border-line')

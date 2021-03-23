@@ -23,14 +23,19 @@ class Block:
         self.html_script = self.html.html_script
 
     def init_css(self):
-        self.css['.wrap'] = CSS(name='.wrap', display='flex', border='1px solid black', margin='5px')
+        self.css['.wrap'] = CSS(name='.wrap', display='flex', border='1px solid black', margin='5px', justify_content='center')
+
+    def sort_compos(self, by='left'):
+        self.html_compos = sorted(self.html_compos, key=lambda x: x.location[by])
 
     def add_compo(self, compo):
         compo.parent_block = self
-        self.html_compos.append(compo)
-        self.html.add_child(compo.html_script)
-        self.html_script = self.html.html_script
         self.css.update(compo.css)
+
+        self.html_compos.append(compo)
+        self.sort_compos()
+        self.html.update_children([c.html_script for c in self.html_compos])
+        self.html_script = self.html.html_script
 
     def add_compos(self, compos):
         for compo in compos:

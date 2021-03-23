@@ -95,6 +95,14 @@ class HTML:
         self.children.append(child)
         self.generate_html()
 
+    def update_children(self, children):
+        '''
+        Replace all children with new ones
+        :param children: list of string of html script
+        '''
+        self.children = children
+        self.generate_html()
+
     def indent(self, indent_num=1):
         indent = ''
         for i in range(indent_num):
