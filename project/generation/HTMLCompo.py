@@ -34,7 +34,7 @@ class HTMLCompo:
         # ignore rectangle and line at this stage
         elif self.type == 'rectangle' or self.type == 'line':
             self.html_tag = 'div'
-            self.html = HTML(tag='div')
+            self.html = HTML(tag='div', class_name='border-line')
 
         self.html_script = self.html.html_script
 
@@ -51,5 +51,4 @@ class HTMLCompo:
             self.css['input'] = CSS(name='input', margin='5px')
         elif self.type == 'rectangle' or self.type == 'line':
             id = '.div-' + str(self.element.id)
-
-
+            self.css['.border-line'] = CSS(name='.border-line', border='1px solid black', width='100%')
