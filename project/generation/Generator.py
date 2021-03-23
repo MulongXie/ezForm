@@ -47,14 +47,16 @@ class Generator:
         '''
         compos = self.html_compos
         for i in range(len(compos)):
-            for j in range(i, len(compos)):
+            for j in range(i + 1, len(compos)):
                 if compos[i].location['bottom'] < compos[j].location['top']:
                     break
                 # group elements in same horizontal alignment into same block
                 if compos[i].element.is_in_alignment(compos[j], direction='h', bias=2):
-                    if compos[i].parent_block is not None and compos[j].parent_block is not None and\
-                            compos[i].parent_block.block_id != compos[j].parent_block.block_id:
-                        compos[i].parent_block.merge_block(compos[j].parent_block)
+                    if compos[i].parent_block is not None and compos[j].parent_block is not None:
+                        if compos[i].parent_block.block_id != compos[j].parent_block.block_id:
+                            compos[i].parent_block.merge_block(compos[j].parent_block)
+                        else:
+                            continue
 
                     elif compos[i].parent_block is None and compos[j].parent_block is None:
                         block = Block(self.block_id)
@@ -65,10 +67,6 @@ class Generator:
                     elif compos[i].parent_block is not None and compos[j].parent_block is None:
                         block = compos[i].parent_block
                         block.add_compo(compos[j])
-
-                    elif compos[i].parent_block is None and compos[j].parent_block is not None:
-                        block = compos[j].parent_block
-                        block.add_compo(compos[i])
 
     def export_page(self, export_dir='data/output/', html_file_name='xml.html', css_file_name='xml.css'):
         return self.page.export(directory=export_dir, html_file_name=html_file_name, css_file_name=css_file_name)
