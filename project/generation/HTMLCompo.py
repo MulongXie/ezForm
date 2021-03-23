@@ -50,6 +50,7 @@ class HTMLCompo:
         elif self.type == 'input':
             id = '.input-'+str(self.element.id)
             self.css['input'] = CSS(name='input', margin='5px')
+            self.css['label'] = CSS(name='label', margin='5px')
         elif self.type == 'rectangle' or self.type == 'line':
             id = '.div-' + str(self.element.id)
             self.css['.border-line'] = CSS(name='.border-line')

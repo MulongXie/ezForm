@@ -19,11 +19,11 @@ class Block:
         self.init_css()
 
     def init_html(self):
-        self.html = HTML(tag='div', id='blk-'+str(self.block_id), class_name='wrap')
+        self.html = HTML(tag='div', id='blk-'+str(self.block_id), class_name='wrap-center')
         self.html_script = self.html.html_script
 
     def init_css(self):
-        self.css['.wrap'] = CSS(name='.wrap', display='flex', border='1px solid black', margin='5px', justify_content='center')
+        self.css['.wrap-center'] = CSS(name='.wrap-center', display='flex', border='1px solid black', margin='5px', justify_content='center')
 
     def sort_compos(self, by='left'):
         self.html_compos = sorted(self.html_compos, key=lambda x: x.location[by])
@@ -31,6 +31,11 @@ class Block:
     def add_compo(self, compo):
         compo.parent_block = self
         self.css.update(compo.css)
+
+        if compo.type == 'input' and '.wrap-center' in self.css:
+            self.css.pop('.wrap-center')
+            self.html.class_name = 'wrap-vertical'
+            self.css['.wrap-vertical'] = CSS(name='.wrap-vertical', border='1px solid black', margin='5px')
 
         self.html_compos.append(compo)
         self.sort_compos()
