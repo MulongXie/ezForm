@@ -65,21 +65,26 @@ class Generator:
                     break
                 # group elements in same horizontal alignment into same block
                 if compos[i].element.is_in_alignment(compos[j], direction='h', bias=2):
+                    # merge blocks if both i and j has been grouped in parent blocks
                     if compos[i].parent_block is not None and compos[j].parent_block is not None:
                         if compos[i].parent_block.block_id != compos[j].parent_block.block_id:
                             compos[i].parent_block.merge_block(compos[j].parent_block)
                         else:
                             continue
-
+                    # if no compo has parent block, creat a new one
                     elif compos[i].parent_block is None and compos[j].parent_block is None:
                         block = Block(self.block_id)
                         self.block_id += 1
                         self.blocks.append(block)
                         block.add_compos([compos[i], compos[j]])
-
+                    # else add the ungrouped one to existing block
                     elif compos[i].parent_block is not None and compos[j].parent_block is None:
                         block = compos[i].parent_block
                         block.add_compo(compos[j])
+                    elif compos[i].parent_block is None and compos[j].parent_block is not None:
+                        block = compos[j].parent_block
+                        block.add_compo(compos[i])
+            # if i is not grouped, create a block for itself
             if compos[i].parent_block is None:
                 block = Block(self.block_id)
                 self.block_id += 1
