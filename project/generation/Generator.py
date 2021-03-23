@@ -29,6 +29,8 @@ class Generator:
             self.html_compos.append(HTMLCompo(compo))
         self.html_compos = sorted(self.html_compos, key=lambda x: x.location['top'])
 
+        self.section_separator_recognition()
+
     def init_page_html(self):
         if self.page is None:
             self.page = Page()
@@ -40,6 +42,17 @@ class Generator:
             self.page = Page()
         for block in self.blocks:
             self.page.add_compo_css(block.css)
+
+    def section_separator_recognition(self):
+        keywords = {'part', 'section'}
+        for compo in self.html_compos:
+            if compo.type == 'text':
+                if compo.type == 'text' or compo.type == 'textbox':
+                    # if the first three words include the keywords
+                    words = set(compo.element.content.lower().split()[:3])
+                    inters = keywords.intersection(words)
+                    if len(inters) > 0:
+                        compo.is_section_separator = True
 
     def slice_blocks(self):
         '''

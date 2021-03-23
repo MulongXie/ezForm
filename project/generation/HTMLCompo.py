@@ -10,6 +10,7 @@ class HTMLCompo:
         self.type = element.type
 
         self.parent_block = None    # Block obj
+        self.is_section_separator = False
 
         self.html = None            # HTML obj
         self.html_tag = None
