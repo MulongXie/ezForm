@@ -32,14 +32,14 @@ class Generator:
     def init_page_html(self):
         if self.page is None:
             self.page = Page()
-        for compo in self.html_compos:
-            self.page.add_compo_html(compo.html)
+        for block in self.blocks:
+            self.page.add_compo_html(block.html)
 
     def init_page_css(self):
         if self.page is None:
             self.page = Page()
-        for compo in self.html_compos:
-            self.page.add_compo_css(compo.css)
+        for block in self.blocks:
+            self.page.add_compo_css(block.css)
 
     def slice_blocks(self):
         '''
@@ -67,6 +67,11 @@ class Generator:
                     elif compos[i].parent_block is not None and compos[j].parent_block is None:
                         block = compos[i].parent_block
                         block.add_compo(compos[j])
+            if compos[i].parent_block is None:
+                block = Block(self.block_id)
+                self.block_id += 1
+                self.blocks.append(block)
+                block.add_compo(compos[i])
 
     def export_page(self, export_dir='data/output/', html_file_name='xml.html', css_file_name='xml.css'):
         return self.page.export(directory=export_dir, html_file_name=html_file_name, css_file_name=css_file_name)

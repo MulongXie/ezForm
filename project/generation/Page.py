@@ -33,7 +33,8 @@ class Page:
         self.html_script = self.html_header + self.html_body + self.html_end
 
     def init_page_css(self):
-        self.css_script = 'ul{\n\tlist-style: None;\n\tpadding: 0;\n\tmargin:0;\n}\n'
+        # self.css_script = 'ul{\n\tlist-style: None;\n\tpadding: 0;\n\tmargin:0;\n}\n'
+        self.css_script = ''
         for css_name in self.compos_css:
             self.css_script += self.compos_css[css_name].css_script
 
