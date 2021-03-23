@@ -16,16 +16,21 @@ class Block:
         self.css = {}            # directory of all CSS objs, {'.class'/'#id' : CSS obj}
 
         self.init_html()
+        self.init_css()
 
     def init_html(self):
-        self.html = HTML(tag='div', id='blk-'+str(self.block_id))
+        self.html = HTML(tag='div', id='blk-'+str(self.block_id), class_name='wrap')
         self.html_script = self.html.html_script
+
+    def init_css(self):
+        self.css['.wrap'] = CSS(name='.wrap', display='flex', border='1px solid black', margin='5px')
 
     def add_compo(self, compo):
         compo.parent_block = self
         self.html_compos.append(compo)
         self.html.add_child(compo.html_script)
         self.html_script = self.html.html_script
+        self.css.update(compo.css)
 
     def add_compos(self, compos):
         for compo in compos:
