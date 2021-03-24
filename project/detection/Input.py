@@ -44,7 +44,7 @@ class Input(Element):
         return False
 
     def merge_guide_text(self, text):
-        self.guide_text.merge_text(text)
+        self.guide_text.merge_text(text, direction='v')
         self.init_bound()
 
     def merge_input_field(self, field):
