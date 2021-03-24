@@ -39,7 +39,8 @@ class Input(Element):
         Check if the bar is part of the input field
         '''
         for f in self.input_fields:
-            if f.is_on_same_line(bar, direction='v', bias_gap=4, bias_justify=4):
+            if f.is_on_same_line(bar, direction='v', bias_gap=4, bias_justify=4) or\
+                    f.is_on_same_line(bar, direction='h', bias_gap=2, bias_justify=4):
                 return True
         return False
 
