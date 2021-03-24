@@ -27,13 +27,13 @@ class Block:
     def init_html(self):
         self.html = HTML(tag='div', id='blk-'+str(self.block_id), class_name='wrap-center')
         if self.is_section_wrapper:
-            self.html.change_class('section-wrapper', is_append=True)
+            self.html.change_class('section-wrapper', is_append=False)
         self.html_script = self.html.html_script
 
     def init_css(self):
-        self.css['.wrap-center'] = CSS(name='.wrap-center', display='flex', border='1px solid black', margin='5px', justify_content='center')
+        self.css['.wrap-center'] = CSS(name='.wrap-center', display='flex', margin='5px', justify_content='center')
         if self.is_section_wrapper:
-            self.css['.section-wrapper'] = CSS(name='.wrap-center', display='flex', border='1px solid black', margin='5px')
+            self.css['.section-wrapper'] = CSS(name='.section-wrapper', border='1px solid black', margin='20px')
 
     def sort_compos(self, by='left'):
         self.html_compos = sorted(self.html_compos, key=lambda x: x.location[by])
@@ -45,12 +45,13 @@ class Block:
         if compo.type == 'input' and '.wrap-center' in self.css:
             self.css.pop('.wrap-center')
             self.html.change_class('wrap-vertical', is_append=False)
-            self.css['.wrap-vertical'] = CSS(name='.wrap-vertical', border='1px solid black', margin='5px')
+            self.css['.wrap-vertical'] = CSS(name='.wrap-vertical')
 
         # if one of the compo is section separator, set the block as section
         if compo.is_section_separator:
             self.is_section_title = True
             self.html.change_class('section-title', is_append=True)
+            self.css['.section-title'] = CSS(name='.section-title', border='1px solid black', margin='5px')
 
         self.html_compos.append(compo)
         self.sort_compos()

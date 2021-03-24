@@ -32,21 +32,17 @@ class Generator:
 
         self.section_separator_recognition()
 
-    def init_page_html(self, by='block'):
+    def init_page(self, by='block'):
         if self.page is None:
             self.page = Page()
         if by == 'block':
             for block in self.blocks:
                 self.page.add_compo_html(block.html)
+                self.page.add_compo_css(block.css)
         elif by == 'section':
             for sect in self.sections:
                 self.page.add_compo_html(sect.html)
-
-    def init_page_css(self):
-        if self.page is None:
-            self.page = Page()
-        for block in self.blocks:
-            self.page.add_compo_css(block.css)
+                self.page.add_compo_css(sect.css)
 
     def section_separator_recognition(self):
         keywords = {'part', 'section'}
