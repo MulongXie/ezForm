@@ -292,7 +292,7 @@ class Form:
     *** Compound Components Detection ***
     *************************************
     '''
-    def input_compound_recognition(self, max_gap_h=30, max_gap_v=30, max_left_justify=8):
+    def input_compound_recognition(self, max_gap_h=100, max_gap_v=30, max_left_justify=8):
         '''
         Recognize input unit that consists of [guide text] and [input field]
         First. recognize guide text for input:
@@ -529,7 +529,7 @@ class Form:
                 changed = False
                 for text in self.text_units:
                     if not text.is_module_part and not text.is_abandoned and\
-                            ipt.pos_relation(text) != 0:
+                            (ipt.guide_text.pos_relation(text) != 0 or ipt.pos_relation(text, bias=2) != 0):
                         ipt.merge_guide_text(text)
                         changed = True
                         break
@@ -607,7 +607,7 @@ class Form:
                 line.visualize_element(board)
 
         for table in self.tables:
-            table.visualize_table(board, color=(255,255,0))
+            table.visualize_element(board, color=(255,255,0))
 
         cv2.imshow('form', board)
         cv2.waitKey()
@@ -647,7 +647,7 @@ class Form:
                 line.visualize_element(board)
 
         for table in self.tables:
-            table.visualize_table(board, color=(255, 255, 0))
+            table.visualize_element(board, color=(255, 255, 0))
 
         for ipt in self.inputs:
             ipt.visualize_element(board, color=(255, 0, 255))
