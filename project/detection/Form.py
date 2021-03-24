@@ -595,16 +595,16 @@ class Form:
     def visualize_all_elements(self):
         board = self.get_img_copy()
         for text in self.texts:
-            if not text.in_box and not text.is_abandoned:
-                text.visualize_element(board)
+            # if not text.in_box and not text.is_abandoned:
+            text.visualize_element(board)
 
         for rec in self.rectangles:
-            if not rec.is_abandoned:
-                rec.visualize_element(board)
+            # if not rec.is_abandoned:
+            rec.visualize_element(board)
 
         for line in self.lines:
-            if not line.is_abandoned:
-                line.visualize_element(board)
+            # if not line.is_abandoned:
+            line.visualize_element(board)
 
         for table in self.tables:
             table.visualize_element(board, color=(255,255,0))
