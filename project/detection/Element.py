@@ -134,7 +134,7 @@ class Element:
     *** Relation with Other Ele ***
     *******************************
     '''
-    def pos_relation(self, element):
+    def pos_relation(self, element, bias=0):
         '''
         Calculate the relation between two elements by iou
         :return:
@@ -146,8 +146,8 @@ class Element:
         l_a = self.location
         l_b = element.location
 
-        left_in = max(l_a['left'], l_b['left'])
-        top_in = max(l_a['top'], l_b['top'])
+        left_in = max(l_a['left'], l_b['left']) + bias
+        top_in = max(l_a['top'], l_b['top']) + bias
         right_in = min(l_a['right'], l_b['right'])
         bottom_in = min(l_a['bottom'], l_b['bottom'])
 
@@ -240,6 +240,11 @@ class Element:
                     return True
             return False
 
+    '''
+    ********************
+    *** For text box ***
+    ********************
+    '''
     def textbox_extract_texts_content(self):
         '''
         For Textbox, extract the text content
@@ -258,6 +263,36 @@ class Element:
 
         self.contains = [texts] + non_texts
         self.content = text_merged.content
+
+    def merge_text(self, text_b, direction='h'):
+        text_a = self
+        text_b.is_abandoned = True
+
+        top = min(text_a.location['top'], text_b.location['top'])
+        left = min(text_a.location['left'], text_b.location['left'])
+        right = max(text_a.location['right'], text_b.location['right'])
+        bottom = max(text_a.location['bottom'], text_b.location['bottom'])
+        self.location = {'left': left, 'top': top, 'right': right, 'bottom': bottom}
+        self.width = self.location['right'] - self.location['left']
+        self.height = self.location['bottom'] - self.location['top']
+        self.area = self.width * self.height
+
+        if direction == 'h':
+            if text_a.location['left'] < text_b.location['left']:
+                left_element = text_a
+                right_element = text_b
+            else:
+                left_element = text_b
+                right_element = text_a
+            self.content = left_element.content + ' ' + right_element.content
+        elif direction == 'v':
+            if text_a.location['top'] < text_b.location['top']:
+                top_element = text_a
+                bottom_element = text_b
+            else:
+                top_element = text_b
+                bottom_element = text_a
+            self.content = top_element.content + '\n' + bottom_element.content
 
     '''
     *********************
