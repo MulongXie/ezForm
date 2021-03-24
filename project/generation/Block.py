@@ -27,13 +27,17 @@ class Block:
     def init_html(self):
         self.html = HTML(tag='div', id='blk-'+str(self.block_id), class_name='wrap-center')
         if self.is_section_wrapper:
-            self.html.change_class('section-wrapper', is_append=False)
+            self.html.add_class('section-wrapper', is_append=False)
+        else:
+            self.html.add_class('content', is_append=True)
         self.html_script = self.html.html_script
 
     def init_css(self):
         self.css['.wrap-center'] = CSS(name='.wrap-center', display='flex', margin='5px', justify_content='center')
         if self.is_section_wrapper:
             self.css['.section-wrapper'] = CSS(name='.section-wrapper', border='1px solid black', margin='20px')
+        else:
+            self.css['.content'] = CSS(name='.content', display='None')
 
     def sort_compos(self, by='left'):
         self.html_compos = sorted(self.html_compos, key=lambda x: x.location[by])
@@ -44,13 +48,14 @@ class Block:
         # set vertical alignment for input compounds
         if compo.type == 'input' and '.wrap-center' in self.css:
             self.css.pop('.wrap-center')
-            self.html.change_class('wrap-vertical', is_append=False)
-            self.css['.wrap-vertical'] = CSS(name='.wrap-vertical')
+            self.html.del_class('wrap-center')
 
         # if one of the compo is section separator, set the block as section
         if compo.is_section_separator:
             self.is_section_title = True
-            self.html.change_class('section-title', is_append=True)
+            self.css.pop('.content')
+            self.html.del_class('content')
+            self.html.add_class('section-title', is_append=True)
             self.css['.section-title'] = CSS(name='.section-title', border='1px solid black', margin='5px')
 
         self.html_compos.append(compo)
