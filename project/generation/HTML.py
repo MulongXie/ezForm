@@ -96,7 +96,7 @@ class HTML:
         :param child: string, html script
         '''
         self.children.append(child)
-        self.generate_html()
+        self.init_html()
 
     def update_children(self, children):
         '''
@@ -104,7 +104,14 @@ class HTML:
         :param children: list of string of html script
         '''
         self.children = children
-        self.generate_html()
+        self.init_html()
+
+    def change_class(self, new_class, is_append=True):
+        if is_append:
+            self.class_name = self.class_name + ' ' + new_class
+        else:
+            self.class_name = new_class
+        self.init_html()
 
     def indent(self, indent_num=1):
         indent = ''
