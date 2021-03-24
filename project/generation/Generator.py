@@ -59,7 +59,10 @@ class Generator:
         '''
         Slice blocks according to horizontal alignment
         '''
-        section_wrapper = None
+        section_wrapper = Block(self.block_id)
+        self.block_id += 1
+        self.sections.append(section_wrapper)
+
         compos = self.html_compos
         for i in range(len(compos)):
             block_updated = False
@@ -105,7 +108,7 @@ class Generator:
                     self.block_id += 1
                     self.sections.append(section_wrapper)
                 # add the block to current section
-                elif section_wrapper is not None:
+                else:
                     section_wrapper.add_child_block(compos[i].parent_block)
 
     def export_page(self, export_dir='data/output/', html_file_name='xml.html', css_file_name='xml.css'):
