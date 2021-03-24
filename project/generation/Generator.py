@@ -15,6 +15,7 @@ class Generator:
 
         self.blocks = []        # list of Block objs to group compos
         self.block_id = 0
+        self.sections = []
         self.html_compos = []   # list of HTMLCompos objs
         self.page = None
 
@@ -58,8 +59,10 @@ class Generator:
         '''
         Slice blocks according to horizontal alignment
         '''
+        section_wrapper = None
         compos = self.html_compos
         for i in range(len(compos)):
+            block_updated = False
             for j in range(i + 1, len(compos)):
                 if compos[i].location['bottom'] < compos[j].location['top']:
                     break
@@ -84,12 +87,26 @@ class Generator:
                     elif compos[i].parent_block is None and compos[j].parent_block is not None:
                         block = compos[j].parent_block
                         block.add_compo(compos[i])
+                    # indicate the block is changed
+                    block_updated = True
             # if i is not grouped, create a block for itself
             if compos[i].parent_block is None:
                 block = Block(self.block_id)
                 self.block_id += 1
                 self.blocks.append(block)
                 block.add_compo(compos[i])
+                block_updated = True
+
+            if block_updated:
+                # create a new section if the block is a section title
+                if compos[i].parent_block.is_section_title:
+                    section_wrapper = Block(self.block_id, is_section_wrapper=True)
+                    section_wrapper.add_child_block(compos[i].parent_block)
+                    self.block_id += 1
+                    self.sections.append(section_wrapper)
+                # add the block to current section
+                elif section_wrapper is not None:
+                    section_wrapper.add_child_block(compos[i].parent_block)
 
     def export_page(self, export_dir='data/output/', html_file_name='xml.html', css_file_name='xml.css'):
         return self.page.export(directory=export_dir, html_file_name=html_file_name, css_file_name=css_file_name)
