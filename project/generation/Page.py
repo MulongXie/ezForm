@@ -16,6 +16,8 @@ class Page:
 
         self.html_script = ''
         self.css_script = ''
+        self.js_script = ''
+        self.init_page_js()
         self.init_page_html()
         self.init_page_css()
 
@@ -23,20 +25,45 @@ class Page:
         # header
         self.html_header = "<!DOCTYPE html>\n<html>\n<head>\n\t<title>" \
                            + self.title + "</title>\n" \
-                           + "<link rel=\"stylesheet\" href=\"" + self.css_file_name + "\">" \
+                           + "\t<link rel=\"stylesheet\" href=\"" + self.css_file_name + "\">\n" \
                            + "</head>\n"
         # body
         self.html_body = "<body>\n"
         for html in self.compos_html:
             self.html_body += html.html_script
         # assembly
-        self.html_script = self.html_header + self.html_body + self.html_end
+        self.html_script = self.html_header + self.html_body + self.js_script + self.html_end
 
     def init_page_css(self):
         # self.css_script = 'ul{\n\tlist-style: None;\n\tpadding: 0;\n\tmargin:0;\n}\n'
-        self.css_script = ''
+        self.set_global_page_style()
         for css_name in self.compos_css:
             self.css_script += self.compos_css[css_name].css_script
+
+    def set_global_page_style(self):
+        self.css_script = ''
+
+    def init_page_js(self):
+        self.js_script = """
+        <script>
+        var sectionTitle = document.getElementsByClassName("section-title")
+        for(let i = 0; i < sectionTitle.length; i++){
+            sectionTitle[i].addEventListener("click", function () {
+                this.classList.toggle("active")
+                let sibling = this.nextElementSibling
+                while(sibling){
+                    console.log(sibling)
+                    if (sibling.style.display === "block") {
+                        sibling.style.display = "none";
+                    } else {
+                        sibling.style.display = "block";
+                    }
+                    sibling = sibling.nextElementSibling
+                }
+            })
+        }
+        </script>
+    """
 
     def add_compo_html(self, compo_html):
         '''
@@ -44,7 +71,7 @@ class Page:
         '''
         self.compos_html += [compo_html]
         self.html_body += compo_html.html_script
-        self.html_script = self.html_header + self.html_body + self.html_end
+        self.html_script = self.html_header + self.html_body + self.js_script + self.html_end
 
     def add_compo_css(self, compo_css):
         '''
