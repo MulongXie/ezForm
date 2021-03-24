@@ -65,6 +65,7 @@ class Block:
         if block not in self.children_blocks:
             block.parent_section = self
             self.children_blocks.append(block)
+            self.html_compos += block.html_compos
 
         self.css.update(block.css)
         self.html.update_children([b.html_script for b in self.children_blocks])

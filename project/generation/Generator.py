@@ -32,11 +32,15 @@ class Generator:
 
         self.section_separator_recognition()
 
-    def init_page_html(self):
+    def init_page_html(self, by='block'):
         if self.page is None:
             self.page = Page()
-        for block in self.blocks:
-            self.page.add_compo_html(block.html)
+        if by == 'block':
+            for block in self.blocks:
+                self.page.add_compo_html(block.html)
+        elif by == 'section':
+            for sect in self.sections:
+                self.page.add_compo_html(sect.html)
 
     def init_page_css(self):
         if self.page is None:
@@ -114,7 +118,12 @@ class Generator:
     def export_page(self, export_dir='data/output/', html_file_name='xml.html', css_file_name='xml.css'):
         return self.page.export(directory=export_dir, html_file_name=html_file_name, css_file_name=css_file_name)
 
-    def visualize_blocks(self, img):
+    def visualize_blocks(self):
         for blk in self.blocks:
-            board = img.copy()
+            board = self.form.get_img_copy()
             blk.visualize_block(board)
+
+    def visualize_sections(self):
+        for sect in self.sections:
+            board = self.form.get_img_copy()
+            sect.visualize_block(board)
