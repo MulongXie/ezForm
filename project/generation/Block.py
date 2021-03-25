@@ -33,11 +33,16 @@ class Block:
         self.html_script = self.html.html_script
 
     def init_css(self):
-        self.css['.wrap-center'] = CSS(name='.wrap-center', display='flex', margin='5px', justify_content='center')
-        if self.is_section_wrapper:
-            self.css['.section-wrapper'] = CSS(name='.section-wrapper', border='1px solid black', margin='20px')
-        else:
-            self.css['.content'] = CSS(name='.content', display='None')
+        '''
+        Only add css led by css ID specific for this compo
+        '''
+        css_id = '#block-' + str(self.block_id)
+
+    def del_style_class(self, class_name):
+        self.html.del_class(class_name=class_name)
+        class_name = '.' + class_name
+        if class_name in self.css:
+            self.css.pop(class_name)
 
     def sort_compos(self, by='left'):
         self.html_compos = sorted(self.html_compos, key=lambda x: x.location[by])
@@ -46,17 +51,14 @@ class Block:
         compo.parent_block = self
         self.css.update(compo.css)
         # set vertical alignment for input compounds
-        if compo.type == 'input' and '.wrap-center' in self.css:
-            self.css.pop('.wrap-center')
-            self.html.del_class('wrap-center')
+        if compo.type == 'input':
+            self.del_style_class('wrap-center')
 
         # if one of the compo is section separator, set the block as section
         if compo.is_section_separator:
             self.is_section_title = True
-            self.css.pop('.content')
-            self.html.del_class('content')
+            self.del_style_class('content')
             self.html.add_class('section-title', is_append=True)
-            self.css['.section-title'] = CSS(name='.section-title', border='1px solid black', margin='5px')
 
         self.html_compos.append(compo)
         self.sort_compos()

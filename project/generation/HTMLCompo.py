@@ -40,18 +40,14 @@ class HTMLCompo:
         self.html_script = self.html.html_script
 
     def init_css(self):
+        '''
+        Only add css led by css ID specific for this compo
+        '''
         if self.type == 'text' or self.type == 'textbox':
-            id = '.p-'+str(self.element.id)
-            self.css['p'] = CSS(name='p', margin='5px')
+            css_id = '#p-'+str(self.element.id)
         elif self.type == 'table':
-            id = '.tb-'+str(self.element.id)
-            self.css['table'] = CSS(name='table', width='100%', border='1px solid black')
-            self.css['th'] = CSS(name='th', border='1px solid black')
-            self.css['td'] = CSS(name='td', border='1px solid black', height='20px')
+            css_id = '#tb-'+str(self.element.id)
         elif self.type == 'input':
-            id = '.input-'+str(self.element.id)
-            self.css['input'] = CSS(name='input', margin='5px')
-            self.css['label'] = CSS(name='label', margin='5px')
+            css_id = '#input-'+str(self.element.id)
         elif self.type == 'rectangle' or self.type == 'line':
-            id = '.div-' + str(self.element.id)
-            self.css['.border-line'] = CSS(name='.border-line')
+            css_id = '#div-' + str(self.element.id)

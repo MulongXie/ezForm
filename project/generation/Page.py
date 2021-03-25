@@ -1,4 +1,5 @@
 import os
+from generation.CSS import CSS
 
 
 class Page:
@@ -7,7 +8,7 @@ class Page:
         self.css_file_name = css_file_name
 
         self.compos_html = []   # list of HTML objs
-        self.compos_css = {}    # directory of CSS objs, {'.class'/'#id' : CSS obj}
+        self.css = {}    # directory of CSS objs, {'.class'/'#id' : CSS obj}
 
         self.title = title
         self.html_header = None
@@ -17,9 +18,11 @@ class Page:
         self.html_script = ''
         self.css_script = ''
         self.js_script = ''
+
+        self.set_global_page_style()
+        self.init_page_css()
         self.init_page_js()
         self.init_page_html()
-        self.init_page_css()
 
     def init_page_html(self):
         # header
@@ -36,12 +39,29 @@ class Page:
 
     def init_page_css(self):
         # self.css_script = 'ul{\n\tlist-style: None;\n\tpadding: 0;\n\tmargin:0;\n}\n'
-        self.set_global_page_style()
-        for css_name in self.compos_css:
-            self.css_script += self.compos_css[css_name].css_script
+        self.css_script = ''
+        for css_name in self.css:
+            self.css_script += self.css[css_name].css_script
 
     def set_global_page_style(self):
-        self.css_script = ''
+        '''
+        Set styles of global tags/classes in one place
+        '''
+        self.css['p'] = CSS(name='p', margin='5px')
+        self.css['table'] = CSS(name='table', width='100%', border='1px solid black')
+        self.css['th'] = CSS(name='th', border='1px solid black')
+        self.css['td'] = CSS(name='td', border='1px solid black', height='20px')
+        self.css['input'] = CSS(name='input', margin='5px')
+        self.css['label'] = CSS(name='label', margin='5px')
+
+        # for compo
+        self.css['.border-line'] = CSS(name='.border-line')  # for cutting line (ungrouped rectangle or line)
+        # for normal div wrapper
+        self.css['.wrap-center'] = CSS(name='.wrap-center', display='flex', margin='5px', justify_content='center')  # for wrapper that doesn't contain Input
+        self.css['.content'] = CSS(name='.content', display='None')  # for content in a section that is not title
+        # for section
+        self.css['.section-wrapper'] = CSS(name='.section-wrapper', border='1px solid black', margin='20px')  # for section-wrapper
+        self.css['.section-title'] = CSS(name='.section-title', border='1px solid black', margin='5px')  # for section title
 
     def init_page_js(self):
         self.js_script = """
@@ -77,7 +97,7 @@ class Page:
         '''
         :param compo_css: directory of CSS objs, {'.class'/'#id' : CSS obj}
         '''
-        self.compos_css.update(compo_css)
+        self.css.update(compo_css)
         self.init_page_css()
 
     def export(self, directory='page', html_file_name='xml.html', css_file_name='xml.css'):
