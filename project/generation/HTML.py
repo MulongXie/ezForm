@@ -107,14 +107,17 @@ class HTML:
         self.init_html()
 
     def add_class(self, new_class, is_append=True):
-        if is_append:
-            self.class_name = self.class_name + ' ' + new_class
+        if is_append and self.class_name is not None:
+            if new_class not in self.class_name:
+                self.class_name = self.class_name + ' ' + new_class
         else:
             self.class_name = new_class
         self.init_html()
 
     def del_class(self, class_name):
         self.class_name = self.class_name.replace(class_name, '')
+        if self.class_name == '':
+            return
         if self.class_name[0] == ' ':
             self.class_name = self.class_name[1:]
         if self.class_name[-1] == ' ':
