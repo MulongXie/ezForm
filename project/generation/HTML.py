@@ -85,7 +85,7 @@ class HTML:
         # body
         tbody = self.indent() + '<tbody>\n' + self.indent(2) + '<tr>\n'
         for i in range(col_num):
-            tbody += self.indent(3) + '<td></td>\n'
+            tbody += self.indent(3) + '<td><input id="tb-input-col' + str(i) + '-row-1"></td>\n'
         tbody += self.indent(2) + '</tr>\n'
 
         html += thead + tbody + '</table>\n'

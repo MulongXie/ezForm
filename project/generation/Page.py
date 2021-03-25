@@ -50,9 +50,10 @@ class Page:
         self.css['p'] = CSS(name='p', margin='5px')
         self.css['table'] = CSS(name='table', width='100%', border='1px solid black')
         self.css['th'] = CSS(name='th', border='1px solid black')
-        self.css['td'] = CSS(name='td', border='1px solid black', height='20px')
+        self.css['td'] = CSS(name='td', height='20px')
         self.css['input'] = CSS(name='input', margin='5px')
         self.css['label'] = CSS(name='label', margin='5px')
+        self.css['table input'] = CSS(name='table input', width='97%', margin='0', border='1px solid black')
 
         # for compo
         self.css['.border-line'] = CSS(name='.border-line')  # for cutting line (ungrouped rectangle or line)
@@ -61,8 +62,13 @@ class Page:
         self.css['.text-wrapper'] = CSS(name='.text-wrapper', justify_content='space-around')
         self.css['.input-wrapper'] = CSS(name='.input-wrapper')  # for wrapper that contains Input compound
         # for section
-        self.css['.section-wrapper'] = CSS(name='.section-wrapper', border='1px solid black', margin='20px')  # for section-wrapper
-        self.css['.section-title'] = CSS(name='.section-title', border='1px solid black', margin='5px', display='flex', justify_content='center')  # for section title
+        self.css['.section-wrapper'] = CSS(name='.section-wrapper',
+                                           background_color='#f1f1f1', margin='20px', padding='10px')  # for section-wrapper
+        self.css['.section-title'] = CSS(name='.section-title',
+                                         border='1px solid black', background_color='lightgrey', margin='5px',
+                                         display='flex', justify_content='center', cursor='pointer')  # for section title
+        self.css['.section-title:hover'] = CSS(name='.section-title:hover',
+                                               background_color='darkgrey')
 
     def init_page_js(self):
         self.js_script = """
