@@ -25,7 +25,7 @@ class Block:
         self.init_css()
 
     def init_html(self):
-        self.html = HTML(tag='div', id='blk-'+str(self.block_id), class_name='wrap-center')
+        self.html = HTML(tag='div', id='blk-'+str(self.block_id), class_name='text-wrapper')
         if self.is_section_wrapper:
             self.html.add_class('section-wrapper', is_append=False)
         else:
@@ -52,11 +52,13 @@ class Block:
         self.css.update(compo.css)
         # set vertical alignment for input compounds
         if compo.type == 'input':
-            self.del_style_class('wrap-center')
+            self.html.del_class('text-wrapper')
+            self.html.add_class('input-wrapper', is_append=True)
 
         # if one of the compo is section separator, set the block as section
         if compo.is_section_separator:
             self.is_section_title = True
+            self.html.del_class('text-wrapper')
             self.del_style_class('content')
             self.html.add_class('section-title', is_append=True)
 

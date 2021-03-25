@@ -57,11 +57,12 @@ class Page:
         # for compo
         self.css['.border-line'] = CSS(name='.border-line')  # for cutting line (ungrouped rectangle or line)
         # for normal div wrapper
-        self.css['.wrap-center'] = CSS(name='.wrap-center', display='flex', margin='5px', justify_content='center')  # for wrapper that doesn't contain Input
         self.css['.content'] = CSS(name='.content', display='None')  # for content in a section that is not title
+        self.css['.text-wrapper'] = CSS(name='.text-wrapper', justify_content='space-around')
+        self.css['.input-wrapper'] = CSS(name='.input-wrapper')  # for wrapper that contains Input compound
         # for section
         self.css['.section-wrapper'] = CSS(name='.section-wrapper', border='1px solid black', margin='20px')  # for section-wrapper
-        self.css['.section-title'] = CSS(name='.section-title', border='1px solid black', margin='5px')  # for section title
+        self.css['.section-title'] = CSS(name='.section-title', border='1px solid black', margin='5px', display='flex', justify_content='center')  # for section title
 
     def init_page_js(self):
         self.js_script = """
@@ -72,11 +73,15 @@ class Page:
                 this.classList.toggle("active")
                 let sibling = this.nextElementSibling
                 while(sibling){
-                    console.log(sibling)
-                    if (sibling.style.display === "block") {
+                    if (sibling.style.display === "block" || sibling.style.display === "flex") {
                         sibling.style.display = "none";
                     } else {
-                        sibling.style.display = "block";
+                        if (sibling.classList.contains('input-wrapper')) {
+                            sibling.style.display = "block";
+                        }
+                        else if (sibling.classList.contains('text-wrapper')){
+                            sibling.style.display = "flex";
+                        }
                     }
                     sibling = sibling.nextElementSibling
                 }
