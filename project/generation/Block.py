@@ -11,6 +11,7 @@ class Block:
         self.html_compos = []    # list of HTMLCompos constituting the block
 
         self.is_abandoned = False  # set True if the block is merged into others
+        self.is_input_section = True    # if the section contains Input compound
 
         self.is_section_title = False    # if the block is section title
         self.is_section_wrapper = is_section_wrapper  # if the block is section wrapper
@@ -54,6 +55,7 @@ class Block:
         if compo.type == 'input':
             self.html.del_class('text-wrapper')
             self.html.add_class('input-wrapper', is_append=True)
+            self.is_input_section = True
 
         # if one of the compo is section separator, set the block as section
         if compo.is_section_separator:
