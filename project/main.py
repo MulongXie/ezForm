@@ -3,7 +3,7 @@ from generation.Generator import Generator
 
 
 form = form_compo_detection('data/input/3.jpg')
-# form.visualize_detection_result()
+form.visualize_detection_result()
 
 gen = Generator(form)
 gen.init_html_compos()

@@ -146,37 +146,28 @@
 		<input type="text" id="input-37"><br>
 	</div>
 </div>
-<button style="width: 200px; height: 80px" onclick="submitForm()">Submit</button>
 
-<script>
-	var sectionTitle = document.getElementsByClassName("section-title")
-	for(let i = 0; i < sectionTitle.length; i++){
-		sectionTitle[i].addEventListener("click", function () {
-			this.classList.toggle("active")
-			let sibling = this.nextElementSibling
-			while(sibling){
-				if (sibling.style.display === "block" || sibling.style.display === "flex") {
-					sibling.style.display = "none";
-				} else {
-					if (sibling.classList.contains('input-wrapper')) {
-						sibling.style.display = "block";
-					}
-					else if (sibling.classList.contains('text-wrapper')){
-						sibling.style.display = "flex";
-					}
-				}
-				sibling = sibling.nextElementSibling
-			}
-		})
-	}
-
-	function submitForm() {
-		let inputs = document.getElementsByTagName('input')
-		for (let i = 0; i < inputs.length; i++){
-			console.log(inputs[i])
-			console.log(inputs[i].value)
-		}
-	}
-</script>
-</body>
+        <script>
+        var sectionTitle = document.getElementsByClassName("section-title")
+        for(let i = 0; i < sectionTitle.length; i++){
+            sectionTitle[i].addEventListener("click", function () {
+                this.classList.toggle("active")
+                let sibling = this.nextElementSibling
+                while(sibling){
+                    if (sibling.style.display === "block" || sibling.style.display === "flex") {
+                        sibling.style.display = "none";
+                    } else {
+                        if (sibling.classList.contains('input-wrapper')) {
+                            sibling.style.display = "block";
+                        }
+                        else if (sibling.classList.contains('text-wrapper')){
+                            sibling.style.display = "flex";
+                        }
+                    }
+                    sibling = sibling.nextElementSibling
+                }
+            })
+        }
+        </script>
+    </body>
 </html>

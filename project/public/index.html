@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+
+<button id="start-btn" style="width: 200px; height: 50px">Start</button>
+<h2 id="stdout"></h2>
+
+<script>
+    $('#start-btn').on('click', function () {
+        $.ajax({
+            url: '/start',
+            type: 'get',
+            success: function(resp){
+                if (resp.code === 1){
+                    $('#stdout').html(resp.stdout)
+                }
+                else {
+                    alert('Failed')
+                }
+            }
+        })
+    })
+</script>
+
+</body>
+</html>

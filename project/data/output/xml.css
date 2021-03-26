@@ -1,50 +1,50 @@
+table{
+	width: 100%;
+	border: 1px solid black;
+}
+table input{
+	width: 97%;
+	border: 1px solid black;
+	margin: 0;
+}
+.input-wrapper{
+}
+.section-title:hover{
+	background-color: darkgrey;
+}
+.content{
+	display: None;
+}
+.text-wrapper{
+	justify-content: space-around;
+}
+th{
+	border: 1px solid black;
+}
+.section-title{
+	display: flex;
+	background-color: lightgrey;
+	cursor: pointer;
+	margin: 5px;
+	border: 1px solid black;
+	justify-content: center;
+}
+.section-wrapper{
+	padding: 10px;
+	background-color: #f1f1f1;
+	margin: 20px;
+}
+input{
+	margin: 5px;
+}
+p{
+	margin: 5px;
+}
 label{
 	margin: 5px;
 }
 td{
 	height: 20px;
 }
-input{
-	margin: 5px;
-}
-table input{
-	border: 1px solid black;
-	width: 97%;
-	margin: 0;
-}
-table{
-	border: 1px solid black;
-	width: 100%;
-}
-.content{
-	display: None;
-}
-.input-wrapper{
-}
-.section-wrapper{
-	padding: 10px;
-	margin: 20px;
-	background-color: #f1f1f1;
-}
-th{
-	border: 1px solid black;
-}
-.section-title:hover{
-	background-color: darkgrey;
-}
 .border-line{
-}
-.section-title{
-	border: 1px solid black;
-	display: flex;
-	margin: 5px;
-	justify-content: center;
-	cursor: pointer;
-	background-color: lightgrey;
-}
-.text-wrapper{
-	justify-content: space-around;
-}
-p{
-	margin: 5px;
 }
