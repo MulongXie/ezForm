@@ -11,6 +11,7 @@ import json
 class Generator:
     def __init__(self, form):
         self.form = form
+        self.form_name = form.form_name
         self.compos = form.get_detection_result()
         self.reassign_compo_id()
 
@@ -20,7 +21,8 @@ class Generator:
         self.html_compos = []   # list of HTMLCompos objs
         self.page = None
 
-        self.export_dir = 'data/output/'
+        self.export_dir = 'data/output/' + self.form_name
+        os.makedirs(self.export_dir, exist_ok=True)
 
     def reassign_compo_id(self):
         id = 0
@@ -119,7 +121,7 @@ class Generator:
         for compo in self.html_compos:
             if compo.type == 'input':
                 fields[compo.html_id] = [f.location for f in compo.element.input_fields]
-        json.dump(fields, open(self.export_dir + 'input_loc.json', 'w'), indent=4)
+        json.dump(fields, open(os.path.join(self.export_dir, 'input_loc.json'), 'w'), indent=4)
         return fields
 
     def export_page(self, html_file_name='xml.html', css_file_name='xml.css'):
