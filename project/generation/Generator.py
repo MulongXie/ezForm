@@ -37,7 +37,7 @@ class Generator:
 
         self.section_separator_recognition()
 
-    def init_page(self, by='block'):
+    def init_page(self, by='section'):
         if self.page is None:
             self.page = Page()
         if by == 'block':
