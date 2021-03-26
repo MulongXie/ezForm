@@ -25,16 +25,20 @@ class HTMLCompo:
     def init_html(self):
         if self.type == 'text' or self.type == 'textbox':
             self.html_tag = 'p'
-            self.html = HTML(tag='p', content=self.element.content, id='p-'+str(self.element.id))
+            self.html_id = 'p-'+str(self.element.id)
+            self.html = HTML(tag='p', content=self.element.content, id=self.html_id)
         elif self.type == 'table':
             self.html_tag = 'tb'
-            self.html = HTML(tag='tb', table=self.element, id='tb-'+str(self.element.id))
+            self.html_id = 'tb-'+str(self.element.id)
+            self.html = HTML(tag='tb', table=self.element, id=self.html_id)
         elif self.type == 'input':
             self.html_tag = 'input'
-            self.html = HTML(tag='input', input=self.element, id='input-'+str(self.element.id))
+            self.html_id = 'input-'+str(self.element.id)
+            self.html = HTML(tag='input', input=self.element, id=self.html_id)
         # ignore rectangle and line at this stage
         elif self.type == 'rectangle' or self.type == 'line':
             self.html_tag = 'div'
+            self.html_class = 'border-line'
             self.html = HTML(tag='div', class_name='border-line')
 
         self.html_script = self.html.html_script
