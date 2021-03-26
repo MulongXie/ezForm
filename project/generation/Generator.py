@@ -5,6 +5,7 @@ from generation.HTMLCompo import HTMLCompo
 from generation.Block import Block
 
 import os
+import json
 
 
 class Generator:
@@ -18,6 +19,8 @@ class Generator:
         self.sections = []
         self.html_compos = []   # list of HTMLCompos objs
         self.page = None
+
+        self.export_dir = 'data/output/'
 
     def reassign_compo_id(self):
         id = 0
@@ -111,8 +114,16 @@ class Generator:
                 else:
                     section_wrapper.add_child_block(compos[i].parent_block)
 
-    def export_page(self, export_dir='data/output/', html_file_name='xml.html', css_file_name='xml.css'):
-        return self.page.export(directory=export_dir, html_file_name=html_file_name, css_file_name=css_file_name)
+    def export_input_fields_locations(self):
+        fields = {}  # {input html id: [list of fields locations]}
+        for compo in self.html_compos:
+            if compo.type == 'input':
+                fields[compo.html_id] = [f.location for f in compo.element.input_fields]
+        json.dump(fields, open(self.export_dir + 'input_loc.json', 'w'), indent=4)
+        return fields
+
+    def export_page(self, html_file_name='xml.html', css_file_name='xml.css'):
+        return self.page.export(directory=self.export_dir, html_file_name=html_file_name, css_file_name=css_file_name)
 
     def visualize_blocks(self):
         for blk in self.blocks:
