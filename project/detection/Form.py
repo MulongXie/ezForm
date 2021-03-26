@@ -10,6 +10,7 @@ import cv2
 import time
 import numpy as np
 import string
+import os
 
 
 def form_compo_detection(form_img_file_name):
@@ -47,6 +48,7 @@ class Form:
     def __init__(self, img_file_name):
         self.img_file_name = img_file_name
         self.img = Image(img_file_name)
+        self.form_name = img_file_name.split('/')[-1][:-4]
 
         # form elements
         self.texts = []             # detected by ocr
@@ -68,6 +70,10 @@ class Form:
 
         self.row_id = 0
         self.table_id = 0
+
+        self.export_dir = 'data/output/' + self.form_name
+        os.makedirs(self.export_dir, exist_ok=True)
+
 
     '''
     **************************
