@@ -14,10 +14,16 @@ app.get('/',function(req,res){
     console.log("Connecting at", time.toLocaleString())
 });
 
-app.get('/start', function (req, res) {
+app.get('/process', function (req, res) {
     console.log('\nStart processing')
 
-    let processer = child_process.exec('python main.py ',
+    let form_img_file = './data/input/3.jpg'
+    let input_path_split = form_img_file.split('/');
+    let result_dir = './data/output/' + input_path_split[input_path_split.length - 1].split('.')[0];
+    let detection_result_img = result_dir + '/detection.jpg'
+    let generation_page = result_dir + '/xml.html'
+
+    let processer = child_process.exec('python main.py ' + form_img_file,
         function (error, stdout, stderr) {
             if (error){
                 console.log(stdout);
@@ -28,7 +34,7 @@ app.get('/start', function (req, res) {
             }
             else {
                 console.log('Processing successfully');
-                res.json({code:1, stdout:stdout})
+                res.json({code:1, stdout:stdout, result_img:detection_result_img, result_page:generation_page})
             }
         });
 
@@ -40,7 +46,12 @@ app.get('/start', function (req, res) {
 app.post('/submitData', function (req, res) {
     let data = req.body
     console.log(data)
-    fs.writeFile('data.json', JSON.stringify(data, null, '\t'), function (err) {
+    let form_img_file = './data/input/3.jpg'
+    let input_path_split = form_img_file.split('/');
+    let result_dir = './data/output/' + input_path_split[input_path_split.length - 1].split('.')[0];
+    let filled_data_file = result_dir + '/input_data.json'
+
+    fs.writeFile(filled_data_file, JSON.stringify(data, null, '\t'), function (err) {
         if (! err){
             console.log('data store')
         }

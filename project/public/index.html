@@ -7,23 +7,47 @@
 </head>
 <body>
 
-<button id="start-btn" style="width: 200px; height: 50px">Start</button>
+<button id="btn-process" style="width: 200px; height: 50px">Start</button>
+<button id="btn-fill" style="width: 200px; height: 50px; display: none">Fill Form</button>
 <h2 id="stdout"></h2>
+<img id="img-detection-res" style="border: 1px solid black; display: none">
+<iframe id="page-fill"></iframe>
+
 
 <script>
-    $('#start-btn').on('click', function () {
+    $('#btn-process').on('click', function () {
         $.ajax({
-            url: '/start',
+            url: '/process',
             type: 'get',
             success: function(resp){
                 if (resp.code === 1){
                     $('#stdout').html(resp.stdout)
+                    $('#img-detection-res').attr('src', resp.result_img)
+                    $('#img-detection-res').show()
+                    $('#page-fill').attr('src', resp.result_page)
+                    $('#btn-fill').show()
                 }
                 else {
                     alert('Failed')
                 }
             }
         })
+    })
+    $('#btn-fill').on('click', function () {
+        let page = document.getElementById('page-fill').contentWindow.document
+        let inputs = page.getElementsByTagName('input')
+        let data = {}
+        for (let i = 0; i < inputs.length; i++){
+            data[inputs[i].id] = inputs[i].value
+        }
+        $.ajax({
+                url: '/submitData',
+                type: 'post',
+                data:{
+                    inputs: data
+                }
+            }
+        )
     })
 </script>
 

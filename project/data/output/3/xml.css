@@ -1,50 +1,50 @@
-.section-title:hover{
-	background-color: darkgrey;
-}
-p{
-	margin: 5px;
-}
 .section-title{
-	justify-content: center;
 	display: flex;
 	border: 1px solid black;
-	margin: 5px;
 	cursor: pointer;
+	justify-content: center;
+	margin: 5px;
 	background-color: lightgrey;
 }
-.input-wrapper{
+.section-title:hover{
+	background-color: darkgrey;
 }
 label{
 	margin: 5px;
 }
+.text-wrapper{
+	justify-content: space-around;
+}
 td{
 	height: 20px;
+}
+p{
+	margin: 5px;
+}
+.section-wrapper{
+	margin: 20px;
+	background-color: #f1f1f1;
+	padding: 10px;
 }
 th{
 	border: 1px solid black;
 }
-.content{
-	display: None;
-}
-.section-wrapper{
-	padding: 10px;
-	margin: 20px;
-	background-color: #f1f1f1;
-}
 table input{
-	margin: 0;
 	border: 1px solid black;
+	margin: 0;
 	width: 97%;
+}
+.input-wrapper{
 }
 input{
 	margin: 5px;
 }
-.border-line{
+.content{
+	display: None;
 }
 table{
 	border: 1px solid black;
 	width: 100%;
 }
-.text-wrapper{
-	justify-content: space-around;
+.border-line{
 }
