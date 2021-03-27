@@ -26,20 +26,22 @@
     <div id="main-contents" class="container-fluid">
         <div class="row">
             <div class="col-md-6 col-xs-12 content-wrapper" style="padding: 0; overflow: hidden">
-                <div class="content-bar"></div>
+                <div class="content-bar">
+                    <span class="bar-header">Re-generated Form</span>
+                    <button id="btn-fill" class="btn btn-primary">Fill Form</button>
+                </div>
                 <iframe id="iframe-page-fill" src="xml.html"></iframe>
             </div>
             <div class="col-md-6 col-xs-12 content-wrapper" style="padding: 0">
-                <div class="content-bar">
+                <div class="content-bar" style="padding: 0">
                     <ul class="nav nav-tabs">
-                        <li class="active"><a data-toggle="tab" href="#home">Home</a></li>
-                        <li><a data-toggle="tab" href="#menu1">Menu 1</a></li>
-                        <li><a data-toggle="tab" href="#menu2">Menu 2</a></li>
-                        <li><a data-toggle="tab" href="#menu3">Menu 3</a></li>
+                        <li class="active"><a data-toggle="tab" href="#img-detection-res">Detection Result</a></li>
+                        <li><a data-toggle="tab" href="#img-filled-res">Preview</a></li>
                     </ul>
                 </div>
-                <div class="img-wrapper">
-                    <img id="img-detection-res" src="data/detection.jpg">
+                <div class="img-wrapper tab-content">
+                    <img id="img-detection-res" class="tab-pane fade in active img-viewer" src="data/detection.jpg">
+                    <img id="img-filled-res" class="tab-pane fade img-viewer" src="data/filled.jpg">
                 </div>
             </div>
         </div>
@@ -47,10 +49,16 @@
 </main>
 
 <button id="btn-process" style="width: 200px; height: 50px">Start</button>
-<button id="btn-fill" style="width: 200px; height: 50px">Fill Form</button>
-<h2 id="stdout"></h2>
-<img id="img-filled-res" style="border: 1px solid black" src="data/filled.jpg">
 
+<footer>
+    <div class="footer">
+        <p>Copyright © 2020 <a href="http://www.uied.online/">UIED</a> All rights reserved</p>
+        <address style="margin: 0">
+            Contact:
+            <a href="mailto:mulong.xie@anu.edu.au">mulong.xie@anu.edu.au</a>
+        </address>
+    </div>
+</footer>
 
 <script>
     $('#btn-process').on('click', function () {
@@ -59,7 +67,6 @@
             type: 'get',
             success: function(resp){
                 if (resp.code === 1){
-                    $('#stdout').html(resp.stdout)
                     $('#img-detection-res').attr('src', resp.result_img)
                     $('#img-detection-res').show()
                     $('#page-fill').attr('src', resp.result_page)
