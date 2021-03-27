@@ -74,6 +74,7 @@ class Form:
         self.row_id = 0
         self.table_id = 0
 
+        self.detection_result_img = None
         self.export_dir = 'data/output/' + self.form_name
         os.makedirs(self.export_dir, exist_ok=True)
 
@@ -661,6 +662,7 @@ class Form:
         for ipt in self.inputs:
             ipt.visualize_element(board, color=(255, 0, 255))
 
+        self.detection_result_img = board
         cv2.imshow('form', board)
         cv2.waitKey()
         cv2.destroyAllWindows()
@@ -684,4 +686,6 @@ class Form:
 
         for ipt in self.inputs:
             ipt.visualize_element(board, color=(255, 0, 255))
+
+        self.detection_result_img = board
         cv2.imwrite(os.path.join(self.export_dir, 'detection.jpg'), board)
