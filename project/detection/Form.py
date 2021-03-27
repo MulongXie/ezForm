@@ -41,6 +41,9 @@ def form_compo_detection(form_img_file_name):
     # form.visualize_inputs()
     form.text_refine()
     # form.visualize_detection_result()
+
+    # *** 6. Export ***
+    form.export_detection_result_img()
     return form
 
 
@@ -638,7 +641,7 @@ class Form:
         cv2.waitKey()
         cv2.destroyAllWindows()
 
-    def visualize_detection_result(self, is_export=True):
+    def visualize_detection_result(self):
         board = self.get_img_copy()
         for text in self.texts:
             if not text.in_box and not text.is_abandoned and not text.is_module_part:
@@ -662,5 +665,23 @@ class Form:
         cv2.waitKey()
         cv2.destroyAllWindows()
 
-        if is_export:
-            cv2.imwrite(os.path.join(self.export_dir, 'detection.jpg'), board)
+    def export_detection_result_img(self):
+        board = self.get_img_copy()
+        for text in self.texts:
+            if not text.in_box and not text.is_abandoned and not text.is_module_part:
+                text.visualize_element(board)
+
+        for rec in self.rectangles:
+            if not rec.is_abandoned and not rec.is_module_part:
+                rec.visualize_element(board)
+
+        for line in self.lines:
+            if not line.is_abandoned and not line.is_module_part:
+                line.visualize_element(board)
+
+        for table in self.tables:
+            table.visualize_element(board, color=(255, 255, 0))
+
+        for ipt in self.inputs:
+            ipt.visualize_element(board, color=(255, 0, 255))
+        cv2.imwrite(os.path.join(self.export_dir, 'detection.jpg'), board)
