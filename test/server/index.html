@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+
+<button id="btn-process" style="width: 200px; height: 50px">Start</button>
+<button id="btn-fill" style="width: 200px; height: 50px">Fill Form</button>
+<h2 id="stdout"></h2>
+<img id="img-detection-res" style="border: 1px solid black" src="detection.jpg">
+<iframe id="page-fill" style="width: 100%; height: 500px" src="xml.html"></iframe>
+<img id="img-filled-res" style="border: 1px solid black" src="filled.jpg">
+
+
+<script>
+    $('#btn-process').on('click', function () {
+        $.ajax({
+            url: '/process',
+            type: 'get',
+            success: function(resp){
+                if (resp.code === 1){
+                    $('#stdout').html(resp.stdout)
+                    $('#img-detection-res').attr('src', resp.result_img)
+                    $('#img-detection-res').show()
+                    $('#page-fill').attr('src', resp.result_page)
+                    $('#page-fill').show()
+                    $('#btn-fill').show()
+                }
+                else {
+                    alert('Processing form failed')
+                }
+            }
+        })
+    })
+    $('#btn-fill').on('click', function () {
+        let page = document.getElementById('page-fill').contentWindow.document
+        let inputs = page.getElementsByTagName('input')
+        let data = {}
+        for (let i = 0; i < inputs.length; i++){
+            data[inputs[i].id] = inputs[i].value
+        }
+        $.ajax({
+                url: '/submitData',
+                type: 'post',
+                data:{
+                    inputs: data
+                },
+                success: function (resp) {
+                    if (resp.code === 1){
+                        $('#img-filled-res').attr('src', resp.filled_form_img)
+                        $('#img-filled-res').show()
+                    }
+                    else {
+                        alert('Filling form failed')
+                    }
+                }
+            }
+        )
+    })
+</script>
+
+</body>
+</html>
