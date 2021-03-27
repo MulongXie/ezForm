@@ -37,7 +37,6 @@ app.get('/process', function (req, res) {
                 res.json({code:1, stdout:stdout, result_img:detection_result_img, result_page:generation_page})
             }
         });
-
     processer.on('exit', function () {
         console.log('Program Completed');
     });
@@ -45,18 +44,39 @@ app.get('/process', function (req, res) {
 
 app.post('/submitData', function (req, res) {
     let data = req.body
-    console.log(data)
+
     let form_img_file = './data/input/3.jpg'
     let input_path_split = form_img_file.split('/');
     let result_dir = './data/output/' + input_path_split[input_path_split.length - 1].split('.')[0];
     let filled_data_file = result_dir + '/input_data.json'
+    let filled_form_img = result_dir + '/filled.jpg'
 
+    // store input data
     fs.writeFile(filled_data_file, JSON.stringify(data, null, '\t'), function (err) {
         if (! err){
             console.log('data store')
+            // fill the data on the form img
+            let processer = child_process.exec('python generation/fill.py ' + form_img_file,
+                function (error, stdout, stderr) {
+                    if (error){
+                        console.log(stdout);
+                        console.log(error.stack);
+                        console.log('Error code: '+error.code);
+                        console.log('Signal received: '+error.signal);
+                        res.json({code:0});
+                    }
+                    else {
+                        console.log('Processing successfully');
+                        res.json({code:1, stdout:stdout, filled_form:filled_form_img})
+                    }
+                });
+            processer.on('exit', function () {
+                console.log('Program Completed');
+            });
         }
         else{
             console.log(err)
+            res.json({code:0})
         }
     });
 })

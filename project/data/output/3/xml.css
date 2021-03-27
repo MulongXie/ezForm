@@ -1,43 +1,42 @@
-.section-title{
-	display: flex;
-	border: 1px solid black;
-	cursor: pointer;
-	justify-content: center;
-	margin: 5px;
-	background-color: lightgrey;
-}
 .section-title:hover{
 	background-color: darkgrey;
 }
-label{
+input{
 	margin: 5px;
+}
+.border-line{
+}
+table input{
+	border: 1px solid black;
+	width: 97%;
+	margin: 0;
+}
+.section-wrapper{
+	background-color: #f1f1f1;
+	margin: 20px;
+	padding: 10px;
+}
+.section-title{
+	margin: 5px;
+	border: 1px solid black;
+	cursor: pointer;
+	display: flex;
+	justify-content: center;
+	background-color: lightgrey;
+}
+.input-wrapper{
 }
 .text-wrapper{
 	justify-content: space-around;
 }
-td{
-	height: 20px;
-}
-p{
-	margin: 5px;
-}
-.section-wrapper{
-	margin: 20px;
-	background-color: #f1f1f1;
-	padding: 10px;
-}
 th{
 	border: 1px solid black;
 }
-table input{
-	border: 1px solid black;
-	margin: 0;
-	width: 97%;
-}
-.input-wrapper{
-}
-input{
+label{
 	margin: 5px;
+}
+td{
+	height: 20px;
 }
 .content{
 	display: None;
@@ -46,5 +45,6 @@ table{
 	border: 1px solid black;
 	width: 100%;
 }
-.border-line{
+p{
+	margin: 5px;
 }

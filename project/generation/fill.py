@@ -5,14 +5,12 @@ import json
 
 form_img_file = sys.argv[1]
 form_name = form_img_file.split('/')[-1][:-4]
+img = cv2.imread(form_img_file)
 
 output_dir = 'data/output/' + form_name
 input_data = json.load(open(output_dir + '/input_data.json', 'r'))['inputs']
 input_loc = json.load(open(output_dir + '/input_loc.json', 'r'))
 result_img = output_dir + '/filled.jpg'
-
-input_img = 'data/input/' + form_name + '.jpg'
-img = cv2.imread(input_img)
 
 for ipt in input_data:
     if ipt in input_loc:
