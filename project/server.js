@@ -38,7 +38,7 @@ app.get('/process', function (req, res) {
             }
         });
     processer.on('exit', function () {
-        console.log('Program Completed');
+        // console.log('Program Completed');
     });
 })
 
@@ -66,12 +66,12 @@ app.post('/submitData', function (req, res) {
                         res.json({code:0});
                     }
                     else {
-                        console.log('Processing successfully');
-                        res.json({code:1, stdout:stdout, filled_form:filled_form_img})
+                        console.log('Filling form successfully');
+                        res.json({code:1, stdout:stdout, filled_form_img:filled_form_img})
                     }
                 });
             processer.on('exit', function () {
-                console.log('Program Completed');
+                // console.log('Program Completed');
             });
         }
         else{

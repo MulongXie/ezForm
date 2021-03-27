@@ -12,6 +12,7 @@
 <h2 id="stdout"></h2>
 <img id="img-detection-res" style="border: 1px solid black; display: none">
 <iframe id="page-fill"></iframe>
+<img id="img-filled-res" style="border: 1px solid black; display: none">
 
 
 <script>
@@ -28,7 +29,7 @@
                     $('#btn-fill').show()
                 }
                 else {
-                    alert('Failed')
+                    alert('Processing form failed')
                 }
             }
         })
@@ -45,6 +46,15 @@
                 type: 'post',
                 data:{
                     inputs: data
+                },
+                success: function (resp) {
+                    if (resp.code === 1){
+                        $('#img-filled-res').attr('src', resp.filled_form_img)
+                        $('#img-filled-res').show()
+                    }
+                    else {
+                        alert('Filling form failed')
+                    }
                 }
             }
         )
