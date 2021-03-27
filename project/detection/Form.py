@@ -638,7 +638,7 @@ class Form:
         cv2.waitKey()
         cv2.destroyAllWindows()
 
-    def visualize_detection_result(self):
+    def visualize_detection_result(self, is_export=True):
         board = self.get_img_copy()
         for text in self.texts:
             if not text.in_box and not text.is_abandoned and not text.is_module_part:
@@ -661,3 +661,6 @@ class Form:
         cv2.imshow('form', board)
         cv2.waitKey()
         cv2.destroyAllWindows()
+
+        if is_export:
+            cv2.imwrite(os.path.join(self.export_dir, 'detection.jpg'), board)
