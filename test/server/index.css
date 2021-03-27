@@ -11,7 +11,11 @@ body{
     margin: 80px;
 }
 
-#btn-process{
+.modal{
+    color: #999999;
+}
+
+#btn-start{
     font-size: 15px;
     width: 200px;
     height: 50px

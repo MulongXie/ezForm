@@ -26,7 +26,7 @@
 <main>
     <div id="cover-page" class="text-center">
         <h3 class="cover-heading"><i>SmartForm - Intelligent Form Filler</i></h3>
-        <button id="btn-process" class="btn btn-primary btn-upload" data-toggle="modal" data-target="#modal-upload">Get Start</button>
+        <button id="btn-start" class="btn btn-primary btn-upload" data-toggle="modal" data-target="#modal-upload">Get Start</button>
     </div>
 
     <div class="modal fade" id="modal-upload" role="dialog">
@@ -34,17 +34,18 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Upload your Form</h4>
                 </div>
                 <div class="modal-body">
                     <form>
-                        <div class="custom-file">
-                            <input type="file" class="custom-file-input" id="customFile">
-                            <label class="custom-file-label" for="customFile">Choose file</label>
+                        <div>
+                            <input type="file" class="form-control" id="input-upload-form">
                         </div>
                     </form>
+                    <img id="img-form-uploaded">
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button id="btn-process" type="button" class="btn btn-primary" data-dismiss="modal">Process</button>
                 </div>
             </div>
         </div>
