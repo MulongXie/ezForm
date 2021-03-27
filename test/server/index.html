@@ -5,6 +5,7 @@
     <title>Title</title>
     <link rel="stylesheet" href="index.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="index.js"></script>
     <!-- Bootstrap -->
     <link rel="stylesheet" href="bootstrap/bootstrap.min.css">
     <script src="bootstrap/bootstrap.min.js"></script>
@@ -25,7 +26,28 @@
 <main>
     <div id="cover-page" class="text-center">
         <h3 class="cover-heading"><i>SmartForm - Intelligent Form Filler</i></h3>
-        <button id="btn-process" class="btn btn-primary">Get Start</button>
+        <button id="btn-process" class="btn btn-primary btn-upload" data-toggle="modal" data-target="#modal-upload">Get Start</button>
+    </div>
+
+    <div class="modal fade" id="modal-upload" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="customFile">
+                            <label class="custom-file-label" for="customFile">Choose file</label>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
     </div>
 
     <div id="main-contents" class="container-fluid">
@@ -62,52 +84,6 @@
         </address>
     </div>
 </footer>
-
-<script>
-    $('#btn-process').on('click', function () {
-        $.ajax({
-            url: '/process',
-            type: 'get',
-            success: function(resp){
-                if (resp.code === 1){
-                    $('#img-detection-res').attr('src', resp.result_img)
-                    $('#img-detection-res').show()
-                    $('#page-fill').attr('src', resp.result_page)
-                    $('#page-fill').show()
-                    $('#btn-fill').show()
-                }
-                else {
-                    alert('Processing form failed')
-                }
-            }
-        })
-    })
-    $('#btn-fill').on('click', function () {
-        let page = document.getElementById('page-fill').contentWindow.document
-        let inputs = page.getElementsByTagName('input')
-        let data = {}
-        for (let i = 0; i < inputs.length; i++){
-            data[inputs[i].id] = inputs[i].value
-        }
-        $.ajax({
-                url: '/submitData',
-                type: 'post',
-                data:{
-                    inputs: data
-                },
-                success: function (resp) {
-                    if (resp.code === 1){
-                        $('#img-filled-res').attr('src', resp.filled_form_img)
-                        $('#img-filled-res').show()
-                    }
-                    else {
-                        alert('Filling form failed')
-                    }
-                }
-            }
-        )
-    })
-</script>
 
 </body>
 </html>
