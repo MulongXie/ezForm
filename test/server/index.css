@@ -4,13 +4,28 @@
 
 .content-wrapper{
     border: 1px solid black;
-    height: 80vh;
+    height: 90vh;
     overflow: auto;
+    padding: 0;
+}
+
+.content-bar{
+    width: 100%;
+    height: 40px;
+    color: #999999;
+    border:  1px solid;
+}
+
+.img-wrapper{
+    overflow-y: auto;
+    width: 100%;
+    height: calc(99% - 40px);
 }
 
 #iframe-page-fill{
     width: 100%;
-    height: 98%;
+    height: calc(99% - 40px);
+    border: none;
 }
 
 #img-detection-res{
