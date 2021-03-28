@@ -7,6 +7,14 @@ body{
     margin: 20px;
 }
 
+#img-form-uploaded{
+    margin: 20px auto;
+    border: 1px solid;
+    box-shadow: 5px 10px lightgrey;
+    max-height: 80vh;
+    display: none;
+}
+
 .cover-heading{
     margin: 80px;
 }

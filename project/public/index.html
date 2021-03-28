@@ -42,10 +42,12 @@
                             <input type="file" class="form-control" id="input-upload-form">
                         </div>
                     </form>
-                    <img id="img-form-uploaded">
+                    <div class="text-center">
+                        <img id="img-form-uploaded">
+                    </div>
                 </div>
                 <div class="modal-footer">
-                    <button id="btn-process" type="button" class="btn btn-primary" data-dismiss="modal">Process</button>
+                    <button id="btn-process" type="button" class="btn btn-primary" disabled data-dismiss="modal">Process</button>
                 </div>
             </div>
         </div>
@@ -84,7 +86,7 @@
 
 <footer>
     <div class="footer">
-        <p>Copyright © 2020 All rights reserved</p>
+        <p>Copyright © 2021 All rights reserved</p>
         <address style="margin: 0">
             Contact:
             <a href="mailto:mulong.xie@anu.edu.au">mulong.xie@anu.edu.au</a>
@@ -126,6 +128,7 @@
         $.ajax({
             url: '/process',
             type: 'get',
+            data: {img: $('#img-form-uploaded').attr('src')},
             success: function(resp){
                 if (resp.code === 1){
                     alert('success')
@@ -146,6 +149,18 @@
     //     $('#main-contents').slideToggle()
     //     $('.footer').css('position', 'inherit')
     // })
+    $('#input-upload-form').on('change', function () {
+        console.log(this.files[0])
+        if (this.files && this.files[0]){
+            let reader = new FileReader()
+            reader.readAsDataURL(this.files[0])
+            reader.onload = function (e) {
+                $('#img-form-uploaded').attr('src', e.target.result)
+                $('#img-form-uploaded').show()
+                $('#btn-process').prop('disabled', false)
+            }
+        }
+    })
 </script>
 
 </body>
