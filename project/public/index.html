@@ -56,7 +56,7 @@
             <div class="col-md-6 col-xs-12 content-wrapper" style="padding: 0; overflow: hidden">
                 <div class="content-bar">
                     <span class="bar-header">Re-generated Form</span>
-                    <button id="btn-fill" class="btn btn-primary">Fill Form</button>
+                    <button id="top-btn-fill" class="btn btn-primary btn-fill">Fill Form</button>
                 </div>
                 <iframe id="iframe-page-fill"></iframe>
             </div>
@@ -64,12 +64,18 @@
                 <div class="content-bar" style="padding: 0">
                     <ul class="nav nav-tabs">
                         <li class="active"><a data-toggle="tab" href="#img-detection-res">Detection Result</a></li>
-                        <li><a data-toggle="tab" href="#img-filled-res">Preview</a></li>
+                        <li><a data-toggle="tab" href="#preview-filled-res">Preview</a></li>
                     </ul>
                 </div>
                 <div class="img-wrapper tab-content">
-                    <img id="img-detection-res" class="tab-pane fade in active img-viewer" src="data/detection.jpg">
-                    <img id="img-filled-res" class="tab-pane fade img-viewer" src="data/filled.jpg">
+                    <img id="img-detection-res" class="tab-pane fade in active img-viewer">
+                    <div id="preview-filled-res" class="tab-pane fade">
+                        <div id="preview-note" class="text-center">
+                            <h5 style="margin: 20px">Click the Fill Form button to preview the filling result</h5>
+                            <button class="btn btn-primary btn-fill">Fill Form</button>
+                        </div>
+                        <img id="img-filled-res" class="img-viewer" style="display: none">
+                    </div>
                 </div>
             </div>
         </div>
@@ -87,7 +93,7 @@
 </footer>
 
 <script>
-    $('#btn-fill').on('click', function () {
+    $('.btn-fill').on('click', function () {
         let page = document.getElementById('iframe-page-fill').contentWindow.document
         let inputs = page.getElementsByTagName('input')
         let data = {}
@@ -102,7 +108,12 @@
                 },
                 success: function (resp) {
                     if (resp.code === 1){
-                        $('#img-filled-res').attr('src', resp.filled_form_img)
+                        let imgFilledRes = $('#img-filled-res')
+                        imgFilledRes.attr('src', resp.filled_form_img)
+                        if(!imgFilledRes.is(":visible")){
+                            imgFilledRes.slideToggle()
+                        }
+                        $('#preview-note').slideUp()
                     }
                     else {
                         alert('Filling form failed')
@@ -130,6 +141,11 @@
             }
         })
     })
+    // $('.btn-upload').on('click', function () {
+    //     $('#cover-page').slideToggle()
+    //     $('#main-contents').slideToggle()
+    //     $('.footer').css('position', 'inherit')
+    // })
 </script>
 
 </body>

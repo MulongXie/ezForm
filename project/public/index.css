@@ -51,7 +51,7 @@ body{
     margin: 10px 10px;
 }
 
-#btn-fill{
+#top-btn-fill{
     float: right;
     margin: -3px 10px;
     width: 100px;
@@ -67,6 +67,10 @@ body{
     width: 100%;
     height: calc(99% - 40px);
     border: none;
+}
+
+#preview-note{
+    padding: 40px;
 }
 
 .img-viewer{
