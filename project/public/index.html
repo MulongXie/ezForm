@@ -27,6 +27,11 @@
     <div id="cover-page" class="text-center">
         <h3 class="cover-heading"><i>SmartForm - Intelligent Form Filler</i></h3>
         <button id="btn-start" class="btn btn-primary btn-upload" data-toggle="modal" data-target="#modal-upload">Get Start</button>
+
+        <div id="waiting" class="text-center">
+            <h5>Processing ...</h5>
+            <div class="loader"></div>
+        </div>
     </div>
 
     <div class="modal fade" id="modal-upload" role="dialog">
@@ -125,16 +130,20 @@
         )
     })
     $('#btn-process').on('click', function () {
+        $('#waiting').slideDown()
+        $('.btn-upload').prop('disable', true)
         $.ajax({
             url: '/process',
-            type: 'get',
+            type: 'post',
             data: {img: $('#img-form-uploaded').attr('src')},
             success: function(resp){
                 if (resp.code === 1){
-                    alert('success')
+                    // alert('success')
+                    $('#waiting h5').text('Processing Done')
                     $('#cover-page').slideToggle()
                     $('#main-contents').slideToggle()
                     $('.footer').css('position', 'inherit')
+
                     $('#img-detection-res').attr('src', resp.result_img)
                     $('#iframe-page-fill').attr('src', resp.result_page)
                 }
