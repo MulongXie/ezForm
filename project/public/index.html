@@ -58,7 +58,7 @@
                     <span class="bar-header">Re-generated Form</span>
                     <button id="btn-fill" class="btn btn-primary">Fill Form</button>
                 </div>
-                <iframe id="iframe-page-fill" src="xml.html"></iframe>
+                <iframe id="iframe-page-fill"></iframe>
             </div>
             <div class="col-md-6 col-xs-12 content-wrapper" style="padding: 0">
                 <div class="content-bar" style="padding: 0">
@@ -88,7 +88,7 @@
 
 <script>
     $('#btn-fill').on('click', function () {
-        let page = document.getElementById('page-fill').contentWindow.document
+        let page = document.getElementById('iframe-page-fill').contentWindow.document
         let inputs = page.getElementsByTagName('input')
         let data = {}
         for (let i = 0; i < inputs.length; i++){
@@ -103,7 +103,6 @@
                 success: function (resp) {
                     if (resp.code === 1){
                         $('#img-filled-res').attr('src', resp.filled_form_img)
-                        // $('#img-filled-res').show()
                     }
                     else {
                         alert('Filling form failed')
@@ -123,7 +122,7 @@
                     $('#main-contents').slideToggle()
                     $('.footer').css('position', 'inherit')
                     $('#img-detection-res').attr('src', resp.result_img)
-                    $('#page-fill').attr('src', resp.result_page)
+                    $('#iframe-page-fill').attr('src', resp.result_page)
                 }
                 else {
                     alert('Processing form failed')
