@@ -3,37 +3,90 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="index.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="./index.js"></script>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="./bootstrap/bootstrap.min.css">
+    <script src="./bootstrap/bootstrap.min.js"></script>
 </head>
 <body>
 
-<button id="btn-process" style="width: 200px; height: 50px">Start</button>
-<button id="btn-fill" style="width: 200px; height: 50px; display: none">Fill Form</button>
-<h2 id="stdout"></h2>
-<img id="img-detection-res" style="border: 1px solid black; display: none">
-<iframe id="page-fill"></iframe>
-<img id="img-filled-res" style="border: 1px solid black; display: none">
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" style="color: #337ab7;" href="#">SmartForm</a>
+        </div>
+        <div class="nav navbar-nav navbar-right">
+            <a class="btn navbar-btn btn-danger btn-upload" href="#">Upload New Form</a>
+        </div>
+    </div>
+</nav>
 
+<main>
+    <div id="cover-page" class="text-center">
+        <h3 class="cover-heading"><i>SmartForm - Intelligent Form Filler</i></h3>
+        <button id="btn-start" class="btn btn-primary btn-upload" data-toggle="modal" data-target="#modal-upload">Get Start</button>
+    </div>
+
+    <div class="modal fade" id="modal-upload" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Upload your Form</h4>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div>
+                            <input type="file" class="form-control" id="input-upload-form">
+                        </div>
+                    </form>
+                    <img id="img-form-uploaded">
+                </div>
+                <div class="modal-footer">
+                    <button id="btn-process" type="button" class="btn btn-primary" data-dismiss="modal">Process</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="main-contents" class="container-fluid">
+        <div class="row">
+            <div class="col-md-6 col-xs-12 content-wrapper" style="padding: 0; overflow: hidden">
+                <div class="content-bar">
+                    <span class="bar-header">Re-generated Form</span>
+                    <button id="btn-fill" class="btn btn-primary">Fill Form</button>
+                </div>
+                <iframe id="iframe-page-fill" src="xml.html"></iframe>
+            </div>
+            <div class="col-md-6 col-xs-12 content-wrapper" style="padding: 0">
+                <div class="content-bar" style="padding: 0">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a data-toggle="tab" href="#img-detection-res">Detection Result</a></li>
+                        <li><a data-toggle="tab" href="#img-filled-res">Preview</a></li>
+                    </ul>
+                </div>
+                <div class="img-wrapper tab-content">
+                    <img id="img-detection-res" class="tab-pane fade in active img-viewer" src="data/detection.jpg">
+                    <img id="img-filled-res" class="tab-pane fade img-viewer" src="data/filled.jpg">
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer>
+    <div class="footer">
+        <p>Copyright © 2020 All rights reserved</p>
+        <address style="margin: 0">
+            Contact:
+            <a href="mailto:mulong.xie@anu.edu.au">mulong.xie@anu.edu.au</a>
+        </address>
+    </div>
+</footer>
 
 <script>
-    $('#btn-process').on('click', function () {
-        $.ajax({
-            url: '/process',
-            type: 'get',
-            success: function(resp){
-                if (resp.code === 1){
-                    $('#stdout').html(resp.stdout)
-                    $('#img-detection-res').attr('src', resp.result_img)
-                    $('#img-detection-res').show()
-                    $('#page-fill').attr('src', resp.result_page)
-                    $('#btn-fill').show()
-                }
-                else {
-                    alert('Processing form failed')
-                }
-            }
-        })
-    })
     $('#btn-fill').on('click', function () {
         let page = document.getElementById('page-fill').contentWindow.document
         let inputs = page.getElementsByTagName('input')
@@ -50,7 +103,7 @@
                 success: function (resp) {
                     if (resp.code === 1){
                         $('#img-filled-res').attr('src', resp.filled_form_img)
-                        $('#img-filled-res').show()
+                        // $('#img-filled-res').show()
                     }
                     else {
                         alert('Filling form failed')
@@ -58,6 +111,25 @@
                 }
             }
         )
+    })
+    $('#btn-process').on('click', function () {
+        $.ajax({
+            url: '/process',
+            type: 'get',
+            success: function(resp){
+                if (resp.code === 1){
+                    alert('success')
+                    $('#cover-page').slideToggle()
+                    $('#main-contents').slideToggle()
+                    $('.footer').css('position', 'inherit')
+                    $('#img-detection-res').attr('src', resp.result_img)
+                    $('#page-fill').attr('src', resp.result_page)
+                }
+                else {
+                    alert('Processing form failed')
+                }
+            }
+        })
     })
 </script>
 
