@@ -15,10 +15,10 @@
 <nav class="navbar navbar-default">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a class="navbar-brand" style="color: #337ab7;" href="#">SmartForm</a>
+            <a class="navbar-brand" style="color: #337ab7;">SmartForm</a>
         </div>
         <div class="nav navbar-nav navbar-right">
-            <a class="btn navbar-btn btn-danger btn-upload" href="#">Upload New Form</a>
+            <button class="btn navbar-btn btn-danger btn-upload" data-toggle="modal" data-target="#modal-upload">Upload New Form</button>
         </div>
     </div>
 </nav>
@@ -139,26 +139,29 @@
             type: 'post',
             data: {img: $('#img-form-uploaded').attr('src'), inputType:'base64'},
             success: function(resp){
-                alert(resp)
                 if (resp.code === 1){
                     // alert('success')
+                    $('.btn-upload').prop('disabled', false)
                     $('#cover-page').slideToggle()
                     $('#main-contents').slideToggle()
                     $('.footer').css('position', 'inherit')
 
                     $('#img-detection-res').attr('src', resp.result_img)
                     $('#iframe-page-fill').attr('src', resp.result_page)
+
                 }
                 else {
                     alert('Processing form failed')
                     $('#waiting h5').text('Processing form failed')
                     $('.loader').slideUp()
+                    $('.btn-upload').prop('disabled', false)
                 }
             },
             error: function (resp) {
                 alert('Processing form failed for' + resp.statusText)
-                $('#waiting h5').text('Processing form failed for' + resp.statusText)
+                $('#waiting h5').text('Processing form failed for ' + resp.statusText)
                 $('.loader').slideUp()
+                $('.btn-upload').prop('disabled', false)
             }
         })
     })
