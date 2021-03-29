@@ -95,7 +95,7 @@
                             <h5 style="margin: 20px">Click the Fill Form button to preview the filling result</h5>
                             <button class="btn btn-primary btn-fill" data-toggle="modal" data-target="#modal-filling">Fill Form</button>
                         </div>
-                        <img id="img-filled-res" class="img-viewer" style="display: none">
+                        <img id="img-filled-res" class="img-viewer">
                     </div>
                 </div>
             </div>
@@ -190,10 +190,11 @@
                 success: function (resp) {
                     if (resp.code === 1){
                         let imgFilledRes = $('#img-filled-res')
-                        imgFilledRes.attr('src', resp.filledFormImg)
-                        if(!imgFilledRes.is(":visible")){
-                            imgFilledRes.slideToggle()
-                        }
+                        imgFilledRes.prop('src', resp.filledFormImg)
+                        imgFilledRes.slideDown()
+                        // if(!imgFilledRes.is(":visible")){
+                        //     imgFilledRes.slideToggle()
+                        // }
                         // $('#img-detection-res').removeClass('active')
                         // $('#li-tab-detect-res').removeClass('active')
                         // $('#preview-filled-res').addClass('active')
