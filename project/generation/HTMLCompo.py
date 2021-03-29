@@ -67,5 +67,5 @@ class HTMLCompo:
         for i, row in enumerate(self.element.rows):
             for j, ele in enumerate(row.elements):
                 html_id = self.html_id + '-col-' + str(j) + '-row-' + str(i)
-                ele_locations[html_id] = ele.location
+                ele_locations[html_id] = [ele.location]
         return ele_locations
