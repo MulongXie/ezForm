@@ -88,6 +88,12 @@ body{
     padding: 5px;
 }
 
+#btn-export{
+    margin-top: 2px;
+    margin-right: 10px;
+    display: none;
+}
+
 .bar-header{
     color: #777777;
     font-size: 18px;

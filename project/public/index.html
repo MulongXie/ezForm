@@ -5,6 +5,8 @@
     <title>Title</title>
     <link rel="stylesheet" href="index.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="jszip/jszip.js"></script>
+    <script src="fileSaver/FileSaver.js"></script>
     <script src="./index.js"></script>
     <!-- Bootstrap -->
     <link rel="stylesheet" href="./bootstrap/bootstrap.min.css">
@@ -86,6 +88,7 @@
                     <ul class="nav nav-tabs">
                         <li id="li-tab-detect-res" class="active"><a data-toggle="tab" href="#img-detection-res">Detection Result</a></li>
                         <li id="li-tab-filled-res"><a data-toggle="tab" href="#preview-filled-res">Preview</a></li>
+                        <li style="float: right"><button id="btn-export" class="btn btn-danger">Export</button></li>
                     </ul>
                 </div>
                 <div class="img-wrapper tab-content">
@@ -96,6 +99,7 @@
                             <button class="btn btn-primary btn-fill" data-toggle="modal" data-target="#modal-filling">Fill Form</button>
                         </div>
                         <img id="img-filled-res" class="img-viewer">
+                        <canvas id="img-canvas"></canvas>
                     </div>
                 </div>
             </div>
@@ -117,7 +121,7 @@
     var uploadPath = null;
 
     $('#input-upload-form').on('change', function () {
-        console.log(this.files[0])
+        // console.log(this.files[0])
         if (this.files && this.files[0]){
             let reader = new FileReader()
             reader.readAsDataURL(this.files[0])
@@ -201,11 +205,15 @@
                         // $('#li-tab-filled-res').addClass('active')
                         $('#waiting-filling h4').text('Form Filled')
                         $('#waiting-filling .loader').slideUp()
+
                         $('#btn-show-filled').slideDown()
                         $('#preview-note').slideUp()
+                        $('#btn-export').slideDown()
                     }
                     else {
                         alert('Filling form failed')
+                        $('#waiting-filling h4').text('Filling form failed')
+                        $('#waiting-filling .loader').slideUp()
                     }
                 }
             }
@@ -219,6 +227,26 @@
         $('#preview-filled-res').addClass('active')
         $('#preview-filled-res').addClass('in')
         $('#li-tab-filled-res').addClass('active')
+    })
+
+    $('#btn-export').on('click', function () {
+        // read the img as base64
+        let img = document.getElementById("img-filled-res")
+        let canvas = document.createElement("canvas");
+        let ctx = canvas.getContext("2d");
+        ctx.drawImage(img, 0, 0);
+        let imgBase = canvas.toDataURL("image/png");
+        imgBase = imgBase.replace(/^data:image.*;base64,/, "")
+        console.log(imgBase)
+
+        // zip and download
+        var zip = new JSZip();
+        zip.file("filledForm.jpg", imgBase, {base64: true});
+        zip.generateAsync({type:"blob"})
+            .then(function(content) {
+                // see FileSaver.js
+                saveAs(content, "form.zip");
+            })
     })
 </script>
 
