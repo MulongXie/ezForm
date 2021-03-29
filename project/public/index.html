@@ -28,7 +28,7 @@
         <h3 class="cover-heading"><i>SmartForm - Intelligent Form Filler</i></h3>
         <button id="btn-start" class="btn btn-primary btn-upload" data-toggle="modal" data-target="#modal-upload">Get Start</button>
 
-        <div id="waiting" class="text-center">
+        <div id="waiting-processing" class="text-center">
             <h5>Processing ...</h5>
             <div class="loader"></div>
         </div>
@@ -58,12 +58,26 @@
         </div>
     </div>
 
+    <div class="modal fade" id="modal-filling" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div id="waiting-filling" class="text-center">
+                        <h4>Filling Form ...</h4>
+                        <div class="loader"></div>
+                        <button id="btn-show-filled" class="btn btn-primary" data-dismiss="modal">Check the filled form</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div id="main-contents" class="container-fluid">
         <div class="row">
             <div class="col-md-6 col-xs-12 content-wrapper" style="padding: 0; overflow: hidden">
                 <div class="content-bar">
                     <span class="bar-header">Re-generated Form</span>
-                    <button id="top-btn-fill" class="btn btn-primary btn-fill">Fill Form</button>
+                    <button id="top-btn-fill" class="btn btn-primary btn-fill" data-toggle="modal" data-target="#modal-filling">Fill Form</button>
                 </div>
                 <iframe id="iframe-page-fill"></iframe>
             </div>
@@ -79,7 +93,7 @@
                     <div id="preview-filled-res" class="tab-pane fade">
                         <div id="preview-note" class="text-center">
                             <h5 style="margin: 20px">Click the Fill Form button to preview the filling result</h5>
-                            <button class="btn btn-primary btn-fill">Fill Form</button>
+                            <button class="btn btn-primary btn-fill" data-toggle="modal" data-target="#modal-filling">Fill Form</button>
                         </div>
                         <img id="img-filled-res" class="img-viewer" style="display: none">
                     </div>
@@ -116,10 +130,12 @@
     })
 
     $('#btn-process').on('click', function () {
-        $('#waiting').slideDown()
-        $('#waiting h5').text('Processing')
-        $('.loader').slideDown()
+        // show processing loader
+        $('#waiting-processing').slideDown()
+        $('#waiting-processing h5').text('Processing')
+        $('#waiting-processing .loader').slideDown()
         $('.btn-upload').prop('disabled', true)
+
         $.ajax({
             url: '/process',
             type: 'post',
@@ -138,21 +154,26 @@
                 }
                 else {
                     alert('Processing form failed')
-                    $('#waiting h5').text('Processing form failed')
-                    $('.loader').slideUp()
+                    $('#waiting-processing h5').text('Processing form failed')
+                    $('#waiting-processing .loader').slideUp()
                     $('.btn-upload').prop('disabled', false)
                 }
             },
             error: function (resp) {
                 alert('Processing form failed for' + resp.statusText)
-                $('#waiting h5').text('Processing form failed for ' + resp.statusText)
-                $('.loader').slideUp()
+                $('#waiting-processing h5').text('Processing form failed for ' + resp.statusText)
+                $('#waiting-processing .loader').slideUp()
                 $('.btn-upload').prop('disabled', false)
             }
         })
     })
 
     $('.btn-fill').on('click', function () {
+        // show waiting loading
+        $('#waiting-filling h4').text('Filling Form ...')
+        $('#waiting-filling .loader').slideDown()
+        $('#btn-show-filled').hide()
+
         let page = document.getElementById('iframe-page-fill').contentWindow.document
         let inputs = page.getElementsByTagName('input')
         let data = {}
@@ -177,7 +198,10 @@
                         // $('#li-tab-detect-res').removeClass('active')
                         // $('#preview-filled-res').addClass('active')
                         // $('#li-tab-filled-res').addClass('active')
-                        // $('#preview-note').slideUp()
+                        $('#waiting-filling h4').text('Form Filled')
+                        $('#waiting-filling .loader').slideUp()
+                        $('#btn-show-filled').slideDown()
+                        $('#preview-note').slideUp()
                     }
                     else {
                         alert('Filling form failed')
@@ -185,6 +209,15 @@
                 }
             }
         )
+    })
+
+    $('#btn-show-filled').on('click', function () {
+        $('#img-detection-res').removeClass('active')
+        $('#img-detection-res').removeClass('in')
+        $('#li-tab-detect-res').removeClass('active')
+        $('#preview-filled-res').addClass('active')
+        $('#preview-filled-res').addClass('in')
+        $('#li-tab-filled-res').addClass('active')
     })
 </script>
 

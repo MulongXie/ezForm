@@ -19,9 +19,14 @@ body{
     margin: 80px;
 }
 
-#waiting{
+#waiting-processing{
     display: none;
     margin: 20px;
+}
+
+#btn-show-filled{
+    margin-top: 30px;
+    display: none;
 }
 
 /* Loader */
@@ -36,7 +41,7 @@ body{
     animation: spin 2s linear infinite;
 
     margin: 15px auto;
-    /*display: none;*/
+    display: none;
 }
 
 @-webkit-keyframes spin {
