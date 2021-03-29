@@ -116,7 +116,7 @@
                 success: function (resp) {
                     if (resp.code === 1){
                         let imgFilledRes = $('#img-filled-res')
-                        imgFilledRes.attr('src', resp.filled_form_img)
+                        imgFilledRes.attr('src', resp.filledFormImg)
                         if(!imgFilledRes.is(":visible")){
                             imgFilledRes.slideToggle()
                         }
@@ -146,8 +146,8 @@
                     $('#main-contents').slideToggle()
                     $('.footer').css('position', 'inherit')
 
-                    $('#img-detection-res').attr('src', resp.result_img)
-                    $('#iframe-page-fill').attr('src', resp.result_page)
+                    $('#img-detection-res').attr('src', resp.resultImg)
+                    $('#iframe-page-fill').attr('src', resp.resultPage)
 
                 }
                 else {
@@ -165,11 +165,6 @@
             }
         })
     })
-    // $('.btn-upload').on('click', function () {
-    //     $('#cover-page').slideToggle()
-    //     $('#main-contents').slideToggle()
-    //     $('.footer').css('position', 'inherit')
-    // })
     $('#input-upload-form').on('change', function () {
         console.log(this.files[0])
         if (this.files && this.files[0]){
