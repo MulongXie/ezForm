@@ -121,6 +121,8 @@ class Generator:
         for compo in self.html_compos:
             if compo.type == 'input':
                 fields[compo.html_id] = [f.location for f in compo.element.input_fields]
+            elif compo.type == 'table':
+                fields.update(compo.get_row_elements_loc_for_table())
         json.dump(fields, open(os.path.join(self.export_dir, 'input_loc.json'), 'w'), indent=4)
         return fields
 

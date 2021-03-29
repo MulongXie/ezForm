@@ -55,3 +55,17 @@ class HTMLCompo:
             css_id = '#input-'+str(self.element.id)
         elif self.type == 'rectangle' or self.type == 'line':
             css_id = '#div-' + str(self.element.id)
+
+    def get_row_elements_loc_for_table(self):
+        '''
+        Return a dictionary of all elements locations in a table
+        :return: {'element-html-id': {location}}
+        '''
+        if self.type != 'table':
+            return
+        ele_locations = {}
+        for i, row in enumerate(self.element.rows):
+            for j, ele in enumerate(row.elements):
+                html_id = self.html_id + '-col-' + str(j) + '-row-' + str(i)
+                ele_locations[html_id] = ele.location
+        return ele_locations
