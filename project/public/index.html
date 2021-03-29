@@ -28,7 +28,7 @@
 <main>
     <div id="cover-page" class="text-center">
         <h3 class="cover-heading"><i>SmartForm - Intelligent Form Filler</i></h3>
-        <button id="btn-start" class="btn btn-primary btn-upload" data-toggle="modal" data-target="#modal-upload">Get Start</button>
+        <button id="btn-start" class="btn btn-primary btn-upload" data-toggle="modal" data-target="#modal-upload">Get Started</button>
 
         <div id="waiting-processing" class="text-center">
             <h5>Processing ...</h5>
@@ -194,15 +194,9 @@
                 success: function (resp) {
                     if (resp.code === 1){
                         let imgFilledRes = $('#img-filled-res')
-                        imgFilledRes.prop('src', resp.filledFormImg)
+                        imgFilledRes.prop('src', resp.filledFormImg + '?' + new Date().getTime())
                         imgFilledRes.slideDown()
-                        // if(!imgFilledRes.is(":visible")){
-                        //     imgFilledRes.slideToggle()
-                        // }
-                        // $('#img-detection-res').removeClass('active')
-                        // $('#li-tab-detect-res').removeClass('active')
-                        // $('#preview-filled-res').addClass('active')
-                        // $('#li-tab-filled-res').addClass('active')
+
                         $('#waiting-filling h4').text('Form Filled')
                         $('#waiting-filling .loader').slideUp()
 
@@ -233,6 +227,8 @@
         // read the img as base64
         let img = document.getElementById("img-filled-res")
         let canvas = document.createElement("canvas");
+        canvas.width = img.naturalWidth
+        canvas.height = img.naturalHeight
         let ctx = canvas.getContext("2d");
         ctx.drawImage(img, 0, 0);
         let imgBase = canvas.toDataURL("image/png");
