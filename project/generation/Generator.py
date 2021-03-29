@@ -125,6 +125,7 @@ class Generator:
         return fields
 
     def export_page(self, html_file_name='xml.html', css_file_name='xml.css'):
+        self.export_input_fields_locations()
         return self.page.export(directory=self.export_dir, html_file_name=html_file_name, css_file_name=css_file_name)
 
     def visualize_blocks(self):

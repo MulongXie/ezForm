@@ -21,7 +21,7 @@ app.post('/process', function (req, res) {
     console.log('\nStart processing')
     uploadedImgId ++
     let imgBase64 = req.body.img.replace(/^data:image.*base64,/, "");
-    let uploadPath = 'data/upload/upload-' + uploadedImgId.toString() + '.jpg'
+    let uploadPath = 'data/upload/upload' + uploadedImgId.toString() + '.jpg'
     // upload form image
     fs.writeFile(uploadPath, imgBase64, 'base64', function (err) {
         if (! err){
@@ -43,8 +43,7 @@ app.post('/process', function (req, res) {
                     }
                     else {
                         console.log('Processing successfully');
-                        res.json({code:1, stdout:stdout, resultImg:detectionResultImg,
-                            resultPage:generationPage, inputImg: uploadPath})
+                        res.json({code:1, resultImg:detectionResultImg, resultPage:generationPage, inputImg: uploadPath})
                     }
                 });
             processer.on('exit', function () {
@@ -59,10 +58,10 @@ app.post('/process', function (req, res) {
     })
 })
 
-app.post('/submitData', function (req, res) {
+app.post('/fillForm', function (req, res) {
     let data = req.body
 
-    let formImgFile = './data/input/3.jpg'
+    let formImgFile = req.body.orgImg
     let inputPathSplit = formImgFile.split('/');
     let resultDir = './data/output/' + inputPathSplit[inputPathSplit.length - 1].split('.')[0];
     let filledDataFile = resultDir + '/input_data.json'

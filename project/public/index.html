@@ -70,8 +70,8 @@
             <div class="col-md-6 col-xs-12 content-wrapper" style="padding: 0">
                 <div class="content-bar" style="padding: 0">
                     <ul class="nav nav-tabs">
-                        <li class="active"><a data-toggle="tab" href="#img-detection-res">Detection Result</a></li>
-                        <li><a data-toggle="tab" href="#preview-filled-res">Preview</a></li>
+                        <li id="li-tab-detect-res" class="active"><a data-toggle="tab" href="#img-detection-res">Detection Result</a></li>
+                        <li id="li-tab-filled-res"><a data-toggle="tab" href="#preview-filled-res">Preview</a></li>
                     </ul>
                 </div>
                 <div class="img-wrapper tab-content">
@@ -100,35 +100,21 @@
 </footer>
 
 <script>
-    $('.btn-fill').on('click', function () {
-        let page = document.getElementById('iframe-page-fill').contentWindow.document
-        let inputs = page.getElementsByTagName('input')
-        let data = {}
-        for (let i = 0; i < inputs.length; i++){
-            data[inputs[i].id] = inputs[i].value
-        }
-        $.ajax({
-                url: '/submitData',
-                type: 'post',
-                data:{
-                    inputs: data
-                },
-                success: function (resp) {
-                    if (resp.code === 1){
-                        let imgFilledRes = $('#img-filled-res')
-                        imgFilledRes.attr('src', resp.filledFormImg)
-                        if(!imgFilledRes.is(":visible")){
-                            imgFilledRes.slideToggle()
-                        }
-                        $('#preview-note').slideUp()
-                    }
-                    else {
-                        alert('Filling form failed')
-                    }
-                }
+    var uploadPath = null;
+
+    $('#input-upload-form').on('change', function () {
+        console.log(this.files[0])
+        if (this.files && this.files[0]){
+            let reader = new FileReader()
+            reader.readAsDataURL(this.files[0])
+            reader.onload = function (e) {
+                $('#img-form-uploaded').attr('src', e.target.result)
+                $('#img-form-uploaded').show()
+                $('#btn-process').prop('disabled', false)
             }
-        )
+        }
     })
+
     $('#btn-process').on('click', function () {
         $('#waiting').slideDown()
         $('#waiting h5').text('Processing')
@@ -148,7 +134,7 @@
 
                     $('#img-detection-res').attr('src', resp.resultImg)
                     $('#iframe-page-fill').attr('src', resp.resultPage)
-
+                    uploadPath = resp.inputImg
                 }
                 else {
                     alert('Processing form failed')
@@ -165,17 +151,40 @@
             }
         })
     })
-    $('#input-upload-form').on('change', function () {
-        console.log(this.files[0])
-        if (this.files && this.files[0]){
-            let reader = new FileReader()
-            reader.readAsDataURL(this.files[0])
-            reader.onload = function (e) {
-                $('#img-form-uploaded').attr('src', e.target.result)
-                $('#img-form-uploaded').show()
-                $('#btn-process').prop('disabled', false)
-            }
+
+    $('.btn-fill').on('click', function () {
+        let page = document.getElementById('iframe-page-fill').contentWindow.document
+        let inputs = page.getElementsByTagName('input')
+        let data = {}
+        for (let i = 0; i < inputs.length; i++){
+            data[inputs[i].id] = inputs[i].value
         }
+        $.ajax({
+                url: '/fillForm',
+                type: 'post',
+                data:{
+                    inputs: data,
+                    orgImg: uploadPath
+                },
+                success: function (resp) {
+                    if (resp.code === 1){
+                        let imgFilledRes = $('#img-filled-res')
+                        imgFilledRes.attr('src', resp.filledFormImg)
+                        if(!imgFilledRes.is(":visible")){
+                            imgFilledRes.slideToggle()
+                        }
+                        // $('#img-detection-res').removeClass('active')
+                        // $('#li-tab-detect-res').removeClass('active')
+                        // $('#preview-filled-res').addClass('active')
+                        // $('#li-tab-filled-res').addClass('active')
+                        // $('#preview-note').slideUp()
+                    }
+                    else {
+                        alert('Filling form failed')
+                    }
+                }
+            }
+        )
     })
 </script>
 
