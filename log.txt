@@ -116,3 +116,127 @@
 5. [Merge field] to input_filed in an input module
 
 6. ****** Reorgnize the folder for generation ******
+
+
+19/3/2021
+1. Add [type attr] in module elements (input, table, row)
+
+2. *** Add [form_compo_detection] function in Form.py ***
+
+
+20/3/2021
+1. Add [HTMLCompo]
+
+2. Construct basic initialization for generation
+
+
+22/3/2021
+1. Construct [HTML for compo] with differnet tags by different ways
+
+2. Construct [HTML compo] for input compound
+
+3. Construc [HTML compo] for table
+
+4. Add [page assemblying]
+
+5. Add [eport page]
+
+6. Add [init_page_css]
+
+7. Construct css for Table
+
+8. Add css style for input
+
+9. Add [text refine] to merge vertically ungrouped texts
+
+10. Add [sentence break] for vertically aligned sentences
+
+11. Add [block] to group elements in vertical alignment
+
+
+23/3/2021
+1. Add [slice block] according to compo vertical alignment
+
+2. Add init_html in Block to init its and its children's html
+
+3. Init page html and css based on the Blocks
+
+4. Sort compos in a block every time
+
+5. Set vertical alignment style for input compound
+
+
+24/3/2021
+1. Recognize the [section separator] according to keywords
+
+2. Mark block containing the sectction separator as [section title]
+
+3. Add [section wrapper] according to the section title to divide the page
+
+4. Check both guidetext and the entire input while merging intersected text into input
+
+5. Hide [content class] at first
+
+6. Add [js_script] in Page
+
+7. Add [set global page style] in Page
+
+8. Add [toggle js function] in section title to control content display
+
+
+25/3/2021
+1. Set all [global styles] in one place in Page
+
+2. Remove 'wrapper-center' and add more specific class name ['text-wrapper', 'input-wrapper']
+
+
+26/3/2021
+1. Add input field in table
+
+2. Collect input data and store in a json file
+
+
+27/3/2021
+1. *** Server *** Add server to start the process
+
+2. Add index page
+
+3. Export input fields locations
+
+4. Show generated page in iframe on index page
+
+5. Collect input data through the index page and store locally
+
+6. Overlay input data on the original img
+
+7. Decorate index page with bootstrap
+
+
+28/3/2021
+1. Add [index page]
+
+2. Construct the processing workflow
+
+
+29/3/2021
+1. Show note on the filling preview while hasn't filled
+
+2. Read the uploaded image
+
+3. Add loader while processing
+
+4. Add fialure control while clicking processing button
+
+5. Store upload image locally and process the uploaded file
+
+6. Fill the uploaded form
+
+7. Add loader while filling form
+
+8. Add export button to zip and export filled form
+
+
+30/3/2021
+1. Forcely reload the img in img-filled-res
+
+2. Fix exported img size bug

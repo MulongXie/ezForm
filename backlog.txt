@@ -6,16 +6,24 @@ I. Detection
 4. Table detection				√
 5. Reliable OCR					√
 6. Testing + Bug fixing
-	i. Data variant
-	ii. Testing
+	i. Data variant				√
+7. Testing
+	i. Genral well
+	ii. Bug form parameters - record
+	iii. Structured problem - new argorithm
 
 II. Generation
-1. Layout segmentation
-2. Functional
-3. Non-functional
-4. Refill to the original form
+1. Basic Component HTML				√
+2. Basic Component CSS styles  		√
+3. Layout segmentation				√
+	i. Section keyword recognition	√
+	ii. Section dividing			√
+4. Gather the input data from page	√
+5. Refill to the original form		√
+6. Page presentation
 
 III. Intelligence
+1. Data tyle recognition
 
 IV. APP (Mobile/Web)
 
