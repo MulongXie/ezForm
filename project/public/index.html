@@ -134,6 +134,11 @@
     })
 
     $('#btn-process').on('click', function () {
+        if (! $('#cover-page').is(':visible') && $('#main-contents').is(':visible')){
+            $('#cover-page').slideToggle()
+            $('#main-contents').slideToggle()
+            $('.footer').css('position', 'fixed')
+        }
         // show processing loader
         $('#waiting-processing').slideDown()
         $('#waiting-processing h5').text('Processing')
