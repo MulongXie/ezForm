@@ -244,3 +244,7 @@
 3. *** Generation *** Store all locations of elements in a table with HTML id
 
 4. Allow user to insert a new row in a table
+
+5. Allow user to delete row in a table
+
+6. Add flip wrapper alignment function
