@@ -140,6 +140,7 @@
     })
 
     $('#btn-process').on('click', function () {
+        // show cover page and hide main content
         if (! $('#cover-page').is(':visible') && $('#main-contents').is(':visible')){
             $('#cover-page').slideToggle()
             $('#main-contents').slideToggle()
@@ -150,6 +151,9 @@
         $('#waiting-processing h5').text('Processing')
         $('#waiting-processing .loader').slideDown()
         $('.btn-upload').prop('disabled', true)
+        // show preview note and hide preview filled form
+        $('#preview-note').show()
+        $('#img-filled-res').hide()
 
         $.ajax({
             url: '/process',
