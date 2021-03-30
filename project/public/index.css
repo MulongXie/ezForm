@@ -3,8 +3,13 @@ body{
     font-family: "Open Sans", sans-serif;
 }
 
+.btn-flip{
+    margin: -3px;
+    float: right;
+}
+
 .btn-upload{
-    margin: 20px;
+    margin-right:20px;
 }
 
 #img-form-uploaded{
@@ -78,6 +83,8 @@ body{
     height: 90vh;
     overflow: auto;
     padding: 0;
+    margin-bottom: 20px;
+    transition: 0.8s;
 }
 
 .content-bar{
@@ -123,7 +130,10 @@ body{
 }
 
 .img-viewer{
-    width: 100%;
+    border: 1px solid;
+    box-shadow: 5px 10px lightgrey;
+    max-width: 96%;
+    margin: 5px;
 }
 
 .footer{

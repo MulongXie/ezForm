@@ -10,6 +10,7 @@
     <script src="./index.js"></script>
     <!-- Bootstrap -->
     <link rel="stylesheet" href="./bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="./bootstrap/bootstrap.min.js"></script>
 </head>
 <body>
@@ -79,6 +80,7 @@
             <div class="col-md-6 col-xs-12 content-wrapper" style="padding: 0; overflow: hidden">
                 <div class="content-bar">
                     <span class="bar-header">Re-generated Form</span>
+                    <a class="btn btn-danger btn-flip"><span class="glyphicon glyphicon-repeat"></span></a>
                     <button id="top-btn-fill" class="btn btn-primary btn-fill" data-toggle="modal" data-target="#modal-filling">Fill Form</button>
                 </div>
                 <iframe id="iframe-page-fill"></iframe>
@@ -86,19 +88,23 @@
             <div class="col-md-6 col-xs-12 content-wrapper" style="padding: 0">
                 <div class="content-bar" style="padding: 0">
                     <ul class="nav nav-tabs">
-                        <li id="li-tab-detect-res" class="active"><a data-toggle="tab" href="#img-detection-res">Detection Result</a></li>
+                        <li id="li-tab-detect-res" class="active"><a data-toggle="tab" href="#previewer-detect-res">Detection Result</a></li>
                         <li id="li-tab-filled-res"><a data-toggle="tab" href="#preview-filled-res">Preview</a></li>
                         <li style="float: right"><button id="btn-export" class="btn btn-danger">Export</button></li>
                     </ul>
                 </div>
                 <div class="img-wrapper tab-content">
-                    <img id="img-detection-res" class="tab-pane fade in active img-viewer">
-                    <div id="preview-filled-res" class="tab-pane fade">
+                    <div id="previewer-detect-res" class="text-center tab-pane fade in active">
+                        <img id="img-detection-res" class="img-viewer">
+                    </div>
+                    <div id="preview-filled-res" class="text-center tab-pane fade">
                         <div id="preview-note" class="text-center">
                             <h5 style="margin: 20px">Click the Fill Form button to preview the filling result</h5>
                             <button class="btn btn-primary btn-fill" data-toggle="modal" data-target="#modal-filling">Fill Form</button>
                         </div>
-                        <img id="img-filled-res" class="img-viewer">
+                        <div class="text-center">
+                            <img id="img-filled-res" class="img-viewer">
+                        </div>
                         <canvas id="img-canvas"></canvas>
                     </div>
                 </div>
@@ -219,9 +225,21 @@
         )
     })
 
+    $('.btn-flip').on('click', function () {
+        let wrappers = $('.content-wrapper')
+        if (wrappers.hasClass('col-md-6')){
+            wrappers.removeClass('col-md-6')
+            wrappers.addClass('col-md-12')
+        }
+        else if(wrappers.hasClass('col-md-12')){
+            wrappers.removeClass('col-md-12')
+            wrappers.addClass('col-md-6')
+        }
+    })
+
     $('#btn-show-filled').on('click', function () {
-        $('#img-detection-res').removeClass('active')
-        $('#img-detection-res').removeClass('in')
+        $('#previewer-detect-res').removeClass('active')
+        $('#previewer-detect-res').removeClass('in')
         $('#li-tab-detect-res').removeClass('active')
         $('#preview-filled-res').addClass('active')
         $('#preview-filled-res').addClass('in')

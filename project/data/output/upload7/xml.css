@@ -1,0 +1,49 @@
+table input{
+	width: 97%;
+	margin: 0;
+	border: 1px solid black;
+}
+p{
+	margin: 5px;
+}
+.border-line{
+}
+.input-wrapper{
+}
+.section-wrapper{
+	margin: 20px;
+	background-color: #f1f1f1;
+	padding: 10px;
+}
+.section-title:hover{
+	background-color: darkgrey;
+}
+.section-title{
+	margin: 5px;
+	background-color: lightgrey;
+	cursor: pointer;
+	justify-content: center;
+	border: 1px solid black;
+}
+table{
+	width: 100%;
+	border: 1px solid black;
+}
+td{
+	height: 20px;
+}
+th{
+	border: 1px solid black;
+}
+label{
+	margin: 5px;
+}
+input{
+	margin: 5px;
+}
+.content{
+	display: None;
+}
+.text-wrapper{
+	justify-content: space-around;
+}
