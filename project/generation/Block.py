@@ -88,7 +88,6 @@ class Block:
             # for the first section, don't hide its content as it doesn't have a section title
             if self.is_first_section:
                 block.add_html_style('display:flex;')
-                print(block.html_script)
 
             block.parent_section = self
             self.children_blocks.append(block)
