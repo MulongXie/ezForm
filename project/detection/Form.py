@@ -25,8 +25,8 @@ def form_compo_detection(form_img_file_name):
     form.textbox_recognition()
     # form.visualize_all_elements()
 
-    # *** 3. Units grouping ***
-    form.group_elements_to_units()
+    # *** 3. Units labelling ***
+    form.label_elements_as_units()
     form.sort_units()
     # form.visualize_units()
 
@@ -132,7 +132,7 @@ class Form:
         self.sorted_bottom_unit = self.sorted_top_unit.copy()
         self.sorted_bottom_unit.reverse()
 
-    def group_elements_to_units(self):
+    def label_elements_as_units(self):
         '''
         text_units: text (not contained) + textbox
         bar_units: rectangles (not textbox) + lines + tables
@@ -310,7 +310,7 @@ class Form:
         Second. compound the guide text and its bar unit (input field) as an Input element
         '''
         if len(self.text_units) + len(self.bar_units) == 0:
-            self.group_elements_to_units()
+            self.label_elements_as_units()
         if len(self.sorted_left_unit) + len(self.sorted_top_unit) == 0:
             self.sort_units()
 
