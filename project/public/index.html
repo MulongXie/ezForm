@@ -238,12 +238,15 @@
     })
 
     $('#btn-show-filled').on('click', function () {
+        // show preview tab
         $('#previewer-detect-res').removeClass('active')
         $('#previewer-detect-res').removeClass('in')
         $('#li-tab-detect-res').removeClass('active')
         $('#preview-filled-res').addClass('active')
         $('#preview-filled-res').addClass('in')
         $('#li-tab-filled-res').addClass('active')
+        // jump to the position
+        $('html,body').animate({scrollTop: $('#li-tab-filled-res').offset().top},'slow');
     })
 
     $('#btn-export').on('click', function () {
