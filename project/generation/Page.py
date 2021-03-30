@@ -93,6 +93,16 @@ class Page:
                 }
             })
         }
+        function addRow(ele) {
+            let table = document.getElementById(ele.dataset.target)
+            let rowNum = table.rows.length
+            let row = table.insertRow(rowNum)
+            for (let i=0; i < table.rows[rowNum - 1].cells.length; i++){
+                let cell = row.insertCell(i)
+                let cell_id = ele.dataset.target + '-col-' + i.toString() + '-row-' + rowNum.toString()
+                cell.innerHTML = '<input id="' + cell_id + '">'
+            }
+        }
         </script>
     """
 

@@ -89,6 +89,10 @@ class HTML:
         tbody += self.indent(2) + '</tr>\n'
 
         html += thead + tbody + '</table>\n'
+
+        # add button to insert new row
+        html += '<button style="width: 80px; height: 40px" onclick="addRow(this)" data-target="' + self.id + '">Add Row</button>\n'
+
         self.html_script = html
 
     def add_child(self, child):
