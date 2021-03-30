@@ -106,7 +106,9 @@ class Page:
         function delRow(ele) {
             let table = document.getElementById(ele.dataset.target)
             let rowNum = table.rows.length
-            table.deleteRow(rowNum - 1)
+            if (rowNum > 1){
+                table.deleteRow(rowNum - 1)
+            }
         }
         </script>
     """
