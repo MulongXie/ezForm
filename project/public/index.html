@@ -21,7 +21,7 @@
             <a class="navbar-brand" style="color: #337ab7;">SmartForm</a>
         </div>
         <div class="nav navbar-nav navbar-right">
-            <button class="btn navbar-btn btn-danger btn-upload" data-toggle="modal" data-target="#modal-upload">Upload New Form</button>
+            <button class="btn navbar-btn btn-danger btn-upload" data-toggle="modal" data-target="#modal-upload"><span class="glyphicon glyphicon-cloud-upload" style="margin-right: 5px"></span>Upload New Form</button>
         </div>
     </div>
 </nav>
@@ -80,8 +80,8 @@
             <div class="col-md-6 col-xs-12 content-wrapper" style="padding: 0; overflow: hidden">
                 <div class="content-bar">
                     <span class="bar-header">Re-generated Form</span>
-                    <a class="btn btn-danger btn-flip"><span class="glyphicon glyphicon-repeat"></span></a>
-                    <button id="top-btn-fill" class="btn btn-primary btn-fill" data-toggle="modal" data-target="#modal-filling">Fill Form</button>
+                    <a class="btn btn-danger btn-flip" data-toggle="tooltip" title="Flip the page"><span class="glyphicon glyphicon-retweet"></span></a>
+                    <button id="top-btn-fill" class="btn btn-primary btn-fill" data-toggle="modal" data-target="#modal-filling"><span class="glyphicon glyphicon-pencil" style="margin-right: 5px;font-size: 10px;"></span>Fill Form</button>
                 </div>
                 <iframe id="iframe-page-fill"></iframe>
             </div>
@@ -90,7 +90,7 @@
                     <ul class="nav nav-tabs">
                         <li id="li-tab-detect-res" class="active"><a data-toggle="tab" href="#previewer-detect-res">Detection Result</a></li>
                         <li id="li-tab-filled-res"><a data-toggle="tab" href="#preview-filled-res">Preview</a></li>
-                        <li style="float: right"><button id="btn-export" class="btn btn-danger">Export</button></li>
+                        <li style="float: right"><button id="btn-export" class="btn btn-danger"><span class="glyphicon glyphicon-download-alt" style="margin-right: 5px"></span>Export</button></li>
                     </ul>
                 </div>
                 <div class="img-wrapper tab-content">
@@ -100,7 +100,7 @@
                     <div id="preview-filled-res" class="text-center tab-pane fade">
                         <div id="preview-note" class="text-center">
                             <h5 style="margin: 20px">Click the Fill Form button to preview the filling result</h5>
-                            <button class="btn btn-primary btn-fill" data-toggle="modal" data-target="#modal-filling">Fill Form</button>
+                            <button class="btn btn-primary btn-fill" data-toggle="modal" data-target="#modal-filling"><span class="glyphicon glyphicon-pencil" style="margin-right: 5px;font-size: 10px;"></span> Fill Form</button>
                         </div>
                         <div class="text-center">
                             <img id="img-filled-res" class="img-viewer">
