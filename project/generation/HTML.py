@@ -5,6 +5,7 @@ class HTML:
 
         self.class_name = self.init_by_input_attr('class_name')
         self.id = self.init_by_input_attr('id')
+        self.style = self.init_by_input_attr('style')
         self.children = self.init_by_input_attr('children', [])  # list of string, html script
         self.close = True
 
@@ -35,9 +36,11 @@ class HTML:
         # start
         html = "<" + self.tag
         if self.id is not None:
-            html += " id=\"" + self.id + "\""
+            html += ' id="' + self.id + '"'
         if self.class_name is not None:
-            html += " class=\"" + self.class_name + "\""
+            html += ' class="' + self.class_name + '"'
+        if self.style is not None:
+            html += ' style="' + self.style + '"'
         html += ">\n"
         # body
         for child in self.children:
@@ -55,9 +58,11 @@ class HTML:
         # start
         html = "<p"
         if self.id is not None:
-            html += " id=\"" + self.id + "\""
+            html += ' id="' + self.id + '"'
         if self.class_name is not None:
-            html += " class=\"" + self.class_name + "\""
+            html += ' class="' + self.class_name + '"'
+        if self.style is not None:
+            html += ' style="' + self.style + '"'
         html += ">"
         # body
         html += self.content.replace('\n', '</br>')
@@ -69,13 +74,27 @@ class HTML:
         # guide text
         html = '<label for="' + self.id + '">' + self.input.guide_text.content + '</label>\n'
         # input filed
-        html += '<input type="text" id="' + self.id + '"><br>\n'
+        html += '<input type="text"'
+        if self.id is not None:
+            html += ' id="' + self.id + '"'
+        if self.class_name is not None:
+            html += ' class="' + self.class_name + '"'
+        if self.style is not None:
+            html += ' style="' + self.style + '"'
+        html += '"><br>\n'
         self.html_script = html
 
     def generate_html_table(self):
         heads = [h.content for h in self.table.heading.elements]
         col_num = len(heads)
-        html = '<table id="' + self.id + '">\n'
+        html = '<table'
+        if self.id is not None:
+            html += ' id="' + self.id + '"'
+        if self.class_name is not None:
+            html += ' class="' + self.class_name + '"'
+        if self.style is not None:
+            html += ' style="' + self.style + '"'
+        html += ">\n"
         # heading
         thead = self.indent() + '<thead>\n' + self.indent(2) + '<tr>\n'
         for h in heads:
