@@ -91,7 +91,10 @@ class HTML:
         html += thead + tbody + '</table>\n'
 
         # add button to insert new row
-        html += '<button style="width: 80px; height: 40px" onclick="addRow(this)" data-target="' + self.id + '">Add Row</button>\n'
+        html += '<div style="display:block; margin-left:10px; width:80px">\n'
+        html += self.indent() + '<button style="width: 80px; height: 40px" onclick="addRow(this)" data-target="' + self.id + '">Add Row</button>\n'
+        html += self.indent() + '<button style="width: 80px; height: 40px" onclick="delRow(this)" data-target="' + self.id + '">Delete Row</button>\n'
+        html += '</div>\n'
 
         self.html_script = html
 

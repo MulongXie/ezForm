@@ -240,3 +240,7 @@
 1. Forcely reload the img in img-filled-res
 
 2. Fix exported img size bug
+
+3. *** Generation *** Store all locations of elements in a table with HTML id
+
+4. Allow user to insert a new row in a table

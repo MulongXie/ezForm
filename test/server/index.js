@@ -18,7 +18,7 @@ $(document).ready(function () {
                 success: function (resp) {
                     if (resp.code === 1){
                         $('#img-filled-res').attr('src', resp.filled_form_img)
-                        $('#img-filled-res').show()
+                        // $('#img-filled-res').show()
                     }
                     else {
                         alert('Filling form failed')
@@ -37,12 +37,12 @@ $(document).ready(function () {
             url: '/process',
             type: 'get',
             success: function(resp){
+                alert(resp)
                 if (resp.code === 1){
-                    $('#img-detection-res').attr('src', resp.result_img)
-                    $('#img-detection-res').show()
-                    $('#page-fill').attr('src', resp.result_page)
-                    $('#page-fill').show()
-                    $('#btn-fill').show()
+                    alert('success')
+                    $('#cover-page').slideToggle()
+                    $('#main-contents').slideToggle()
+                    $('.footer').css('position', 'inherit')
                 }
                 else {
                     alert('Processing form failed')

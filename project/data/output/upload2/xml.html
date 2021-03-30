@@ -3,7 +3,6 @@
 <head>
 	<title>Title</title>
 	<link rel="stylesheet" href="xml.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
 <div id="blk-0" class="section-wrapper">
@@ -64,16 +63,16 @@
 				</tr>
 			<tbody>
 				<tr>
-					<td><input id="tb-input-col0-row-1"></td>
-					<td><input id="tb-input-col1-row-1"></td>
-					<td><input id="tb-input-col2-row-1"></td>
-					<td><input id="tb-input-col3-row-1"></td>
-					<td><input id="tb-input-col4-row-1"></td>
+					<td><input id="tb-18-col-0-row-1"></td>
+					<td><input id="tb-18-col-1-row-1"></td>
+					<td><input id="tb-18-col-2-row-1"></td>
+					<td><input id="tb-18-col-3-row-1"></td>
+					<td><input id="tb-18-col-4-row-1"></td>
 				</tr>
 		</table>
-		<div style="display: block">
-			<button style="width: 100px; height: 40px" onclick="addRow(this)" data-target="tb-18">Add Row</button>
-			<button style="width: 100px; height: 40px" onclick="delRow(this)" data-target="tb-18">Delete Row</button>
+		<div style="display:block; margin-left:10px; width:80px">
+			<button style="width: 80px; height: 40px" onclick="addRow(this)" data-target="tb-18">Add Row</button>
+			<button style="width: 80px; height: 40px" onclick="delRow(this)" data-target="tb-18">Delete Row</button>
 		</div>
 	</div>
 	<div id="blk-11" class="content input-wrapper">
@@ -152,45 +151,42 @@
 	</div>
 </div>
 
-<script>
-	var sectionTitle = document.getElementsByClassName("section-title")
-	for(let i = 0; i < sectionTitle.length; i++){
-		sectionTitle[i].addEventListener("click", function () {
-			this.classList.toggle("active")
-			let sibling = this.nextElementSibling
-			while(sibling){
-				if (sibling.style.display === "block" || sibling.style.display === "flex") {
-					sibling.style.display = "none";
-				} else {
-					if (sibling.classList.contains('input-wrapper')) {
-						sibling.style.display = "block";
-					}
-					else if (sibling.classList.contains('text-wrapper')){
-						sibling.style.display = "flex";
-					}
-				}
-				sibling = sibling.nextElementSibling
-			}
-		})
-	}
-
-	function addRow(ele) {
-		let table = document.getElementById(ele.dataset.target)
-		let rowNum = table.rows.length
-		let row = table.insertRow(rowNum)
-		for (let i=0; i < table.rows[rowNum - 1].cells.length; i++){
-			let cell = row.insertCell(i)
-			let cell_id = ele.dataset.target + '-col-' + i.toString() + '-row-' + rowNum.toString()
-			cell.innerHTML = '<input id="' + cell_id + '">'
-		}
-	}
-
-	function delRow(ele) {
-		let table = document.getElementById(ele.dataset.target)
-		let rowNum = table.rows.length
-		table.deleteRow(rowNum - 1)
-	}
-
-</script>
-</body>
+        <script>
+        var sectionTitle = document.getElementsByClassName("section-title")
+        for(let i = 0; i < sectionTitle.length; i++){
+            sectionTitle[i].addEventListener("click", function () {
+                this.classList.toggle("active")
+                let sibling = this.nextElementSibling
+                while(sibling){
+                    if (sibling.style.display === "block" || sibling.style.display === "flex") {
+                        sibling.style.display = "none";
+                    } else {
+                        if (sibling.classList.contains('input-wrapper')) {
+                            sibling.style.display = "block";
+                        }
+                        else if (sibling.classList.contains('text-wrapper')){
+                            sibling.style.display = "flex";
+                        }
+                    }
+                    sibling = sibling.nextElementSibling
+                }
+            })
+        }
+        function addRow(ele) {
+            let table = document.getElementById(ele.dataset.target)
+            let rowNum = table.rows.length
+            let row = table.insertRow(rowNum)
+            for (let i=0; i < table.rows[rowNum - 1].cells.length; i++){
+                let cell = row.insertCell(i)
+                let cell_id = ele.dataset.target + '-col-' + i.toString() + '-row-' + rowNum.toString()
+                cell.innerHTML = '<input id="' + cell_id + '">'
+            }
+        }
+        function delRow(ele) {
+            let table = document.getElementById(ele.dataset.target)
+            let rowNum = table.rows.length
+            table.deleteRow(rowNum - 1)
+        }
+        </script>
+    </body>
 </html>

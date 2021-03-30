@@ -66,7 +66,7 @@ class Page:
                                            background_color='#f1f1f1', margin='20px', padding='10px')  # for section-wrapper
         self.css['.section-title'] = CSS(name='.section-title',
                                          border='1px solid black', background_color='lightgrey', margin='5px',
-                                         display='flex', justify_content='center', cursor='pointer')  # for section title
+                                         justify_content='center', cursor='pointer')  # for section title
         self.css['.section-title:hover'] = CSS(name='.section-title:hover',
                                                background_color='darkgrey')
 
@@ -102,6 +102,11 @@ class Page:
                 let cell_id = ele.dataset.target + '-col-' + i.toString() + '-row-' + rowNum.toString()
                 cell.innerHTML = '<input id="' + cell_id + '">'
             }
+        }
+        function delRow(ele) {
+            let table = document.getElementById(ele.dataset.target)
+            let rowNum = table.rows.length
+            table.deleteRow(rowNum - 1)
         }
         </script>
     """
