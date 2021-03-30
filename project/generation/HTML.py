@@ -132,6 +132,13 @@ class HTML:
         self.children = children
         self.init_html()
 
+    def add_style(self, new_style, is_append=True):
+        if is_append and self.style is not None:
+            self.style += new_style
+        else:
+            self.style = new_style
+        self.init_html()
+
     def add_class(self, new_class, is_append=True):
         if is_append and self.class_name is not None:
             if new_class not in self.class_name:

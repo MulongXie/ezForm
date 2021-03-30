@@ -6,7 +6,7 @@ from generation.CSS import CSS
 
 
 class Block:
-    def __init__(self, block_id, is_section_wrapper=False):
+    def __init__(self, block_id, is_section_wrapper=False, is_first_section=False):
         self.block_id = block_id
         self.html_compos = []    # list of HTMLCompos constituting the block
 
@@ -15,6 +15,7 @@ class Block:
 
         self.is_section_title = False    # if the block is section title
         self.is_section_wrapper = is_section_wrapper  # if the block is section wrapper
+        self.is_first_section = is_first_section      # if the block is first section, if so, do not hide its content
         self.children_blocks = []        # for section wrapper, list of Block objs contained by it
         self.parent_section = None  # section wrapper Block obj that contains the block
 
@@ -39,11 +40,20 @@ class Block:
         '''
         css_id = '#block-' + str(self.block_id)
 
-    def del_style_class(self, class_name):
+    def del_html_class(self, class_name):
         self.html.del_class(class_name=class_name)
+        self.html_script = self.html.html_script
         class_name = '.' + class_name
         if class_name in self.css:
             self.css.pop(class_name)
+
+    def add_html_class(self, class_name, is_append=True):
+        self.html.add_class(class_name, is_append=is_append)
+        self.html_script = self.html.html_script
+
+    def add_html_style(self, style):
+        self.html.add_style(style)
+        self.html_script = self.html.html_script
 
     def sort_compos(self, by='left'):
         self.html_compos = sorted(self.html_compos, key=lambda x: x.location[by])
@@ -53,16 +63,16 @@ class Block:
         self.css.update(compo.css)
         # set vertical alignment for input compounds
         if compo.type == 'input':
-            self.html.del_class('text-wrapper')
-            self.html.add_class('input-wrapper', is_append=True)
+            self.del_html_class('text-wrapper')
+            self.add_html_class('input-wrapper', is_append=True)
             self.is_input_section = True
 
         # if one of the compo is section separator, set the block as section
         if compo.is_section_separator:
             self.is_section_title = True
-            self.html.del_class('text-wrapper')
-            self.del_style_class('content')
-            self.html.add_class('section-title', is_append=True)
+            self.del_html_class('text-wrapper')
+            self.del_html_class('content')
+            self.add_html_class('section-title', is_append=True)
 
         self.html_compos.append(compo)
         self.sort_compos()
@@ -75,6 +85,11 @@ class Block:
 
     def add_child_block(self, block):
         if block not in self.children_blocks:
+            # for the first section, don't hide its content as it doesn't have a section title
+            if self.is_first_section:
+                block.add_html_style('display:flex;')
+                print(block.html_script)
+
             block.parent_section = self
             self.children_blocks.append(block)
             self.html_compos += block.html_compos

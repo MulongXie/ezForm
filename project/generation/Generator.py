@@ -64,7 +64,7 @@ class Generator:
         '''
         Slice blocks according to horizontal alignment
         '''
-        section_wrapper = Block(self.block_id, is_section_wrapper=True)
+        section_wrapper = Block(self.block_id, is_section_wrapper=True, is_first_section=True)
         self.block_id += 1
         self.sections.append(section_wrapper)
 
