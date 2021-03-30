@@ -113,6 +113,11 @@ body{
     width: 100px;
 }
 
+#btn-reload{
+    float: right;
+    margin: -3px;
+}
+
 .img-wrapper{
     overflow-y: auto;
     width: 100%;

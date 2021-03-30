@@ -82,6 +82,7 @@
                     <span class="bar-header">Re-generated Form</span>
                     <a class="btn btn-danger btn-flip" data-toggle="tooltip" title="Flip the page"><span class="glyphicon glyphicon-retweet"></span></a>
                     <button id="top-btn-fill" class="btn btn-primary btn-fill" data-toggle="modal" data-target="#modal-filling"><span class="glyphicon glyphicon-pencil" style="margin-right: 5px;font-size: 10px;"></span>Fill Form</button>
+                    <button id="btn-reload" class="btn btn-primary"><span class="glyphicon glyphicon-refresh" style="margin-right: 5px;font-size: 10px;"></span>Reload Form</button>
                 </div>
                 <iframe id="iframe-page-fill"></iframe>
             </div>
@@ -239,6 +240,11 @@
             wrappers.removeClass('col-md-12')
             wrappers.addClass('col-md-6')
         }
+    })
+
+    $('#btn-reload').on('click', function () {
+        let page = $('#iframe-page-fill')
+        page.prop('src', page.prop('src') + '?' + new Date().getTime())
     })
 
     $('#btn-show-filled').on('click', function () {
