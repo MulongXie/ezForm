@@ -14,35 +14,39 @@ import os
 
 
 def form_compo_detection(form_img_file_name):
-    # *** 1. Elements obj ***
+    # *** 1. Form structure recognition ***
     form = Form(form_img_file_name)
+    form.check_vertical_aligned_form()
+    form.visualize_vertical_separators()
+
+    # *** 2. Elements detection ***
     form.text_detection()
     form.element_detection()
     form.assign_element_ids()
     # form.visualize_all_elements()
 
-    # *** 2. Special element recognition ***
+    # *** 3. Special element recognition ***
     form.textbox_recognition()
     # form.visualize_all_elements()
 
-    # *** 3. Units labelling ***
+    # *** 4. Units labelling ***
     form.label_elements_as_units()
     form.sort_units()
     # form.visualize_units()
 
-    # *** 4. Table obj ***
+    # *** 5. Table obj ***
     form.table_detection()
     form.table_refine()
     # form.visualize_all_elements()
 
-    # *** 5. Input compound recognition ***
+    # *** 6. Input compound recognition ***
     form.input_compound_recognition()
     form.input_refine()
     # form.visualize_inputs()
     form.text_refine()
     # form.visualize_detection_result()
 
-    # *** 6. Export ***
+    # *** 7. Export ***
     form.export_detection_result_img()
     return form
 
@@ -191,8 +195,11 @@ class Form:
         # print(all_gaps)
         separators = merge_gaps_as_separators(all_gaps)
         if len(separators) > 0:
-            print('The form is vertical alignment with vertical separators:', separators)
+            print('*** The form is vertical alignment with vertical separators:', separators, '***')
             self.vertical_separators = separators
+        else:
+            print('*** The form is not vertical alignment ***')
+            self.vertical_separators = None
 
     '''
     **************************
@@ -719,7 +726,6 @@ class Form:
 
     def visualize_vertical_separators(self):
         if self.vertical_separators is None:
-            print('Not vertical aligned form')
             return
         board = self.get_img_copy()
         for separator in self.vertical_separators:
