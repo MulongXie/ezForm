@@ -164,7 +164,7 @@ class Form:
             gm = gaps_m[mid_col_id]
             merged_gap = {}
             for g in gm:
-                merged_gap[g] = {'left': mid_col_id, 'right': mid_col_id}
+                merged_gap[g] = {'left': mid_col_id, 'right': mid_col_id, 'top': g[0], 'bottom': g[1]}
 
             for i in left_col_ids:
                 gl = gaps_left[i]
@@ -174,6 +174,8 @@ class Form:
                         if abs(a[0] - b[0]) < 10 and abs(a[1] - b[1]) < 10:
                             if merged_gap[a]['left'] - i == 1:
                                 merged_gap[a]['left'] = i
+                                merged_gap[a]['top'] = max(merged_gap[a]['top'], b[0])
+                                merged_gap[a]['bottom'] = min(merged_gap[a]['bottom'], b[1])
 
             for i in right_col_ids:
                 gl = gaps_right[i]
@@ -183,12 +185,13 @@ class Form:
                         if abs(a[0] - b[0]) < 10 and abs(a[1] - b[1]) < 10:
                             if i - merged_gap[a]['right'] == 1:
                                 merged_gap[a]['right'] = i
+                                merged_gap[a]['top'] = max(merged_gap[a]['top'], b[0])
+                                merged_gap[a]['bottom'] = min(merged_gap[a]['bottom'], b[1])
 
             # reformat as list of separators: [{'top', 'bottom', 'left', 'right'}]
             separators = []
             for k in merged_gap:
-                separators.append(
-                    {'top': k[0], 'bottom': k[1], 'left': merged_gap[k]['left'], 'right': merged_gap[k]['right']})
+                separators.append(merged_gap[k])
             return separators
 
         all_gaps = check_gaps_from_mid(self.img.binary_map)
@@ -259,6 +262,9 @@ class Form:
         text_units: text (not contained) + textbox
         bar_units: rectangles (not textbox) + lines + tables
         '''
+        self.text_units = []  # text (not in box) + textbox
+        self.bar_units = []  # rectangles (not textbox) + lines + tables
+        self.all_units = []
         for text in self.texts:
             if not text.in_box:
                 text.unit_type = 'text_unit'
