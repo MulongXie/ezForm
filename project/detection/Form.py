@@ -16,23 +16,25 @@ import os
 def form_compo_detection(form_img_file_name):
     # *** 1. Form structure recognition ***
     form = Form(form_img_file_name)
-    form.check_vertical_aligned_form()
-    form.visualize_vertical_separators()
-
-    # *** 2. Elements detection ***
     form.text_detection()
     form.element_detection()
     form.assign_element_ids()
     # form.visualize_all_elements()
 
-    # *** 3. Special element recognition ***
+    # *** 2. Special element recognition ***
     form.textbox_recognition()
     # form.visualize_all_elements()
 
-    # *** 4. Units labelling ***
+    # *** 3. Units labelling ***
     form.label_elements_as_units()
     form.sort_units()
     # form.visualize_units()
+
+    # *** 4. Form structure recognition ***
+    form.check_vertical_aligned_form()
+    form.visualize_vertical_separators()
+    form.group_units_by_separators()
+    form.visualize_unit_groups()
 
     # *** 5. Table obj ***
     form.table_detection()
@@ -77,6 +79,7 @@ class Form:
         self.sorted_bottom_unit = []
 
         self.vertical_separators = None  # dictionary {left, right, top, bottom}, set None if form is vertical alignment
+        self.unit_groups = []  # 3-d list, groups of units segmented by separators, [[[sep1-left-group], [sep1-right-group], [sep1-top-group], [sep1-bottom-group]]]
 
         self.detection_result_img = None
         self.export_dir = 'data/output/' + self.form_name
@@ -203,6 +206,31 @@ class Form:
         else:
             print('*** The form is not vertical alignment ***')
             self.vertical_separators = None
+
+    def group_units_by_separators(self):
+        '''
+        If the form is vertical alignment Group all units by separators
+        For each separator, it can segment four groups of units [[left-group], [right-group], [top-group], [bottom-group]]
+        :return: [[[sep1-left-group], [sep1-right-group], [sep1-top-group], [sep1-bottom-group]]]
+        '''
+        seps = self.vertical_separators
+        groups = []
+        for i in range(len(seps)):
+            groups.append([[], [], [], []])
+
+        for p, unit in enumerate(self.all_units):
+            for i, sep in enumerate(seps):
+                if unit.location['bottom'] <= sep['top']:
+                    if i == 0 or unit.location['top'] > seps[i - 1]['bottom']:
+                        groups[i][0].append(unit)
+                elif sep['top'] < unit.location['top'] and unit.location['bottom'] <= sep['bottom']:
+                    if unit.location['right'] <= sep['left']:
+                        groups[i][1].append(unit)
+                    elif unit.location['left'] > sep['right']:
+                        groups[i][2].append(unit)
+                else:
+                    groups[i][3].append(unit)
+        self.unit_groups = groups
 
     '''
     **************************
@@ -739,6 +767,16 @@ class Form:
         cv2.imshow('v-separators', board)
         cv2.waitKey()
         cv2.destroyWindow('v-separators')
+
+    def visualize_unit_groups(self):
+        for group in self.unit_groups:
+            for g in group:
+                board = self.get_img_copy()
+                for u in g:
+                    u.visualize_element(board)
+                cv2.imshow('groups', board)
+                cv2.waitKey()
+                cv2.destroyAllWindows()
 
     def visualize_all_elements(self):
         board = self.get_img_copy()
