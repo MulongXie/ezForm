@@ -90,6 +90,13 @@ class Form:
         '''
 
         def check_gaps_from_mid(binary):
+            '''
+            Check continuously connected gap in columns from the middle leftwards and rightwards
+            :param binary: binary map of the form image
+            :return: {'left': {col_id1: [(gap1_top, gap1_bottom), (gap2_top, gap2_bottom)],
+                    'right': {col_id1: [(gap1_top, gap1_bottom), (gap2_top, gap2_bottom)],
+                    'mid': {mid_col_id: [(gap1_top, gap1_bottom), (gap2_top, gap2_bottom)]}}
+            '''
             def check_gaps_in_a_col(col):
                 col_gaps = []
                 gap_top = -1
@@ -139,6 +146,10 @@ class Form:
             return gaps
 
         def merge_gaps_as_separators(gaps):
+            '''
+            merge the detected gaps as vertical separators
+            :return: list of separators: [{'top', 'bottom', 'left', 'right'}]
+            '''
             gaps_m = gaps['mid']
             gaps_left = gaps['left']
             gaps_right = gaps['right']
@@ -177,9 +188,10 @@ class Form:
             return separators
 
         all_gaps = check_gaps_from_mid(self.img.binary_map)
+        # print(all_gaps)
         separators = merge_gaps_as_separators(all_gaps)
         if len(separators) > 0:
-            print(separators)
+            print('The form is vertical alignment with vertical separators:', separators)
             self.vertical_separators = separators
 
     '''
