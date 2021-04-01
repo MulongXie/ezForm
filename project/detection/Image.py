@@ -13,6 +13,9 @@ class Image:
 
         self.gradient_map = None
         self.binary_map = None
+        self.get_gradient_map()
+        self.get_binary_map()
+        # self.get_binary_map_canny()
 
         self.all_elements = []
         self.rectangle_elements = []
@@ -43,8 +46,6 @@ class Image:
         :param min_grad: if a pixel is bigger than this, then count it as foreground (255)
         :return: binary map
         '''
-        if self.gradient_map is None:
-            self.get_gradient_map()  # get RoI with high gradient
         rec, bin = cv2.threshold(self.gradient_map, min_grad, 255, cv2.THRESH_BINARY)
         morph = cv2.morphologyEx(bin, cv2.MORPH_CLOSE, (3, 3))  # remove noises
         self.binary_map = morph
@@ -64,9 +65,6 @@ class Image:
         get all elements on the image by findContours
         :return: list of [Component]
         '''
-        if self.binary_map is None:
-            self.get_binary_map()
-            # self.get_binary_map_canny()
         _, contours, hierarchy = cv2.findContours(self.binary_map, cv2.RETR_TREE, cv2.CHAIN_APPROX_NONE)
         for cnt in contours:
             if cv2.contourArea(cnt) > min_area:
