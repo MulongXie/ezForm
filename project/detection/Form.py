@@ -58,26 +58,129 @@ class Form:
         self.rectangles = []        # detected by cv
         self.lines = []             # detected by cv
         self.tables = []            # recognize by grouping rectangles
+        self.inputs = []            # input elements that consists of guide text (text|textbox) and input filed (rectangle|line)
+
+        self.row_id = 0
+        self.table_id = 0
 
         # units for input, grouped from the above elements
         self.text_units = []    # text (not in box) + textbox
         self.bar_units = []     # rectangles (not textbox) + lines + tables
         self.all_units = []
-
         self.sorted_left_unit = []
         self.sorted_right_unit = []
         self.sorted_top_unit = []
         self.sorted_bottom_unit = []
 
-        self.inputs = []        # input elements that consists of guide text (text|textbox) and input filed (rectangle|line)
-
-        self.row_id = 0
-        self.table_id = 0
+        self.vertical_separators = None  # dictionary {left, right, top, bottom}, set None if form is vertical alignment
 
         self.detection_result_img = None
         self.export_dir = 'data/output/' + self.form_name
         os.makedirs(self.export_dir, exist_ok=True)
 
+    '''
+    ****************************
+    *** Check Form Structure ***
+    ****************************
+    '''
+    def check_vertical_aligned_form(self):
+        '''
+        Check if the form is vertical aligned
+        :return: set self.vertical_separator if the form is in vertical alignment
+        '''
+
+        def check_gaps_from_mid(binary):
+            def check_gaps_in_a_col(col):
+                col_gaps = []
+                gap_top = -1
+                gap_bottom = -1
+                for i in range(height - 1):
+                    if binary[i, col] == 0:
+                        if gap_top == -1:
+                            gap_top = i
+                    else:
+                        if gap_top != -1:
+                            gap_bottom = i - 1
+                            if gap_bottom - gap_top > height / 3:
+                                col_gaps.append((gap_top, gap_bottom))
+                            gap_top = -1
+                            gap_bottom = -1
+                if gap_bottom <= gap_top:
+                    gap_top = max(0, gap_top)
+                    gap_bottom = height - 1
+                    if gap_bottom - gap_top > height / 3:
+                        col_gaps.append((gap_top, gap_bottom))
+                return col_gaps
+
+            (height, width) = binary.shape
+            mid = int(width / 2)
+            right = mid + 1
+            left = mid - 1
+            gap_mid = check_gaps_in_a_col(mid)
+            gap_right = check_gaps_in_a_col(right)
+            gap_left = check_gaps_in_a_col(left)
+            gaps = {'mid': {mid: gap_mid}, 'left': {}, 'right': {}}
+
+            spreading = True
+            while spreading:
+                spreading = False
+                if len(gap_right) > 0:
+                    gaps['right'][right] = gap_right
+                    right = right + 1
+                    if right < width - 1:
+                        gap_right = check_gaps_in_a_col(right)
+                        spreading = True
+                if len(gap_left) > 0:
+                    gaps['left'][left] = gap_left
+                    left = left - 1
+                    if left > 0:
+                        gap_left = check_gaps_in_a_col(left)
+                        spreading = True
+            return gaps
+
+        def merge_gaps_as_separators(gaps):
+            gaps_m = gaps['mid']
+            gaps_left = gaps['left']
+            gaps_right = gaps['right']
+            mid_col_id = list(gaps_m.keys())[0]
+            left_col_ids = sorted(list(gaps_left.keys()), reverse=True)
+            right_col_ids = sorted(list(gaps_right.keys()))
+
+            gm = gaps_m[mid_col_id]
+            merged_gap = {}
+            for g in gm:
+                merged_gap[g] = {'left': mid_col_id, 'right': mid_col_id}
+
+            for i in left_col_ids:
+                gl = gaps_left[i]
+                # match all gaps between gaps of the mid col and gaps in this col
+                for a in gm:
+                    for b in gl:
+                        if abs(a[0] - b[0]) < 10 and abs(a[1] - b[1]) < 10:
+                            if merged_gap[a]['left'] - i == 1:
+                                merged_gap[a]['left'] = i
+
+            for i in right_col_ids:
+                gl = gaps_right[i]
+                # match all gaps between gaps of the mid col and gaps in this col
+                for a in gm:
+                    for b in gl:
+                        if abs(a[0] - b[0]) < 10 and abs(a[1] - b[1]) < 10:
+                            if i - merged_gap[a]['right'] == 1:
+                                merged_gap[a]['right'] = i
+
+            # reformat as list of separators: [{'top', 'bottom', 'left', 'right'}]
+            separators = []
+            for k in merged_gap:
+                separators.append(
+                    {'top': k[0], 'bottom': k[1], 'left': merged_gap[k]['left'], 'right': merged_gap[k]['right']})
+            return separators
+
+        all_gaps = check_gaps_from_mid(self.img.binary_map)
+        separators = merge_gaps_as_separators(all_gaps)
+        if len(separators) > 0:
+            print(separators)
+            self.vertical_separators = separators
 
     '''
     **************************
@@ -601,6 +704,17 @@ class Form:
     '''
     def get_img_copy(self):
         return self.img.img.copy()
+
+    def visualize_vertical_separators(self):
+        if self.vertical_separators is None:
+            print('Not vertical aligned form')
+            return
+        board = self.get_img_copy()
+        for separator in self.vertical_separators:
+            cv2.rectangle(board, (separator['left'], separator['top']), (separator['right'], separator['bottom']), (0, 255, 0), 1)
+        cv2.imshow('v-separators', board)
+        cv2.waitKey()
+        cv2.destroyWindow('v-separators')
 
     def visualize_all_elements(self):
         board = self.get_img_copy()
