@@ -9,7 +9,7 @@ class Element:
         self.is_abandoned = False       # if the element has been merged or defined as noise
         self.type = type                # text/rectangle/line/textbox
         self.unit_type = None           # text_unit(text or textbox)/bar_unit(rectangle, line or table)
-        self.unit_group_id = -1          # only for [Vertical_Aligned_Form], if of groups segmented by separators
+        self.unit_group_id = -1         # only for [Vertical_Aligned_Form], id of groups segmented by separators
 
         # For textbox
         self.contains = []              # list of elements that are contained in the element

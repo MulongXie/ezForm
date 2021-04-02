@@ -9,9 +9,12 @@ class Row:
         self.parent_table = None
         self.location = None
 
+        self.unit_group_id = -1   # only for [Vertical_Aligned_Form], if of groups segmented by separators
+
         self.ele_ids = []
         if elements is not None:
             self.elements = elements
+            self.unit_group_id = elements[0].unit_group_id
             for ele in elements:
                 ele.in_row = self
                 self.ele_ids.append(ele.id)
@@ -33,6 +36,8 @@ class Row:
     def add_element(self, element, reorder=True):
         if element.id in self.ele_ids:
             return
+        if self.unit_group_id == -1:
+            self.unit_group_id = element.unit_group_id
         element.in_row = self
         element.in_table = self.parent_table
         self.elements.append(element)

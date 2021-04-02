@@ -18,6 +18,8 @@ class Input(Element):
         self.fields_location = input_field.location
         super().__init__(type='input')
 
+        self.unit_group_id = guide_text.unit_group_id   # only for [Vertical_Aligned_Form], if of groups segmented by separators
+
     def init_bound(self):
         '''
         Compound two units to get the bound of Input

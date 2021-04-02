@@ -7,9 +7,12 @@ class Table:
         self.type = 'table'
         self.location = None
 
+        self.unit_group_id = -1   # only for [Vertical_Aligned_Form], if of groups segmented by separators
+
         self.row_ids = []
         if rows is not None:
             self.rows = rows
+            self.unit_group_id = rows[0].unit_group_id
             for row in rows:
                 row.add_parent_table(self)
                 self.row_ids.append(row.row_id)
@@ -38,6 +41,8 @@ class Table:
     def add_row(self, row, reorder=True):
         if row.row_id in self.row_ids:
             return
+        if self.unit_group_id == -1:
+            self.unit_group_id = row.unit_group_id
         row.add_parent_table(self)
         self.rows.append(row)
         self.row_ids.append(row.row_id)
