@@ -32,9 +32,9 @@ def form_compo_detection(form_img_file_name):
 
     # *** 4. Form structure recognition ***
     form.check_vertical_aligned_form()
-    form.visualize_vertical_separators()
+    # form.visualize_vertical_separators()
     form.group_units_by_separators()
-    form.visualize_unit_groups()
+    # form.visualize_unit_groups()
 
     # *** 5. Table obj ***
     form.table_detection()
@@ -213,6 +213,9 @@ class Form:
         For each separator, it can segment four groups of units [[left-group], [right-group], [top-group], [bottom-group]]
         :return: [[[sep1-left-group], [sep1-right-group], [sep1-top-group], [sep1-bottom-group]]]
         '''
+        # only for vertical aligned form
+        if self.vertical_separators is None:
+            return
         seps = self.vertical_separators
         groups = []
         for i in range(len(seps)):
