@@ -8,6 +8,7 @@ class HTMLCompo:
         self.location = element.location    # dictionary {left, right, top, bottom}
         self.element = element      # Element/Table object of detected form element
         self.type = element.type
+        self.unit_group_id = element.unit_group_id  # only useful for Vertical_Aligned_Form
 
         self.parent_block = None    # Block obj
         self.is_section_separator = False

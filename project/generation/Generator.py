@@ -6,6 +6,7 @@ from generation.Block import Block
 
 import os
 import json
+import cv2
 
 
 class Generator:
@@ -21,6 +22,9 @@ class Generator:
         self.html_compos = []   # list of HTMLCompos objs
         self.page = None
 
+        # only useful for Vertical_Aligned_Form
+        self.html_compos_groups = {}  # {'group_id': [list of html_compos]}
+
         self.export_dir = 'data/output/' + self.form_name
         os.makedirs(self.export_dir, exist_ok=True)
 
@@ -29,6 +33,17 @@ class Generator:
         for c in self.compos:
             c.id = id
             id += 1
+
+    def group_html_compos_by_unit_group_id(self):
+        groups = {}
+        for compo in self.html_compos:
+            # print(compo.unit_group_id)
+            g_id = compo.unit_group_id
+            if g_id in groups:
+                groups[g_id].append(compo)
+            else:
+                groups[g_id] = [compo]
+        self.html_compos_groups = groups
 
     def init_html_compos(self):
         for compo in self.compos:
@@ -60,15 +75,20 @@ class Generator:
                     if len(inters) > 0:
                         compo.is_section_separator = True
 
-    def slice_blocks(self):
+    def slice_block_by_group(self):
+        section_wrapper = Block(self.block_id, is_section_wrapper=True, is_first_section=True)
+        self.sections.append(section_wrapper)
+        for gid in self.html_compos_groups:
+            compos = self.html_compos_groups[gid]
+            section_wrapper = self.slice_blocks(compos, section_wrapper)
+
+    def slice_blocks(self, compos, prev_section_wrapper):
         '''
         Slice blocks according to horizontal alignment
         '''
-        section_wrapper = Block(self.block_id, is_section_wrapper=True, is_first_section=True)
+        section_wrapper = prev_section_wrapper
         self.block_id += 1
-        self.sections.append(section_wrapper)
 
-        compos = self.html_compos
         for i in range(len(compos)):
             block_updated = False
             for j in range(i + 1, len(compos)):
@@ -115,6 +135,7 @@ class Generator:
                 # add the block to current section
                 else:
                     section_wrapper.add_child_block(compos[i].parent_block)
+        return section_wrapper
 
     def export_input_fields_locations(self):
         fields = {}  # {input html id: [list of fields locations]}
@@ -129,6 +150,17 @@ class Generator:
     def export_page(self, html_file_name='xml.html', css_file_name='xml.css'):
         self.export_input_fields_locations()
         return self.page.export(directory=self.export_dir, html_file_name=html_file_name, css_file_name=css_file_name)
+
+    def visualize_compos_groups(self):
+        groups = self.html_compos_groups
+        for k in groups:
+            group = groups[k]
+            board = self.form.get_img_copy()
+            for compo in group:
+                compo.element.visualize_element(board)
+            cv2.imshow('group', board)
+            cv2.waitKey()
+            cv2.destroyAllWindows()
 
     def visualize_blocks(self):
         for blk in self.blocks:
