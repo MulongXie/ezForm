@@ -257,4 +257,33 @@
 
 8. *** Generation *** Show all contents in the first section that doesn't has a section title
 
-9. Add icons for buttons 
+9. Add icons for buttons
+
+10. Add reload button for iframe page
+
+
+1/4/2021
+*** Detection ***
+1. Recognize vertical alignment form and integrate the function into the Form object
+
+2. Add vertical separators in a Form object to store the vertical separators
+
+3. Revise the first step of form detection as check_vertical_aligned_form
+
+
+2/4/2021
+1. Set the min boundary while checking separators
+
+2. Groups units according to the separators
+
+3. Add group id in element for table and input detection
+
+4. Detect input and table according to element's group id
+
+5. Add group id in Table and Input
+
+
+3/4/2021
+1. *** Generation *** Slice block and section according to unit-group
+
+2. *** Detection *** Recognize border lines (line or rectangle) and not use it as part of Input

@@ -5,12 +5,14 @@ I. Detection
 3. Input unit detection			√
 4. Table detection				√
 5. Reliable OCR					√
-6. Testing + Bug fixing
-	i. Data variant				√
+6. Various form recognition
+    i. Horizontal alignment
 7. Testing
-	i. Genral well
-	ii. Bug form parameters - record
-	iii. Structured problem - new argorithm
+	i. Bug form parameters - record
+	    1. Image size -> relative parameter
+	ii. Structured problem - new algorithm
+8. Code integration
+
 
 II. Generation
 1. Basic Component HTML				√
@@ -20,12 +22,24 @@ II. Generation
 	ii. Section dividing			√
 4. Gather the input data from page	√
 5. Refill to the original form		√
-6. Page presentation
+6. Page presentation                √
+
 
 III. Intelligence
-1. Data tyle recognition
+1. Data type recognition
+2. Pre-filling
+3. Audio reading the form
+
 
 IV. APP (Mobile/Web)
+1. Web application                  √
+2. Mobile (Later)                   -
+
+
+V. Input Source
+1. Image (jpg, png)                 √
+2. PDF                              √
+3. Scanned image ***
 
 
 
@@ -99,6 +113,38 @@ II. Generation
 
 
 
+1/4/2021 - 4/4/2021
+1. Testing for structured variance
+
+2. Code integration
+
+3. Horizontal alignment form processing
+
+4. Draft paper (Architecture + Intro)
+
+
+
+5/4/2021 - 10/4/2021
+1. Test scanned form image
+
+2. Add more intelligence
+
+3. Draft paper (50%)
+
+
+
+10/4/2021 - 17/4/2021
+1. Evaluation
+
+2. User study
+
+3. Draft paper (80%)
+
+
+
+
 1/4/2021 - 11/4/2021
 0. Draft paper
 0. Intelligence - Rule based
+
+

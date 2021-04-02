@@ -3,56 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="866c7d34-205d-4de3-879f-0db0fbcbb180" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backlog.txt" beforeDir="false" afterPath="$PROJECT_DIR$/backlog.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/log.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/input_data.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/upload1/detection.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/upload1/input_loc.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/upload1/xml.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/upload1/xml.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/upload2/detection.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/upload2/filled.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/upload2/input_data.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/upload2/input_loc.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/upload2/xml.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/upload2/xml.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/upload3/detection.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/upload3/input_loc.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/upload3/xml.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/upload3/xml.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/upload4/detection.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/upload4/filled.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/upload4/input_data.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/upload4/input_loc.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/upload4/xml.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/upload4/xml.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/upload5/detection.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/upload5/input_loc.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/upload5/xml.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/upload5/xml.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/upload6/detection.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/upload6/filled.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/upload6/input_data.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/upload6/input_loc.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/upload6/xml.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/upload6/xml.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/upload7/detection.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/upload7/input_loc.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/upload7/xml.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/upload7/xml.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/upload8/detection.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/upload8/filled.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/upload8/input_data.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/upload8/input_loc.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/upload8/xml.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/upload8/xml.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/upload/upload1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/upload/upload2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/upload/upload3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/upload/upload4.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/upload/upload5.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/upload/upload6.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/upload/upload7.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/upload/upload8.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/server/xml.html" beforeDir="false" afterPath="$PROJECT_DIR$/test/server/xml.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,10 +15,10 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Python Script" />
         <option value="HTML File" />
         <option value="CSS File" />
         <option value="JavaScript File" />
+        <option value="Python Script" />
       </list>
     </option>
   </component>
@@ -88,7 +41,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../fork/speak.js" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="restartRequiresConfirmation" value="false" />
   </component>
@@ -104,30 +57,8 @@
       <recent name="D:\git_file\github\doing\SamrtForm\test\viewer" />
     </key>
   </component>
-  <component name="RunManager" selected="Node.js.server.js (1)">
+  <component name="RunManager" selected="Python.test (1)">
     <configuration name="server.js (1)" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/project/server.js" working-dir="$PROJECT_DIR$/project">
-      <method v="2" />
-    </configuration>
-    <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="SamrtForm" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/project" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/project/main.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
     <configuration name="test (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
@@ -144,6 +75,28 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="testing" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="SamrtForm" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/project" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/project/testing.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -196,11 +149,6 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Node.js.server.js (1)" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -274,7 +222,14 @@
       <workItem from="1617052573786" duration="2884000" />
       <workItem from="1617057855091" duration="5642000" />
       <workItem from="1617070191439" duration="2868000" />
-      <workItem from="1617098923272" duration="2329000" />
+      <workItem from="1617098923272" duration="3017000" />
+      <workItem from="1617143073198" duration="5391000" />
+      <workItem from="1617232776459" duration="1979000" />
+      <workItem from="1617239171988" duration="2944000" />
+      <workItem from="1617367154665" duration="1350000" />
+      <workItem from="1617397621588" duration="2107000" />
+      <workItem from="1617400457413" duration="3556000" />
+      <workItem from="1617404031902" duration="1016000" />
     </task>
     <servers />
   </component>
@@ -293,48 +248,48 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1699" height="466" key="DebuggerActiveHint/1920.-64.1280.693/0.0.1920.1040@0.0.1920.1040" timestamp="1610498489611" />
-    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1617078162121">
+    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1617399739401">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="740" y="275" key="FileChooserDialogImpl/1920.-64.1280.693/0.0.1920.1040@0.0.1920.1040" timestamp="1617078162121" />
+    <state x="740" y="275" key="FileChooserDialogImpl/1920.-64.1280.693/0.0.1920.1040@0.0.1920.1040" timestamp="1617399739401" />
     <state x="740" y="275" key="FileChooserDialogImpl/1920.0.1280.693/0.0.1920.1040/3840.0.1280.984@0.0.1920.1040" timestamp="1613467729861" />
     <state x="740" y="275" key="FileChooserDialogImpl/1920.0.1280.693/3840.0.1280.984/0.0.1920.1040@0.0.1920.1040" timestamp="1614327263982" />
     <state x="740" y="275" key="FileChooserDialogImpl/1920.0.1280.693/3840.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1616050980742" />
     <state x="740" y="286" key="FileChooserDialogImpl/1920.0.1280.693/3840.0.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1615363621131" />
-    <state width="1899" height="208" key="GridCell.Tab.0.bottom" timestamp="1617101539705">
+    <state width="1899" height="208" key="GridCell.Tab.0.bottom" timestamp="1617368113002">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="208" key="GridCell.Tab.0.bottom/1920.-64.1280.693/0.0.1920.1040@0.0.1920.1040" timestamp="1617101539705" />
+    <state width="1899" height="208" key="GridCell.Tab.0.bottom/1920.-64.1280.693/0.0.1920.1040@0.0.1920.1040" timestamp="1617368113002" />
     <state width="1237" height="238" key="GridCell.Tab.0.bottom/1920.-64.1280.693/0.0.1920.1040@1920.-64.1280.693" timestamp="1610772962349" />
     <state width="1877" height="235" key="GridCell.Tab.0.bottom/1920.0.1280.693/0.0.1920.1040/3840.0.1280.984@0.0.1920.1040" timestamp="1610952691666" />
     <state width="1877" height="157" key="GridCell.Tab.0.bottom/1920.0.1280.693/0.0.1920.1040/3840.0.1920.1040@0.0.1920.1040" timestamp="1614924288418" />
     <state width="1877" height="157" key="GridCell.Tab.0.bottom/1920.0.1280.693/3840.0.1280.984/0.0.1920.1040@0.0.1920.1040" timestamp="1614733019291" />
     <state width="1877" height="155" key="GridCell.Tab.0.bottom/1920.0.1280.693/3840.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1616132711749" />
     <state width="1877" height="157" key="GridCell.Tab.0.bottom/1920.0.1280.693/3840.0.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1615369624812" />
-    <state width="1899" height="208" key="GridCell.Tab.0.center" timestamp="1617101539705">
+    <state width="1899" height="208" key="GridCell.Tab.0.center" timestamp="1617368113002">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="208" key="GridCell.Tab.0.center/1920.-64.1280.693/0.0.1920.1040@0.0.1920.1040" timestamp="1617101539705" />
+    <state width="1899" height="208" key="GridCell.Tab.0.center/1920.-64.1280.693/0.0.1920.1040@0.0.1920.1040" timestamp="1617368113002" />
     <state width="1237" height="238" key="GridCell.Tab.0.center/1920.-64.1280.693/0.0.1920.1040@1920.-64.1280.693" timestamp="1610772962349" />
     <state width="1877" height="235" key="GridCell.Tab.0.center/1920.0.1280.693/0.0.1920.1040/3840.0.1280.984@0.0.1920.1040" timestamp="1610952691666" />
     <state width="1877" height="157" key="GridCell.Tab.0.center/1920.0.1280.693/0.0.1920.1040/3840.0.1920.1040@0.0.1920.1040" timestamp="1614924288418" />
     <state width="1877" height="157" key="GridCell.Tab.0.center/1920.0.1280.693/3840.0.1280.984/0.0.1920.1040@0.0.1920.1040" timestamp="1614733019291" />
     <state width="1877" height="155" key="GridCell.Tab.0.center/1920.0.1280.693/3840.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1616132711749" />
     <state width="1877" height="157" key="GridCell.Tab.0.center/1920.0.1280.693/3840.0.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1615369624811" />
-    <state width="1899" height="208" key="GridCell.Tab.0.left" timestamp="1617101539705">
+    <state width="1899" height="208" key="GridCell.Tab.0.left" timestamp="1617368113001">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="208" key="GridCell.Tab.0.left/1920.-64.1280.693/0.0.1920.1040@0.0.1920.1040" timestamp="1617101539705" />
+    <state width="1899" height="208" key="GridCell.Tab.0.left/1920.-64.1280.693/0.0.1920.1040@0.0.1920.1040" timestamp="1617368113001" />
     <state width="1237" height="238" key="GridCell.Tab.0.left/1920.-64.1280.693/0.0.1920.1040@1920.-64.1280.693" timestamp="1610772962349" />
     <state width="1877" height="235" key="GridCell.Tab.0.left/1920.0.1280.693/0.0.1920.1040/3840.0.1280.984@0.0.1920.1040" timestamp="1610952691666" />
     <state width="1877" height="157" key="GridCell.Tab.0.left/1920.0.1280.693/0.0.1920.1040/3840.0.1920.1040@0.0.1920.1040" timestamp="1614924288417" />
     <state width="1877" height="157" key="GridCell.Tab.0.left/1920.0.1280.693/3840.0.1280.984/0.0.1920.1040@0.0.1920.1040" timestamp="1614733019290" />
     <state width="1877" height="155" key="GridCell.Tab.0.left/1920.0.1280.693/3840.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1616132711749" />
     <state width="1877" height="157" key="GridCell.Tab.0.left/1920.0.1280.693/3840.0.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1615369624811" />
-    <state width="1899" height="208" key="GridCell.Tab.0.right" timestamp="1617101539705">
+    <state width="1899" height="208" key="GridCell.Tab.0.right" timestamp="1617368113002">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="208" key="GridCell.Tab.0.right/1920.-64.1280.693/0.0.1920.1040@0.0.1920.1040" timestamp="1617101539705" />
+    <state width="1899" height="208" key="GridCell.Tab.0.right/1920.-64.1280.693/0.0.1920.1040@0.0.1920.1040" timestamp="1617368113002" />
     <state width="1237" height="238" key="GridCell.Tab.0.right/1920.-64.1280.693/0.0.1920.1040@1920.-64.1280.693" timestamp="1610772962349" />
     <state width="1877" height="235" key="GridCell.Tab.0.right/1920.0.1280.693/0.0.1920.1040/3840.0.1280.984@0.0.1920.1040" timestamp="1610952691666" />
     <state width="1877" height="157" key="GridCell.Tab.0.right/1920.0.1280.693/0.0.1920.1040/3840.0.1920.1040@0.0.1920.1040" timestamp="1614924288418" />
@@ -393,6 +348,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="968" height="528" key="XDebugger.FullValuePopup/1920.-64.1280.693/0.0.1920.1040@0.0.1920.1040" timestamp="1610498423423" />
+    <state x="769" y="434" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1617241172602">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="769" y="434" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/1920.-64.1280.693/0.0.1920.1040@0.0.1920.1040" timestamp="1617241172602" />
     <state x="1920" y="-64" width="1294" height="763" key="dock-window-1" timestamp="1610840571421">
       <screen x="1920" y="-64" width="1280" height="693" />
     </state>
