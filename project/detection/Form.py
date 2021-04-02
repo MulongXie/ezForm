@@ -222,13 +222,17 @@ class Form:
             for i, sep in enumerate(seps):
                 if unit.location['bottom'] <= sep['top']:
                     if i == 0 or unit.location['top'] > seps[i - 1]['bottom']:
+                        unit.unit_group_id = i * 4 + 0
                         groups[i][0].append(unit)
                 elif sep['top'] < unit.location['top'] and unit.location['bottom'] <= sep['bottom']:
                     if unit.location['right'] <= sep['left']:
+                        unit.unit_group_id = i * 4 + 1
                         groups[i][1].append(unit)
                     elif unit.location['left'] > sep['right']:
+                        unit.unit_group_id = i * 4 + 2
                         groups[i][2].append(unit)
                 else:
+                    unit.unit_group_id = i * 4 + 3
                     groups[i][3].append(unit)
         self.unit_groups = groups
 
@@ -323,7 +327,8 @@ class Form:
                 return unit.neighbour_right
             # check is there any connected unit on the right
             for u in self.sorted_left_unit:
-                if u.id != unit.id and u.location['left'] + connect_bias >= unit.location['right']:
+                if u.id != unit.id and u.unit_group_id == unit.unit_group_id and\
+                        u.location['left'] + connect_bias >= unit.location['right']:
                     # the tow should be justified
                     if unit.is_in_alignment(u, direction='h', bias=align_bias):
                         unit.neighbour_right = u
@@ -334,7 +339,8 @@ class Form:
                 return unit.neighbour_left
             # check is there any connected unit on the left
             for u in self.sorted_right_unit:
-                if u.id != unit.id and unit.location['left'] + connect_bias >= u.location['right']:
+                if u.id != unit.id and u.unit_group_id == unit.unit_group_id and\
+                        unit.location['left'] + connect_bias >= u.location['right']:
                     # the tow should be justified
                     if unit.is_in_alignment(u, direction='h', bias=align_bias):
                         unit.neighbour_left = u
@@ -345,7 +351,8 @@ class Form:
                 return unit.neighbour_bottom
             # check is there any connected unit below
             for u in self.sorted_top_unit:
-                if u.id != unit.id and u.location['top'] + connect_bias >= unit.location['bottom']:
+                if u.id != unit.id and u.unit_group_id == unit.unit_group_id and\
+                        u.location['top'] + connect_bias >= unit.location['bottom']:
                     # the tow should be justified if they are neighbours
                     if unit.is_in_alignment(u, direction='v', bias=align_bias):
                         unit.neighbour_bottom = u
@@ -356,7 +363,8 @@ class Form:
                 return unit.neighbour_top
             # check is there any connected unit above
             for u in self.sorted_bottom_unit:
-                if u.id != unit.id and unit.location['top'] + connect_bias >= u.location['bottom']:
+                if u.id != unit.id and u.unit_group_id == unit.unit_group_id and\
+                        unit.location['top'] + connect_bias >= u.location['bottom']:
                     # the tow should be justified if they are neighbours
                     if unit.is_in_alignment(u, direction='v', bias=align_bias):
                         unit.neighbour_top = u
@@ -465,11 +473,6 @@ class Form:
             If a text_unit's closet element in alignment is bar_unit, then count it as a guide text
         Second. compound the guide text and its bar unit (input field) as an Input element
         '''
-        if len(self.text_units) + len(self.bar_units) == 0:
-            self.label_elements_as_units()
-        if len(self.sorted_left_unit) + len(self.sorted_top_unit) == 0:
-            self.sort_units()
-
         # from left to right
         units = self.sorted_left_unit
         for i, unit in enumerate(units):
@@ -647,6 +650,7 @@ class Form:
                         # table.visualize_table(board)
                         # unit.visualize_element(board, color=(0,0,255), show=True)
                         self.tables.append(table)
+
         return self.tables
 
     '''
@@ -695,6 +699,7 @@ class Form:
                 changed = False
                 for text in self.text_units:
                     if not text.is_module_part and not text.is_abandoned and\
+                            ipt.guide_text.unit_group_id == text.unit_group_id and\
                             (ipt.guide_text.pos_relation(text) != 0 or ipt.pos_relation(text, bias=2) != 0):
                         ipt.merge_guide_text(text)
                         changed = True
