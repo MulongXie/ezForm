@@ -21,9 +21,12 @@ form = form_compo_detection(form_img_file)
 
 gen = Generator(form)
 gen.init_html_compos()
-gen.slice_blocks()
+gen.group_html_compos_by_unit_group_id()
+gen.slice_block_by_group()
 # gen.visualize_blocks()
 # gen.visualize_sections()
+# gen.visualize_compos_groups()
+# gen.init_page_html(by='block')
 gen.init_page()
 gen.export_page()
 

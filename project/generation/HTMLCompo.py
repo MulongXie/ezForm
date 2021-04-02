@@ -36,8 +36,7 @@ class HTMLCompo:
             self.html_tag = 'input'
             self.html_id = 'input-'+str(self.element.id)
             self.html = HTML(tag='input', input=self.element, id=self.html_id)
-        # ignore rectangle and line at this stage
-        elif self.type == 'rectangle' or self.type == 'line':
+        elif self.type == 'border':
             self.html_tag = 'div'
             self.html_class = 'border-line'
             self.html = HTML(tag='div', class_name='border-line')
@@ -54,7 +53,7 @@ class HTMLCompo:
             css_id = '#tb-'+str(self.element.id)
         elif self.type == 'input':
             css_id = '#input-'+str(self.element.id)
-        elif self.type == 'rectangle' or self.type == 'line':
+        elif self.type == 'border':
             css_id = '#div-' + str(self.element.id)
 
     def get_row_elements_loc_for_table(self):

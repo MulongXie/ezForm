@@ -7,7 +7,7 @@ class Element:
                  id=None, type=None, contour=None, location=None, clip_img=None):
         self.id = id
         self.is_abandoned = False       # if the element has been merged or defined as noise
-        self.type = type                # text/rectangle/line/textbox
+        self.type = type                # text/rectangle/line/textbox/border
         self.unit_type = None           # text_unit(text or textbox)/bar_unit(rectangle, line or table)
         self.unit_group_id = -1         # only for [Vertical_Aligned_Form], id of groups segmented by separators
 
@@ -317,9 +317,9 @@ class Element:
             elif self.type == 'rectangle':
                 color = (0, 255, 0)
             elif self.type == 'line':
+                color = (211, 85, 186)
+            elif self.type == 'border':
                 color = (0, 0, 255)
-            # elif self.type == 'textbox':
-            #     color = (211, 85, 186)
         cv2.rectangle(image, (self.location['left'], self.location['top']), (self.location['right'], self.location['bottom']), color, line)
         if show:
             cv2.imshow('element', image)

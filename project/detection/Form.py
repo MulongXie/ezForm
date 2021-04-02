@@ -28,6 +28,7 @@ def form_compo_detection(form_img_file_name):
     # *** 3. Units labelling ***
     form.label_elements_as_units()
     form.sort_units()
+    form.border_line_recognition()
     # form.visualize_units()
 
     # *** 4. Form structure recognition ***
@@ -305,8 +306,6 @@ class Form:
                 text.unit_type = 'text_unit'
                 self.text_units.append(text)
         for ele in self.rectangles + self.lines:
-            if ele.in_table is not None:
-                continue
             if ele.type in ('line', 'rectangle'):
                 ele.unit_type = 'bar_unit'
                 self.bar_units.append(ele)
@@ -463,6 +462,29 @@ class Form:
                 rec.contains[0].in_box = True
                 rec.textbox_extract_texts_content()
         # print('*** Textbox Recognition Time:%.3f s***' % (time.clock() - start))
+
+    def border_line_recognition(self):
+        '''
+        Recognize if a rectangle/line is a nonfunctional border line
+        '''
+        borders = []
+        for bar in self.bar_units:
+            if bar.type == 'line':
+                neighbour = self.find_neighbour_unit(bar, direction='top')
+                if abs(neighbour.location['left'] - bar.location['left']) > 5 or\
+                        bar.location['top'] - neighbour.location['bottom'] < 10:
+                    bar.type = 'border'
+                    bar.unit_type = None
+                    borders.append(bar)
+            elif bar.type == 'rectangle':
+                if len(bar.contains) > 1:
+                    bar.type = 'border'
+                    bar.unit_type = None
+                    borders.append(bar)
+        for bar in borders:
+            self.bar_units.remove(bar)
+            self.all_units.remove(bar)
+        self.sort_units()
 
     '''
     *************************************
