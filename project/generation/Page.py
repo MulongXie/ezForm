@@ -67,10 +67,10 @@ class Page:
         self.css['.section-wrapper'] = CSS(name='.section-wrapper',
                                            background_color='#f1f1f1', margin='20px', padding='10px')  # for section-wrapper
         self.css['.section-title'] = CSS(name='.section-title',
-                                         border='1px solid black', background_color='lightgrey', margin='5px',
-                                         justify_content='center', cursor='pointer')  # for section title
+                                         border='1px solid black', background_color='lightgrey', margin_top='10px', margin_bottom='10px',
+                                         justify_content='center', cursor='pointer', transition='0.5s')  # for section title
         self.css['.section-title:hover'] = CSS(name='.section-title:hover',
-                                               background_color='darkgrey')
+                                               background_color='#BFBEBE')
 
     def init_page_js(self):
         self.js_script = """
