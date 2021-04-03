@@ -29,6 +29,7 @@ class Page:
         self.html_header = "<!DOCTYPE html>\n<html>\n<head>\n\t<title>" \
                            + self.title + "</title>\n" \
                            + "\t<link rel=\"stylesheet\" href=\"" + self.css_file_name + "\">\n" \
+                           + '\t<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">'\
                            + "</head>\n"
         # body
         self.html_body = "<body>\n"
@@ -47,9 +48,9 @@ class Page:
         '''
         Set styles of global tags/classes in one place
         '''
-        self.css['p'] = CSS(name='p', margin='5px')
+        self.css['p'] = CSS(name='p', margin='5px !important')
         self.css['table'] = CSS(name='table', width='100%', border='1px solid black')
-        self.css['th'] = CSS(name='th', border='1px solid black')
+        self.css['th'] = CSS(name='th', border='1px solid black', text_align='center !important')
         self.css['td'] = CSS(name='td', height='20px')
         self.css['input'] = CSS(name='input', margin='5px')
         self.css['label'] = CSS(name='label', margin='5px')
@@ -57,6 +58,7 @@ class Page:
 
         # for compo
         self.css['.border-line'] = CSS(name='.border-line')  # for cutting line (ungrouped rectangle or line)
+        self.css['.speaker'] = CSS(name='.speaker', margin_left='10px')
         # for normal div wrapper
         self.css['.content'] = CSS(name='.content', display='None')  # for content in a section that is not title
         self.css['.text-wrapper'] = CSS(name='.text-wrapper', justify_content='space-around')
@@ -72,7 +74,7 @@ class Page:
 
     def init_page_js(self):
         self.js_script = """
-        <script>
+    <script>
         var sectionTitle = document.getElementsByClassName("section-title")
         for(let i = 0; i < sectionTitle.length; i++){
             sectionTitle[i].addEventListener("click", function () {
@@ -110,7 +112,15 @@ class Page:
                 table.deleteRow(rowNum - 1)
             }
         }
-        </script>
+        function speak(ele) {
+            let p = document.getElementById(ele.dataset.target)
+            console.log()
+    
+            var msg = new SpeechSynthesisUtterance();
+            msg.text = p.innerText
+            window.speechSynthesis.speak(msg)
+        }
+    </script>
     """
 
     def add_compo_html(self, compo_html):

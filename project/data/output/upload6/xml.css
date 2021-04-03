@@ -1,0 +1,50 @@
+th{
+	border: 1px solid black;
+	text-align: center !important;
+}
+.content{
+	display: None;
+}
+.section-wrapper{
+	margin: 20px;
+	background-color: #f1f1f1;
+	padding: 10px;
+}
+.section-title:hover{
+	background-color: darkgrey;
+}
+.section-title{
+	margin: 5px;
+	background-color: lightgrey;
+	justify-content: center;
+	border: 1px solid black;
+	cursor: pointer;
+}
+table input{
+	margin: 0;
+	border: 1px solid black;
+	width: 97%;
+}
+label{
+	margin: 5px;
+}
+input{
+	margin: 5px;
+}
+table{
+	border: 1px solid black;
+	width: 100%;
+}
+p{
+	margin: 5px;
+}
+.border-line{
+}
+td{
+	height: 20px;
+}
+.text-wrapper{
+	justify-content: space-around;
+}
+.input-wrapper{
+}

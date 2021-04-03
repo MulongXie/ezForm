@@ -54,7 +54,7 @@ class HTML:
             html[-1] = '/>\n'
         self.html_script = html
 
-    def generate_html_p(self):
+    def generate_html_p(self, speak=True):
         # start
         html = "<p"
         if self.id is not None:
@@ -66,13 +66,18 @@ class HTML:
         html += ">"
         # body
         html += self.content.replace('\n', '</br>')
+
+        # speak
+        if speak:
+            html += '<button class="speaker" data-target="' + self.id + '" onclick="speak(this)"><span class="glyphicon glyphicon-volume-up"></span></button>'
+
         # close
         html += "</p>\n"
         self.html_script = html
 
-    def generate_html_input(self):
+    def generate_html_input(self, speak=True):
         # guide text
-        html = '<label for="' + self.id + '">' + self.input.guide_text.content + '</label>\n'
+        html = '<label id="' + 'label-' + self.id + '" for="' + self.id + '">' + self.input.guide_text.content + '</label>\n'
         # input filed
         html += '<input type="text"'
         if self.id is not None:
@@ -81,7 +86,12 @@ class HTML:
             html += ' class="' + self.class_name + '"'
         if self.style is not None:
             html += ' style="' + self.style + '"'
-        html += '"><br>\n'
+        html += '">'
+        # speak
+        if speak:
+            html += '<button class="speaker" data-target="' + 'label-' + self.id + '" onclick="speak(this)"><span class="glyphicon glyphicon-volume-up"></span></button>\n'
+
+        html += '<br>\n'
         self.html_script = html
 
     def generate_html_table(self):
