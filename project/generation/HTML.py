@@ -76,22 +76,26 @@ class HTML:
         self.html_script = html
 
     def generate_html_input(self, speak=True):
+        html = '<div class="input-group">\n'
         # guide text
-        html = '<label id="' + 'label-' + self.id + '" for="' + self.id + '">' + self.input.guide_text.content + '</label>\n'
+        html += self.indent() + '<label id="' + 'label-' + self.id + '" class="input-group-addon" for="' + self.id + '">' + self.input.guide_text.content + '</label>\n'
         # input filed
-        html += '<input type="text"'
+        html += self.indent() + '<input type="text"'
         if self.id is not None:
             html += ' id="' + self.id + '"'
         if self.class_name is not None:
-            html += ' class="' + self.class_name + '"'
+            html += ' class="form-control ' + self.class_name + '"'
+        else:
+            html += ' class="form-control"'
         if self.style is not None:
             html += ' style="' + self.style + '"'
-        html += '">'
+        html += '>\n'
         # speak
         if speak:
-            html += '<button class="speaker" data-target="' + 'label-' + self.id + '" onclick="speak(this)"><span class="glyphicon glyphicon-volume-up"></span></button>\n'
-
-        html += '<br>\n'
+            html += self.indent() + '<div class="input-group-btn">\n'
+            html += self.indent(2) + '<button class="speaker btn btn-default" data-target="' + 'label-' + self.id + '" onclick="speak(this)"><span class="glyphicon glyphicon-volume-up"></span></button>\n'
+            html += self.indent() + '</div>\n'
+        html += '</div>\n'
         self.html_script = html
 
     def generate_html_table(self):
