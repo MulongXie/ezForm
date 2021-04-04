@@ -23,12 +23,15 @@ II. Generation
 4. Gather the input data from page	√
 5. Refill to the original form		√
 6. Page presentation                √
+7. Testing for various data
+	i. Input
+	2. Table
 
 
 III. Intelligence
 1. Data type recognition
 2. Pre-filling
-3. Audio reading the form
+3. Audio reading the form			√
 
 
 IV. APP (Mobile/Web)
@@ -41,6 +44,17 @@ V. Input Source
 2. PDF                              √
 3. Scanned image ***
 
+
+Paper
+1. Related work
+	Detection
+	i. OCR
+	ii. Table detection
+	Generation
+	i. Web code generation
+	ii. Mobile app code generation
+	Intelligent App - Accessbility
+	i. Make a normal app easier to use
 
 
 22/2/2021
@@ -123,28 +137,31 @@ II. Generation
 4. Draft paper (Architecture + Intro)
 
 
+4/4/2021 - 10/4/2021
+Paper:
+1. Related work
+2. Paper architecture + storyline (50%)
+Testing:
+1. Detection
+	i. Overlapping
+	ii. Dash line
+	iii. Parameters
+2. Generation
+	i. Inpput
+	ii. Table
 
-5/4/2021 - 10/4/2021
-1. Test scanned form image
 
-2. Add more intelligence
+10/4/2021 - 15/4/2021
+Intellegience:
+1. Data type ...
+Input:
+1. Pdf
+2. Sanned img
 
-3. Draft paper (50%)
 
-
-
-10/4/2021 - 17/4/2021
-1. Evaluation
-
+15/4/2021 - 20/4/2021
+Evaluation:
+1. Accuracy	*
+	i. Goround truth
+	ii. Comparison
 2. User study
-
-3. Draft paper (80%)
-
-
-
-
-1/4/2021 - 11/4/2021
-0. Draft paper
-0. Intelligence - Rule based
-
-

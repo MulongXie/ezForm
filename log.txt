@@ -287,3 +287,7 @@
 1. *** Generation *** Slice block and section according to unit-group
 
 2. *** Detection *** Recognize border lines (line or rectangle) and not use it as part of Input
+
+3. Add speech content function
+
+4. Apply bootstrap to decorate the page
