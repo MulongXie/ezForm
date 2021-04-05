@@ -57,4 +57,8 @@ def ocr_detection_google(imgpath):
                              data=imgdata,
                              params={'key': api_key},
                              headers={'Content_Type': 'application/json'})
-    return response.json()['responses'][0]['textAnnotations'][1:]
+    if response.json()['responses'] == [{}]:
+        # No Text
+        return None
+    else:
+        return response.json()['responses'][0]['textAnnotations'][1:]

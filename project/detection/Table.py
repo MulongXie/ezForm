@@ -118,17 +118,18 @@ class Table:
         Spilt columns according to the heading
         Column: A list of Element objects
         '''
-        for head in self.heading.elements:
-            col = [head]
-            max_bias_justify = int(head.width / 2)
-            for row in self.rows[1:]:
-                for ele in row.elements:
-                    if not ele.is_module_part and\
-                            head.is_justified(ele, direction='v', max_bias_justify=max_bias_justify):
-                        ele.is_module_part = True
-                        col.append(ele)
-                        break
-            self.columns.append(col)
+        if self.heading is not None:
+            for head in self.heading.elements:
+                col = [head]
+                max_bias_justify = int(head.width / 2)
+                for row in self.rows[1:]:
+                    for ele in row.elements:
+                        if not ele.is_module_part and\
+                                head.is_justified(ele, direction='v', max_bias_justify=max_bias_justify):
+                            ele.is_module_part = True
+                            col.append(ele)
+                            break
+                self.columns.append(col)
 
     def rm_noisy_element(self):
         '''

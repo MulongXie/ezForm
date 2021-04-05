@@ -401,18 +401,19 @@ class Form:
     def Google_OCR_text_detection(self):
         start = time.clock()
         detection_results = ocr.ocr_detection_google(self.img_file_name)
-        for result in detection_results:
-            x_coordinates = []
-            y_coordinates = []
-            text_location = result['boundingPoly']['vertices']
-            text = result['description']
-            for loc in text_location:
-                x_coordinates.append(loc['x'])
-                y_coordinates.append(loc['y'])
-            location = {'left': min(x_coordinates), 'top': min(y_coordinates),
-                        'right': max(x_coordinates), 'bottom': max(y_coordinates)}
-            self.texts.append(Text(text, location))
-        self.Google_OCR_sentences_recognition()
+        if detection_results is not None:
+            for result in detection_results:
+                x_coordinates = []
+                y_coordinates = []
+                text_location = result['boundingPoly']['vertices']
+                text = result['description']
+                for loc in text_location:
+                    x_coordinates.append(loc['x'])
+                    y_coordinates.append(loc['y'])
+                location = {'left': min(x_coordinates), 'top': min(y_coordinates),
+                            'right': max(x_coordinates), 'bottom': max(y_coordinates)}
+                self.texts.append(Text(text, location))
+            self.Google_OCR_sentences_recognition()
         print('*** Google OCR Processing Time:%.3f s***' % (time.clock() - start))
 
     def Google_OCR_sentences_recognition(self):
@@ -595,7 +596,8 @@ class Form:
         for ele in neighbours:
             if ele is not None:
                 heading.add_element(ele)
-        table.add_heading(heading)
+        if heading.location is not None:
+            table.add_heading(heading)
 
     def table_detection(self):
         '''
@@ -623,11 +625,11 @@ class Form:
                     # *** detect down forwards ***
                     unit_a = unit
                     unit_b = self.find_neighbour_unit(unit_a, 'below')
-                    if unit_b.type != 'rectangle' or unit_b.unit_type != 'bar_unit':
+                    if unit_b is not None and unit_b.type != 'rectangle' or unit_b.unit_type != 'bar_unit':
                         continue
                     row_a = row
                     # check if the unit has neighbour on the same colunm
-                    while unit_a.is_on_same_line(unit_b, direction='v'):
+                    while unit_b is not None and unit_a.is_on_same_line(ele_b=unit_b, direction='v'):
                         row_b = self.row_detection(unit_b)
                         # check if its row and the row below it matches
                         # merge matched parts of the two rows to a table
@@ -648,11 +650,11 @@ class Form:
                     # *** detect up forwards ***
                     unit_a = unit
                     unit_b = self.find_neighbour_unit(unit_a, 'top')
-                    if unit_b.type != 'rectangle' or unit_b.unit_type != 'bar_unit':
+                    if unit_b is not None and unit_b.type != 'rectangle' or unit_b.unit_type != 'bar_unit':
                         continue
                     row_a = row
                     # check if the unit has neighbour on the same colunm
-                    while unit_a.is_on_same_line(unit_b, direction='v'):
+                    while unit_b is not None and unit_a.is_on_same_line(unit_b, direction='v'):
                         row_b = self.row_detection(unit_b)
                         # check if its row and the row below it matches
                         # merge matched parts of the two rows to a table
