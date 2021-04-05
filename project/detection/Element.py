@@ -258,24 +258,49 @@ class Element:
     *** For text box ***
     ********************
     '''
-    def textbox_extract_texts_content(self):
+    def is_textbox_or_border(self):
+        '''
+        If a rectangle contains only texts in it, then label the rect as type of 'textbox'
+        Else if it contains other rectangles in it, then label it as type of 'border'
+        '''
+        if len(self.contains) == 0:
+            return False
+        for ele in self.contains:
+            if ele.type != 'text':
+                self.type = 'border'
+                return 'border'
+        self.type = 'textbox'
+        return 'textbox'
+
+    def textbox_merge_and_extract_texts_content(self, v_max_merged_gap=10):
         '''
         For Textbox, extract the text content
         '''
+        texts = self.contains
+        changed = True
+        while changed:
+            changed = False
+            temp_set = []
+            for text_a in texts:
+                merged = False
+                for text_b in temp_set:
+                    if text_a.is_in_alignment(text_b, direction='v', bias=0) and \
+                            max(text_a.location['top'], text_b.location['top']) - min(text_a.location['bottom'], text_b.location['bottom']) < v_max_merged_gap:
+                        text_b.merge_text(text_a)
+                        merged = True
+                        changed = True
+                        break
+                if not merged:
+                    temp_set.append(text_a)
+            texts = temp_set.copy()
+
         texts = []
-        non_texts = []
         for ele in self.contains:
             if ele.type == 'text':
                 texts.append(ele)
-            else:
-                non_texts.append(ele)
 
-        text_merged = texts[0]
-        for i in range(1, len(texts)):
-            text_merged.merge_text(texts[i], direction='v')
-
-        self.contains = [texts] + non_texts
-        self.content = text_merged.content
+        self.contains = texts
+        self.content = [t.content for t in texts]
 
     def merge_text(self, text_b, direction='h'):
         text_a = self

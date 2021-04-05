@@ -448,26 +448,30 @@ class Form:
         self.lines = self.img.detect_line_elements()
         print('*** Element Detection Time:%.3f s***' % (time.clock() - start))
 
-    def textbox_recognition(self):
+    def border_and_textbox_recognition(self):
         '''
-        If a rectangle contains only one text in it, then recategorize the rect as type of 'textbox'
+        If a rectangle contains only texts in it, then label the rect as type of 'textbox'
+        Else if it contains other rectangles in it, then label it as type of 'border'
         '''
-        # iteratively check the relationship between texts and rectangles
-        for text in self.texts:
+        all_eles = self.get_all_elements()
+        # iteratively check the relationship between eles and rectangles
+        for ele in all_eles:
             for rec_squ in self.rectangles + self.squares:
-                relation = text.pos_relation(rec_squ)
-
-                # if the text is contained in the rectangle box
+                if ele.id == rec_squ.id:
+                    continue
+                relation = ele.pos_relation(rec_squ)
+                # if the element is contained in the rectangle box
                 if relation == -1:
-                    rec_squ.contains.append(text)
+                    rec_squ.contains.append(ele)
 
         # if the rectangle contains only one text, label it as type of textbox
         for rec_squ in self.rectangles + self.squares:
-            if len(rec_squ.contains) == 1:
-                rec_squ.type = 'textbox'
+            rec_squ.is_textbox_or_border()
+            # merge text vertically for a textbox
+            if rec_squ.type == 'textbox':
                 for containment in rec_squ.contains:
                     containment.in_box = True
-                rec_squ.textbox_extract_texts_content()
+                rec_squ.textbox_merge_and_extract_texts_content()
         # print('*** Textbox Recognition Time:%.3f s***' % (time.clock() - start))
 
     def border_line_recognition(self):
