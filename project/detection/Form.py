@@ -60,13 +60,14 @@ class Form:
         self.img = Image(img_file_name)
         self.form_name = img_file_name.split('/')[-1][:-4]
 
-        # form elements
+        # atomic elements
         self.texts = []             # detected by ocr
         self.rectangles = []        # detected by cv
+        self.squares = []
         self.lines = []             # detected by cv
+        # compound elements
         self.tables = []            # recognize by grouping rectangles
         self.inputs = []            # input elements that consists of guide text (text|textbox) and input filed (rectangle|line)
-
         self.row_id = 0
         self.table_id = 0
 
@@ -246,7 +247,7 @@ class Form:
     **************************
     '''
     def get_all_elements(self):
-        return self.texts + self.rectangles + self.lines + self.tables
+        return self.texts + self.rectangles + self.squares + self.lines + self.tables
 
     def assign_element_ids(self):
         '''
@@ -268,6 +269,10 @@ class Form:
         for rec in self.rectangles:
             if not rec.is_abandoned and not rec.is_module_part:
                 detection_result.append(rec)
+
+        for squ in self.squares:
+            if not squ.is_abandoned and not squ.is_module_part:
+                detection_result.append(squ)
 
         for line in self.lines:
             if not line.is_abandoned and not line.is_module_part:
@@ -305,8 +310,8 @@ class Form:
             if not text.in_box:
                 text.unit_type = 'text_unit'
                 self.text_units.append(text)
-        for ele in self.rectangles + self.lines:
-            if ele.type in ('line', 'rectangle'):
+        for ele in self.rectangles + self.squares + self.lines:
+            if ele.type in ('line', 'rectangle', 'square'):
                 ele.unit_type = 'bar_unit'
                 self.bar_units.append(ele)
             elif ele.type == 'textbox':
@@ -439,7 +444,7 @@ class Form:
 
     def element_detection(self):
         start = time.clock()
-        self.rectangles = self.img.detect_rectangle_elements()
+        self.rectangles, self.squares = self.img.detect_rectangle_and_square_elements()
         self.lines = self.img.detect_line_elements()
         print('*** Element Detection Time:%.3f s***' % (time.clock() - start))
 
@@ -449,19 +454,20 @@ class Form:
         '''
         # iteratively check the relationship between texts and rectangles
         for text in self.texts:
-            for rec in self.rectangles:
-                relation = text.pos_relation(rec)
+            for rec_squ in self.rectangles + self.squares:
+                relation = text.pos_relation(rec_squ)
 
                 # if the text is contained in the rectangle box
                 if relation == -1:
-                    rec.contains.append(text)
+                    rec_squ.contains.append(text)
 
         # if the rectangle contains only one text, label it as type of textbox
-        for rec in self.rectangles:
-            if len(rec.contains) == 1:
-                rec.type = 'textbox'
-                rec.contains[0].in_box = True
-                rec.textbox_extract_texts_content()
+        for rec_squ in self.rectangles + self.squares:
+            if len(rec_squ.contains) == 1:
+                rec_squ.type = 'textbox'
+                for containment in rec_squ.contains:
+                    containment.in_box = True
+                rec_squ.textbox_extract_texts_content()
         # print('*** Textbox Recognition Time:%.3f s***' % (time.clock() - start))
 
     def border_line_recognition(self):
@@ -819,6 +825,10 @@ class Form:
         for rec in self.rectangles:
             # if not rec.is_abandoned:
             rec.visualize_element(board)
+
+        for squ in self.squares:
+            # if not squ.is_abandoned:
+            squ.visualize_element(board)
 
         for line in self.lines:
             # if not line.is_abandoned:

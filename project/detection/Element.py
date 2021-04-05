@@ -7,7 +7,7 @@ class Element:
                  id=None, type=None, contour=None, location=None, clip_img=None):
         self.id = id
         self.is_abandoned = False       # if the element has been merged or defined as noise
-        self.type = type                # text/rectangle/line/textbox/border
+        self.type = type                # text/rectangle/line/textbox/border/square
         self.unit_type = None           # text_unit(text or textbox)/bar_unit(rectangle, line or table)
         self.unit_group_id = -1         # only for [Vertical_Aligned_Form], id of groups segmented by separators
 
@@ -70,11 +70,10 @@ class Element:
             return True
         return False
 
-    def is_rectangle(self):
+    def is_rectangle_or_square(self):
         '''
         Rectangle recognition by checking slopes between adjacent points
-        :param contour: contour
-        :return: boolean
+        :return: 'rectangle' or 'square' or False
         '''
         contour = np.reshape(self.contour, (-1, 2))
         # calculate the slope k (y2-y1)/(x2-x1) the first between two neighboor points
@@ -129,8 +128,18 @@ class Element:
         # print('Side Number:', len(sides))
         lens = [len(s) for s in sides]
         # print('Side Lengths:', lens, ' Side Slopes:', slopes)
+        # if it's rectangle, the opposite sides pair should be similar
         if (abs(lens[0] - lens[2]) < 4) and (abs(lens[1] - lens[3]) < 4):
-            return True
+            # check if the rectangle is square
+            is_square = True
+            for i in range(1, len(lens)):
+                if abs(lens[0] - lens[i]) >= 5:
+                    is_square = False
+                    break
+            if is_square:
+                return 'square'
+            else:
+                return 'rectangle'
         return False
 
     '''
@@ -320,6 +329,8 @@ class Element:
                 color = (211, 85, 186)
             elif self.type == 'border':
                 color = (0, 0, 255)
+            elif self.type == 'square':
+                color = (0, 168, 168)
         cv2.rectangle(image, (self.location['left'], self.location['top']), (self.location['right'], self.location['bottom']), color, line)
         if show:
             cv2.imshow('element', image)
