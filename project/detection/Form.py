@@ -446,6 +446,23 @@ class Form:
         start = time.clock()
         self.rectangles, self.squares = self.img.detect_rectangle_and_square_elements()
         self.lines = self.img.detect_line_elements()
+        # filter out noises
+        rects = self.rectangles.copy()
+        squs = self.squares.copy()
+        lines = self.lines.copy()
+        for text in self.texts:
+            for rec in self.rectangles:
+                if text.pos_relation(rec) == 1:
+                    rects.remove(rec)
+            for squ in self.squares:
+                if text.pos_relation(squ) == 1:
+                    squs.remove(squ)
+            for line in self.lines:
+                if text.pos_relation(line) == 1:
+                    lines.remove(line)
+            self.rectangles = rects.copy()
+            self.squares = squs.copy()
+            self.lines = lines.copy()
         print('*** Element Detection Time:%.3f s***' % (time.clock() - start))
 
     def border_and_textbox_recognition(self):

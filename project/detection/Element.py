@@ -65,8 +65,8 @@ class Element:
     *** Shape Recognition ***
     *************************
     '''
-    def is_line(self, max_thickness=4):
-        if self.height <= max_thickness:
+    def is_line(self, max_thickness=4, min_length=10):
+        if self.height <= max_thickness and self.width >= min_length:
             return True
         return False
 
@@ -147,7 +147,7 @@ class Element:
     *** Relation with Other Ele ***
     *******************************
     '''
-    def pos_relation(self, element, bias=0):
+    def pos_relation(self, element, bias=0, board=None):
         '''
         Calculate the relation between two elements by iou
         :return:
@@ -174,7 +174,11 @@ class Element:
         ioa = area_in / self.area
         iob = area_in / element.area
 
-        # print('ioa:%.3f; iob:%.3f' % (ioa, iob))
+        if board is not None:
+            print('ioa:%.3f; iob:%.3f' % (ioa, iob))
+            element.visualize_element(board)
+            self.visualize_element(board, show=True)
+
         # a in b
         if ioa > 0.6:
             return -1
