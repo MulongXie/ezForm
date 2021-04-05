@@ -61,7 +61,7 @@ class Image:
     **** Element Detection ****
     ***************************
     '''
-    def get_elements(self, min_area=100):
+    def get_elements(self, min_area=20):
         '''
         get all elements on the image by findContours
         :return: list of [Component]
