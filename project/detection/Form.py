@@ -550,6 +550,16 @@ class Form:
                         abs(unit.location['left'] - neighbour_below.location['left']) < max_left_justify:
                     self.inputs.append(Input(unit, neighbour_below))
 
+        # input field and guiding text in the same rectangle
+        for rec_squ in self.rectangles + self.squares:
+            if rec_squ.type == 'textbox':
+                if len(rec_squ.contains) == 1:
+                    guiding_text = rec_squ.contains[0]
+                    content = guiding_text.content
+                    if content.count(':') == 1 and content.count('.') <= 1:
+                        input_field = Element(type='input_field_spec', location=rec_squ.location)
+                        self.inputs.append(Input(guiding_text, input_field, is_embedded=True))
+
     def row_detection(self, unit):
         '''
         Detect row through grouping all left-right connected and justified elements
@@ -747,6 +757,9 @@ class Form:
 
     def input_refine(self):
         for ipt in self.inputs:
+            # skip inputs where its guide text and input filed in the same box
+            if ipt.is_embedded:
+                continue
             # merge intersected text into guide_text
             changed = True
             while changed:

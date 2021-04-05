@@ -6,18 +6,23 @@ import cv2
 
 # Input element consisting of two parts(units): guide text & input field (rectangle or line)
 class Input(Element):
-    def __init__(self, guide_text, input_field):
+    def __init__(self, guide_text, input_field, is_embedded=False, placeholder=None):
         guide_text.in_input = self
         guide_text.is_guide_text = True
         guide_text.is_module_part = True
         input_field.in_input = self
         input_field.is_module_part = True
 
+        self.is_embedded = is_embedded   # indicate if the guide text and input filed in the same box
+
         self.guide_text = guide_text                    # text/textbox element
         self.input_fields = [input_field]               # list of rectangle/line elements
         self.fields_location = input_field.location
-        super().__init__(type='input')
+        self.placeholder = placeholder  # string
+        if self.placeholder is None and len(guide_text.content.split(':')) > 1:
+            self.placeholder = guide_text.content.split(':')[1]
 
+        super().__init__(type='input')
         self.unit_group_id = guide_text.unit_group_id   # only for [Vertical_Aligned_Form], if of groups segmented by separators
 
     def init_bound(self):
