@@ -298,11 +298,6 @@ class Element:
                     temp_set.append(text_a)
             texts = temp_set.copy()
 
-        texts = []
-        for ele in self.contains:
-            if ele.type == 'text':
-                texts.append(ele)
-
         self.contains = texts
         self.content = [t.content for t in texts]
 
