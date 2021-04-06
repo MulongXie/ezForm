@@ -878,9 +878,9 @@ class Form:
     def visualize_units(self):
         board = self.get_img_copy()
         for text_unit in self.text_units:
-            text_unit.visualize_element(board, color=(0, 255, 0))
+            text_unit.visualize_element(board, color=(255, 0, 0))
         for bar_unit in self.bar_units:
-            bar_unit.visualize_element(board, color=(255, 0, 0))
+            bar_unit.visualize_element(board, color=(0, 255, 0))
         cv2.imshow('Units', board)
         cv2.waitKey()
         cv2.destroyAllWindows()
