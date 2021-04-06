@@ -299,7 +299,7 @@ class Element:
             texts = temp_set.copy()
 
         self.contains = texts
-        self.content = [t.content for t in texts]
+        self.content = '\n'.join([t.content for t in texts])
 
     def merge_text(self, text_b, direction='h'):
         text_a = self
