@@ -93,13 +93,15 @@ class Element:
         # variables for checking if it's valid to continue using the previous side
         pop_pre = False
         gap_to_pre = 0
+        noises = []
         for i, p in enumerate(contour[2:]):
             # calculate the slope k between two neighboor points
             if contour[i][0] == contour[i - 1][0]:
                 k = 'v'
             else:
                 k = (contour[i][1] - contour[i - 1][1]) / (contour[i][0] - contour[i - 1][0])
-            # print(side, k_pre, gap_to_pre)
+            # if test:
+            #     print(len(side), k, k_pre, gap_to_pre, len(noises))
             # check if the two points on the same side
             if k != k_pre:
                 # leave out noises
@@ -108,37 +110,48 @@ class Element:
                     if len(sides) > 0 and k == slopes[-1] \
                             and not pop_pre and gap_to_pre < 4:
                         side = sides.pop()
+                        side += noises
                         side.append(p)
                         k = slopes.pop()
                         pop_pre = True
                         gap_to_pre = 0
+                        noises = []
                     # leave out noises
                     else:
+                        noises += side
                         gap_to_pre += 1
                         side = [p]
                 # count as valid side and store it in sides
                 else:
+                    side += noises
                     sides.append(side)
                     slopes.append(k_pre)
                     side = [p]
                     pop_pre = False
                     gap_to_pre = 0
+                    noises = []
                 k_pre = k
             else:
                 side.append(p)
-        sides.append(side)
-        slopes.append(k_pre)
+        # concatenate with the first side if same slope
+        if len(slopes) > 0 and k_pre == slopes[0]:
+            sides[0] += side
+        elif len(side) >= 4:
+            sides.append(side)
+            slopes.append(k_pre)
+        lens = [len(s) for s in sides]
+        # if test:
+        # print('Side Number:', len(sides), ' Side Lengths:', lens, ' Side Slopes:', slopes)
         if len(sides) != 4:
             return False
-        # print('Side Number:', len(sides))
-        lens = [len(s) for s in sides]
-        # print('Side Lengths:', lens, ' Side Slopes:', slopes)
         # if it's rectangle, the opposite sides pair should be similar
-        if (abs(lens[0] - lens[2]) < 4) and (abs(lens[1] - lens[3]) < 4):
+        max_diff1 = 0.1 * max(lens[0], lens[2]) if lens[0] > 100 or lens[2] > 100 else 6
+        max_diff2 = 0.1 * max(lens[1], lens[3]) if lens[1] > 100 or lens[3] > 100 else 6
+        if (abs(lens[0] - lens[2]) < max_diff1) and (abs(lens[1] - lens[3]) < max_diff2):
             # check if the rectangle is square
             is_square = True
             for i in range(1, len(lens)):
-                if abs(lens[0] - lens[i]) >= 5:
+                if abs(lens[0] - lens[i]) >= 10:
                     is_square = False
                     break
             if is_square:
@@ -381,11 +394,23 @@ class Element:
             elif self.type == 'line':
                 color = (211, 85, 186)
             elif self.type == 'border':
-                color = (0, 0, 255)
+                color = (168, 168, 0)
             elif self.type == 'square':
                 color = (0, 168, 168)
+            else:
+                print('Not a shape')
+                color = (0, 0, 255)
         cv2.rectangle(image, (self.location['left'], self.location['top']), (self.location['right'], self.location['bottom']), color, line)
         if show:
             cv2.imshow('element', image)
             cv2.waitKey()
             cv2.destroyWindow('element')
+
+    def visualize_element_contour(self, image):
+        img_shape = image.shape
+        board = np.zeros((img_shape[0], img_shape[1]))
+        cv2.drawContours(board, [self.contour], -1, 255)
+        cv2.imshow('element-cnt', board)
+        cv2.waitKey()
+        cv2.destroyWindow('element-cnt')
+
