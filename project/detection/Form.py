@@ -486,15 +486,21 @@ class Form:
                 if relation == -1:
                     rec_squ.contains.append(ele)
 
-        # if the rectangle contains only one text, label it as type of textbox
+        redundant_borders = []
         for rec_squ in self.rectangles + self.squares:
-            rec_squ.is_textbox_or_border()
+            rs_type = rec_squ.is_textbox_or_border()
             # merge text vertically for a textbox
-            if rec_squ.type == 'textbox':
+            if rs_type == 'textbox':
                 for containment in rec_squ.contains:
                     containment.in_box = True
                 rec_squ.textbox_merge_and_extract_texts_content()
-        # print('*** Textbox Recognition Time:%.3f s***' % (time.clock() - start))
+            elif rs_type == 'redundant':
+                redundant_borders.append(rec_squ)
+        for red in redundant_borders:
+            if red.type == 'rectangle':
+                self.rectangles.remove(red)
+            elif red.type == 'square':
+                self.squares.remove(red)
 
     def border_line_recognition(self):
         '''
