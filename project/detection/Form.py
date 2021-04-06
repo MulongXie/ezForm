@@ -534,7 +534,7 @@ class Form:
             for r1 in rect_squs:
                 merged = False
                 for r2 in temp_set:
-                    if r2.is_in_same_character_box(r1):
+                    if r2.is_in_same_character_box(r1) or r2.pos_relation(r1) != 0:
                         r2.character_box_merge_ele(r1)
                         merged = True
                         changed = True

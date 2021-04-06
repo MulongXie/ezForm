@@ -296,8 +296,9 @@ class Element:
     def is_in_same_character_box(self, ele):
         if self.type not in ('rectangle', 'square') or ele.type not in ('rectangle', 'square'):
             return False
-        if self.is_on_same_line(ele, direction='h') and max(self.character_area, ele.character_area) / min(self.character_area, ele.character_area) < 1.2:
+        if self.is_on_same_line(ele, direction='h', bias_gap=20) and max(self.character_area, ele.character_area) / min(self.character_area, ele.character_area) < 1.2:
             return True
+        return False
 
     def character_box_merge_ele(self, ele):
         self.merge_ele(ele)
