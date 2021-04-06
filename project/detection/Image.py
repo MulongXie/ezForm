@@ -66,6 +66,7 @@ class Image:
         get all elements on the image by findContours
         :return: list of [Component]
         '''
+        self.all_elements = []
         _, contours, hierarchy = cv2.findContours(self.binary_map, cv2.RETR_TREE, cv2.CHAIN_APPROX_NONE)
         for cnt in contours:
             if cv2.contourArea(cnt) > min_area:
@@ -85,6 +86,8 @@ class Image:
     def detect_rectangle_and_square_elements(self, hollow=True):
         if len(self.all_elements) == 0:
             self.get_elements()
+        self.rectangle_elements = []
+        self.square_elements = []
         for ele in self.all_elements:
             rect_squ_check = ele.is_rectangle_or_square()
             if rect_squ_check:
@@ -105,6 +108,7 @@ class Image:
     def detect_line_elements(self):
         if len(self.all_elements) == 0:
             self.get_elements()
+        self.line_elements = []
         for ele in self.all_elements:
             if ele.is_line():
                 ele.type = 'line'
