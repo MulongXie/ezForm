@@ -484,7 +484,8 @@ class Form:
                 relation = ele.pos_relation(rec_squ)
                 # if the element is contained in the rectangle box
                 if relation == -1:
-                    rec_squ.contains.append(ele)
+                    if rec_squ not in ele.contains:
+                        rec_squ.contains.append(ele)
 
         redundant_borders = []
         for rec_squ in self.rectangles + self.squares:
