@@ -125,8 +125,10 @@ class Image:
                 contours = [ele.contour for ele in self.rectangle_elements]
             elif element_opt == 'line':
                 contours = [ele.contour for ele in self.line_elements]
+            elif element_opt == 'square':
+                contours = [ele.contour for ele in self.square_elements]
             else:
-                print("element_opt: 'all'/'rectangle'/'line'")
+                print("element_opt: 'all'/'rectangle'/'line'/'square")
                 return
         if board is None:
             if board_opt == 'org':
@@ -159,8 +161,10 @@ class Image:
                 contours = [ele.contour for ele in self.rectangle_elements]
             elif element_opt == 'line':
                 contours = [ele.contour for ele in self.line_elements]
+            elif element_opt == 'square':
+                contours = [ele.contour for ele in self.square_elements]
             else:
-                print("element_opt: 'all'/'rectangle'/'line'")
+                print("element_opt: 'all'/'rectangle'/'line'/'square")
                 return
         if board is None:
             if board_opt == 'org':
