@@ -11,7 +11,21 @@ class Element:
         self.unit_type = None           # text_unit(text or textbox)/bar_unit(rectangle, line or table)
         self.unit_group_id = -1         # only for [Vertical_Aligned_Form], id of groups segmented by separators
 
-        # For textbox
+        # basic
+        self.clip_img = clip_img
+        self.contour = contour          # format of findContours
+        self.location = location        # dictionary {left, right, top, bottom}
+        self.width = None
+        self.height = None
+        self.area = None
+        self.init_bound()
+
+        # for character box
+        self.is_character_box = False
+        self.character_num = 1          # characters the c-box contains
+        self.character_area = self.area # area of single character, all cs should be similar
+
+        # for textbox
         self.contains = []              # list of elements that are contained in the element
         self.content = None             # for Textbox, the content of text contained
 
@@ -26,15 +40,6 @@ class Element:
         self.neighbour_bottom = None
         self.neighbour_left = None
         self.neighbour_right = None
-
-        # basic
-        self.clip_img = clip_img
-        self.contour = contour          # format of findContours
-        self.location = location        # dictionary {left, right, top, bottom}
-        self.width = None
-        self.height = None
-        self.area = None
-        self.init_bound()
 
     '''
     *******************
@@ -257,6 +262,39 @@ class Element:
                     return True
             return False
 
+    def merge_ele(self, ele_b):
+        ele_a = self
+        ele_b.is_abandoned = True
+
+        top = min(ele_a.location['top'], ele_b.location['top'])
+        left = min(ele_a.location['left'], ele_b.location['left'])
+        right = max(ele_a.location['right'], ele_b.location['right'])
+        bottom = max(ele_a.location['bottom'], ele_b.location['bottom'])
+        self.location = {'left': left, 'top': top, 'right': right, 'bottom': bottom}
+        self.width = self.location['right'] - self.location['left']
+        self.height = self.location['bottom'] - self.location['top']
+        self.area = self.width * self.height
+
+    '''
+    *************************
+    *** For character box ***
+    *************************
+    '''
+    def is_in_same_character_box(self, ele):
+        if self.type not in ('rectangle', 'square') or ele.type not in ('rectangle', 'square'):
+            return False
+        if self.is_on_same_line(ele, direction='h') and max(self.character_area, ele.character_area) / min(self.character_area, ele.character_area) < 1.2:
+            return True
+
+    def character_box_merge_ele(self, ele):
+        self.merge_ele(ele)
+        self.is_character_box = True
+        self.character_num += 1
+        self.character_area = int((self.character_area + ele.character_area) / 2)
+        # character box cannot be 'square'
+        if self.type == 'square':
+            self.type = 'rectangle'
+
     '''
     ********************
     *** For text box ***
@@ -303,16 +341,7 @@ class Element:
 
     def merge_text(self, text_b, direction='h'):
         text_a = self
-        text_b.is_abandoned = True
-
-        top = min(text_a.location['top'], text_b.location['top'])
-        left = min(text_a.location['left'], text_b.location['left'])
-        right = max(text_a.location['right'], text_b.location['right'])
-        bottom = max(text_a.location['bottom'], text_b.location['bottom'])
-        self.location = {'left': left, 'top': top, 'right': right, 'bottom': bottom}
-        self.width = self.location['right'] - self.location['left']
-        self.height = self.location['bottom'] - self.location['top']
-        self.area = self.width * self.height
+        self.merge_ele(text_b)
 
         if direction == 'h':
             if text_a.location['left'] < text_b.location['left']:

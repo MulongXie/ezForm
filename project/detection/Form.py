@@ -465,6 +465,11 @@ class Form:
             self.lines = lines.copy()
         print('*** Element Detection Time:%.3f s***' % (time.clock() - start))
 
+    '''
+    ***********************************
+    *** Special Element Recognition ***
+    ***********************************
+    '''
     def border_and_textbox_recognition(self):
         '''
         If a rectangle contains only texts in it, then label the rect as type of 'textbox'
@@ -508,6 +513,36 @@ class Form:
             self.bar_units.remove(bar)
             self.all_units.remove(bar)
         self.sort_units()
+
+    def character_box_recognition(self):
+        '''
+        Recognize if some rectangles and squares can combine into a character box
+        '''
+        rect_squs = self.rectangles + self.squares
+
+        changed = True
+        while changed:
+            changed = False
+            temp_set = []
+            for r1 in rect_squs:
+                merged = False
+                for r2 in temp_set:
+                    if r2.is_in_same_character_box(r1):
+                        r2.character_box_merge_ele(r1)
+                        merged = True
+                        changed = True
+                        break
+                if not merged:
+                    temp_set.append(r1)
+            rect_squs = temp_set.copy()
+
+        self.rectangles = []
+        self.squares = []
+        for rect_squ in rect_squs:
+            if rect_squ.type == 'rectangle':
+                self.rectangles.append(rect_squ)
+            elif rect_squ.type == 'square':
+                self.squares.append(rect_squ)
 
     '''
     *************************************
