@@ -6,13 +6,14 @@ import cv2
 
 # Input element consisting of two parts(units): guide text & input field (rectangle or line)
 class Input(Element):
-    def __init__(self, guide_text, input_field, is_embedded=False, placeholder=None):
+    def __init__(self, guide_text, input_field, is_checkbox=False, is_embedded=False, placeholder=None):
         guide_text.in_input = self
         guide_text.is_guide_text = True
         guide_text.is_module_part = True
         input_field.in_input = self
         input_field.is_module_part = True
 
+        self.is_check_box = is_checkbox  # checkbox's input filed should be square
         self.is_embedded = is_embedded   # indicate if the guide text and input filed in the same box
 
         self.guide_text = guide_text                    # text/textbox element
