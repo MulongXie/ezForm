@@ -446,7 +446,11 @@ class Form:
         start = time.clock()
         self.rectangles, self.squares = self.img.detect_rectangle_and_square_elements()
         self.lines = self.img.detect_line_elements()
-        # filter out noises
+        self.filter_detection_noises()
+        print('*** Element Detection Time:%.3f s***' % (time.clock() - start))
+
+    def filter_detection_noises(self):
+        # count shapes contained in text as noise
         rects = self.rectangles.copy()
         squs = self.squares.copy()
         lines = self.lines.copy()
@@ -463,7 +467,21 @@ class Form:
             self.rectangles = rects.copy()
             self.squares = squs.copy()
             self.lines = lines.copy()
-        print('*** Element Detection Time:%.3f s***' % (time.clock() - start))
+
+        # filter out double nested shapes
+        redundant_nested = []
+        rect_squs = self.rectangles + self.squares
+        for i, rect_squ in enumerate(rect_squs):
+            for j in range(i + 1, len(rect_squs)):
+                ioi, ioj = rect_squ.calc_intersection(rect_squs[j])
+                if ioi > 0.7 and ioj == 1:
+                    rect_squs[j].is_abandoned = True
+                    redundant_nested.append(rect_squs[j])
+        for r in redundant_nested:
+            if r.type == 'rectangle':
+                self.rectangles.remove(r)
+            elif r.type == 'square':
+                self.squares.remove(r)
 
     '''
     ***********************************
