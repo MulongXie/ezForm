@@ -19,17 +19,19 @@ def form_compo_detection(form_img_file_name):
     form.text_detection()
     form.element_detection()
     form.assign_element_ids()
-    # form.visualize_all_elements()
+    form.visualize_all_elements()
 
     # *** 2. Special element recognition ***
-    form.textbox_recognition()
-    # form.visualize_all_elements()
+    form.border_and_textbox_recognition()
+    form.visualize_all_elements()
+    form.character_box_recognition()
+    form.visualize_all_elements()
 
     # *** 3. Units labelling ***
     form.label_elements_as_units()
     form.sort_units()
     form.border_line_recognition()
-    # form.visualize_units()
+    form.visualize_units()
 
     # *** 4. Form structure recognition ***
     form.check_vertical_aligned_form()
@@ -514,7 +516,6 @@ class Form:
                     if rec_squ not in ele.contains:
                         rec_squ.contains.append(ele)
 
-        redundant_borders = []
         for rec_squ in self.rectangles + self.squares:
             rs_type = rec_squ.is_textbox_or_border()
             # merge text vertically for a textbox
@@ -522,13 +523,6 @@ class Form:
                 for containment in rec_squ.contains:
                     containment.in_box = True
                 rec_squ.textbox_merge_and_extract_texts_content()
-            elif rs_type == 'redundant':
-                redundant_borders.append(rec_squ)
-        for red in redundant_borders:
-            if red.type == 'rectangle':
-                self.rectangles.remove(red)
-            elif red.type == 'square':
-                self.squares.remove(red)
 
     def border_line_recognition(self):
         '''

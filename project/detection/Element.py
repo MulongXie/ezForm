@@ -323,24 +323,17 @@ class Element:
     *** For text box ***
     ********************
     '''
-    def is_textbox_or_border(self, max_border_area_ratio=0.75):
+    def is_textbox_or_border(self):
         '''
         If a rectangle contains only texts in it, then label the rect as type of 'textbox'
         Else if it contains other rectangles in it, then label it as type of 'border'
         '''
         if len(self.contains) == 0 or self.is_character_box:
             return False
-        con_area = 0
-        is_border = False
         for ele in self.contains:
-            con_area += ele.area
             if ele.type != 'text':
-                is_border = True
-        if is_border:
-            if (con_area / self.area) > max_border_area_ratio:
-                return 'redundant'
-            self.type = 'border'
-            return 'border'
+                self.type = 'border'
+                return 'border'
         self.type = 'textbox'
         return 'textbox'
 
