@@ -470,15 +470,23 @@ class Form:
             self.lines = lines.copy()
 
         # filter out double nested shapes
-        redundant_nested = []
+        redundant_nesting = []
         rect_squs = self.rectangles + self.squares
         for i, rect_squ in enumerate(rect_squs):
+            containment_area = 0
+            containments = []
             for j in range(i + 1, len(rect_squs)):
                 ioi, ioj = rect_squ.calc_intersection(rect_squs[j])
-                if ioi > 0.7 and ioj == 1:
-                    rect_squs[j].is_abandoned = True
-                    redundant_nested.append(rect_squs[j])
-        for r in redundant_nested:
+                if ioj == 1:
+                    containment_area += rect_squs[j].area
+                    containments.append(rect_squs[j])
+            # if containment_area / rect_squ.area > 0:
+            #     print(len(containments), containment_area, rect_squ.area, containment_area / rect_squ.area)
+            #     rect_squ.visualize_element(self.get_img_copy(), show=True)
+            if containment_area / rect_squ.area > 0.5:
+                rect_squ.is_abandoned = True
+                redundant_nesting.append(rect_squ)
+        for r in redundant_nesting:
             if r.type == 'rectangle':
                 self.rectangles.remove(r)
             elif r.type == 'square':
