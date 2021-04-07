@@ -23,7 +23,7 @@ def form_compo_detection(form_img_file_name):
 
     # *** 2. Special element recognition ***
     form.border_and_textbox_recognition()
-    form.visualize_all_elements()
+    # form.visualize_all_elements()
     form.character_box_recognition()
     form.visualize_all_elements()
 
@@ -41,18 +41,20 @@ def form_compo_detection(form_img_file_name):
 
     # *** 5. Table obj ***
     form.table_detection()
-    form.table_refine()
     # form.visualize_all_elements()
+    form.table_refine()
+    form.visualize_all_elements()
 
     # *** 6. Input compound recognition ***
     form.input_compound_recognition()
+    # form.visualize_detection_result()
     form.input_refine()
     # form.visualize_inputs()
     form.text_refine()
-    # form.visualize_detection_result()
+    form.visualize_detection_result()
 
     # *** 7. Export ***
-    form.export_detection_result_img()
+    # form.export_detection_result_img()
     return form
 
 
