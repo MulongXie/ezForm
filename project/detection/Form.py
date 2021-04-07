@@ -515,6 +515,7 @@ class Form:
                 if relation == -1:
                     if rec_squ not in ele.contains:
                         rec_squ.contains.append(ele)
+                        rec_squ.containment_area += ele.area
 
         for rec_squ in self.rectangles + self.squares:
             rs_type = rec_squ.is_textbox_or_border()
@@ -639,6 +640,15 @@ class Form:
                     if content.count(':') == 1 and content.count('.') <= 1:
                         input_field = Element(type='input_field_spec', location=rec_squ.location)
                         self.inputs.append(Input(guiding_text, input_field, is_embedded=True))
+                        continue
+
+                # if a large rectangle containing a small piece of text, then it could be input
+                if rec_squ.height / max([c.height for c in rec_squ.contains]) > 2 and 0 < rec_squ.containment_area / rec_squ.area < 0.15:
+                    neighbour_top = self.find_neighbour_unit(rec_squ, 'top')
+                    if neighbour_top.unit_type == 'text_unit' and neighbour_top.in_input is None and neighbour_top.in_table is None and\
+                            rec_squ.location['top'] - neighbour_top.location['bottom'] < max_gap_v:
+                        rec_squ.type = 'rectangle'
+                        self.inputs.append(Input(neighbour_top, rec_squ, placeholder=rec_squ.content))
 
     def row_detection(self, unit):
         '''

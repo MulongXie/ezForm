@@ -30,6 +30,7 @@ class Element:
 
         # for textbox
         self.contains = []              # list of elements that are contained in the element
+        self.containment_area = 0
         self.content = None             # for Textbox, the content of text contained
 
         # for elements in Table and Input
@@ -360,6 +361,7 @@ class Element:
             texts = temp_set.copy()
 
         self.contains = texts
+        self.containment_area = sum([c.area for c in self.contains])
         self.content = '\n'.join([t.content for t in texts])
 
     def merge_text(self, text_b, direction='h'):
