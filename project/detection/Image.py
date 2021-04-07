@@ -191,7 +191,6 @@ class Image:
                 return
 
         for ele in eles:
-            board = np.zeros((self.img_shape[0], self.img_shape[1]))
             ele.is_rectangle_or_square()
             cv2.drawContours(board, [ele.contour], -1, color)
             cv2.imshow(window_name, board)
