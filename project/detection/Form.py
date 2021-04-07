@@ -553,7 +553,7 @@ class Form:
             for r1 in rect_squs:
                 merged = False
                 for r2 in temp_set:
-                    if r2.is_in_same_character_box(r1) or r2.pos_relation(r1) != 0:
+                    if r2.is_in_same_character_box(r1):
                         r2.character_box_merge_ele(r1)
                         merged = True
                         changed = True
@@ -565,7 +565,7 @@ class Form:
         self.rectangles = []
         self.squares = []
         for rect_squ in rect_squs:
-            if rect_squ.type == 'rectangle':
+            if rect_squ.type in ('rectangle', 'textbox'):
                 self.rectangles.append(rect_squ)
             elif rect_squ.type == 'square':
                 self.squares.append(rect_squ)
@@ -584,7 +584,7 @@ class Form:
         '''
         # *** 1. Checkbox: a square following/followed by a guide text
         for bar in self.bar_units:
-            if bar.type == 'square':
+            if bar.type == 'square' and bar.in_input is None and bar.in_table is None:
                 if bar.nesting_text is not None:
                     self.inputs.append(Input(bar.nesting_text, bar, is_checkbox=True))
                     continue
@@ -608,7 +608,7 @@ class Form:
         # from left to right
         units = self.sorted_left_unit
         for i, unit in enumerate(units):
-            if unit.unit_type == 'text_unit':
+            if unit.unit_type == 'text_unit' and unit.in_input is None and unit.in_table is None:
                 neighbour_right = self.find_neighbour_unit(unit, direction='right', align_bias=0)
                 if neighbour_right is not None and\
                         neighbour_right.unit_type == 'bar_unit' and neighbour_right.type != 'square' and\
@@ -618,7 +618,7 @@ class Form:
         # from top to bottom
         units = self.sorted_top_unit
         for i, unit in enumerate(units):
-            if unit.in_input is None and unit.unit_type == 'text_unit':
+            if unit.unit_type == 'text_unit' and unit.in_input is None and unit.in_table is None:
                 neighbour_below = self.find_neighbour_unit(unit, direction='below', align_bias=0)
                 # units of an input compound with vertical alignment should be left justifying
                 if neighbour_below is not None and\
@@ -630,7 +630,7 @@ class Form:
 
         # *** 3. Embedded Input: input field and guiding text in the same rectangle ***
         for rec_squ in self.rectangles + self.squares:
-            if rec_squ.type == 'textbox':
+            if rec_squ.type == 'textbox' and rec_squ.in_input is None and rec_squ.in_table is None:
                 if len(rec_squ.contains) == 1:
                     guiding_text = rec_squ.contains[0]
                     content = guiding_text.content
