@@ -165,6 +165,30 @@ class Element:
     *** Relation with Other Ele ***
     *******************************
     '''
+    def calc_intersection(self, element, bias=0, board=None):
+        '''
+        :return: ioa(self) and iob(the element)
+        '''
+        l_a = self.location
+        l_b = element.location
+        left_in = max(l_a['left'], l_b['left']) + bias
+        top_in = max(l_a['top'], l_b['top']) + bias
+        right_in = min(l_a['right'], l_b['right'])
+        bottom_in = min(l_a['bottom'], l_b['bottom'])
+
+        w_in = max(0, right_in - left_in)
+        h_in = max(0, bottom_in - top_in)
+        area_in = w_in * h_in
+        ioa = area_in / self.area
+        iob = area_in / element.area
+
+        if board is not None and ioa != 0:
+            print('ioa:%.3f; iob:%.3f' % (ioa, iob))
+            element.visualize_element(board)
+            self.visualize_element(board, show=True)
+
+        return ioa, iob
+
     def pos_relation(self, element, bias=0, board=None):
         '''
         Calculate the relation between two elements by iou
@@ -174,29 +198,10 @@ class Element:
          1  : b in a
          2  : a, b are intersected
         '''
-        l_a = self.location
-        l_b = element.location
-
-        left_in = max(l_a['left'], l_b['left']) + bias
-        top_in = max(l_a['top'], l_b['top']) + bias
-        right_in = min(l_a['right'], l_b['right'])
-        bottom_in = min(l_a['bottom'], l_b['bottom'])
-
-        w_in = max(0, right_in - left_in)
-        h_in = max(0, bottom_in - top_in)
-        area_in = w_in * h_in
+        ioa, iob = self.calc_intersection(element, bias, board)
         # area of intersection is 0
-        if area_in == 0:
+        if ioa == 0:
             return 0
-
-        ioa = area_in / self.area
-        iob = area_in / element.area
-
-        if board is not None:
-            print('ioa:%.3f; iob:%.3f' % (ioa, iob))
-            element.visualize_element(board)
-            self.visualize_element(board, show=True)
-
         # a in b
         if ioa > 0.6:
             return -1
