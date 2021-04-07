@@ -319,7 +319,7 @@ class Form:
                 self.text_units.append(ele)
         self.all_units = self.text_units + self.bar_units
 
-    def find_neighbour_unit(self, unit, direction='right', connect_bias=4, align_bias=4):
+    def find_neighbour_unit(self, unit, direction='right', connect_bias=10, align_bias=4):
         '''
         Find the first unit 1.next to and 2.in alignment with the target
         :param direction:
@@ -458,12 +458,13 @@ class Form:
             for rec in self.rectangles:
                 if text.pos_relation(rec) == 1:
                     rects.remove(rec)
-            for squ in self.squares:
-                if text.pos_relation(squ) == 1:
-                    squs.remove(squ)
             for line in self.lines:
                 if text.pos_relation(line) == 1:
                     lines.remove(line)
+            # if a square is in a text, store it in text.contain_square
+            for squ in self.squares:
+                if text.pos_relation(squ) == 1:
+                    squ.nesting_text = text
             self.rectangles = rects.copy()
             self.squares = squs.copy()
             self.lines = lines.copy()
@@ -584,6 +585,10 @@ class Form:
         # *** 1. Checkbox: a square following/followed by a guide text
         for bar in self.bar_units:
             if bar.type == 'square':
+                if bar.nesting_text is not None:
+                    self.inputs.append(Input(bar.nesting_text, bar, is_checkbox=True))
+                    continue
+                # check square's left and right, and chose the
                 neighbour_right = self.find_neighbour_unit(bar, direction='right', align_bias=0)
                 neighbour_left = self.find_neighbour_unit(bar, direction='left', align_bias=0)
                 if neighbour_right is not None and neighbour_right.unit_type == 'text_unit' and neighbour_right.in_input is None and neighbour_right.in_table is None:

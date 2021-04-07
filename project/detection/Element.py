@@ -20,6 +20,9 @@ class Element:
         self.area = None
         self.init_bound()
 
+        # for square that is nested in a text
+        self.nesting_text = None
+
         # for character box
         self.is_character_box = False
         self.character_num = 1          # characters the c-box contains
