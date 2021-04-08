@@ -5,9 +5,12 @@ from detection.Element import Element
 
 
 class Image:
-    def __init__(self, img_file_name):
+    def __init__(self, img_file_name, resize_height=None):
         self.img_file_name = img_file_name
         self.img = cv2.imread(img_file_name)
+        self.resize_height = resize_height
+        self.resize_img_by_height()
+
         self.grey_img = cv2.cvtColor(self.img, cv2.COLOR_BGR2GRAY)
         self.img_shape = self.img.shape
 
@@ -27,6 +30,13 @@ class Image:
     **** Pre-processing ****
     ************************
     '''
+    def resize_img_by_height(self):
+        if self.resize_height is not None:
+            org_shape = self.img.shape
+            resize_h = self.resize_height
+            resize_w = int(org_shape[1] * (resize_h/org_shape[0]))
+            self.img = cv2.resize(self.img, (resize_w, resize_h))
+
     def get_gradient_map(self):
         '''
         :return: gradient map

@@ -3,6 +3,8 @@ import base64
 import json
 import time
 import requests
+import cv2
+import os
 from base64 import b64encode
 
 
@@ -49,7 +51,9 @@ def Google_OCR_makeImageData(imgpath):
     return json.dumps({"requests": img_req}).encode()
 
 
-def ocr_detection_google(imgpath):
+def ocr_detection_google(img):
+    imgpath = 'data/output/temp.jpg'
+    cv2.imwrite(imgpath, img)
     url = 'https://vision.googleapis.com/v1/images:annotate'
     api_key = 'AIzaSyAxjrH4Me8dQCC6BTtxHFcUphWHPNR2VGQ'
     imgdata = Google_OCR_makeImageData(imgpath)
@@ -57,6 +61,7 @@ def ocr_detection_google(imgpath):
                              data=imgdata,
                              params={'key': api_key},
                              headers={'Content_Type': 'application/json'})
+    os.remove(imgpath)
     if response.json()['responses'] == [{}]:
         # No Text
         return None

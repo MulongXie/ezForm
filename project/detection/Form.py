@@ -13,9 +13,9 @@ import string
 import os
 
 
-def form_compo_detection(form_img_file_name):
+def form_compo_detection(form_img_file_name, resize_height=None):
     # *** 1. Form structure recognition ***
-    form = Form(form_img_file_name)
+    form = Form(form_img_file_name, resize_height=resize_height)
     form.text_detection()
     form.element_detection()
     form.assign_element_ids()
@@ -59,9 +59,10 @@ def form_compo_detection(form_img_file_name):
 
 
 class Form:
-    def __init__(self, img_file_name):
+    def __init__(self, img_file_name, resize_height=None):
         self.img_file_name = img_file_name
-        self.img = Image(img_file_name)
+        self.resize_height = resize_height
+        self.img = Image(img_file_name, resize_height=resize_height)
         self.form_name = img_file_name.split('/')[-1][:-4]
 
         # atomic elements
@@ -411,7 +412,7 @@ class Form:
 
     def Google_OCR_text_detection(self):
         start = time.clock()
-        detection_results = ocr.ocr_detection_google(self.img_file_name)
+        detection_results = ocr.ocr_detection_google(self.img.img)
         if detection_results is not None:
             for result in detection_results:
                 x_coordinates = []
