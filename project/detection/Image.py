@@ -95,6 +95,13 @@ class Image:
                     bin_clip = self.binary_map[ele.location['top']: ele.location['bottom'], ele.location['left']: ele.location['right']]
                     white_ratio = (np.sum(bin_clip) / 255) / (ele.width * ele.height)
                     # if too much white region, count as filled
+                    # exception of small square
+                    # if rect_squ_check == 'square' and ele.width < 20 and ele.height < 20:
+                    #     if white_ratio < 0.8:
+                    #         ele.type = 'square'
+                    #         self.square_elements.append(ele)
+                    #     continue
+                    # elif white_ratio > 0.5:
                     if white_ratio > 0.5:
                         continue
                 if rect_squ_check == 'square':

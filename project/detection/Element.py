@@ -331,6 +331,12 @@ class Element:
         '''
         if len(self.contains) == 0 or self.is_character_box:
             return False
+        # remove noise
+        if self.type == 'square' and len(self.contains) == 1 and self.containment_area / self.area > 0.6:
+            # print(self.contains[0].type)
+            self.contains[0].is_abandoned = True
+            return False
+
         for ele in self.contains:
             if ele.type != 'text':
                 self.type = 'border'

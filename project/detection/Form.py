@@ -311,10 +311,12 @@ class Form:
         self.bar_units = []  # rectangles (not textbox) + lines + tables
         self.all_units = []
         for text in self.texts:
-            if not text.in_box:
+            if not text.in_box and not text.is_abandoned:
                 text.unit_type = 'text_unit'
                 self.text_units.append(text)
         for ele in self.rectangles + self.squares + self.lines:
+            if ele.is_abandoned:
+                continue
             if ele.type in ('line', 'rectangle', 'square'):
                 ele.unit_type = 'bar_unit'
                 self.bar_units.append(ele)
@@ -467,7 +469,7 @@ class Form:
                     lines.remove(line)
             # if a square is in a text, store it in text.contain_square
             for squ in self.squares:
-                if text.pos_relation(squ) == 1:
+                if squ.pos_relation(text) == -1 and squ.area / text.area < 0.6:
                     squ.nesting_text = text
             self.rectangles = rects.copy()
             self.squares = squs.copy()
