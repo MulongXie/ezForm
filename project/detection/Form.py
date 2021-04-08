@@ -629,9 +629,16 @@ class Form:
                 if neighbour_below is not None and\
                         neighbour_below.unit_type == 'bar_unit' and neighbour_below.type != 'square' and\
                         neighbour_below.in_input is None and neighbour_below.in_table is None and\
-                        neighbour_below.location['top'] - unit.location['bottom'] < max_gap_v and\
-                        abs(unit.location['left'] - neighbour_below.location['left']) < max_left_justify:
-                    self.inputs.append(Input(unit, neighbour_below))
+                        neighbour_below.location['top'] - unit.location['bottom'] < max_gap_v:
+                    # if the bar has text above justified
+                    if abs(unit.location['left'] - neighbour_below.location['left']) < max_left_justify:
+                        self.inputs.append(Input(unit, neighbour_below))
+                    # if the bar has no left or right neighbour, then combine it with text above
+                    else:
+                        bar_left = self.find_neighbour_unit(neighbour_below, direction='left')
+                        bar_right = self.find_neighbour_unit(neighbour_below, direction='right')
+                        if bar_left is None and bar_right is None:
+                            self.inputs.append(Input(unit, neighbour_below))
 
         # *** 3. Embedded Input: input field and guiding text in the same rectangle ***
         for rec_squ in self.rectangles + self.squares:
