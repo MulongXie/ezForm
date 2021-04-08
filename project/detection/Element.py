@@ -306,7 +306,7 @@ class Element:
         if self.type not in ('rectangle', 'square') or ele.type not in ('rectangle', 'square'):
             return False
         if max(self.character_area, ele.character_area) / min(self.character_area, ele.character_area) < 1.2 and \
-                (self.is_on_same_line(ele, direction='h', bias_gap=20) or self.pos_relation(ele) != 0):
+                (self.is_on_same_line(ele, direction='h', bias_gap=10) or self.pos_relation(ele) != 0):
             return True
         return False
 

@@ -669,7 +669,7 @@ class Form:
         is_row = False
         # if there is a connected neighbour, add it and the current unit to a Row
         while neighbour_right is not None and unit.is_on_same_line(neighbour_right, 'h')\
-                and (neighbour_right.type == 'rectangle' and neighbour_right.unit_type == 'bar_unit'):
+                and neighbour_right.unit_type == 'bar_unit':
             if not is_row:
                 row.add_element(unit)
                 is_row = True
@@ -686,7 +686,7 @@ class Form:
         neighbour_left = self.find_neighbour_unit(unit, 'left')
         # if there is neighbour on the same row, add it and the current unit to a Row
         while neighbour_left is not None and unit.is_on_same_line(neighbour_left, 'h')\
-                and (neighbour_left.type == 'rectangle' and neighbour_left.unit_type == 'bar_unit'):
+                and neighbour_left.unit_type == 'bar_unit':
             if not is_row:
                 row.add_element(unit)
                 is_row = True
@@ -734,7 +734,7 @@ class Form:
         '''
         recorded_row_ids = []
         for unit in self.all_units:
-            if unit.type == 'rectangle' and unit.unit_type == 'bar_unit':
+            if unit.unit_type == 'bar_unit':
                 # if an element has right(same row) and below(same column) connected elements
                 # then check if its row and the row below it are matched
                 row = self.row_detection(unit)
@@ -754,7 +754,7 @@ class Form:
                     # *** detect down forwards ***
                     unit_a = unit
                     unit_b = self.find_neighbour_unit(unit_a, 'below')
-                    if unit_b is not None and (unit_b.type != 'rectangle' or unit_b.unit_type != 'bar_unit'):
+                    if unit_b is None or unit_b.unit_type != 'bar_unit':
                         continue
                     row_a = row
                     # check if the unit has neighbour on the same colunm
@@ -779,7 +779,7 @@ class Form:
                     # *** detect up forwards ***
                     unit_a = unit
                     unit_b = self.find_neighbour_unit(unit_a, 'top')
-                    if unit_b is not None and (unit_b.type != 'rectangle' or unit_b.unit_type != 'bar_unit'):
+                    if unit_b is None or unit_b.unit_type != 'bar_unit':
                         continue
                     row_a = row
                     # check if the unit has neighbour on the same colunm
