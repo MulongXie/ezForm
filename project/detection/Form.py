@@ -647,7 +647,7 @@ class Form:
                 # if a large rectangle containing a small piece of text, then it could be input
                 if rec_squ.height / max([c.height for c in rec_squ.contains]) > 2 and 0 < rec_squ.containment_area / rec_squ.area < 0.15:
                     neighbour_top = self.find_neighbour_unit(rec_squ, 'top')
-                    if neighbour_top.unit_type == 'text_unit' and neighbour_top.in_input is None and neighbour_top.in_table is None and\
+                    if neighbour_top is not None and neighbour_top.unit_type == 'text_unit' and neighbour_top.in_input is None and neighbour_top.in_table is None and\
                             rec_squ.location['top'] - neighbour_top.location['bottom'] < max_gap_v:
                         rec_squ.type = 'rectangle'
                         self.inputs.append(Input(neighbour_top, rec_squ, placeholder=rec_squ.content))
