@@ -877,21 +877,19 @@ class Form:
         for table in self.tables:
             self.detect_table_heading(table)
             self.table_merge_contained_eles(table)
-
-        # *** Step 3. Merge vertically intersected elements in one cell ***
-        for table in self.tables:
             table.merge_vertical_texts_in_cell()
 
-        # *** Step 4. Split columns of a table according to the heading ***
+        # *** Step 3. Split columns of a table according to the heading ***
         for table in self.tables:
             table.split_columns()
 
-        # *** Step 5. Detect row title for each row ***
+        # *** Step 4. Detect row title for each row ***
         for table in self.tables:
             self.detect_table_row_title(table)
             self.table_merge_contained_eles(table)
+            table.merge_vertical_texts_in_cell()
 
-        # *** Step 6. Remove noises according to column ***
+        # *** Step 5. Remove noises according to column ***
         for table in self.tables:
             table.rm_noisy_element()
 

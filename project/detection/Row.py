@@ -152,7 +152,7 @@ class Row:
             for text_a in texts:
                 merged = False
                 for text_b in temp_set:
-                    if text_a.is_on_same_line(text_b, 'v', bias_justify=20, bias_gap=10):
+                    if text_a.is_in_alignment(text_b, 'v'):
                         text_b.merge_text(text_a, direction='v')
                         merged = True
                         changed = True
