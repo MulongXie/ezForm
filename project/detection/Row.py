@@ -23,6 +23,8 @@ class Row:
         else:
             self.elements = []
 
+        self.row_title = None  # text unit
+
     def init_bound(self):
         left = min([e.location['left'] for e in self.elements])
         top = min([e.location['top'] for e in self.elements])

@@ -111,6 +111,8 @@ class Table:
         for row in self.rows:
             if element.is_in_alignment(row, direction='h', bias=1):
                 row.add_element(element)
+                self.sort_rows()
+                self.init_bound()
                 return
 
     def split_columns(self):

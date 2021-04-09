@@ -746,6 +746,32 @@ class Form:
         if heading.location is not None:
             table.add_heading(heading)
 
+    def detect_table_row_title(self, table, max_title_justify_bias=10):
+        titles = []
+        t_num = 0
+        for row in table.rows:
+            first_ele = row.elements[0]
+            neighbour = self.find_neighbour_unit(first_ele, direction='left')
+            if neighbour is not None and neighbour.unit_type == 'text_unit' and neighbour.in_input is None and neighbour.in_table is None:
+                titles.append(neighbour)
+                t_num += 1
+            else:
+                titles.append(None)
+
+        if t_num / len(table.rows) >= 0.5:
+            for i in range(1, len(titles)):
+                if titles[i] is None or titles[i - 1] is None:
+                    continue
+                if abs(titles[i].location['left'] - titles[i - 1].location['left']) > max_title_justify_bias:
+                    return
+            for i, title in enumerate(titles):
+                if title is not None:
+                    table.rows[i].row_title = title
+                    title.is_module_part = True
+                    table.rows[i].add_element(title)
+                    table.sort_rows()
+                    table.init_bound()
+
     def table_detection(self):
         '''
         Detect table by detecting continuously matched rows
@@ -832,34 +858,38 @@ class Form:
     *** Module Refinement ***
     *************************
     '''
+    def table_merge_contained_eles(self, table):
+        '''
+        Merge elements that are not grouped but contained in the table
+        '''
+        for unit in self.all_units:
+            if unit.in_row is not None or unit.in_table is not None:
+                continue
+            if table.is_ele_contained_in_table(unit):
+                table.insert_element(unit)
+
     def table_refine(self):
         # *** Step 1. Merge elements that are not grouped but contained in a table ***
         for table in self.tables:
-            for unit in self.all_units:
-                if unit.in_row is not None or unit.in_table is not None:
-                    continue
-                if table.is_ele_contained_in_table(unit):
-                    table.insert_element(unit)
+            self.table_merge_contained_eles(table)
 
         # *** Step 2. Heading detection for table ***
         for table in self.tables:
             self.detect_table_heading(table)
+            self.table_merge_contained_eles(table)
 
-        # *** Step 3. Merge elements that are not grouped but contained in the table with heading ***
-        for table in self.tables:
-            for unit in self.all_units:
-                if unit.in_row is not None or unit.in_table is not None:
-                    continue
-                if table.is_ele_contained_in_table(unit):
-                    table.insert_element(unit)
-
-        # *** Step 4. Merge vertically intersected elements in one cell ***
+        # *** Step 3. Merge vertically intersected elements in one cell ***
         for table in self.tables:
             table.merge_vertical_texts_in_cell()
 
-        # *** Step 5. Split columns of a table according to the heading ***
+        # *** Step 4. Split columns of a table according to the heading ***
         for table in self.tables:
             table.split_columns()
+
+        # *** Step 5. Detect row title for each row ***
+        for table in self.tables:
+            self.detect_table_row_title(table)
+            self.table_merge_contained_eles(table)
 
         # *** Step 6. Remove noises according to column ***
         for table in self.tables:
