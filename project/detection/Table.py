@@ -6,6 +6,8 @@ class Table:
         self.id = table_id
         self.type = 'table'
         self.location = None
+        self.width = None
+        self.height = None
 
         self.unit_group_id = -1   # only for [Vertical_Aligned_Form], if of groups segmented by separators
 
@@ -29,6 +31,8 @@ class Table:
         right = max([r.location['right'] for r in self.rows])
         bottom = max([r.location['bottom'] for r in self.rows])
         self.location = {'left':left, 'right':right, 'top':top, 'bottom':bottom}
+        self.width = self.location['right'] - self.location['left']
+        self.height = self.location['bottom'] - self.location['top']
 
     def sort_rows(self):
         self.rows = sorted(self.rows, key=lambda x: x.location['top'])  # sort from top to bottom
@@ -78,6 +82,7 @@ class Table:
              - 'h': horizontal left-right alignment
         :return: Boolean that indicate the two are in alignment or not
         '''
+        bias = min(bias, min(self.width, ele_b.width) - 1)
         l_a = self.location
         l_b = ele_b.location
         if direction == 'v':

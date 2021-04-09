@@ -8,6 +8,8 @@ class Row:
         self.row_id = row_id
         self.parent_table = None
         self.location = None
+        self.width = None
+        self.height = None
 
         self.unit_group_id = -1   # only for [Vertical_Aligned_Form], if of groups segmented by separators
 
@@ -31,6 +33,8 @@ class Row:
         right = max([e.location['right'] for e in self.elements])
         bottom = max([e.location['bottom'] for e in self.elements])
         self.location = {'left':left, 'right':right, 'top':top, 'bottom':bottom}
+        self.width = self.location['right'] - self.location['left']
+        self.height = self.location['bottom'] - self.location['top']
 
     def sort_elements(self):
         self.elements = sorted(self.elements, key=lambda x: x.location['left'])  # sort from left to right
@@ -152,7 +156,7 @@ class Row:
             for text_a in texts:
                 merged = False
                 for text_b in temp_set:
-                    if text_a.is_in_alignment(text_b, 'v', bias=min(4, min(text_a.width, text_b.width) - 1)):
+                    if text_a.is_in_alignment(text_b, 'v'):
                         text_b.merge_text(text_a, direction='v')
                         merged = True
                         changed = True

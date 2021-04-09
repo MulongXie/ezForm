@@ -223,6 +223,7 @@ class Element:
              - 'h': horizontal left-right alignment
         :return: Boolean that indicate the two are in alignment or not
         '''
+        bias = min(bias, min(self.width, ele_b.width) - 1)
         l_a = self.location
         l_b = ele_b.location
         if direction == 'v':
