@@ -396,8 +396,7 @@ class Form:
             self.Baidu_OCR_text_detection()
         elif method == 'Google':
             self.Google_OCR_text_detection()
-        else:
-            print('Please choose a detection method from Google and Baidu')
+        self.shrink_text()
 
     def Baidu_OCR_text_detection(self):
         start = time.clock()
@@ -447,7 +446,10 @@ class Form:
                 if not merged:
                     temp_set.append(text_a)
             self.texts = temp_set.copy()
-            # self.visualize_all_elements()
+
+    def shrink_text(self):
+        for text in self.texts:
+            text.shrink_bound(self.img.binary_map)
 
     def element_detection(self):
         start = time.clock()
