@@ -396,7 +396,7 @@ class Form:
             self.Baidu_OCR_text_detection()
         elif method == 'Google':
             self.Google_OCR_text_detection()
-        self.shrink_text()
+        self.shrink_text_and_filter_noises()
 
     def Baidu_OCR_text_detection(self):
         start = time.clock()
@@ -447,9 +447,15 @@ class Form:
                     temp_set.append(text_a)
             self.texts = temp_set.copy()
 
-    def shrink_text(self):
+    def shrink_text_and_filter_noises(self):
+        noises = []
         for text in self.texts:
             text.shrink_bound(self.img.binary_map)
+            if min(text.width, text.height) <= 3:
+                text.is_abandoned = True
+                noises.append(text)
+        for n in noises:
+            self.texts.remove(n)
 
     def element_detection(self):
         start = time.clock()

@@ -4,6 +4,7 @@ import string
 import cv2
 import numpy as np
 
+
 # text component
 class Text(Element):
     def __init__(self, content, location):
