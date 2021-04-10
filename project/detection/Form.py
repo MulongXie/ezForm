@@ -598,48 +598,26 @@ class Form:
             If a text_unit's closet element in alignment is bar_unit, then count it as a guide text
         Second. compound the guide text and its bar unit (input field) as an Input element
         '''
-        # *** 1. Checkbox: a square following/followed by a guide text
-        for bar in self.bar_units:
-            if bar.type == 'square' and bar.in_input is None and bar.in_table is None:
-                if bar.nesting_text is not None:
-                    self.inputs.append(Input(bar.nesting_text, bar, is_checkbox=True))
-                    continue
-                # check square's left and right, and chose the
-                neighbour_right = self.find_neighbour_unit(bar, direction='right', align_bias=0)
-                neighbour_left = self.find_neighbour_unit(bar, direction='left', align_bias=0)
-                if neighbour_right is not None and neighbour_right.unit_type == 'text_unit' and neighbour_right.in_input is None and neighbour_right.in_table is None:
-                    if neighbour_left is not None and neighbour_left.unit_type == 'text_unit' and neighbour_left.in_input is None and neighbour_left.in_table is None:
-                        # check the closer text as guidetext
-                        if neighbour_right.location['left'] - bar.location['right'] > bar.location['left'] - neighbour_left.location['right']:
-                            self.inputs.append(Input(neighbour_left, bar, is_checkbox=True))
-                        else:
-                            self.inputs.append(Input(neighbour_right, bar, is_checkbox=True))
-                    else:
-                        self.inputs.append(Input(neighbour_right, bar, is_checkbox=True))
-                else:
-                    if neighbour_left is not None and neighbour_left.unit_type == 'text_unit' and neighbour_left.in_input is None and neighbour_left.in_table is None:
-                        self.inputs.append(Input(neighbour_left, bar, is_checkbox=True))
-
-        # *** 2. Embedded Input: input field and guiding text in the same rectangle ***
-        for rec_squ in self.rectangles + self.squares:
-            if rec_squ.type == 'textbox' and rec_squ.in_input is None and rec_squ.in_table is None:
-                if len(rec_squ.contains) <= 2:
-                    guiding_text = rec_squ.contains[0]
+        # *** 1. Embedded Input: input field and guiding text in the same rectangle ***
+        for textbox in self.text_units:
+            if textbox.type == 'textbox' and textbox.in_input is None and textbox.in_table is None:
+                if 0 < len(textbox.contains) <= 2:
+                    guiding_text = textbox.contains[0]
                     content = guiding_text.content
                     if content.count(':') == 1 and content.count('.') <= 1:
-                        self.inputs.append(Input(guiding_text, rec_squ, is_embedded=True))
+                        self.inputs.append(Input(guiding_text, textbox, is_embedded=True))
                         continue
 
-                # *** 3. A small piece of text at corner of a large Input box ***
-                if rec_squ.height / max([c.height for c in rec_squ.contains]) > 2 and 0 < rec_squ.containment_area / rec_squ.area < 0.15 and\
-                        min([c.location['left'] for c in rec_squ.contains]) - rec_squ.location['left'] > rec_squ.location['right'] - max([c.location['right'] for c in rec_squ.contains]):
-                    neighbour_top = self.find_neighbour_unit(rec_squ, 'top')
+                # *** 2. A small piece of text at corner of a large Input box ***
+                if textbox.height / max([c.height for c in textbox.contains]) > 2 and 0 < textbox.containment_area / textbox.area < 0.15 and\
+                        min([c.location['left'] for c in textbox.contains]) - textbox.location['left'] > textbox.location['right'] - max([c.location['right'] for c in textbox.contains]):
+                    neighbour_top = self.find_neighbour_unit(textbox, 'top')
                     if neighbour_top is not None and neighbour_top.unit_type == 'text_unit' and neighbour_top.in_input is None and neighbour_top.in_table is None and \
-                            rec_squ.location['top'] - neighbour_top.location['bottom'] < max_gap_v:
-                        rec_squ.type = 'rectangle'
-                        self.inputs.append(Input(neighbour_top, rec_squ, placeholder=rec_squ.content))
+                            textbox.location['top'] - neighbour_top.location['bottom'] < max_gap_v:
+                        textbox.type = 'rectangle'
+                        self.inputs.append(Input(neighbour_top, textbox, placeholder=textbox.content))
 
-        # *** 4. Normal Input: guide text and input field are separate and aligned ***
+        # *** 3. Normal Input: guide text and input field are separate and aligned ***
         # from left to right
         units = self.sorted_left_unit
         for i, unit in enumerate(units):
@@ -669,6 +647,28 @@ class Form:
                         bar_right = self.find_neighbour_unit(neighbour_below, direction='right')
                         if bar_left is None and bar_right is None:
                             self.inputs.append(Input(unit, neighbour_below))
+
+        # *** 4. Checkbox: a square following/followed by a guide text
+        for bar in self.bar_units:
+            if bar.type == 'square' and bar.in_input is None and bar.in_table is None:
+                if bar.nesting_text is not None:
+                    self.inputs.append(Input(bar.nesting_text, bar, is_checkbox=True))
+                    continue
+                # check square's left and right, and chose the
+                neighbour_right = self.find_neighbour_unit(bar, direction='right', align_bias=0)
+                neighbour_left = self.find_neighbour_unit(bar, direction='left', align_bias=0)
+                if neighbour_right is not None and neighbour_right.unit_type == 'text_unit' and neighbour_right.in_input is None and neighbour_right.in_table is None:
+                    if neighbour_left is not None and neighbour_left.unit_type == 'text_unit' and neighbour_left.in_input is None and neighbour_left.in_table is None:
+                        # check the closer text as guidetext
+                        if neighbour_right.location['left'] - bar.location['right'] > bar.location['left'] - neighbour_left.location['right']:
+                            self.inputs.append(Input(neighbour_left, bar, is_checkbox=True))
+                        else:
+                            self.inputs.append(Input(neighbour_right, bar, is_checkbox=True))
+                    else:
+                        self.inputs.append(Input(neighbour_right, bar, is_checkbox=True))
+                else:
+                    if neighbour_left is not None and neighbour_left.unit_type == 'text_unit' and neighbour_left.in_input is None and neighbour_left.in_table is None:
+                        self.inputs.append(Input(neighbour_left, bar, is_checkbox=True))
 
     def row_detection(self, unit):
         '''
