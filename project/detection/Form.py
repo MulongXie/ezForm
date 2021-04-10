@@ -686,7 +686,7 @@ class Form:
         neighbour_right = self.find_neighbour_unit(unit, 'right')
         is_row = False
         # if there is a connected neighbour, add it and the current unit to a Row
-        while neighbour_right is not None and unit.is_on_same_line(neighbour_right, 'h')\
+        while neighbour_right is not None and unit.is_on_same_line(neighbour_right, 'h', bias_gap=10)\
                 and neighbour_right.unit_type == 'bar_unit':
             if not is_row:
                 row.add_element(unit)
@@ -703,7 +703,7 @@ class Form:
         unit = unit_org
         neighbour_left = self.find_neighbour_unit(unit, 'left')
         # if there is neighbour on the same row, add it and the current unit to a Row
-        while neighbour_left is not None and unit.is_on_same_line(neighbour_left, 'h')\
+        while neighbour_left is not None and unit.is_on_same_line(neighbour_left, 'h', bias_gap=10)\
                 and neighbour_left.unit_type == 'bar_unit':
             if not is_row:
                 row.add_element(unit)
