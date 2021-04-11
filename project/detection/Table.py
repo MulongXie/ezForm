@@ -131,13 +131,13 @@ class Table:
                 max_bias_justify = int(head.width / 2)
                 for row in self.rows[1:]:
                     for ele in row.elements:
-                        if not ele.is_module_part and\
-                                head.is_justified(ele, direction='v', max_bias_justify=max_bias_justify) or\
-                                (head.location['left'] - max_bias_justify / 2 < ele.location['left'] and head.location['right'] + max_bias_justify / 2> ele.location['right']) or\
-                                (ele.location['left'] - max_bias_justify / 2 < head.location['left'] and ele.location['right'] + max_bias_justify / 2> head.location['right']):
-                            ele.is_module_part = True
-                            col.append(ele)
-                            break
+                        if not ele.is_module_part:
+                            if head.is_justified(ele, direction='v', max_bias_justify=max_bias_justify) or\
+                                    (head.location['left'] - max_bias_justify / 2 < ele.location['left'] and head.location['right'] + max_bias_justify / 2> ele.location['right']) or\
+                                    (ele.location['left'] - max_bias_justify / 2 < head.location['left'] and ele.location['right'] + max_bias_justify / 2> head.location['right']):
+                                ele.is_module_part = True
+                                col.append(ele)
+                                break
                 self.columns.append(col)
 
     def rm_noisy_element(self):
