@@ -591,7 +591,7 @@ class Form:
     *** Compound Components Detection ***
     *************************************
     '''
-    def input_compound_recognition(self, max_gap_h=100, max_gap_v=30, max_left_justify=8):
+    def input_compound_recognition(self, max_gap_h=200, max_gap_v=30, max_left_justify=8):
         '''
         Recognize input unit that consists of [guide text] and [input field]
         First. recognize guide text for input:
@@ -905,30 +905,33 @@ class Form:
                 for text in self.text_units:
                     if not text.is_module_part and not text.is_abandoned and\
                             ipt.guide_text.unit_group_id == text.unit_group_id and\
-                            (ipt.guide_text.pos_relation(text) != 0 or ipt.pos_relation(text, bias=2) != 0):
+                            (ipt.guide_text.pos_relation(text, bias=2) != 0 or ipt.pos_relation(text, bias=2) != 0):
                         ipt.merge_guide_text(text)
                         changed = True
                         break
 
-            # merged vertically connected input field
+            # merged connected input field horizontally
             changed = True
             while changed:
                 changed = False
                 for bar in self.bar_units:
                     if not bar.is_module_part and not bar.is_abandoned and bar.type == 'rectangle' and\
-                            ipt.is_connected_field(bar):
+                            ipt.is_connected_field(bar, direction='h'):
                         ipt.merge_input_field(bar)
                         changed = True
                         break
 
-            # for text in self.text_units:
-            #     if not text.is_guide_text and ipt.is_ele_intersected_with_input(text):
-            #         ipt.merge_guide_text(text)
-
-            # for bar in self.bar_units:
-            #     if not bar.is_module_part and not bar.is_abandoned and bar.type == 'rectangle' and\
-            #             ipt.is_connected_field(bar):
-            #         ipt.merge_input_field(bar)
+        # merged connected input field vertically
+        for ipt in self.inputs:
+            changed = True
+            while changed:
+                changed = False
+                for bar in self.bar_units:
+                    if not bar.is_module_part and not bar.is_abandoned and bar.type == 'rectangle' and\
+                            ipt.is_connected_field(bar, direction='v'):
+                        ipt.merge_input_field(bar)
+                        changed = True
+                        break
 
     def text_refine(self):
         '''
