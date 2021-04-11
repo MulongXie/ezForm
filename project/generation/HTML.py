@@ -89,6 +89,9 @@ class HTML:
             html += ' class="form-control"'
         if self.style is not None:
             html += ' style="' + self.style + '"'
+        # placeholder
+        if self.input.placeholder is not None:
+            html += ' placeholder="' + self.input.placeholder + '"'
         html += '>\n'
         # speak
         if speak:

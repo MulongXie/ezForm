@@ -291,3 +291,88 @@
 3. Add speech content function
 
 4. Apply bootstrap to decorate the page
+
+
+5/4/2021
+*** Integration of Detection ***
+1. Add abnormal control
+
+2. Add square detection along with rectangle detection
+
+3. Check border before check textbox: If a rectangle contains only texts in it, then label the rect as type of "textbox". Else if it contains other rectangles in it, then label it as type of "border"
+
+4. Merge vertical texts in a text box
+
+5. Remove rectangles inner a text
+
+
+6/4/2021
+1. Detect Input which the text and Field in the same box, and label it as "embedded"
+
+2. Add placeholder for Input
+
+3. Don't refine Inputs of "embedded"
+
+4. Detect check box with square input field
+
+5. Recognize character box
+
+
+7/4/2021
+*** Rectangle Recognition ***
+1. Store noise and add to the next sides
+
+2. Concatenate the last sides with the first side if same slope
+
+3. Check if the last side is noise
+
+4. Set the max difference between sides more flexible for lenthy side
+
+*** Detection ***
+5. Remove redandent borders
+
+6. In character box recognition, also merge intersected rectangles and squares
+
+7. Filter out double nested shape elements
+
+10. Filter out nesting elements by summing up all its containments
+
+*** Input Recognition ***
+8. Store text nesting a square
+
+9. Combine the sqaure and its nesting text as an Input compound
+
+11. If a large rectangle containing a small piece of text, then it could be input
+
+
+8/4/2021
+*** Table Detection ***
+1. Fix square missing bug
+
+*** Input Recognition ***
+2. If the bar has no left or right neighbour, then combine it with text above
+
+*** OCR Detection ***
+3. Resize img by height
+
+4. Pass the resized img to OCR, store it first
+
+
+9/4/2021
+*** OCR Detection ***
+1. Shrink text detection result
+
+3. Remove text noises
+
+*** Input Recognition ***
+2. Set location limit for Input where A small piece of text at corner of a large Input box
+
+*** Table Detection ***
+4. Add row title detection
+
+
+11/4/2021
+*** Input Recognition ***
+1. Add bias for guidetext merging
+
+2. Merge input filed first horizontally and second vertically

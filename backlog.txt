@@ -42,7 +42,7 @@ IV. APP (Mobile/Web)
 V. Input Source
 1. Image (jpg, png)                 √
 2. PDF                              √
-3. Scanned image ***
+3. Scanned image ***				-
 
 
 Paper

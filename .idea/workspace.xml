@@ -5,83 +5,21 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backlog.txt" beforeDir="false" afterPath="$PROJECT_DIR$/backlog.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/log.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/upload1/input_loc.json" beforeDir="false" afterPath="$PROJECT_DIR$/project/data/output/upload1/input_loc.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/upload1/xml.css" beforeDir="false" afterPath="$PROJECT_DIR$/project/data/output/upload1/xml.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/upload1/xml.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/data/output/upload1/xml.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/upload10/detection.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/upload10/input_loc.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/upload10/xml.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/upload10/xml.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/upload11/detection.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/upload11/input_loc.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/upload11/xml.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/upload11/xml.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/upload12/detection.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/upload12/input_loc.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/upload12/xml.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/upload12/xml.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/upload13/detection.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/upload13/input_loc.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/upload13/xml.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/upload13/xml.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/upload14/detection.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/upload14/input_loc.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/upload14/xml.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/upload14/xml.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/upload15/detection.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/upload15/input_loc.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/upload15/xml.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/upload15/xml.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/upload2/detection.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/upload2/input_loc.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/upload2/xml.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/upload2/xml.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/data/output/temp.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/project/data/output/upload3/detection.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/upload3/input_loc.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/upload3/xml.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/upload3/xml.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/project/data/output/upload4/detection.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/upload4/filled.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/upload4/input_data.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/upload4/input_loc.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/upload4/xml.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/upload4/xml.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/project/data/output/upload5/detection.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/project/data/output/upload5/input_loc.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/project/data/output/upload5/xml.css" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/project/data/output/upload5/xml.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/upload6/detection.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/upload6/input_loc.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/upload6/xml.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/upload6/xml.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/upload7/detection.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/upload7/input_loc.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/upload7/xml.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/upload7/xml.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/upload8/detection.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/upload8/input_loc.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/upload8/xml.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/upload8/xml.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/upload9/detection.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/upload9/input_loc.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/upload9/xml.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/upload9/xml.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/upload/upload10.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/upload/upload11.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/upload/upload12.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/upload/upload13.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/upload/upload14.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/upload/upload15.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/upload/upload2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/upload/upload3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/upload/upload4.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/upload/upload5.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/upload/upload6.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/upload/upload7.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/upload/upload8.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/upload/upload9.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/server/xml.css" beforeDir="false" afterPath="$PROJECT_DIR$/test/server/xml.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/server/xml.html" beforeDir="false" afterPath="$PROJECT_DIR$/test/server/xml.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/data/upload/upload1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/project/data/upload/upload1.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/detection/Form.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/detection/Form.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/detection/Input.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/detection/Input.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/generation/HTML.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/generation/HTML.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/temp.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/test-detection.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/project/test-detection.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/test-generation.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/project/test-generation.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/test.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -117,7 +55,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="E:/Temp/code/SamrtForm-1.0" />
+    <property name="last_opened_file_path" value="D:/git_file/github/done/Research-ReverselyGeneratingWebCode" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="restartRequiresConfirmation" value="false" />
   </component>
@@ -133,11 +71,11 @@
       <recent name="D:\git_file\github\doing\SamrtForm\test\viewer" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.test (1)">
+  <component name="RunManager" selected="Python.test">
     <configuration name="server.js (1)" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/project/server.js" working-dir="$PROJECT_DIR$/project">
       <method v="2" />
     </configuration>
-    <configuration name="test (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="test" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="SamrtForm" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -145,12 +83,12 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/project" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/project/test.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -225,6 +163,11 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.test" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -310,6 +253,15 @@
       <workItem from="1617428093294" duration="846000" />
       <workItem from="1617442267445" duration="1915000" />
       <workItem from="1617444258238" duration="4627000" />
+      <workItem from="1617587371609" duration="17345000" />
+      <workItem from="1617661688455" duration="43695000" />
+      <workItem from="1617789104046" duration="12549000" />
+      <workItem from="1617837561440" duration="3907000" />
+      <workItem from="1617841749064" duration="10798000" />
+      <workItem from="1617871205049" duration="1482000" />
+      <workItem from="1617926747102" duration="23548000" />
+      <workItem from="1618003465174" duration="10073000" />
+      <workItem from="1618091964521" duration="8146000" />
     </task>
     <servers />
   </component>
@@ -320,10 +272,10 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="414" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1617499455598">
+    <state x="414" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1617679626919">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="414" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog/1920.-64.1280.693/0.0.1920.1040@0.0.1920.1040" timestamp="1617499455598" />
+    <state x="414" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog/1920.-64.1280.693/0.0.1920.1040@0.0.1920.1040" timestamp="1617679626918" />
     <state x="690" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1610944661472">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -332,53 +284,53 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1699" height="466" key="DebuggerActiveHint/1920.-64.1280.693/0.0.1920.1040@0.0.1920.1040" timestamp="1610498489611" />
-    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1617499330606">
+    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1617930545665">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="740" y="275" key="FileChooserDialogImpl/1920.-64.1280.693/0.0.1920.1040@0.0.1920.1040" timestamp="1617499330606" />
+    <state x="740" y="275" key="FileChooserDialogImpl/1920.-64.1280.693/0.0.1920.1040@0.0.1920.1040" timestamp="1617675396736" />
     <state x="740" y="275" key="FileChooserDialogImpl/1920.0.1280.693/0.0.1920.1040/3840.0.1280.984@0.0.1920.1040" timestamp="1613467729861" />
     <state x="740" y="275" key="FileChooserDialogImpl/1920.0.1280.693/3840.0.1280.984/0.0.1920.1040@0.0.1920.1040" timestamp="1614327263982" />
-    <state x="740" y="275" key="FileChooserDialogImpl/1920.0.1280.693/3840.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1616050980742" />
+    <state x="740" y="275" key="FileChooserDialogImpl/1920.0.1280.693/3840.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1617930545665" />
     <state x="740" y="286" key="FileChooserDialogImpl/1920.0.1280.693/3840.0.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1615363621131" />
-    <state width="1899" height="208" key="GridCell.Tab.0.bottom" timestamp="1617428341545">
+    <state width="1877" height="155" key="GridCell.Tab.0.bottom" timestamp="1618101511174">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="208" key="GridCell.Tab.0.bottom/1920.-64.1280.693/0.0.1920.1040@0.0.1920.1040" timestamp="1617428341545" />
+    <state width="1877" height="155" key="GridCell.Tab.0.bottom/1920.-64.1280.693/0.0.1920.1040@0.0.1920.1040" timestamp="1618101511174" />
     <state width="1237" height="238" key="GridCell.Tab.0.bottom/1920.-64.1280.693/0.0.1920.1040@1920.-64.1280.693" timestamp="1610772962349" />
     <state width="1877" height="235" key="GridCell.Tab.0.bottom/1920.0.1280.693/0.0.1920.1040/3840.0.1280.984@0.0.1920.1040" timestamp="1610952691666" />
     <state width="1877" height="157" key="GridCell.Tab.0.bottom/1920.0.1280.693/0.0.1920.1040/3840.0.1920.1040@0.0.1920.1040" timestamp="1614924288418" />
     <state width="1877" height="157" key="GridCell.Tab.0.bottom/1920.0.1280.693/3840.0.1280.984/0.0.1920.1040@0.0.1920.1040" timestamp="1614733019291" />
-    <state width="1877" height="155" key="GridCell.Tab.0.bottom/1920.0.1280.693/3840.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1616132711749" />
+    <state width="1877" height="154" key="GridCell.Tab.0.bottom/1920.0.1280.693/3840.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1617963626066" />
     <state width="1877" height="157" key="GridCell.Tab.0.bottom/1920.0.1280.693/3840.0.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1615369624812" />
-    <state width="1899" height="208" key="GridCell.Tab.0.center" timestamp="1617428341545">
+    <state width="1877" height="155" key="GridCell.Tab.0.center" timestamp="1618101511173">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="208" key="GridCell.Tab.0.center/1920.-64.1280.693/0.0.1920.1040@0.0.1920.1040" timestamp="1617428341545" />
+    <state width="1877" height="155" key="GridCell.Tab.0.center/1920.-64.1280.693/0.0.1920.1040@0.0.1920.1040" timestamp="1618101511173" />
     <state width="1237" height="238" key="GridCell.Tab.0.center/1920.-64.1280.693/0.0.1920.1040@1920.-64.1280.693" timestamp="1610772962349" />
     <state width="1877" height="235" key="GridCell.Tab.0.center/1920.0.1280.693/0.0.1920.1040/3840.0.1280.984@0.0.1920.1040" timestamp="1610952691666" />
     <state width="1877" height="157" key="GridCell.Tab.0.center/1920.0.1280.693/0.0.1920.1040/3840.0.1920.1040@0.0.1920.1040" timestamp="1614924288418" />
     <state width="1877" height="157" key="GridCell.Tab.0.center/1920.0.1280.693/3840.0.1280.984/0.0.1920.1040@0.0.1920.1040" timestamp="1614733019291" />
-    <state width="1877" height="155" key="GridCell.Tab.0.center/1920.0.1280.693/3840.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1616132711749" />
+    <state width="1877" height="154" key="GridCell.Tab.0.center/1920.0.1280.693/3840.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1617963626064" />
     <state width="1877" height="157" key="GridCell.Tab.0.center/1920.0.1280.693/3840.0.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1615369624811" />
-    <state width="1899" height="208" key="GridCell.Tab.0.left" timestamp="1617428341544">
+    <state width="1877" height="155" key="GridCell.Tab.0.left" timestamp="1618101511173">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="208" key="GridCell.Tab.0.left/1920.-64.1280.693/0.0.1920.1040@0.0.1920.1040" timestamp="1617428341544" />
+    <state width="1877" height="155" key="GridCell.Tab.0.left/1920.-64.1280.693/0.0.1920.1040@0.0.1920.1040" timestamp="1618101511173" />
     <state width="1237" height="238" key="GridCell.Tab.0.left/1920.-64.1280.693/0.0.1920.1040@1920.-64.1280.693" timestamp="1610772962349" />
     <state width="1877" height="235" key="GridCell.Tab.0.left/1920.0.1280.693/0.0.1920.1040/3840.0.1280.984@0.0.1920.1040" timestamp="1610952691666" />
     <state width="1877" height="157" key="GridCell.Tab.0.left/1920.0.1280.693/0.0.1920.1040/3840.0.1920.1040@0.0.1920.1040" timestamp="1614924288417" />
     <state width="1877" height="157" key="GridCell.Tab.0.left/1920.0.1280.693/3840.0.1280.984/0.0.1920.1040@0.0.1920.1040" timestamp="1614733019290" />
-    <state width="1877" height="155" key="GridCell.Tab.0.left/1920.0.1280.693/3840.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1616132711749" />
+    <state width="1877" height="154" key="GridCell.Tab.0.left/1920.0.1280.693/3840.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1617963626064" />
     <state width="1877" height="157" key="GridCell.Tab.0.left/1920.0.1280.693/3840.0.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1615369624811" />
-    <state width="1899" height="208" key="GridCell.Tab.0.right" timestamp="1617428341545">
+    <state width="1877" height="155" key="GridCell.Tab.0.right" timestamp="1618101511173">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="208" key="GridCell.Tab.0.right/1920.-64.1280.693/0.0.1920.1040@0.0.1920.1040" timestamp="1617428341545" />
+    <state width="1877" height="155" key="GridCell.Tab.0.right/1920.-64.1280.693/0.0.1920.1040@0.0.1920.1040" timestamp="1618101511173" />
     <state width="1237" height="238" key="GridCell.Tab.0.right/1920.-64.1280.693/0.0.1920.1040@1920.-64.1280.693" timestamp="1610772962349" />
     <state width="1877" height="235" key="GridCell.Tab.0.right/1920.0.1280.693/0.0.1920.1040/3840.0.1280.984@0.0.1920.1040" timestamp="1610952691666" />
     <state width="1877" height="157" key="GridCell.Tab.0.right/1920.0.1280.693/0.0.1920.1040/3840.0.1920.1040@0.0.1920.1040" timestamp="1614924288418" />
     <state width="1877" height="157" key="GridCell.Tab.0.right/1920.0.1280.693/3840.0.1280.984/0.0.1920.1040@0.0.1920.1040" timestamp="1614733019291" />
-    <state width="1877" height="155" key="GridCell.Tab.0.right/1920.0.1280.693/3840.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1616132711749" />
+    <state width="1877" height="154" key="GridCell.Tab.0.right/1920.0.1280.693/3840.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1617963626065" />
     <state width="1877" height="157" key="GridCell.Tab.0.right/1920.0.1280.693/3840.0.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1615369624812" />
     <state width="1899" height="348" key="GridCell.Tab.1.bottom" timestamp="1616883727257">
       <screen x="0" y="0" width="1920" height="1040" />
@@ -436,16 +388,31 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="769" y="434" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/1920.-64.1280.693/0.0.1920.1040@0.0.1920.1040" timestamp="1617501708043" />
-    <state x="1920" y="-64" width="1294" height="763" key="dock-window-1" timestamp="1610840571421">
-      <screen x="1920" y="-64" width="1280" height="693" />
-    </state>
-    <state x="1920" y="-64" width="1294" height="763" key="dock-window-1/1920.-64.1280.693/0.0.1920.1040@0.0.1920.1040" timestamp="1610840571421" />
-    <state x="3840" y="0" width="1296" height="730" maximized="true" key="dock-window-1/1920.0.1280.693/3840.0.1280.984/0.0.1920.1040@0.0.1920.1040" timestamp="1610688379753" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1616564216973">
+    <state x="309" y="0" width="840" height="845" key="dock-window-1" timestamp="1617926203696">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/1920.-64.1280.693/0.0.1920.1040@0.0.1920.1040" timestamp="1616564216973" />
+    <state x="1920" y="-64" width="1294" height="763" key="dock-window-1/1920.-64.1280.693/0.0.1920.1040@0.0.1920.1040" timestamp="1610840571421" />
+    <state x="309" y="0" width="840" height="845" key="dock-window-1/1920.0.1280.693/0.0.1920.1040/3840.0.1920.1040@0.0.1920.1040" timestamp="1617926203696" />
+    <state x="3840" y="0" width="1296" height="730" maximized="true" key="dock-window-1/1920.0.1280.693/3840.0.1280.984/0.0.1920.1040@0.0.1920.1040" timestamp="1610688379753" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1617759268978">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/1920.-64.1280.693/0.0.1920.1040@0.0.1920.1040" timestamp="1617759268978" />
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/1920.0.1280.693/0.0.1920.1040/3840.0.1280.984@0.0.1920.1040" timestamp="1614641822859" />
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/1920.0.1280.693/0.0.1920.1040/3840.0.1920.1040@0.0.1920.1040" timestamp="1614923105603" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/project/detection/Image.py</url>
+          <line>95</line>
+          <option name="timeStamp" value="17" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/SmartForm$test.coverage" NAME="test Coverage Results" MODIFIED="1618101511157" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/project" />
   </component>
 </project>
