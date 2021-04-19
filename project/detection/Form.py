@@ -13,7 +13,7 @@ import string
 import os
 
 
-def form_compo_detection(form_img_file_name, resize_height=None):
+def form_compo_detection(form_img_file_name, resize_height=None, export_dir=None):
     # *** 1. Form structure recognition ***
     form = Form(form_img_file_name, resize_height=resize_height)
     form.text_detection()
@@ -54,7 +54,7 @@ def form_compo_detection(form_img_file_name, resize_height=None):
     form.visualize_detection_result()
 
     # *** 7. Export ***
-    # form.export_detection_result_img()
+    form.export_detection_result_img(export_dir)
     return form
 
 
@@ -1060,7 +1060,7 @@ class Form:
         cv2.waitKey()
         cv2.destroyAllWindows()
 
-    def export_detection_result_img(self):
+    def export_detection_result_img(self, export_dir=None):
         board = self.get_img_copy()
         for text in self.texts:
             if not text.in_box and not text.is_abandoned and not text.is_module_part:
@@ -1081,4 +1081,7 @@ class Form:
             ipt.visualize_element(board, color=(255, 0, 255))
 
         self.detection_result_img = board
-        cv2.imwrite(os.path.join(self.export_dir, 'detection.jpg'), board)
+        if export_dir is None:
+            export_dir = self.export_dir
+        print('Write to:', os.path.join(export_dir, self.form_name + '.jpg'))
+        cv2.imwrite(os.path.join(export_dir, self.form_name + '.jpg'), board)
