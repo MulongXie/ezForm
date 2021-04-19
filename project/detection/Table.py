@@ -162,7 +162,7 @@ class Table:
             cv2.waitKey()
             cv2.destroyWindow('col')
 
-    def visualize_element(self, board, color=(0, 255, 0), line=2, show=False):
+    def visualize_element(self, board, color=(255, 255, 0), line=2, show=False):
         for row in self.rows:
             row.visualize_row(board, color=color, line=line)
         cv2.rectangle(board, (self.location['left'], self.location['top']), (self.location['right'], self.location['bottom']), color, line)

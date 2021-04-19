@@ -416,6 +416,8 @@ class Element:
                 color = (168, 168, 0)
             elif self.type == 'square':
                 color = (0, 168, 168)
+            elif self.type == 'input':
+                color = (255, 0, 255)
             else:
                 print('Not a shape')
                 color = (0, 0, 255)

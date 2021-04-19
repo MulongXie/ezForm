@@ -1050,10 +1050,10 @@ class Form:
                 line.visualize_element(board)
 
         for table in self.tables:
-            table.visualize_element(board, color=(255, 255, 0))
+            table.visualize_element(board)
 
         for ipt in self.inputs:
-            ipt.visualize_element(board, color=(255, 0, 255))
+            ipt.visualize_element(board)
 
         self.detection_result_img = board
         cv2.imshow('form', board)
