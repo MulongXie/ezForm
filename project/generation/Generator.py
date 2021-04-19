@@ -95,7 +95,7 @@ class Generator:
                 if compos[i].location['bottom'] < compos[j].location['top']:
                     break
                 # group elements in same horizontal alignment into same block
-                if compos[i].element.is_in_alignment(compos[j], direction='h', bias=2):
+                if compos[i].element.is_in_alignment(compos[j].element, direction='h', bias=2):
                     # merge blocks if both i and j has been grouped in parent blocks
                     if compos[i].parent_block is not None and compos[j].parent_block is not None:
                         if compos[i].parent_block.block_id != compos[j].parent_block.block_id:

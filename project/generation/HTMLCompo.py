@@ -40,7 +40,9 @@ class HTMLCompo:
             self.html_tag = 'div'
             self.html_class = 'border-line'
             self.html = HTML(tag='div', class_name='border-line')
-
+        else:
+            self.html_script = ''
+            return
         self.html_script = self.html.html_script
 
     def init_css(self):
