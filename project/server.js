@@ -28,7 +28,7 @@ app.post('/process', function (req, res) {
             console.log('Upload image to', uploadPath)
             let inputPathSplit = uploadPath.split('/');
             let resultDir = 'data/output/' + inputPathSplit[inputPathSplit.length - 1].split('.')[0];
-            let detectionResultImg = resultDir + '/detection.jpg'
+            let detectionResultImg = resultDir + '/upload' + uploadedImgId.toString() + '.jpg'
             let generationPage = resultDir + '/xml.html'
             
             // processing form

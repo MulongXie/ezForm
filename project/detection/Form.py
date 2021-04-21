@@ -19,19 +19,19 @@ def form_compo_detection(form_img_file_name, resize_height=None, export_dir=None
     form.text_detection()
     form.element_detection()
     form.assign_element_ids()
-    form.visualize_all_elements()
+    # form.visualize_all_elements()
 
     # *** 2. Special element recognition ***
     form.border_and_textbox_recognition()
     # form.visualize_all_elements()
     form.character_box_recognition()
-    form.visualize_all_elements()
+    # form.visualize_all_elements()
 
     # *** 3. Units labelling ***
     form.label_elements_as_units()
     form.sort_units()
     form.border_line_recognition()
-    form.visualize_units()
+    # form.visualize_units()
 
     # *** 4. Form structure recognition ***
     form.check_vertical_aligned_form()
@@ -43,7 +43,7 @@ def form_compo_detection(form_img_file_name, resize_height=None, export_dir=None
     form.table_detection()
     # form.visualize_all_elements()
     form.table_refine()
-    form.visualize_all_elements()
+    # form.visualize_all_elements()
 
     # *** 6. Input compound recognition ***
     form.input_compound_recognition()
@@ -51,7 +51,7 @@ def form_compo_detection(form_img_file_name, resize_height=None, export_dir=None
     form.input_refine()
     # form.visualize_inputs()
     form.text_refine()
-    form.visualize_detection_result()
+    # form.visualize_detection_result()
 
     # *** 7. Export ***
     form.export_detection_result_img(export_dir)

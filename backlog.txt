@@ -165,3 +165,14 @@ Evaluation:
 	i. Goround truth
 	ii. Comparison
 2. User study
+
+
+11/4/2021
+Exception Control for test batch
+
+Testing => Find general related parameters
+1. Run test on batch
+2. Place parameters in one place
+	a. Hard
+	b. Soft (change with input size)
+3. Related value to set soft paras
