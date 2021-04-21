@@ -44,7 +44,8 @@ def Google_OCR_makeImageData(imgpath):
                 'content': ctxt
             },
             'features': [{
-                'type': 'DOCUMENT_TEXT_DETECTION',
+                # 'type': 'DOCUMENT_TEXT_DETECTION',
+                'type': 'TEXT_DETECTION',
                 'maxResults': 1
             }]
         }
