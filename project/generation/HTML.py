@@ -76,11 +76,73 @@ class HTML:
         self.html_script = html
 
     def generate_html_input(self, speak=True):
+        if self.input.is_check_box:
+            self.generate_html_input_checkbox(speak)
+        elif self.input.is_embedded:
+            self.generate_html_input_embedding(speak)
+        else:
+            self.generate_html_input_normal(speak)
+
+    def generate_html_input_normal(self, speak=True):
         html = '<div class="input-group">\n'
         # guide text
         html += self.indent() + '<label id="' + 'label-' + self.id + '" class="input-group-addon" for="' + self.id + '">' + self.input.guide_text.content + '</label>\n'
         # input filed
-        html += self.indent() + '<input type="text"'
+        label_words = [w.lower() for w in self.input.guide_text.content.split(' ')]
+        if 'date' in label_words and len(label_words) < 5:
+            html += self.indent() + '<input type="date"'
+        else:
+            html += self.indent() + '<input type="text"'
+        if self.id is not None:
+            html += ' id="' + self.id + '"'
+        if self.class_name is not None:
+            html += ' class="form-control ' + self.class_name + '"'
+        else:
+            html += ' class="form-control"'
+        if self.style is not None:
+            html += ' style="' + self.style + '"'
+        # placeholder
+        if self.input.placeholder is not None:
+            html += ' placeholder="' + self.input.placeholder + '"'
+        html += '>\n'
+        # speak
+        if speak:
+            html += self.indent() + '<div class="input-group-btn">\n'
+            html += self.indent(2) + '<button class="speaker btn btn-default" data-target="' + 'label-' + self.id + '" onclick="speak(this)"><span class="glyphicon glyphicon-volume-up"></span></button>\n'
+            html += self.indent() + '</div>\n'
+        html += '</div>\n'
+        self.html_script = html
+
+    def generate_html_input_checkbox(self, speak=True):
+        html = '<div class="checkbox">\n'
+        html += self.indent() + '<label id="' + 'label-' + self.id + '"><input type="checkbox"'
+        # input filed
+        if self.id is not None:
+            html += ' id="' + self.id + '"'
+        if self.class_name is not None:
+            html += ' class="' + self.class_name + '"'
+        if self.style is not None:
+            html += ' style="' + self.style + '"'
+        html += '>\n'
+        html += self.input.guide_text.content + '</label>\n'
+        # speak
+        # if speak:
+        #     html += self.indent() + '<div class="input-group-btn">\n'
+        #     html += self.indent(2) + '<button class="speaker btn btn-default" data-target="' + 'label-' + self.id + '" onclick="speak(this)"><span class="glyphicon glyphicon-volume-up"></span></button>\n'
+        #     html += self.indent() + '</div>\n'
+        html += '</div>\n'
+        self.html_script = html
+
+    def generate_html_input_embedding(self, speak=True):
+        html = '<div class="input-group">\n'
+        # guide text
+        html += self.indent() + '<label id="' + 'label-' + self.id + '" class="input-group-addon" for="' + self.id + '">' + self.input.guide_text.content + '</label>\n'
+        # input filed
+        label_words = [w.lower() for w in self.input.guide_text.content.split(' ')]
+        if 'date' in label_words and len(label_words) < 5:
+            html += self.indent() + '<input type="date"'
+        else:
+            html += self.indent() + '<input type="text"'
         if self.id is not None:
             html += ' id="' + self.id + '"'
         if self.class_name is not None:
