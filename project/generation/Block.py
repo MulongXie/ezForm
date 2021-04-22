@@ -87,7 +87,10 @@ class Block:
         if block not in self.children_blocks:
             # for the first section, don't hide its content as it doesn't have a section title
             if self.is_first_section:
-                block.add_html_style('display:flex;')
+                if 'input-wrapper' in block.html.class_name:
+                    block.add_html_style('display:inline;')
+                elif 'text-wrapper' in block.html.class_name:
+                    block.add_html_style('display:flex;')
 
             block.parent_section = self
             self.children_blocks.append(block)

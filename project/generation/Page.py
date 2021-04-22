@@ -61,7 +61,7 @@ class Page:
         self.css['.speaker'] = CSS(name='.speaker', margin_left='10px')
         # for normal div wrapper
         self.css['.content'] = CSS(name='.content', display='None')  # for content in a section that is not title
-        self.css['.text-wrapper'] = CSS(name='.text-wrapper', justify_content='space-around')
+        self.css['.text-wrapper'] = CSS(name='.text-wrapper', margin='10px', justify_content='space-around')
         self.css['.input-wrapper'] = CSS(name='.input-wrapper')  # for wrapper that contains Input compound
         # for section
         self.css['.section-wrapper'] = CSS(name='.section-wrapper',
