@@ -1,9 +1,7 @@
-.text-wrapper{
-	justify-content: space-around;
+label{
+	margin: 5px;
 }
-table{
-	border: 1px solid black;
-	width: 100%;
+.border-line{
 }
 p{
 	margin: 5px !important;
@@ -11,45 +9,47 @@ p{
 td{
 	height: 20px;
 }
-.speaker{
-	margin-left: 10px;
-}
-th{
+table input{
+	margin: 0;
 	border: 1px solid black;
-	text-align: center !important;
-}
-.section-wrapper{
-	padding: 10px;
-	margin: 20px;
-	background-color: #f1f1f1;
-}
-.section-title:hover{
-	background-color: #BFBEBE;
+	width: 97%;
 }
 .input-wrapper{
 }
 input{
 	margin: 5px;
 }
+.section-wrapper{
+	margin: 20px;
+	background-color: #f1f1f1;
+	padding: 10px;
+}
+.speaker{
+	margin-left: 10px;
+}
 .section-title{
-	margin-bottom: 10px;
-	border: 1px solid black;
-	background-color: lightgrey;
-	transition: 0.5s;
 	margin-top: 10px;
-	justify-content: center;
 	cursor: pointer;
+	margin-bottom: 10px;
+	justify-content: center;
+	background-color: lightgrey;
+	border: 1px solid black;
+	transition: 0.5s;
+}
+table{
+	border: 1px solid black;
+	width: 100%;
+}
+th{
+	border: 1px solid black;
+	text-align: center !important;
+}
+.section-title:hover{
+	background-color: #BFBEBE;
 }
 .content{
 	display: None;
 }
-.border-line{
-}
-table input{
-	border: 1px solid black;
-	margin: 0;
-	width: 97%;
-}
-label{
-	margin: 5px;
+.text-wrapper{
+	justify-content: space-around;
 }
