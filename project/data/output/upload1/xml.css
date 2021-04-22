@@ -1,46 +1,5 @@
-.speaker{
-	margin-left: 10px;
-}
-.section-title{
-	margin-top: 10px;
-	transition: 0.5s;
-	cursor: pointer;
-	background-color: lightgrey;
-	border: 1px solid black;
-	justify-content: center;
-	margin-bottom: 10px;
-}
-label{
-	margin: 5px;
-}
-.section-wrapper{
-	padding: 10px;
-	margin: 20px;
-	background-color: #f1f1f1;
-}
-td{
-	height: 20px;
-}
-.text-wrapper{
-	justify-content: space-around;
-}
-th{
-	border: 1px solid black;
-	text-align: center !important;
-}
-table input{
-	border: 1px solid black;
-	margin: 0;
-	width: 97%;
-}
 .content{
 	display: None;
-}
-table{
-	border: 1px solid black;
-	width: 100%;
-}
-.input-wrapper{
 }
 p{
 	margin: 5px !important;
@@ -48,8 +7,49 @@ p{
 input{
 	margin: 5px;
 }
+label{
+	margin: 5px;
+}
+.text-wrapper{
+	justify-content: space-around;
+}
+.section-title{
+	margin-bottom: 10px;
+	background-color: lightgrey;
+	cursor: pointer;
+	margin-top: 10px;
+	border: 1px solid black;
+	justify-content: center;
+	transition: 0.5s;
+}
 .section-title:hover{
 	background-color: #BFBEBE;
 }
+td{
+	height: 20px;
+}
+th{
+	text-align: center !important;
+	border: 1px solid black;
+}
+table input{
+	border: 1px solid black;
+	margin: 0;
+	width: 97%;
+}
+.section-wrapper{
+	background-color: #f1f1f1;
+	margin: 20px;
+	padding: 10px;
+}
+.speaker{
+	margin-left: 10px;
+}
 .border-line{
+}
+.input-wrapper{
+}
+table{
+	border: 1px solid black;
+	width: 100%;
 }

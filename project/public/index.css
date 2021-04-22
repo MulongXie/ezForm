@@ -24,6 +24,26 @@ body{
     margin: 80px;
 }
 
+#wrapper-exps{
+    margin-top: 20px;
+    margin-bottom: 70px;
+}
+
+.img-exp-form{
+    border: 1px solid;
+    box-shadow: 5px 10px lightgrey;
+    height: 500px;
+    margin: 10px;
+    cursor: pointer;
+}
+
+.img-exp-form:hover{
+    -ms-transform: scale(1.5); /* IE 9 */
+    -webkit-transform: scale(1.5); /* Safari 3-8 */
+    transform: scale(1.2);
+    transition: 0.5s;
+}
+
 #waiting-processing{
     display: none;
     margin: 20px;
@@ -66,7 +86,8 @@ body{
 #btn-start{
     font-size: 15px;
     width: 200px;
-    height: 50px
+    height: 50px;
+    margin: 0;
 }
 
 #main-contents{

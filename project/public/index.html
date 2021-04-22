@@ -18,7 +18,7 @@
 <nav class="navbar navbar-default">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a class="navbar-brand" style="color: #337ab7;">SmartForm</a>
+            <a class="navbar-brand" style="color: #337ab7;" href="">SmartForm</a>
         </div>
         <div class="nav navbar-nav navbar-right">
             <button class="btn navbar-btn btn-danger btn-upload" data-toggle="modal" data-target="#modal-upload"><span class="glyphicon glyphicon-cloud-upload" style="margin-right: 5px"></span>Upload New Form</button>
@@ -29,7 +29,14 @@
 <main>
     <div id="cover-page" class="text-center">
         <h3 class="cover-heading"><i>SmartForm - Intelligent Form Filler</i></h3>
-        <button id="btn-start" class="btn btn-primary btn-upload" data-toggle="modal" data-target="#modal-upload">Get Started</button>
+        <button id="btn-start" class="btn btn-primary btn-upload" data-toggle="modal" data-target="#modal-upload">Upload Form Image</button>
+        <div id="wrapper-exps">
+            <h4>OR</h4>
+            <h4>Play with some examples</h4>
+            <img class="img-exp-form" src="public/exps/1.jpg">
+            <img class="img-exp-form" src="public/exps/2.jpg">
+            <img class="img-exp-form" src="public/exps/3.jpg">
+        </div>
 
         <div id="waiting-processing" class="text-center">
             <h5>Processing ...</h5>
@@ -140,7 +147,7 @@
         }
     })
 
-    $('#btn-process').on('click', function () {
+    function process(img, inputType){
         // show cover page and hide main content
         if (! $('#cover-page').is(':visible') && $('#main-contents').is(':visible')){
             $('#cover-page').slideToggle()
@@ -148,6 +155,7 @@
             $('.footer').css('position', 'fixed')
         }
         // show processing loader
+        $('#wrapper-exps').slideUp()
         $('#waiting-processing').slideDown()
         $('#waiting-processing h5').text('Processing')
         $('#waiting-processing .loader').slideDown()
@@ -159,7 +167,7 @@
         $.ajax({
             url: '/process',
             type: 'post',
-            data: {img: $('#img-form-uploaded').attr('src'), inputType:'base64'},
+            data: {img: img, inputType:inputType},
             success: function(resp){
                 if (resp.code === 1){
                     // alert('success')
@@ -186,6 +194,15 @@
                 $('.btn-upload').prop('disabled', false)
             }
         })
+    }
+
+    $('#btn-process').on('click', function () {
+        process($('#img-form-uploaded').attr('src'), 'base64')
+    })
+
+    $('.img-exp-form').on('click', function () {
+        process($(this).attr('src'), 'path')
+
     })
 
     $('.btn-fill').on('click', function () {
