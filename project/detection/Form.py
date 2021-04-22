@@ -430,8 +430,9 @@ class Form:
                     y_coordinates.append(loc['y'])
                 location = {'left': min(x_coordinates), 'top': min(y_coordinates),
                             'right': max(x_coordinates), 'bottom': max(y_coordinates)}
-                if location['right'] - location['left'] >= 1 and location['bottom'] - location['top'] >= 1:
-                    self.texts.append(Text(text, location))
+                # if location['right'] - location['left'] >= 1 and location['bottom'] - location['top'] >= 1:
+                #     self.texts.append(Text(text, location))
+                self.texts.append(Text(text, location))
         print('*** Google OCR Processing Time:%.3f s***' % (time.clock() - start))
 
     def text_sentences_recognition(self):
@@ -476,6 +477,8 @@ class Form:
         squs = self.squares.copy()
         lines = self.lines.copy()
         for text in self.texts:
+            if text.area == 0:
+                continue
             for rec in self.rectangles:
                 if text.pos_relation(rec) == 1:
                     rects.remove(rec)

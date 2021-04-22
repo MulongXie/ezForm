@@ -1,55 +1,55 @@
-table input{
-	border: 1px solid black;
-	width: 97%;
-	margin: 0;
-}
-th{
-	text-align: center !important;
-	border: 1px solid black;
-}
-.speaker{
-	margin-left: 10px;
+.border-line{
 }
 table{
 	border: 1px solid black;
 	width: 100%;
 }
+input{
+	margin: 5px;
+}
+.content{
+	display: None;
+}
+.section-title{
+	border: 1px solid black;
+	justify-content: center;
+	transition: 0.5s;
+	background-color: lightgrey;
+	cursor: pointer;
+	margin-bottom: 10px;
+	margin-top: 10px;
+}
 .input-wrapper{
+}
+td{
+	height: 20px;
 }
 .section-wrapper{
 	padding: 10px;
 	margin: 20px;
 	background-color: #f1f1f1;
 }
-input{
-	margin: 5px;
-}
-label{
-	margin: 5px;
-}
 p{
 	margin: 5px !important;
+}
+th{
+	border: 1px solid black;
+	text-align: center !important;
 }
 .text-wrapper{
 	justify-content: space-around;
 	margin: 10px;
 }
-.content{
-	display: None;
-}
-.section-title{
-	transition: 0.5s;
-	background-color: lightgrey;
-	justify-content: center;
-	cursor: pointer;
+table input{
 	border: 1px solid black;
-	margin-bottom: 10px;
-	margin-top: 10px;
+	margin: 0;
+	width: 97%;
 }
-.border-line{
+label{
+	margin: 5px;
 }
-td{
-	height: 20px;
+.speaker{
+	margin-left: 10px;
 }
 .section-title:hover{
 	background-color: #BFBEBE;
