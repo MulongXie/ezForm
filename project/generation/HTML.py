@@ -139,7 +139,7 @@ class HTML:
         html += self.indent() + '<label id="' + 'label-' + self.id + '" class="input-group-addon" for="' + self.id + '">' + self.input.guide_text.content + '</label>\n'
         # input filed
         label_words = [w.lower() for w in self.input.guide_text.content.split(' ')]
-        if 'date' in label_words and len(label_words) < 5:
+        if 'date' in self.input.guide_text.content.lower() and len(label_words) < 5:
             html += self.indent() + '<input type="date"'
         else:
             html += self.indent() + '<input type="text"'
