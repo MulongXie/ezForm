@@ -58,6 +58,35 @@ class HTMLCompo:
         elif self.type == 'border':
             css_id = '#div-' + str(self.element.id)
 
+    def get_input_filling_space(self):
+        if self.type != 'input':
+            return None
+        text_loc = self.element.guide_text.location
+        ipt_loc = self.location
+        if self.element.is_embedded:
+            top_gap = text_loc['top'] - ipt_loc['top']
+            bottom_gap = ipt_loc['bottom'] - text_loc['bottom']
+            # the text is at the left
+            if abs(top_gap - bottom_gap) <= 10:
+                blank_space = {'top': ipt_loc['top'], 'bottom': ipt_loc['bottom'], 'left': text_loc['right'] + 5,
+                               'right': ipt_loc['right']}
+            else:
+                # the text is at the upper half
+                if top_gap < bottom_gap:
+                    blank_space = {'top': text_loc['bottom'], 'left': ipt_loc['left'], 'right': ipt_loc['right'],
+                                   'bottom': ipt_loc['bottom']}
+                else:
+                    blank_space = {'top': ipt_loc['bottom'], 'left': ipt_loc['left'], 'right': ipt_loc['right'],
+                                   'bottom': text_loc['top']}
+            return [blank_space]
+        elif text_loc == ipt_loc:
+            blank_space = {'top': text_loc['top'], 'bottom': text_loc['top'], 'left':text_loc['right'], 'right': 2*text_loc['right'] - text_loc['left']}
+            return [blank_space]
+        elif self.element.is_check_box:
+            return [f.location for f in self.element.input_fields]
+        else:
+            return [f.location for f in self.element.input_fields]
+
     def get_row_elements_loc_for_table(self):
         '''
         Return a dictionary of all elements locations in a table
