@@ -2,31 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="866c7d34-205d-4de3-879f-0db0fbcbb180" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/1/filled.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/project/data/output/1/filled.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/1/input_data.json" beforeDir="false" afterPath="$PROJECT_DIR$/project/data/output/1/input_data.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/1/input_loc.json" beforeDir="false" afterPath="$PROJECT_DIR$/project/data/output/1/input_loc.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/1/xml.css" beforeDir="false" afterPath="$PROJECT_DIR$/project/data/output/1/xml.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/1/xml.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/data/output/1/xml.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/11/filled.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/project/data/output/11/filled.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/11/input_data.json" beforeDir="false" afterPath="$PROJECT_DIR$/project/data/output/11/input_data.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/11/input_loc.json" beforeDir="false" afterPath="$PROJECT_DIR$/project/data/output/11/input_loc.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/11/xml.css" beforeDir="false" afterPath="$PROJECT_DIR$/project/data/output/11/xml.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/11/xml.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/data/output/11/xml.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/2/input_loc.json" beforeDir="false" afterPath="$PROJECT_DIR$/project/data/output/2/input_loc.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/2/xml.css" beforeDir="false" afterPath="$PROJECT_DIR$/project/data/output/2/xml.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/2/xml.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/data/output/2/xml.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/3/input_loc.json" beforeDir="false" afterPath="$PROJECT_DIR$/project/data/output/3/input_loc.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/3/xml.css" beforeDir="false" afterPath="$PROJECT_DIR$/project/data/output/3/xml.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/3/xml.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/data/output/3/xml.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/temp.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/upload2/xml.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/data/output/upload2/xml.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/generation/Generator.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/generation/Generator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/generation/fill.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/generation/fill.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/public/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/project/server.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/test-detection.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/project/test-detection.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/test-generation.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/project/test-generation.ipynb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -279,7 +255,7 @@
       <workItem from="1618875757607" duration="6473000" />
       <workItem from="1619002814360" duration="11292000" />
       <workItem from="1619048424190" duration="2963000" />
-      <workItem from="1619051703534" duration="29620000" />
+      <workItem from="1619051703534" duration="29941000" />
     </task>
     <servers />
   </component>
