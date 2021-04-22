@@ -76,3 +76,12 @@ class Input(Element):
         if show:
             cv2.imshow('Input element', image)
             cv2.waitKey()
+
+    def visualize_input(self, image, line=2, show=False):
+        cv2.rectangle(image, (self.location['left'], self.location['top']), (self.location['right'], self.location['bottom']), (255, 0, 255), line)
+        cv2.rectangle(image, (self.guide_text.location['left'], self.guide_text.location['top']), (self.guide_text.location['right'], self.guide_text.location['bottom']), (255, 0, 0), line)
+        cv2.rectangle(image, (self.fields_location['left'], self.fields_location['top']), (self.fields_location['right'], self.fields_location['bottom']), (0, 255, 0), line)
+        if show:
+            cv2.imshow('Input', image)
+            cv2.waitKey()
+
