@@ -14,38 +14,46 @@ import os
 
 
 def form_compo_detection(form_img_file_name, resize_height=None, export_dir=None):
-    # *** 1. Form structure recognition ***
+    if cv2.imread(form_img_file_name).shape[0] > 1200:
+        resize_height = 900
+    # *** 1. Basic element detection ***
     form = Form(form_img_file_name, resize_height=resize_height)
     form.text_detection()
     form.element_detection()
+    # form.visualize_all_elements()
+
+    # *** 2. Basic element noise removal ***
+    form.filter_detection_noises()
+    form.text_sentences_recognition()
+    form.shrink_text_and_filter_noises()
     form.assign_element_ids()
     # form.visualize_all_elements()
 
-    # *** 2. Special element recognition ***
+    # *** 3. Special element recognition ***
     form.border_and_textbox_recognition()
     # form.visualize_all_elements()
     form.character_box_recognition()
     # form.visualize_all_elements()
 
-    # *** 3. Units labelling ***
+    # *** 4. Units labelling ***
     form.label_elements_as_units()
     form.sort_units()
     form.border_line_recognition()
     # form.visualize_units()
 
-    # *** 4. Form structure recognition ***
+    # *** 5. Form structure recognition ***
     form.check_vertical_aligned_form()
     # form.visualize_vertical_separators()
     form.group_units_by_separators()
     # form.visualize_unit_groups()
 
-    # *** 5. Table obj ***
+    # *** 6. Table obj ***
     form.table_detection()
     # form.visualize_all_elements()
     form.table_refine()
     # form.visualize_all_elements()
 
-    # *** 6. Input compound recognition ***
+    # *** 7. Input compound recognition ***
     form.input_compound_recognition()
     # form.visualize_detection_result()
     form.input_refine()
@@ -53,7 +61,7 @@ def form_compo_detection(form_img_file_name, resize_height=None, export_dir=None
     form.text_refine()
     # form.visualize_detection_result()
 
-    # *** 7. Export ***
+    # *** 8. Export ***
     form.export_detection_result_img(export_dir)
     return form
 
@@ -396,7 +404,6 @@ class Form:
             self.Baidu_OCR_text_detection()
         elif method == 'Google':
             self.Google_OCR_text_detection()
-        self.shrink_text_and_filter_noises()
 
     def Baidu_OCR_text_detection(self):
         start = time.clock()
@@ -423,11 +430,11 @@ class Form:
                     y_coordinates.append(loc['y'])
                 location = {'left': min(x_coordinates), 'top': min(y_coordinates),
                             'right': max(x_coordinates), 'bottom': max(y_coordinates)}
-                self.texts.append(Text(text, location))
-            self.Google_OCR_sentences_recognition()
+                if location['right'] - location['left'] >= 1 and location['bottom'] - location['top'] >= 1:
+                    self.texts.append(Text(text, location))
         print('*** Google OCR Processing Time:%.3f s***' % (time.clock() - start))
 
-    def Google_OCR_sentences_recognition(self):
+    def text_sentences_recognition(self):
         '''
         Merge separate words detected by Google ocr into a sentence
         '''
@@ -438,7 +445,7 @@ class Form:
             for text_a in self.texts:
                 merged = False
                 for text_b in temp_set:
-                    if text_a.is_on_same_line(text_b, 'h', bias_justify=3, bias_gap=10):
+                    if text_a.is_on_same_line(text_b, 'h', bias_justify=3, bias_gap=15):
                         text_b.merge_text(text_a)
                         merged = True
                         changed = True
@@ -461,7 +468,6 @@ class Form:
         start = time.clock()
         self.rectangles, self.squares = self.img.detect_rectangle_and_square_elements()
         self.lines = self.img.detect_line_elements()
-        self.filter_detection_noises()
         print('*** Element Detection Time:%.3f s***' % (time.clock() - start))
 
     def filter_detection_noises(self):
@@ -478,8 +484,11 @@ class Form:
                     lines.remove(line)
             # if a square is in a text, store it in text.contain_square
             for squ in self.squares:
-                if squ.pos_relation(text) == -1 and squ.area / text.area < 0.6:
-                    squ.nesting_text = text
+                if squ.pos_relation(text) == -1:
+                    if squ.area / text.area < 0.6 and abs(squ.location['left'] - text.location['left']) < 5:
+                        text.location['left'] = squ.location['right']
+                    else:
+                        squs.remove(squ)
             self.rectangles = rects.copy()
             self.squares = squs.copy()
             self.lines = lines.copy()
@@ -591,7 +600,7 @@ class Form:
     *** Compound Components Detection ***
     *************************************
     '''
-    def input_compound_recognition(self, max_gap_h=200, max_gap_v=30, max_left_justify=8):
+    def input_compound_recognition(self, max_gap_h=200, max_gap_v=20, max_left_justify=8):
         '''
         Recognize input unit that consists of [guide text] and [input field]
         First. recognize guide text for input:
@@ -609,13 +618,17 @@ class Form:
                         continue
 
                 # *** 2. A small piece of text at corner of a large Input box ***
-                if textbox.height / max([c.height for c in textbox.contains]) > 2 and 0 < textbox.containment_area / textbox.area < 0.15 and\
-                        min([c.location['left'] for c in textbox.contains]) - textbox.location['left'] > textbox.location['right'] - max([c.location['right'] for c in textbox.contains]):
-                    neighbour_top = self.find_neighbour_unit(textbox, 'top')
-                    if neighbour_top is not None and neighbour_top.unit_type == 'text_unit' and neighbour_top.in_input is None and neighbour_top.in_table is None and \
-                            textbox.location['top'] - neighbour_top.location['bottom'] < max_gap_v:
-                        textbox.type = 'rectangle'
-                        self.inputs.append(Input(neighbour_top, textbox, placeholder=textbox.content))
+                ratio = 2 if max([c.height for c in textbox.contains]) > 20 else 4
+                if textbox.height / max([c.height for c in textbox.contains]) > ratio and 0 < textbox.containment_area / textbox.area < 0.15:
+                    if min([c.location['left'] for c in textbox.contains]) - textbox.location['left'] > textbox.location['right'] - max([c.location['right'] for c in textbox.contains]) and\
+                            min([c.location['top'] for c in textbox.contains]) - textbox.location['top'] > textbox.location['bottom'] - max([c.location['bottom'] for c in textbox.contains]):
+                        neighbour_top = self.find_neighbour_unit(textbox, 'top')
+                        if neighbour_top is not None and neighbour_top.unit_type == 'text_unit' and neighbour_top.in_input is None and neighbour_top.in_table is None and \
+                                textbox.location['top'] - neighbour_top.location['bottom'] < max_gap_v:
+                            textbox.type = 'rectangle'
+                            self.inputs.append(Input(neighbour_top, textbox, placeholder=textbox.content))
+                    else:
+                        self.inputs.append(Input(textbox.contains[0], textbox, placeholder=textbox.content))
 
         # *** 3. Normal Input: guide text and input field are separate and aligned ***
         # from left to right
@@ -894,6 +907,17 @@ class Form:
             table.rm_noisy_element()
 
     def input_refine(self):
+        # if the only contained text contains certain keyword, label it as input
+        input_keywords = {'name', 'names', 'date', 'id'}
+        for text in self.text_units:
+            if not text.is_module_part and not text.is_abandoned:
+                words = [c.lower() for c in text.content.split(' ')]
+                if 1 < len(words) <= 5 and len(set(words) & input_keywords) > 0:
+                    if text.type == 'textbox':
+                        self.inputs.append(Input(text.contains[0], text))
+                    elif text.type == 'text':
+                        self.inputs.append(Input(text, text))
+
         for ipt in self.inputs:
             # skip inputs where its guide text and input filed in the same box
             if ipt.is_embedded:
@@ -1029,10 +1053,10 @@ class Form:
     def visualize_inputs(self):
         board = self.get_img_copy()
         for ipt in self.inputs:
-            ipt.visualize_element(board, color=(255, 0, 255), line=2)
+            ipt.visualize_input(board, line=2)
             # ipt.visualize_input_overlay(board)
-        cv2.imshow('Input', board)
-        cv2.waitKey()
+            cv2.imshow('Input', board)
+            cv2.waitKey()
         cv2.destroyAllWindows()
 
     def visualize_detection_result(self):
