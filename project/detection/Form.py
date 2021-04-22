@@ -44,7 +44,7 @@ def form_compo_detection(form_img_file_name, resize_height=None, export_dir=None
     # *** 5. Form structure recognition ***
     form.check_vertical_aligned_form()
     # form.visualize_vertical_separators()
-    form.group_units_by_separators()
+    form.group_elements_by_separators()
     # form.visualize_unit_groups()
 
     # *** 6. Table obj ***
@@ -222,7 +222,7 @@ class Form:
             print('*** The form is not vertical alignment ***')
             self.vertical_separators = None
 
-    def group_units_by_separators(self):
+    def group_elements_by_separators(self):
         '''
         If the form is vertical alignment Group all units by separators
         For each separator, it can segment four groups of units [[left-group], [right-group], [top-group], [bottom-group]]
@@ -236,22 +236,22 @@ class Form:
         for i in range(len(seps)):
             groups.append([[], [], [], []])
 
-        for p, unit in enumerate(self.all_units):
+        for p, ele in enumerate(self.get_all_elements()):
             for i, sep in enumerate(seps):
-                if unit.location['bottom'] <= sep['top']:
-                    if i == 0 or unit.location['top'] > seps[i - 1]['bottom']:
-                        unit.unit_group_id = i * 4 + 0
-                        groups[i][0].append(unit)
-                elif sep['top'] < unit.location['top'] and unit.location['bottom'] <= sep['bottom']:
-                    if unit.location['right'] <= sep['left']:
-                        unit.unit_group_id = i * 4 + 1
-                        groups[i][1].append(unit)
-                    elif unit.location['left'] > sep['right']:
-                        unit.unit_group_id = i * 4 + 2
-                        groups[i][2].append(unit)
+                if ele.location['bottom'] <= sep['top']:
+                    if i == 0 or ele.location['top'] > seps[i - 1]['bottom']:
+                        ele.unit_group_id = i * 4 + 0
+                        groups[i][0].append(ele)
+                elif sep['top'] < ele.location['top'] and ele.location['bottom'] <= sep['bottom']:
+                    if ele.location['right'] <= sep['left']:
+                        ele.unit_group_id = i * 4 + 1
+                        groups[i][1].append(ele)
+                    elif ele.location['left'] > sep['right']:
+                        ele.unit_group_id = i * 4 + 2
+                        groups[i][2].append(ele)
                 else:
-                    unit.unit_group_id = i * 4 + 3
-                    groups[i][3].append(unit)
+                    ele.unit_group_id = i * 4 + 3
+                    groups[i][3].append(ele)
         self.unit_groups = groups
 
     '''
@@ -260,7 +260,7 @@ class Form:
     **************************
     '''
     def get_all_elements(self):
-        return self.texts + self.rectangles + self.squares + self.lines + self.tables
+        return self.texts + self.rectangles + self.squares + self.lines
 
     def assign_element_ids(self):
         '''
@@ -607,9 +607,10 @@ class Form:
             If a text_unit's closet element in alignment is bar_unit, then count it as a guide text
         Second. compound the guide text and its bar unit (input field) as an Input element
         '''
+        section_keywords = {'part', 'section'}
         # *** 1. Embedded Input: input field and guiding text in the same rectangle ***
         for textbox in self.text_units:
-            if textbox.type == 'textbox' and textbox.in_input is None and textbox.in_table is None:
+            if textbox.type == 'textbox' and not textbox.is_text_contain_words(section_keywords) and textbox.in_input is None and textbox.in_table is None:
                 if 0 < len(textbox.contains) <= 2:
                     guiding_text = textbox.contains[0]
                     content = guiding_text.content
@@ -628,7 +629,7 @@ class Form:
                             textbox.type = 'rectangle'
                             self.inputs.append(Input(neighbour_top, textbox, placeholder=textbox.content))
                     else:
-                        self.inputs.append(Input(textbox.contains[0], textbox, placeholder=textbox.content))
+                        self.inputs.append(Input(textbox.contains[0], textbox, is_embedded=True))
 
         # *** 3. Normal Input: guide text and input field are separate and aligned ***
         # from left to right
