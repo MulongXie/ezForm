@@ -79,6 +79,7 @@ class Generator:
         self.sections.append(section_wrapper)
         for gid in self.html_compos_groups:
             compos = self.html_compos_groups[gid]
+            compos = sorted(compos, key=lambda x: x.location['top'])
             section_wrapper = self.slice_blocks(compos, section_wrapper)
 
     def slice_blocks(self, compos, prev_section_wrapper):
@@ -88,34 +89,37 @@ class Generator:
         section_wrapper = prev_section_wrapper
         self.block_id += 1
 
-        for i in range(len(compos)):
+        for i in range(len(compos)):       
             block_updated = False
-            for j in range(i + 1, len(compos)):
-                if compos[i].location['bottom'] < compos[j].location['top']:
-                    break
-                # group elements in same horizontal alignment into same block
-                if compos[i].element.is_in_alignment(compos[j].element, direction='h', bias=2):
-                    # merge blocks if both i and j has been grouped in parent blocks
-                    if compos[i].parent_block is not None and compos[j].parent_block is not None:
-                        if compos[i].parent_block.block_id != compos[j].parent_block.block_id:
-                            compos[i].parent_block.merge_block(compos[j].parent_block)
-                        else:
-                            continue
-                    # if no compo has parent block, creat a new one
-                    elif compos[i].parent_block is None and compos[j].parent_block is None:
-                        block = Block(self.block_id)
-                        self.block_id += 1
-                        self.blocks.append(block)
-                        block.add_compos([compos[i], compos[j]])
-                    # else add the ungrouped one to existing block
-                    elif compos[i].parent_block is not None and compos[j].parent_block is None:
-                        block = compos[i].parent_block
-                        block.add_compo(compos[j])
-                    elif compos[i].parent_block is None and compos[j].parent_block is not None:
-                        block = compos[j].parent_block
-                        block.add_compo(compos[i])
-                    # indicate the block is changed
-                    block_updated = True
+            if compos[i].type in ('text', 'textbox'):
+                for j in range(i + 1, len(compos)):
+                    if compos[i].location['bottom'] < compos[j].location['top']:
+                        break
+                    if compos[j].type not in ('text', 'textbox'):
+                        continue
+                    # group elements in same horizontal alignment into same block
+                    if compos[i].element.is_in_alignment(compos[j].element, direction='h', bias=2):
+                        # merge blocks if both i and j has been grouped in parent blocks
+                        if compos[i].parent_block is not None and compos[j].parent_block is not None:
+                            if compos[i].parent_block.block_id != compos[j].parent_block.block_id:
+                                compos[i].parent_block.merge_block(compos[j].parent_block)
+                            else:
+                                continue
+                        # if no compo has parent block, creat a new one
+                        elif compos[i].parent_block is None and compos[j].parent_block is None:
+                            block = Block(self.block_id)
+                            self.block_id += 1
+                            self.blocks.append(block)
+                            block.add_compos([compos[i], compos[j]])
+                        # else add the ungrouped one to existing block
+                        elif compos[i].parent_block is not None and compos[j].parent_block is None:
+                            block = compos[i].parent_block
+                            block.add_compo(compos[j])
+                        elif compos[i].parent_block is None and compos[j].parent_block is not None:
+                            block = compos[j].parent_block
+                            block.add_compo(compos[i])
+                        # indicate the block is changed
+                        block_updated = True
             # if i is not grouped, create a block for itself
             if compos[i].parent_block is None:
                 block = Block(self.block_id)
@@ -140,7 +144,7 @@ class Generator:
         fields = {}  # {input html id: [list of fields locations]}
         for compo in self.html_compos:
             if compo.type == 'input':
-                fields[compo.html_id] = [f.location for f in compo.element.input_fields]
+                fields[compo.html_id] = compo.get_input_filling_space()
             elif compo.type == 'table':
                 fields.update(compo.get_row_elements_loc_for_table())
         json.dump(fields, open(os.path.join(self.export_dir, 'input_loc.json'), 'w'), indent=4)
