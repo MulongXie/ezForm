@@ -19,43 +19,47 @@ app.get('/',function(req,res){
 var uploadedImgId = 0
 app.post('/process', function (req, res) {
     console.log('\nStart processing')
-    uploadedImgId ++
-    let imgBase64 = req.body.img.replace(/^data:image.*base64,/, "");
-    let uploadPath = 'data/upload/upload' + uploadedImgId.toString() + '.jpg'
-    // upload form image
-    fs.writeFile(uploadPath, imgBase64, 'base64', function (err) {
-        if (! err){
-            console.log('Upload image to', uploadPath)
-            let inputPathSplit = uploadPath.split('/');
-            let resultDir = 'data/output/' + inputPathSplit[inputPathSplit.length - 1].split('.')[0];
-            let detectionResultImg = resultDir + '/upload' + uploadedImgId.toString() + '.jpg'
-            let generationPage = resultDir + '/xml.html'
-            
-            // processing form
-            let processer = child_process.exec('python main.py ' + uploadPath,
-                function (error, stdout, stderr) {
-                    if (error){
-                        console.log(stdout);
-                        console.log(error.stack);
-                        console.log('Error code: '+error.code);
-                        console.log('Signal received: '+error.signal);
-                        res.json({code:0});
-                    }
-                    else {
-                        console.log('Processing successfully');
-                        res.json({code:1, resultImg:detectionResultImg, resultPage:generationPage, inputImg: uploadPath})
-                    }
+    // Processing uploaded forms
+    if (req.body.inputType === 'base64'){
+        uploadedImgId ++
+        let imgBase64 = req.body.img.replace(/^data:image.*base64,/, "");
+        let uploadPath = 'data/upload/upload' + uploadedImgId.toString() + '.jpg'
+        let imgName = 'upload' + uploadedImgId.toString()
+        // upload form image
+        fs.writeFile(uploadPath, imgBase64, 'base64', function (err) {
+            if (! err){
+                console.log('Upload image to', uploadPath)
+                let resultDir = 'data/output/' + imgName;
+                let detectionResultImg = resultDir + '/' + imgName + '.jpg'
+                let generationPage = resultDir + '/xml.html'
+
+                // processing form
+                let processer = child_process.exec('python main.py ' + uploadPath,
+                    function (error, stdout, stderr) {
+                        if (error){
+                            console.log(stdout);
+                            console.log(error.stack);
+                            console.log('Error code: '+error.code);
+                            console.log('Signal received: '+error.signal);
+                            res.json({code:0});
+                        }
+                        else {
+                            console.log('Processing successfully');
+                            res.json({code:1, resultImg:detectionResultImg, resultPage:generationPage, inputImg: uploadPath})
+                        }
+                    });
+                processer.on('exit', function () {
+                    // console.log('Program Completed');
                 });
-            processer.on('exit', function () {
-                // console.log('Program Completed');
-            });
-        }
-        else {
-            uploadedImgId --;
-            console.log(err);
-            res.json({code: 0})
-        }
-    })
+            }
+            else {
+                uploadedImgId --;
+                console.log(err);
+                res.json({code: 0})
+            }
+        })
+    }
+
 })
 
 app.post('/fillForm', function (req, res) {

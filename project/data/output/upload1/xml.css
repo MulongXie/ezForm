@@ -1,55 +1,55 @@
-.text-wrapper{
-	justify-content: space-around;
+.speaker{
+	margin-left: 10px;
 }
-input{
+.section-title{
+	margin-top: 10px;
+	transition: 0.5s;
+	cursor: pointer;
+	background-color: lightgrey;
+	border: 1px solid black;
+	justify-content: center;
+	margin-bottom: 10px;
+}
+label{
 	margin: 5px;
 }
 .section-wrapper{
 	padding: 10px;
-	background-color: #f1f1f1;
 	margin: 20px;
+	background-color: #f1f1f1;
 }
-.section-title{
-	cursor: pointer;
-	transition: 0.5s;
-	border: 1px solid black;
-	margin-bottom: 10px;
-	margin-top: 10px;
-	background-color: lightgrey;
-	justify-content: center;
+td{
+	height: 20px;
 }
-.input-wrapper{
-}
-.content{
-	display: None;
-}
-.section-title:hover{
-	background-color: #BFBEBE;
-}
-.speaker{
-	margin-left: 10px;
-}
-p{
-	margin: 5px !important;
+.text-wrapper{
+	justify-content: space-around;
 }
 th{
 	border: 1px solid black;
 	text-align: center !important;
 }
 table input{
-	width: 97%;
 	border: 1px solid black;
 	margin: 0;
+	width: 97%;
 }
-label{
-	margin: 5px;
-}
-.border-line{
-}
-td{
-	height: 20px;
+.content{
+	display: None;
 }
 table{
-	width: 100%;
 	border: 1px solid black;
+	width: 100%;
+}
+.input-wrapper{
+}
+p{
+	margin: 5px !important;
+}
+input{
+	margin: 5px;
+}
+.section-title:hover{
+	background-color: #BFBEBE;
+}
+.border-line{
 }
