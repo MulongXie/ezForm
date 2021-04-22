@@ -325,6 +325,14 @@ class Element:
     *** For text box ***
     ********************
     '''
+    def is_text_contain_words(self, words):
+        '''
+        :param words: a set of words
+        '''
+        if self.content is not None and len(words & set(self.content.lower().split())) > 0:
+            return True
+        return False
+
     def is_textbox_or_border(self):
         '''
         If a rectangle contains only texts in it, then label the rect as type of 'textbox'
@@ -349,6 +357,7 @@ class Element:
         '''
         For Textbox, extract the text content
         '''
+        self.contains = sorted(self.contains, key=lambda x: x.location['left'])
         texts = self.contains
         changed = True
         while changed:
