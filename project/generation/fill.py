@@ -3,9 +3,20 @@ import sys
 import cv2
 import json
 
+
+def resize_img_by_height(org, resize_height):
+    org_shape = org.shape
+    resize_h = resize_height
+    resize_w = int(org_shape[1] * (resize_h / org_shape[0]))
+    org = cv2.resize(org, (resize_w, resize_h))
+    return org
+
+
 form_img_file = sys.argv[1]
 form_name = form_img_file.split('/')[-1][:-4]
 img = cv2.imread(form_img_file)
+if img.shape[0] > 1200:
+    img = resize_img_by_height(img, 900)
 
 output_dir = 'data/output/' + form_name
 input_data = json.load(open(output_dir + '/input_data.json', 'r'))['inputs']
