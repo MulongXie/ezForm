@@ -67,13 +67,12 @@ class Generator:
     def section_separator_recognition(self):
         keywords = {'part', 'section'}
         for compo in self.html_compos:
-            if compo.type == 'text':
-                if compo.type == 'text' or compo.type == 'textbox':
-                    # if the first three words include the keywords
-                    words = set(compo.element.content.lower().split()[:3])
-                    inters = keywords.intersection(words)
-                    if len(inters) > 0:
-                        compo.is_section_separator = True
+            if compo.type == 'text' or compo.type == 'textbox':
+                # if the first three words include the keywords
+                words = set(compo.element.content.lower().split()[:3])
+                inters = keywords.intersection(words)
+                if len(inters) > 0:
+                    compo.is_section_separator = True
 
     def slice_block_by_group(self):
         section_wrapper = Block(self.block_id, is_section_wrapper=True, is_first_section=True)
