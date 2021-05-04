@@ -62,7 +62,7 @@ function process(img, inputType){
                 // reset the container's size according to the form image
                 setTimeout(function () {
                     $('.overlay-container').width($('#img-detection-res').width())
-                }, 200)
+                }, 1000)
 
                 // Trace input inner the iframe page
                 setTimeout(function () {
@@ -79,7 +79,7 @@ function process(img, inputType){
                         imgWrapper.animate({scrollTop: offset},'slow')
 
                     })
-                }, 200)
+                }, 1000)
 
                 // add overlay
                 addInputImgOverlay(resp.compoLocFile)

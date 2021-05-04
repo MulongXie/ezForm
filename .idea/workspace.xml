@@ -2,14 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="866c7d34-205d-4de3-879f-0db0fbcbb180" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/11/input_loc.json" beforeDir="false" afterPath="$PROJECT_DIR$/project/data/output/11/input_loc.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/11/xml.css" beforeDir="false" afterPath="$PROJECT_DIR$/project/data/output/11/xml.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/3/filled.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/project/data/output/3/filled.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/3/input_data.json" beforeDir="false" afterPath="$PROJECT_DIR$/project/data/output/3/input_data.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/3/input_loc.json" beforeDir="false" afterPath="$PROJECT_DIR$/project/data/output/3/input_loc.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/3/xml.css" beforeDir="false" afterPath="$PROJECT_DIR$/project/data/output/3/xml.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/public/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/project/public/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/public/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project/public/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/project/public/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
