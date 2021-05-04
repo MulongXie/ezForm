@@ -603,7 +603,7 @@ class Form:
     *** Compound Components Detection ***
     *************************************
     '''
-    def input_compound_recognition(self, max_gap_h=200, max_gap_v=20, max_left_justify=8):
+    def input_compound_recognition(self, max_gap_h=100, max_gap_v=20, max_left_justify=8):
         '''
         Recognize input unit that consists of [guide text] and [input field]
         First. recognize guide text for input:

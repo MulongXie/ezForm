@@ -50,7 +50,7 @@ class Input(Element):
             if f.unit_group_id == bar.unit_group_id:
                 if direction == 'v' and f.is_on_same_line(bar, direction='v', bias_gap=4, bias_justify=4):
                     return True
-                if direction == 'h' and f.is_on_same_line(bar, direction='h', bias_gap=4, bias_justify=4):
+                if direction == 'h' and f.is_on_same_line(bar, direction='h', bias_gap=50, bias_justify=4):
                     return True
         return False
 
