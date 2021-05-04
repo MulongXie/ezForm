@@ -389,3 +389,9 @@
 2. Adjust binarization method
 
 3. Adjust parameters
+
+
+
+
+4/5/2021
+1. *** Add input component tracing function while clicking ***
