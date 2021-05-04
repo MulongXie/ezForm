@@ -50,6 +50,7 @@ function processImg(inputImgPath, res){
     let resultDir = 'data/output/' + imgName;
     let detectionResultImg = resultDir + '/' + imgName + '.jpg'
     let generationPage = resultDir + '/xml.html'
+    let compoLocFile = resultDir + '/input_loc.json'
 
     // processing form
     let processer = child_process.exec('python main.py ' + inputImgPath,
@@ -63,7 +64,7 @@ function processImg(inputImgPath, res){
             }
             else {
                 console.log('Processing successfully');
-                res.json({code:1, resultImg:detectionResultImg, resultPage:generationPage, inputImg: inputImgPath})
+                res.json({code:1, resultImg:detectionResultImg, resultPage:generationPage, inputImg: inputImgPath, compoLocFile: compoLocFile})
             }
         });
     processer.on('exit', function () {

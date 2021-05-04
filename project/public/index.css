@@ -151,6 +151,17 @@ body{
     border: none;
 }
 
+.overlay-container{
+    position: relative;
+    margin: 20px auto;
+}
+
+.overlay{
+    position: absolute;
+    opacity: 0.8;
+    background-color: yellow;
+}
+
 #preview-note{
     padding: 40px;
 }
@@ -158,8 +169,8 @@ body{
 .img-viewer{
     border: 1px solid;
     box-shadow: 5px 10px lightgrey;
-    max-width: 96%;
-    margin: 5px;
+    /*max-width: 96%;*/
+    /*margin: 5px;*/
 }
 
 .footer{

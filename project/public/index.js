@@ -13,6 +13,19 @@ $('#input-upload-form').on('change', function () {
     }
 })
 
+function addInputImgOverlay(inputLocFile){
+    $.getJSON(inputLocFile, function (result) {
+        let overlays = ''
+        $.each(result, function (i, field) {
+            field = field[0]
+            console.log(i, field)
+            overlays += '<div id="overlay-' + i +'" class="overlay" style="top: ' + field['top'] + 'px; left: ' + field['left'] +
+                'px; width: ' + (field['right'] - field['left']) + 'px; height: ' + (field['bottom'] - field['top']) + 'px;"></div>\n'
+        })
+        $('.overlay-container').append(overlays)
+    })
+}
+
 function process(img, inputType){
     // show cover page and hide main content
     if (! $('#cover-page').is(':visible') && $('#main-contents').is(':visible')){
@@ -45,6 +58,13 @@ function process(img, inputType){
                 $('#img-detection-res').attr('src', resp.resultImg)
                 $('#iframe-page-fill').attr('src', resp.resultPage)
                 uploadPath = resp.inputImg
+                // reset the container's size according to the form image
+                setTimeout(function () {
+                    $('.overlay-container').width($('#img-detection-res').width())
+                }, 200)
+
+                // add overlay
+                addInputImgOverlay(resp.compoLocFile)
             }
             else {
                 alert('Processing form failed')
