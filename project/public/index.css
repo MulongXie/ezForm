@@ -158,8 +158,13 @@ body{
 
 .overlay{
     position: absolute;
-    opacity: 0.8;
+    /*opacity: 0.8;*/
+    /*background-color: yellow;*/
+}
+
+.overlay-active{
     background-color: yellow;
+    opacity: 0.8;
 }
 
 #preview-note{

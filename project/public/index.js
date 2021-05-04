@@ -18,7 +18,7 @@ function addInputImgOverlay(inputLocFile){
         let overlays = ''
         $.each(result, function (i, field) {
             field = field[0]
-            console.log(i, field)
+            // console.log(i, field)
             overlays += '<div id="overlay-' + i +'" class="overlay" style="top: ' + field['top'] + 'px; left: ' + field['left'] +
                 'px; width: ' + (field['right'] - field['left']) + 'px; height: ' + (field['bottom'] - field['top']) + 'px;"></div>\n'
         })
@@ -58,9 +58,27 @@ function process(img, inputType){
                 $('#img-detection-res').attr('src', resp.resultImg)
                 $('#iframe-page-fill').attr('src', resp.resultPage)
                 uploadPath = resp.inputImg
+
                 // reset the container's size according to the form image
                 setTimeout(function () {
                     $('.overlay-container').width($('#img-detection-res').width())
+                }, 200)
+
+                // Trace input inner the iframe page
+                setTimeout(function () {
+                    let frame = $('#iframe-page-fill')[0].contentWindow.document
+                    console.log($(frame))
+                    $(frame).find('input').click(function () {
+                        let inputId = this.id
+                        let overlay =  $('#overlay-' + inputId)
+                        $('.overlay-active').removeClass('overlay-active')
+                        overlay.addClass('overlay-active')
+
+                        let imgWrapper = $('.img-wrapper')
+                        let offset = overlay.offset().top - imgWrapper.offset().top + imgWrapper.scrollTop()
+                        imgWrapper.animate({scrollTop: offset},'slow')
+
+                    })
                 }, 200)
 
                 // add overlay

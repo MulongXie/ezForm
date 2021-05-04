@@ -1,56 +1,56 @@
 td{
 	height: 20px;
 }
-input{
-	margin: 5px;
+.section-title:hover{
+	background-color: #BFBEBE;
 }
-th{
-	text-align: center !important;
+table input{
+	margin: 0;
+	width: 97%;
 	border: 1px solid black;
 }
-.section-title{
-	margin-top: 10px;
-	justify-content: center;
-	background-color: lightgrey;
-	cursor: pointer;
-	margin-bottom: 10px;
-	transition: 0.5s;
+.border-line{
+}
+table{
+	width: 100%;
 	border: 1px solid black;
 }
 .content{
 	display: None;
 }
-label{
-	margin: 5px;
-}
-table input{
-	width: 97%;
-	border: 1px solid black;
-	margin: 0;
-}
-.border-line{
-}
 .section-wrapper{
-	background-color: #f1f1f1;
-	margin: 20px;
 	padding: 10px;
+	margin: 20px;
+	background-color: #f1f1f1;
 }
-.text-wrapper{
-	justify-content: space-around;
-	margin: 10px;
-}
-.speaker{
-	margin-left: 10px;
+.section-title{
+	margin-top: 10px;
+	margin-bottom: 10px;
+	transition: 0.5s;
+	background-color: lightgrey;
+	cursor: pointer;
+	justify-content: center;
+	border: 1px solid black;
 }
 p{
 	margin: 5px !important;
 }
-.section-title:hover{
-	background-color: #BFBEBE;
+label{
+	margin: 5px;
+}
+.speaker{
+	margin-left: 10px;
 }
 .input-wrapper{
 }
-table{
-	width: 100%;
+input{
+	margin: 5px;
+}
+th{
 	border: 1px solid black;
+	text-align: center !important;
+}
+.text-wrapper{
+	margin: 10px;
+	justify-content: space-around;
 }
