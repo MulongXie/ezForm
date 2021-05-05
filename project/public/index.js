@@ -3,12 +3,22 @@ var uploadPath = null;
 $('#input-upload-form').on('change', function () {
     // console.log(this.files[0])
     if (this.files && this.files[0]){
-        let reader = new FileReader()
-        reader.readAsDataURL(this.files[0])
-        reader.onload = function (e) {
-            $('#img-form-uploaded').attr('src', e.target.result)
-            $('#img-form-uploaded').show()
+        console.log(this.files[0])
+        if (this.files[0].type.includes('image')){
+            let reader = new FileReader()
+            reader.readAsDataURL(this.files[0])
+            reader.onload = function (e) {
+                $('#img-form-uploaded').attr('src', e.target.result)
+                $('#img-form-uploaded').show()
+                $('#btn-process').prop('disabled', false)
+            }
+        }
+        else if(this.files[0].type.includes('pdf')){
+            $('#img-form-uploaded').hide()
             $('#btn-process').prop('disabled', false)
+        }
+        else {
+            alert('Only support image (.PNG & .JPG) and PDF formats')
         }
     }
 })
