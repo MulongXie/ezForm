@@ -86,8 +86,8 @@ function process(img, inputType){
                 addInputImgOverlay(resp.compoLocFile)
             }
             else {
-                alert('Processing form failed')
-                $('#waiting-processing h5').text('Processing form failed')
+                alert('Processing form failed. Probably try image of .PNG or .JPG')
+                $('#waiting-processing h5').text('Processing form failed. Probably try image of .PNG or .JPG')
                 $('#waiting-processing .loader').slideUp()
                 $('.btn-upload').prop('disabled', false)
             }
