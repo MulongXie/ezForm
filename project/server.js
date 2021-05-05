@@ -48,7 +48,7 @@ function processImg(inputImgPath, res){
     let imgName = inputImgPath.split('/')
     imgName = imgName[imgName.length - 1].split('.')[0]
     let resultDir = 'data/output/' + imgName;
-    let detectionResultImg = resultDir + '/' + imgName + '.jpg'
+    let detectionResultImg = resultDir + '/detection.jpg'
     let generationPage = resultDir + '/xml.html'
     let compoLocFile = resultDir + '/input_loc.json'
 
