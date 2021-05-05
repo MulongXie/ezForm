@@ -10,7 +10,7 @@ import cv2
 
 
 class Generator:
-    def __init__(self, form):
+    def __init__(self, form, export_dir='data/output/'):
         self.form = form
         self.form_name = form.form_name
         self.compos = form.get_detection_result()
@@ -25,7 +25,7 @@ class Generator:
         # only useful for Vertical_Aligned_Form
         self.html_compos_groups = {}  # {'group_id': [list of html_compos]}
 
-        self.export_dir = 'data/output/' + self.form_name
+        self.export_dir = os.path.join(export_dir, self.form_name)
         os.makedirs(self.export_dir, exist_ok=True)
 
     def reassign_compo_id(self):

@@ -13,11 +13,11 @@ import string
 import os
 
 
-def form_compo_detection(form_img_file_name, resize_height=None, export_dir=None):
-    if cv2.imread(form_img_file_name).shape[0] > 1200:
+def form_compo_detection(form_img_file_name, resize_height=None, export_dir='data/output/'):
+    if cv2.imread(form_img_file_name).shape[0] > 1200 and resize_height is None:
         resize_height = 900
     # *** 1. Basic element detection ***
-    form = Form(form_img_file_name, resize_height=resize_height)
+    form = Form(form_img_file_name, resize_height=resize_height, export_dir=export_dir)
     form.text_detection()
     form.element_detection()
     # form.visualize_all_elements()
@@ -62,12 +62,12 @@ def form_compo_detection(form_img_file_name, resize_height=None, export_dir=None
     # form.visualize_detection_result()
 
     # *** 8. Export ***
-    form.export_detection_result_img(export_dir)
+    form.export_detection_result_img()
     return form
 
 
 class Form:
-    def __init__(self, img_file_name, resize_height=None):
+    def __init__(self, img_file_name, resize_height=None, export_dir='data/output/'):
         self.img_file_name = img_file_name
         self.resize_height = resize_height
         self.img = Image(img_file_name, resize_height=resize_height)
@@ -97,7 +97,7 @@ class Form:
         self.unit_groups = []  # 3-d list, groups of units segmented by separators, [[[sep1-left-group], [sep1-right-group], [sep1-top-group], [sep1-bottom-group]]]
 
         self.detection_result_img = None
-        self.export_dir = 'data/output/' + self.form_name
+        self.export_dir = os.path.join(export_dir, self.form_name)
         os.makedirs(self.export_dir, exist_ok=True)
 
     '''
@@ -1111,5 +1111,5 @@ class Form:
         self.detection_result_img = board
         if export_dir is None:
             export_dir = self.export_dir
-        print('Write to:', os.path.join(export_dir, self.form_name + '.jpg'))
-        cv2.imwrite(os.path.join(export_dir, self.form_name + '.jpg'), board)
+        print('Write to:', os.path.join(export_dir, 'detection.jpg'))
+        cv2.imwrite(os.path.join(export_dir, 'detection.jpg'), board)
