@@ -22,6 +22,7 @@ function addInputImgOverlay(inputLocFile){
             overlays += '<div id="overlay-' + i +'" class="overlay" style="top: ' + field['top'] + 'px; left: ' + field['left'] +
                 'px; width: ' + (field['right'] - field['left']) + 'px; height: ' + (field['bottom'] - field['top']) + 'px;"></div>\n'
         })
+        $('.overlay').remove()
         $('.overlay-container').append(overlays)
     })
 }
