@@ -37,7 +37,6 @@ function addInputImgOverlay(inputLocFile){
             overlays += '<div id="overlay-' + i +'" class="overlay" style="top: ' + field['top'] + 'px; left: ' + field['left'] +
                 'px; width: ' + (field['right'] - field['left']) + 'px; height: ' + (field['bottom'] - field['top']) + 'px;"></div>\n'
         })
-        $('.overlay').remove()
         $('.overlay-container').append(overlays)
     })
 }
@@ -49,6 +48,7 @@ function process(img, inputType){
         $('#main-contents').slideToggle()
         $('.footer').css('position', 'fixed')
     }
+    $('.overlay').remove()
     // show processing loader
     $('#wrapper-exps').slideUp()
     $('#waiting-processing').slideDown()

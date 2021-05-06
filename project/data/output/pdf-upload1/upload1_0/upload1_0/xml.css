@@ -1,56 +1,56 @@
-th{
-	text-align: center !important;
-	border: 1px solid black;
-}
-.text-wrapper{
-	justify-content: space-around;
-	margin: 10px;
-}
-.section-title{
-	margin-bottom: 10px;
-	justify-content: center;
-	cursor: pointer;
-	background-color: lightgrey;
-	margin-top: 10px;
-	border: 1px solid black;
-	transition: 0.5s;
-}
-label{
-	margin: 5px;
-}
-td{
-	height: 20px;
-}
 table{
 	border: 1px solid black;
 	width: 100%;
 }
+.border-line{
+}
 .speaker{
 	margin-left: 10px;
 }
-table input{
+th{
 	border: 1px solid black;
-	margin: 0;
-	width: 97%;
+	text-align: center !important;
 }
-input{
-	margin: 5px;
-}
-.border-line{
-}
-p{
-	margin: 5px !important;
+.section-title:hover{
+	background-color: #BFBEBE;
 }
 .section-wrapper{
 	padding: 10px;
 	margin: 20px;
 	background-color: #f1f1f1;
 }
-.input-wrapper{
+td{
+	height: 20px;
+}
+input{
+	margin: 5px;
 }
 .content{
 	display: None;
 }
-.section-title:hover{
-	background-color: #BFBEBE;
+label{
+	margin: 5px;
+}
+table input{
+	border: 1px solid black;
+	margin: 0;
+	width: 97%;
+}
+.input-wrapper{
+}
+.section-title{
+	margin-top: 10px;
+	border: 1px solid black;
+	justify-content: center;
+	transition: 0.5s;
+	margin-bottom: 10px;
+	background-color: lightgrey;
+	cursor: pointer;
+}
+p{
+	margin: 5px !important;
+}
+.text-wrapper{
+	margin: 10px;
+	justify-content: space-around;
 }
