@@ -46,13 +46,13 @@ if form_img_file.split('.')[-1].lower() == 'pdf':
         trans = fitz.Matrix(zoom_x, zoom_y).preRotate(rotate)
         pm = page.getPixmap(matrix=trans, alpha=False)
 
-        page_dir = "%s/%s_%d" % (output_dir, pdf_name, pg)
+        page_dir = "%s/%s_%d" % (output_dir, pdf_name, pg + 1)
         os.makedirs(page_dir, exist_ok=True)
-        page_img_file = page_dir + "/%s_%d.jpg" % (pdf_name, pg)
+        page_img_file = page_dir + "/%s_%d.jpg" % (pdf_name, pg + 1)
         pm.writePNG(page_img_file)
         form_img_process(page_img_file, page_dir)
 
-        result_dir = page_dir + "/%s_%d" % (pdf_name, pg) + "/"
+        result_dir = page_dir + "/%s_%d" % (pdf_name, pg + 1) + "/"
         paths.append({"inputImg": page_img_file, "resultImg": result_dir + "detection.jpg",
                       "resultPage": result_dir + 'xml.html', "compoLocFile": result_dir + "input_loc.json"})
     print(paths)
