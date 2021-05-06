@@ -1,56 +1,56 @@
-table{
-	border: 1px solid black;
-	width: 100%;
+.input-wrapper{
 }
-.border-line{
-}
-.speaker{
-	margin-left: 10px;
-}
-th{
-	border: 1px solid black;
-	text-align: center !important;
+.content{
+	display: None;
 }
 .section-title:hover{
 	background-color: #BFBEBE;
 }
 .section-wrapper{
-	padding: 10px;
-	margin: 20px;
 	background-color: #f1f1f1;
+	margin: 20px;
+	padding: 10px;
 }
 td{
 	height: 20px;
 }
-input{
-	margin: 5px;
-}
-.content{
-	display: None;
+.section-title{
+	margin-bottom: 10px;
+	border: 1px solid black;
+	background-color: lightgrey;
+	margin-top: 10px;
+	justify-content: center;
+	cursor: pointer;
+	transition: 0.5s;
 }
 label{
 	margin: 5px;
 }
-table input{
+table{
+	width: 100%;
 	border: 1px solid black;
-	margin: 0;
-	width: 97%;
 }
-.input-wrapper{
+.text-wrapper{
+	justify-content: space-around;
+	margin: 10px;
 }
-.section-title{
-	margin-top: 10px;
-	border: 1px solid black;
-	justify-content: center;
-	transition: 0.5s;
-	margin-bottom: 10px;
-	background-color: lightgrey;
-	cursor: pointer;
+.speaker{
+	margin-left: 10px;
 }
 p{
 	margin: 5px !important;
 }
-.text-wrapper{
-	margin: 10px;
-	justify-content: space-around;
+th{
+	text-align: center !important;
+	border: 1px solid black;
+}
+table input{
+	width: 97%;
+	border: 1px solid black;
+	margin: 0;
+}
+input{
+	margin: 5px;
+}
+.border-line{
 }

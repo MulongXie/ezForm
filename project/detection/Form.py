@@ -216,10 +216,10 @@ class Form:
         # print(all_gaps)
         separators = merge_gaps_as_separators(all_gaps)
         if len(separators) > 0:
-            print('*** The form is vertical alignment with vertical separators:', separators, '***')
+            # print('*** The form is vertical alignment with vertical separators:', separators, '***')
             self.vertical_separators = separators
         else:
-            print('*** The form is not vertical alignment ***')
+            # print('*** The form is not vertical alignment ***')
             self.vertical_separators = None
 
     def group_elements_by_separators(self):
@@ -433,7 +433,7 @@ class Form:
                 # if location['right'] - location['left'] >= 1 and location['bottom'] - location['top'] >= 1:
                 #     self.texts.append(Text(text, location))
                 self.texts.append(Text(text, location))
-        print('*** Google OCR Processing Time:%.3f s***' % (time.clock() - start))
+        # print('*** Google OCR Processing Time:%.3f s***' % (time.clock() - start))
 
     def text_sentences_recognition(self):
         '''
@@ -469,7 +469,7 @@ class Form:
         start = time.clock()
         self.rectangles, self.squares = self.img.detect_rectangle_and_square_elements()
         self.lines = self.img.detect_line_elements()
-        print('*** Element Detection Time:%.3f s***' % (time.clock() - start))
+        # print('*** Element Detection Time:%.3f s***' % (time.clock() - start))
 
     def filter_detection_noises(self):
         # count shapes contained in text as noise
@@ -1111,5 +1111,5 @@ class Form:
         self.detection_result_img = board
         if export_dir is None:
             export_dir = self.export_dir
-        print('Write to:', os.path.join(export_dir, 'detection.jpg'))
+        # print('Write to:', os.path.join(export_dir, 'detection.jpg'))
         cv2.imwrite(os.path.join(export_dir, 'detection.jpg'), board)

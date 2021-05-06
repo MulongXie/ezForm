@@ -27,8 +27,8 @@ def form_img_process(img_file, export_dir):
     gen.export_page()
 
 
-form_img_file = 'data/input/2.jpg'
-# form_img_file = sys.argv[1]
+# form_img_file = 'data/input/2.jpg'
+form_img_file = sys.argv[1]
 
 # *** multi-page PDF ***
 if form_img_file.split('.')[-1].lower() == 'pdf':
@@ -36,6 +36,7 @@ if form_img_file.split('.')[-1].lower() == 'pdf':
     output_dir = 'data/output/pdf-' + pdf_name
     os.makedirs(output_dir, exist_ok=True)
 
+    paths = []
     doc = fitz.open(form_img_file)
     for pg in range(doc.pageCount):
         page = doc[pg]
@@ -45,12 +46,16 @@ if form_img_file.split('.')[-1].lower() == 'pdf':
         trans = fitz.Matrix(zoom_x, zoom_y).preRotate(rotate)
         pm = page.getPixmap(matrix=trans, alpha=False)
 
-        page_dir = '%s/%s_%d' % (output_dir, pdf_name, pg)
+        page_dir = "%s/%s_%d" % (output_dir, pdf_name, pg)
         os.makedirs(page_dir, exist_ok=True)
-        page_img_file = page_dir + '/%s_%d.jpg' % (pdf_name, pg)
+        page_img_file = page_dir + "/%s_%d.jpg" % (pdf_name, pg)
         pm.writePNG(page_img_file)
         form_img_process(page_img_file, page_dir)
 
+        result_dir = page_dir + "/%s_%d" % (pdf_name, pg) + "/"
+        paths.append({"inputImg": page_img_file, "resultImg": result_dir + "detection.jpg",
+                      "resultPage": result_dir + 'xml.html', "compoLocFile": result_dir + "input_loc.json"})
+    print(paths)
 # *** single image ***
 else:
     form_img_process(form_img_file, 'data/output/')
