@@ -1,10 +1,9 @@
 var uploadPath = null;
 
 $('#input-upload-form').on('change', function () {
-    // console.log(this.files[0])
     if (this.files && this.files[0]){
-        console.log(this.files[0])
         if (this.files[0].type.includes('image')){
+            $(this).attr('data-type', 'image')
             let reader = new FileReader()
             reader.readAsDataURL(this.files[0])
             reader.onload = function (e) {
@@ -14,8 +13,14 @@ $('#input-upload-form').on('change', function () {
             }
         }
         else if(this.files[0].type.includes('pdf')){
+            $(this).attr('data-type', 'pdf')
             $('#img-form-uploaded').hide()
-            $('#btn-process').prop('disabled', false)
+            let reader = new FileReader()
+            reader.readAsDataURL(this.files[0])
+            reader.onload = function (e) {
+                $('#img-form-uploaded').attr('src', e.target.result)
+                $('#btn-process').prop('disabled', false)
+            }
         }
         else {
             alert('Only support image (.PNG & .JPG) and PDF formats')
@@ -112,12 +117,11 @@ function process(img, inputType){
 }
 
 $('#btn-process').on('click', function () {
-    process($('#img-form-uploaded').attr('src'), 'base64')
+    process($('#img-form-uploaded').attr('src'), $('#input-upload-form').attr('data-type'))
 })
 
 $('.img-exp-form').on('click', function () {
     process($(this).attr('src'), 'path')
-
 })
 
 $('.btn-fill').on('click', function () {

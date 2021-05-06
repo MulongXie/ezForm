@@ -1,26 +1,6 @@
-.border-line{
-}
-table{
-	border: 1px solid black;
-	width: 100%;
-}
-.content{
-	display: None;
-}
 th{
 	text-align: center !important;
 	border: 1px solid black;
-}
-.speaker{
-	margin-left: 10px;
-}
-td{
-	height: 20px;
-}
-.input-wrapper{
-}
-p{
-	margin: 5px !important;
 }
 .text-wrapper{
 	justify-content: space-around;
@@ -28,29 +8,49 @@ p{
 }
 .section-title{
 	margin-bottom: 10px;
+	justify-content: center;
 	cursor: pointer;
 	background-color: lightgrey;
-	justify-content: center;
-	transition: 0.5s;
-	border: 1px solid black;
 	margin-top: 10px;
+	border: 1px solid black;
+	transition: 0.5s;
+}
+label{
+	margin: 5px;
+}
+td{
+	height: 20px;
+}
+table{
+	border: 1px solid black;
+	width: 100%;
+}
+.speaker{
+	margin-left: 10px;
 }
 table input{
-	margin: 0;
 	border: 1px solid black;
+	margin: 0;
 	width: 97%;
+}
+input{
+	margin: 5px;
+}
+.border-line{
+}
+p{
+	margin: 5px !important;
 }
 .section-wrapper{
 	padding: 10px;
 	margin: 20px;
 	background-color: #f1f1f1;
 }
+.input-wrapper{
+}
+.content{
+	display: None;
+}
 .section-title:hover{
 	background-color: #BFBEBE;
-}
-input{
-	margin: 5px;
-}
-label{
-	margin: 5px;
 }
