@@ -229,3 +229,18 @@ $('#btn-export').on('click', function () {
             saveAs(content, "form.zip");
         })
 })
+
+$('.page-btn').on('click', function () {
+    $('.page-btn-active').removeClass('page-btn-active')
+    $(this).addClass('page-btn-active')
+
+    let id = $(this).text()
+    let iframePageID = '#iframe-page-fill-' + id
+    let detectionResPageID = '#detection-img-wrapper-' + id
+    let filledResPageID = '#fill-img-wrapper-' + id
+    $('.page-active').removeClass('page-active')
+    $(iframePageID).addClass('page-active')
+    $(detectionResPageID).addClass('page-active')
+    $(filledResPageID).addClass('page-active')
+
+})
