@@ -28,17 +28,78 @@ $('#input-upload-form').on('change', function () {
     }
 })
 
-function addInputImgOverlay(inputLocFile){
-    $.getJSON(inputLocFile, function (result) {
-        let overlays = ''
-        $.each(result, function (i, field) {
-            field = field[0]
-            // console.log(i, field)
-            overlays += '<div id="overlay-' + i +'" class="overlay" style="top: ' + field['top'] + 'px; left: ' + field['left'] +
-                'px; width: ' + (field['right'] - field['left']) + 'px; height: ' + (field['bottom'] - field['top']) + 'px;"></div>\n'
-        })
-        $('.overlay-container').append(overlays)
+function presentResultPage(pageID, resultFiles){
+    // 1. pagination
+    $('.pagination').append('<li><a class="page-btn">'+ pageID +'</a></li>')
+    // 2. page iframe
+    $('#viewer-iframe').append('<iframe id="iframe-page-fill-' + pageID + '" class="iframe-viewer page" src="' + resultFiles.resultPage + '"></iframe>\n')
+    // 3. page detection result
+    let wrapper = '<div id="detection-img-wrapper-'+ pageID +'" class="overlay-container page">\n' +
+        '    <img id="img-detection-res-'+ pageID +'" class="img-viewer" src="'+ resultFiles.resultImg +'">\n' +
+        '</div>'
+    $('#previewer-detect-res').append(wrapper)
+    // 4. page filled result
+    wrapper = '<div id="fill-img-wrapper-' + pageID + '" class="text-center page filled-img-viewer">\n' +
+        '     <img id="img-filled-res-' + pageID + '" class="img-viewer" src="'+ resultFiles.inputImg +'">\n' +
+        '</div>'
+    $('#preview-filled-res').append(wrapper)
+
+    if (pageID === 1){
+        $('.page-btn').addClass('page-btn-active')
+        $('#iframe-page-fill-1').addClass('page-active')
+        $('#detection-img-wrapper-1').addClass('page-active')
+        $('#fill-img-wrapper-1').addClass('page-active')
+    }
+
+    $('.page-btn').on('click', function () {
+        $('.page-btn-active').removeClass('page-btn-active')
+        $(this).addClass('page-btn-active')
+
+        let id = $(this).text()
+        let iframePageID = '#iframe-page-fill-' + id
+        let detectionResPageID = '#detection-img-wrapper-' + id
+        let filledResPageID = '#fill-img-wrapper-' + id
+        $('.page-active').removeClass('page-active')
+        $(iframePageID).addClass('page-active')
+        $(detectionResPageID).addClass('page-active')
+        $(filledResPageID).addClass('page-active')
     })
+
+    // uploadPath = resultFiles.inputImg
+
+    // // reset the container's size according to the form image
+    // setTimeout(function () {
+    //     $('.overlay-container').width($('#img-detection-res-'+ pageID).width())
+    // }, 1000)
+    //
+    // // Trace input inner the iframe page
+    // setTimeout(function () {
+    //     let frame = $('#iframe-page-fill-' + pageID)[0].contentWindow.document
+    //     console.log($(frame))
+    //     $(frame).find('input').click(function () {
+    //         let inputId = this.id
+    //         let overlay =  $('#overlay-' + inputId)
+    //         $('.overlay-active').removeClass('overlay-active')
+    //         overlay.addClass('overlay-active')
+    //
+    //         let imgWrapper = $('.img-wrapper')
+    //         let offset = overlay.offset().top - imgWrapper.offset().top + imgWrapper.scrollTop()
+    //         imgWrapper.animate({scrollTop: offset},'slow')
+    //
+    //     })
+    // }, 1000)
+    //
+    // // add overlay
+    // $.getJSON(resultFiles.compoLocFile, function (result) {
+    //     let overlays = ''
+    //     $.each(result, function (i, field) {
+    //         field = field[0]
+    //         // console.log(i, field)
+    //         overlays += '<div id="overlay-' + i +'" class="overlay" style="top: ' + field['top'] + 'px; left: ' + field['left'] +
+    //             'px; width: ' + (field['right'] - field['left']) + 'px; height: ' + (field['bottom'] - field['top']) + 'px;"></div>\n'
+    //     })
+    //     $('#detection-img-wrapper-'+ pageID).append(overlays)
+    // })
 }
 
 function process(img, inputType){
@@ -55,9 +116,6 @@ function process(img, inputType){
     $('#waiting-processing h5').text('Processing')
     $('#waiting-processing .loader').slideDown()
     $('.btn-upload').prop('disabled', true)
-    // show preview note and hide preview filled form
-    $('#preview-note').show()
-    $('#img-filled-res').hide()
 
     $.ajax({
         url: '/process',
@@ -71,34 +129,18 @@ function process(img, inputType){
                 $('#main-contents').slideToggle()
                 $('.footer').css('position', 'inherit')
 
-                $('#img-detection-res').attr('src', resp.resultImg)
-                $('#iframe-page-fill').attr('src', resp.resultPage)
-                uploadPath = resp.inputImg
+                // clean viewers
+                $('.page-btn').remove()
+                $('.iframe-viewer').remove()
+                $('.overlay-container').remove()
+                $('.filled-img-viewer').remove()
 
-                // reset the container's size according to the form image
-                setTimeout(function () {
-                    $('.overlay-container').width($('#img-detection-res').width())
-                }, 1000)
-
-                // Trace input inner the iframe page
-                setTimeout(function () {
-                    let frame = $('#iframe-page-fill')[0].contentWindow.document
-                    console.log($(frame))
-                    $(frame).find('input').click(function () {
-                        let inputId = this.id
-                        let overlay =  $('#overlay-' + inputId)
-                        $('.overlay-active').removeClass('overlay-active')
-                        overlay.addClass('overlay-active')
-
-                        let imgWrapper = $('.img-wrapper')
-                        let offset = overlay.offset().top - imgWrapper.offset().top + imgWrapper.scrollTop()
-                        imgWrapper.animate({scrollTop: offset},'slow')
-
-                    })
-                }, 1000)
-
-                // add overlay
-                addInputImgOverlay(resp.compoLocFile)
+                // Add viewers to present results of each page (if many)
+                console.log(resp.resultPaths)
+                for(let i = 0; i < resp.resultPaths.length; i ++){
+                    // console.log(i, resp.resultPaths[i])
+                    presentResultPage(i + 1, resp.resultPaths[i])
+                }
             }
             else {
                 alert('Processing form failed. Probably try image of .PNG or .JPG')
@@ -166,7 +208,6 @@ $('.btn-fill').on('click', function () {
                     $('#waiting-filling .loader').slideUp()
 
                     $('#btn-show-filled').slideDown()
-                    $('#preview-note').slideUp()
                     $('#btn-export').slideDown()
                 }
                 else {

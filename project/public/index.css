@@ -94,6 +94,22 @@ body{
     display: none;
 }
 
+.page-btn{
+    cursor: pointer;
+}
+
+.page-btn-active{
+    background-color: whitesmoke !important;
+}
+
+.page{
+    display: none;
+}
+
+.page-active{
+    display: block;
+}
+
 .navbar-brand{
     color: #00366f;
 }
@@ -145,7 +161,7 @@ body{
     height: calc(99% - 40px);
 }
 
-#iframe-page-fill{
+.iframe-viewer{
     width: 100%;
     height: calc(99% - 40px);
     border: none;
@@ -176,6 +192,13 @@ body{
     box-shadow: 5px 10px lightgrey;
     /*max-width: 96%;*/
     /*margin: 5px;*/
+}
+
+#wrapper-pagination{
+    margin-bottom: 0;
+    margin-top: -20px;
+    width: 100%;
+    text-align: center;
 }
 
 .footer{

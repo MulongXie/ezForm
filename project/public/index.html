@@ -7,7 +7,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="jszip/jszip.js"></script>
     <script src="fileSaver/FileSaver.js"></script>
-    <script src="./index.js"></script>
     <!-- Bootstrap -->
     <link rel="stylesheet" href="./bootstrap/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -84,15 +83,23 @@
     </div>
 
     <div id="main-contents" class="container-fluid">
+        <div id="wrapper-pagination">
+            <ul class="pagination" style="padding: 0">
+<!--                <li><a class="page-btn page-btn-active">1</a></li>-->
+<!--                <li><a class="page-btn">2</a></li>-->
+            </ul>
+        </div>
+
         <div class="row">
-            <div class="col-md-6 col-xs-12 content-wrapper" style="padding: 0; overflow: hidden">
+            <div id="viewer-iframe" class="col-md-6 col-xs-12 content-wrapper" style="padding: 0; overflow: hidden">
                 <div class="content-bar">
                     <span class="bar-header">Re-generated Form</span>
                     <a class="btn btn-danger btn-flip" data-toggle="tooltip" title="Flip the page"><span class="glyphicon glyphicon-retweet"></span></a>
                     <button id="top-btn-fill" class="btn btn-primary btn-fill" data-toggle="modal" data-target="#modal-filling"><span class="glyphicon glyphicon-pencil" style="margin-right: 5px;font-size: 10px;"></span>Fill Form</button>
                     <button id="btn-reload" class="btn btn-primary"><span class="glyphicon glyphicon-refresh" style="margin-right: 5px;font-size: 10px;"></span>Reload Form</button>
                 </div>
-                <iframe id="iframe-page-fill"></iframe>
+<!--                <iframe id="iframe-page-fill-1" class="iframe-viewer page page-active" src="data/pdf-upload1/upload1_1/upload1_1/xml.html"></iframe>-->
+<!--                <iframe id="iframe-page-fill-2" class="iframe-viewer page" src="data/pdf-upload1/upload1_2/upload1_2/xml.html"></iframe>-->
             </div>
             <div class="col-md-6 col-xs-12 content-wrapper" style="padding: 0">
                 <div class="content-bar" style="padding: 0">
@@ -104,18 +111,20 @@
                 </div>
                 <div class="img-wrapper tab-content">
                     <div id="previewer-detect-res" class="text-center tab-pane fade in active">
-                        <div class="overlay-container">
-                            <img id="img-detection-res" class="img-viewer">
-                        </div>
+<!--                        <div id="detection-img-wrapper-1" class="overlay-container page page-active">-->
+<!--                            <img id="img-detection-res-1" class="img-viewer" src="data/pdf-upload1/upload1_1/upload1_1/detection.jpg">-->
+<!--                        </div>-->
+<!--                        <div id="detection-img-wrapper-2" class="overlay-container page">-->
+<!--                            <img id="img-detection-res-2" class="img-viewer" src="data/pdf-upload1/upload1_2/upload1_2/detection.jpg">-->
+<!--                        </div>-->
                     </div>
                     <div id="preview-filled-res" class="text-center tab-pane fade">
-                        <div id="preview-note" class="text-center">
-                            <h5 style="margin: 20px">Click the Fill Form button to preview the filling result</h5>
-                            <button class="btn btn-primary btn-fill" data-toggle="modal" data-target="#modal-filling"><span class="glyphicon glyphicon-pencil" style="margin-right: 5px;font-size: 10px;"></span> Fill Form</button>
-                        </div>
-                        <div class="text-center">
-                            <img id="img-filled-res" class="img-viewer">
-                        </div>
+<!--                        <div id="fill-img-wrapper-1" class="text-center page page-active">-->
+<!--                            <img id="img-filled-res-1" class="img-viewer" src="data/pdf-upload1/upload1_1/upload1_1.jpg">-->
+<!--                        </div>-->
+<!--                        <div id="fill-img-wrapper-2" class="text-center page">-->
+<!--                            <img id="img-filled-res-2" class="img-viewer" src="data/pdf-upload1/upload1_2/upload1_2.jpg">-->
+<!--                        </div>-->
                         <canvas id="img-canvas" style="height: 0"></canvas>
                     </div>
                 </div>

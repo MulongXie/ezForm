@@ -11,7 +11,7 @@ app.use(bodyParser.json({limit: '50mb'}));
 app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 
 app.get('/',function(req,res){
-    res.sendfile("public/test.html");
+    res.sendfile("public/index.html");
     let time = Date()
     console.log("Connecting at", time.toLocaleString())
 });
@@ -28,7 +28,7 @@ app.post('/process', function (req, res) {
         fs.writeFile(uploadPath, imgBase64, 'base64', function (err) {
             if (! err){
                 console.log('Upload image to', uploadPath)
-                processImg(uploadPath, res, 'image')
+                processImg(uploadPath, res)
             }
             else {
                 uploadedImgId --;
@@ -45,7 +45,7 @@ app.post('/process', function (req, res) {
         fs.writeFile(uploadPath, pdf, 'base64', function (err) {
             if (! err){
                 console.log('Upload image to', uploadPath)
-                processImg(uploadPath, res, 'pdf')
+                processImg(uploadPath, res)
             }
             else {
                 uploadedImgId --;
@@ -55,66 +55,32 @@ app.post('/process', function (req, res) {
         })
     }
     else if (req.body.inputType === 'path'){
-        processImg(req.body.img, res, 'image')
+        processImg(req.body.img, res)
     }
 })
 
-function processImg(inputImgPath, res, type){
+function processImg(inputImgPath, res){
     console.log('Processing img:', inputImgPath)
-    let imgName = inputImgPath.split('/')
-    imgName = imgName[imgName.length - 1].split('.')[0]
-    if (type === 'image'){
-        let resultDir = 'data/output/' + imgName;
-        let detectionResultImg = resultDir + '/detection.jpg'
-        let generationPage = resultDir + '/xml.html'
-        let compoLocFile = resultDir + '/input_loc.json'
-        // processing form
-        let processer = child_process.exec('python main-pdf.py ' + inputImgPath,
-            function (error, stdout, stderr) {
-                if (error){
-                    console.log(stdout);
-                    console.log(error.stack);
-                    console.log('Error code: '+error.code);
-                    console.log('Signal received: '+error.signal);
-                    res.json({code:0});
-                }
-                else {
-                    console.log('Processing successfully');
-                    res.json({code:1, resultImg:detectionResultImg, resultPage:generationPage, inputImg: inputImgPath, compoLocFile: compoLocFile})
-                }
-            });
-        processer.on('exit', function () {
-            // console.log('Program Completed');
+    // processing form
+    let processer = child_process.exec('python main-pdf.py ' + inputImgPath,
+        function (error, stdout, stderr) {
+            if (error){
+                console.log(stdout);
+                console.log(error.stack);
+                console.log('Error code: '+error.code);
+                console.log('Signal received: '+error.signal);
+                res.json({code:0});
+            }
+            else {
+                let resultPaths = JSON.parse(stdout.replace(/'/g, '"'))
+                console.log(resultPaths)
+                console.log('Processing successfully');
+                res.json({code:1, resultPaths: resultPaths})
+            }
         });
-    }
-
-    else if (type === 'pdf'){
-        let resultDir = 'data/output/pdf-' + imgName;
-        // processing form
-        let processer = child_process.exec('python main-pdf.py ' + inputImgPath,
-            function (error, stdout, stderr) {
-                if (error){
-                    console.log(stdout);
-                    console.log(error.stack);
-                    console.log('Error code: '+error.code);
-                    console.log('Signal received: '+error.signal);
-                    res.json({code:0});
-                }
-                else {
-                    // console.log(stdout);
-                    console.log(JSON.parse(stdout.replace(/'/g, '"')))
-                    let detectionResultImg = resultDir + '/detection.jpg'
-                    let generationPage = resultDir + '/xml.html'
-                    let compoLocFile = resultDir + '/input_loc.json'
-                    console.log('Processing successfully');
-                    // res.json({code:1, resultImg:detectionResultImg, resultPage:generationPage, inputImg: inputImgPath, compoLocFile: compoLocFile})
-                    res.json({code:0});
-                }
-            });
-        processer.on('exit', function () {
-            // console.log('Program Completed');
-        });
-    }
+    processer.on('exit', function () {
+        // console.log('Program Completed');
+    });
 }
 
 app.post('/fillForm', function (req, res) {
