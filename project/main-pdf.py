@@ -27,7 +27,7 @@ def form_img_process(img_file, export_dir):
     gen.export_page()
 
 
-# form_img_file = 'data/input/2.jpg'
+# form_img_file = 'data/input/8.jpg'
 form_img_file = sys.argv[1]
 
 # *** multi-page PDF ***
@@ -59,3 +59,9 @@ if form_img_file.split('.')[-1].lower() == 'pdf':
 # *** single image ***
 else:
     form_img_process(form_img_file, 'data/output/')
+
+    form_name = (form_img_file.split('/')[-1]).split('.')[0]
+    result_dir = 'data/output/' + form_name + '/'
+    path = [{'inputImg': form_img_file, "resultImg": result_dir + "detection.jpg",
+            "resultPage": result_dir + 'xml.html', "compoLocFile": result_dir + "input_loc.json"}]
+    print(path)
