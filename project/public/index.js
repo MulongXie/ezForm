@@ -318,17 +318,22 @@ $('#btn-insert').on('click', function () {
         pageContainer.css('margin', '20px auto')
 
         // insert input box
-        let previousBox = $('.insert-input-active')
-        if (previousBox.text() === ''){
-            previousBox.remove()
+        let inputs = $('.insert-input')
+        for (let i = 0; i < inputs.length; i ++){
+            if (inputs[i].textContent === ''){
+                inputs[i].remove()
+            }
         }
-        else{
-            previousBox.removeClass('insert-input-active')
-        }
+        $('.insert-input-active').removeClass('insert-input-active')
         let inputBox = '<div class="insert-input insert-input-active" contenteditable="true" ' +
-            'style="left: ' + (e.pageX - pageContainer.offset().left) + 'px; top: ' + (e.pageY  - pageContainer.offset().top) + 'px"></div>'
+            'style="left: ' + (e.pageX - pageContainer.offset().left) + 'px; top: ' + (e.pageY  - pageContainer.offset().top) + 'px; position: absolute"></div>'
         pageContainer.append(inputBox)
-        $('.insert-input').on('click', function (e) {
+
+        // Resizable with mouse
+        let insertedBox = $('.insert-input-active')
+        insertedBox.append('<p class="ui-widget-header" style="background-color: whitesmoke; height: 100%; margin: 0"></p>')
+        insertedBox.resizable();
+        insertedBox.on('click', function (e) {
             e.stopPropagation();
         })
     })
