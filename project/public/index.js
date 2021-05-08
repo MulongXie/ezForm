@@ -286,3 +286,22 @@ $('#btn-export').on('click', function () {
             saveAs(content, "form.zip");
         })
 })
+
+$('#btn-insert').on('click', function () {
+    // show preview tab
+    $('#previewer-detect-res').removeClass('active in')
+    $('#li-tab-detect-res').removeClass('active')
+    $('#preview-filled-res').addClass('active in')
+    $('#li-tab-filled-res').addClass('active')
+
+    let note = $('.note')
+    if (! note.is(':visible') ){
+        note.slideToggle()
+        $('.filled-img-viewer').css('margin-top', '20px')
+    }
+    else {
+        note.slideToggle()
+        $('.filled-img-viewer').css('margin-top', '')
+    }
+
+})
