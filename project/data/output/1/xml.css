@@ -1,53 +1,53 @@
-input{
-	margin: 5px;
-}
 .section-title{
-	background-color: lightgrey;
 	justify-content: center;
-	transition: 0.5s;
 	margin-bottom: 10px;
+	background-color: lightgrey;
 	margin-top: 10px;
 	border: 1px solid black;
 	cursor: pointer;
+	transition: 0.5s;
 }
 label{
 	margin: 5px;
 }
-td{
-	height: 20px;
+.speaker{
+	margin-left: 10px;
 }
-.section-wrapper{
-	background-color: #f1f1f1;
-	margin: 20px;
-	padding: 10px;
-}
-th{
-	border: 1px solid black;
-	text-align: center !important;
-}
-.section-title:hover{
-	background-color: #BFBEBE;
+.content{
+	display: None;
 }
 p{
 	margin: 5px !important;
 }
-.border-line{
+input{
+	margin: 5px;
 }
 .input-wrapper{
+}
+.section-title:hover{
+	background-color: #BFBEBE;
 }
 table{
 	border: 1px solid black;
 	width: 100%;
 }
-.content{
-	display: None;
+td{
+	height: 20px;
 }
-.speaker{
-	margin-left: 10px;
+th{
+	border: 1px solid black;
+	text-align: center !important;
+}
+.border-line{
 }
 .text-wrapper{
-	justify-content: space-around;
 	margin: 10px;
+	justify-content: space-around;
+}
+.section-wrapper{
+	background-color: #f1f1f1;
+	margin: 20px;
+	padding: 10px;
 }
 table input{
 	border: 1px solid black;

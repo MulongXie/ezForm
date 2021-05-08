@@ -111,7 +111,7 @@ app.post('/fillForm', function (req, res) {
                             console.log('Filling form successfully', filledFormImages.length);
                             if (filledFormImages.length === inputData.length){
                                 filledFormImages.sort()
-                                console.log(filledFormImages)
+                                // console.log(filledFormImages)
                                 res.json({code:1, filledFormImages:filledFormImages})
                             }
                         }
