@@ -1,4 +1,4 @@
-var uploadPath = null;
+var resultPaths = null;
 
 $('#input-upload-form').on('change', function () {
     if (this.files && this.files[0]){
@@ -65,8 +65,6 @@ function presentResultPage(pageID, resultFiles){
         $(filledResPageID).addClass('page-active')
     })
 
-    // uploadPath = resultFiles.inputImg
-
     // Trace input inner the iframe page
     setTimeout(function () {
         let frame = $('#iframe-page-fill-' + pageID)[0].contentWindow.document
@@ -131,6 +129,7 @@ function process(img, inputType){
                 $('.filled-img-viewer').remove()
 
                 // Add viewers to present results of each page (if many)
+                resultPaths = resp.resultPaths
                 console.log(resp.resultPaths)
                 for(let i = 0; i < resp.resultPaths.length; i ++){
                     // console.log(i, resp.resultPaths[i])
@@ -172,37 +171,44 @@ $('.btn-fill').on('click', function () {
     $('#waiting-filling .loader').slideDown()
     $('#btn-show-filled').hide()
 
-    let page = document.getElementById('iframe-page-fill').contentWindow.document
-    let inputs = page.getElementsByTagName('input')
-    let data = {}
-    for (let i = 0; i < inputs.length; i++){
-        if (inputs[i].type === 'checkbox'){
-            if (inputs[i].checked){
-                data[inputs[i].id] = 'Y'
+    let data_pages = []
+    for (let i = 0; i < $('.page-btn').length; i ++){
+        let page = document.getElementById('iframe-page-fill-' + (i+1)).contentWindow.document
+        let inputs = page.getElementsByTagName('input')
+        let data = {}
+        for (let i = 0; i < inputs.length; i++){
+            if (inputs[i].type === 'checkbox'){
+                if (inputs[i].checked){
+                    data[inputs[i].id] = 'Y'
+                }
+                else{
+                    data[inputs[i].id] = ''
+                }
+            }
+            else if (inputs[i].type === 'date'){
+                data[inputs[i].id] = inputs[i].value.replace(/-/g, '/')
             }
             else{
-                data[inputs[i].id] = ''
+                data[inputs[i].id] = inputs[i].value
             }
         }
-        else if (inputs[i].type === 'date'){
-            data[inputs[i].id] = inputs[i].value.replace(/-/g, '/')
-        }
-        else{
-            data[inputs[i].id] = inputs[i].value
-        }
+        data_pages.push(data)
     }
+    // console.log(data_pages)
+
     $.ajax({
             url: '/fillForm',
             type: 'post',
             data:{
-                inputs: data,
-                orgImg: uploadPath
+                inputData: data_pages,
+                resultPaths: resultPaths
             },
             success: function (resp) {
                 if (resp.code === 1){
-                    let imgFilledRes = $('#img-filled-res')
-                    imgFilledRes.prop('src', resp.filledFormImg + '?' + new Date().getTime())
-                    imgFilledRes.slideDown()
+                    for (let i = 0; i < resp.filledFormImages.length; i++){
+                        let imgFilledRes = $('#img-filled-res-' + (i+1))
+                        imgFilledRes.prop('src', resp.filledFormImages[i] + '?' + new Date().getTime())
+                    }
 
                     $('#waiting-filling h4').text('Form Filled')
                     $('#waiting-filling .loader').slideUp()
