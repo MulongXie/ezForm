@@ -210,6 +210,24 @@ body{
     /*margin: 5px;*/
 }
 
+.filled-img-viewer{
+    position: relative;
+}
+
+.img-viewer-insert:hover{
+    cursor: copy;
+}
+
+.insert-input{
+    width: 50px;
+    height: 20px;
+    position: absolute;
+}
+
+.insert-input-active{
+    border: #d9534f 2px solid;
+}
+
 #wrapper-pagination{
     margin-bottom: 0;
     margin-top: -20px;

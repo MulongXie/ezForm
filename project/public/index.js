@@ -294,14 +294,54 @@ $('#btn-insert').on('click', function () {
     $('#preview-filled-res').addClass('active in')
     $('#li-tab-filled-res').addClass('active')
 
+    // show the note
     let note = $('.note')
     if (! note.is(':visible') ){
         note.slideToggle()
         $('.filled-img-viewer').css('margin-top', '20px')
+        $('.img-viewer').addClass('img-viewer-insert')
     }
     else {
         note.slideToggle()
         $('.filled-img-viewer').css('margin-top', '')
+        $('.img-viewer').removeClass('img-viewer-insert')
     }
 
+    // insert input box while clicking the image
+    $('.img-viewer-insert').on('click', function (e) {
+        e.stopPropagation();
+
+        let id = $(this).attr('id').split('-')
+        let pageID = id[id.length - 1]
+        let pageContainer = $('#fill-img-wrapper-' + pageID)
+        pageContainer.width($(this).width())
+        pageContainer.css('margin', '20px auto')
+
+        // insert input box
+        let previousBox = $('.insert-input-active')
+        if (previousBox.text() === ''){
+            previousBox.remove()
+        }
+        else{
+            previousBox.removeClass('insert-input-active')
+        }
+        let inputBox = '<div class="insert-input insert-input-active" contenteditable="true" ' +
+            'style="left: ' + (e.pageX - pageContainer.offset().left) + 'px; top: ' + (e.pageY  - pageContainer.offset().top) + 'px"></div>'
+        pageContainer.append(inputBox)
+        $('.insert-input').on('click', function (e) {
+            e.stopPropagation();
+        })
+    })
+
+    // hide the active input while clicking outside
+    $(document).click(function () {
+        // insert input box
+        let previousBox = $('.insert-input-active')
+        if (previousBox.text() === ''){
+            previousBox.remove()
+        }
+        else{
+            previousBox.removeClass('insert-input-active')
+        }
+    })
 })
