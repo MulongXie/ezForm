@@ -35,6 +35,7 @@ if form_img_file.split('.')[-1].lower() == 'pdf':
     pdf_name = (form_img_file.split('/')[-1]).split('.')[0]
     output_dir = 'data/output/pdf-' + pdf_name
     os.makedirs(output_dir, exist_ok=True)
+    os.makedirs(output_dir + '/filled', exist_ok=True)
 
     paths = []
     doc = fitz.open(form_img_file)
@@ -62,6 +63,7 @@ else:
 
     form_name = (form_img_file.split('/')[-1]).split('.')[0]
     result_dir = 'data/output/' + form_name + '/'
+    os.makedirs(result_dir + '/filled', exist_ok=True)
     path = [{'inputImg': form_img_file, "resultImg": result_dir + "detection.jpg",
             "resultPage": result_dir + 'xml.html', "compoLocFile": result_dir + "input_loc.json"}]
     print(path)
