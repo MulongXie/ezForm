@@ -12,16 +12,14 @@ def resize_img_by_height(org, resize_height):
     return org
 
 
-form_img_file = sys.argv[1]
-form_name = form_img_file.split('/')[-1][:-4]
+form_img_file, input_loc, input_data, result_img = sys.argv[1:]
 img = cv2.imread(form_img_file)
 if img.shape[0] > 1200:
     img = resize_img_by_height(img, 900)
 
-output_dir = 'data/output/' + form_name
-input_data = json.load(open(output_dir + '/input_data.json', 'r'))['inputs']
-input_loc = json.load(open(output_dir + '/input_loc.json', 'r'))
-result_img = output_dir + '/filled.jpg'
+input_data = json.load(open(input_data, 'r'))
+input_loc = json.load(open(input_loc, 'r'))
+# result_img = output_dir + '/filled.jpg'
 
 for ipt in input_data:
     if ipt in input_loc:
