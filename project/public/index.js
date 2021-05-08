@@ -138,7 +138,11 @@ function process(img, inputType){
 
                 // reset the container's size according to the form image
                 setTimeout(function () {
-                    $('.overlay-container').width($('#img-detection-res-1').width())
+                    let imgWidth = $('#img-detection-res-1').width()
+                    $('.overlay-container').width(imgWidth)
+                    for (let i = 0; i < $('.page-btn').length; i ++) {
+                        $('#img-filled-res-' + (i+1)).width(imgWidth)
+                    }
                 }, 1000)
             }
             else {
@@ -192,9 +196,14 @@ $('.btn-fill').on('click', function () {
                 data[inputs[i].id] = inputs[i].value
             }
         }
-        data_pages.push(data)
+        if (Object.keys(data).length === 0){
+            data_pages.push(null)
+        }
+        else{
+            data_pages.push(data)
+        }
     }
-    // console.log(data_pages)
+    console.log(data_pages)
 
     $.ajax({
             url: '/fillForm',
@@ -256,22 +265,23 @@ $('#btn-show-filled').on('click', function () {
 })
 
 $('#btn-export').on('click', function () {
-    // read the img as base64
-    let img = document.getElementById("img-filled-res")
-    let canvas = document.createElement("canvas");
-    canvas.width = img.naturalWidth
-    canvas.height = img.naturalHeight
-    let ctx = canvas.getContext("2d");
-    ctx.drawImage(img, 0, 0);
-    let imgBase = canvas.toDataURL("image/png");
-    imgBase = imgBase.replace(/^data:image.*;base64,/, "")
-    console.log(imgBase)
-
-    // zip and download
     var zip = new JSZip();
-    zip.file("filledForm.jpg", imgBase, {base64: true});
-    zip.generateAsync({type:"blob"})
-        .then(function(content) {
+    for (let i = 0; i < $('.page-btn').length; i ++) {
+        // read the img as base64
+        let img = document.getElementById("img-filled-res-" + (i+1))
+        let canvas = document.createElement("canvas");
+        canvas.width = img.naturalWidth
+        canvas.height = img.naturalHeight
+        let ctx = canvas.getContext("2d");
+        ctx.drawImage(img, 0, 0);
+        let imgBase = canvas.toDataURL("image/png");
+        imgBase = imgBase.replace(/^data:image.*;base64,/, "")
+
+        // zip and download
+        zip.file("filledForm-" + (i+1) +".jpg", imgBase, {base64: true});
+    }
+    zip.generateAsync({type: "blob"})
+        .then(function (content) {
             // see FileSaver.js
             saveAs(content, "form.zip");
         })

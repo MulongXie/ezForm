@@ -1,32 +1,41 @@
-table{
-	border: 1px solid black;
-	width: 100%;
-}
 .input-wrapper{
 }
-p{
-	margin: 5px !important;
+.speaker{
+	margin-left: 10px;
 }
-.section-title:hover{
-	background-color: #BFBEBE;
-}
-.section-wrapper{
-	margin: 20px;
-	padding: 10px;
-	background-color: #f1f1f1;
+.border-line{
 }
 .text-wrapper{
 	margin: 10px;
 	justify-content: space-around;
 }
+th{
+	text-align: center !important;
+	border: 1px solid black;
+}
+td{
+	height: 20px;
+}
+table{
+	border: 1px solid black;
+	width: 100%;
+}
+input{
+	margin: 5px;
+}
 .section-title{
+	margin-bottom: 10px;
+	margin-top: 10px;
+	transition: 0.5s;
 	border: 1px solid black;
 	justify-content: center;
-	margin-top: 10px;
-	margin-bottom: 10px;
-	transition: 0.5s;
-	cursor: pointer;
 	background-color: lightgrey;
+	cursor: pointer;
+}
+table input{
+	margin: 0;
+	border: 1px solid black;
+	width: 97%;
 }
 label{
 	margin: 5px;
@@ -34,23 +43,14 @@ label{
 .content{
 	display: None;
 }
-.speaker{
-	margin-left: 10px;
+p{
+	margin: 5px !important;
 }
-table input{
-	border: 1px solid black;
-	margin: 0;
-	width: 97%;
+.section-wrapper{
+	margin: 20px;
+	padding: 10px;
+	background-color: #f1f1f1;
 }
-th{
-	border: 1px solid black;
-	text-align: center !important;
-}
-input{
-	margin: 5px;
-}
-.border-line{
-}
-td{
-	height: 20px;
+.section-title:hover{
+	background-color: #BFBEBE;
 }

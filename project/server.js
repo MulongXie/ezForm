@@ -73,7 +73,7 @@ function processImg(inputImgPath, res){
             }
             else {
                 let resultPaths = JSON.parse(stdout.replace(/'/g, '"'))
-                console.log(resultPaths)
+                // console.log(resultPaths)
                 console.log('Processing successfully');
                 res.json({code:1, resultPaths: resultPaths})
             }
@@ -93,7 +93,6 @@ app.post('/fillForm', function (req, res) {
     let filledFormImages = []
 
     for (let i = 0; i < inputData.length; i ++){
-        // console.log(data[i])
         // console.log(resultPaths[i])
 
         let data = inputData[i]
@@ -111,6 +110,7 @@ app.post('/fillForm', function (req, res) {
                             filledFormImages.push(filledFormImg)
                             console.log('Filling form successfully', filledFormImages.length);
                             if (filledFormImages.length === inputData.length){
+                                filledFormImages.sort()
                                 console.log(filledFormImages)
                                 res.json({code:1, filledFormImages:filledFormImages})
                             }

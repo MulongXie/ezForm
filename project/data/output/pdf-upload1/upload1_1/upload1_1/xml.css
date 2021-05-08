@@ -1,56 +1,56 @@
-label{
-	margin: 5px;
+p{
+	margin: 5px !important;
+}
+.input-wrapper{
+}
+.section-title:hover{
+	background-color: #BFBEBE;
+}
+table input{
+	border: 1px solid black;
+	margin: 0;
+	width: 97%;
+}
+td{
+	height: 20px;
+}
+.section-title{
+	cursor: pointer;
+	transition: 0.5s;
+	margin-bottom: 10px;
+	margin-top: 10px;
+	justify-content: center;
+	border: 1px solid black;
+	background-color: lightgrey;
+}
+.content{
+	display: None;
+}
+.border-line{
 }
 th{
 	border: 1px solid black;
 	text-align: center !important;
 }
-.input-wrapper{
-}
-p{
-	margin: 5px !important;
-}
-.border-line{
-}
-.section-title:hover{
-	background-color: #BFBEBE;
-}
-.section-title{
-	margin-top: 10px;
-	border: 1px solid black;
-	margin-bottom: 10px;
-	cursor: pointer;
-	background-color: lightgrey;
-	transition: 0.5s;
-	justify-content: center;
-}
 .speaker{
 	margin-left: 10px;
 }
-.section-wrapper{
-	margin: 20px;
-	padding: 10px;
-	background-color: #f1f1f1;
-}
 .text-wrapper{
-	margin: 10px;
 	justify-content: space-around;
+	margin: 10px;
 }
-td{
-	height: 20px;
-}
-table input{
-	margin: 0;
-	border: 1px solid black;
-	width: 97%;
-}
-table{
-	width: 100%;
-	border: 1px solid black;
+.section-wrapper{
+	padding: 10px;
+	margin: 20px;
+	background-color: #f1f1f1;
 }
 input{
 	margin: 5px;
 }
-.content{
-	display: None;
+table{
+	border: 1px solid black;
+	width: 100%;
+}
+label{
+	margin: 5px;
 }
