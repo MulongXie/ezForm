@@ -309,13 +309,14 @@ $('#btn-insert').on('click', function () {
     }
 
     insertInputBox()
+    fontAdjustment()
 })
 
 function insertInputBox() {
 // insert input box while clicking the image
     $('.img-viewer-insert').on('click', function (e) {
         e.stopPropagation();
-        $('#nav-font-adjust').show("slide", { direction: "left" }, 200)
+        $('#nav-font-adjust').show("slide", { direction: "left" }, 300)
 
         let id = $(this).attr('id').split('-')
         let pageID = id[id.length - 1]
@@ -345,7 +346,7 @@ function insertInputBox() {
             $('.insert-input-active').removeClass('insert-input-active')
             $(this).addClass('insert-input-active')
             // show side font adjustment bar
-            $('#nav-font-adjust').show("slide", { direction: "left" }, 200)
+            $('#nav-font-adjust').show("slide", { direction: "left" }, 300)
         })
 
         // make the input box draggable
@@ -376,7 +377,7 @@ function insertInputBox() {
 
     // hide the active input while clicking outside
     $(document).click(function () {
-        $('#nav-font-adjust').hide("slide", { direction: "left" }, 200)
+        $('#nav-font-adjust').hide("slide", { direction: "left" }, 300)
 
         // hide or delete the previous box
         let previousBox = $('.insert-input-active')
@@ -387,5 +388,46 @@ function insertInputBox() {
         else{
             previousBox.removeClass('insert-input-active')
         }
+    })
+
+    $('.btn-input-font').click(function (e) {
+        e.stopPropagation()
+    })
+}
+
+function fontAdjustment() {
+    $('#font-up').click(function () {
+        let activeInput = $('.insert-input-active')
+        let fontSize = activeInput.css('font-size')
+        activeInput.css('font-size', parseInt(fontSize) + 1 + 'px')
+    })
+    $('#font-down').click(function () {
+        let activeInput = $('.insert-input-active')
+        let fontSize = activeInput.css('font-size')
+        activeInput.css('font-size', parseInt(fontSize) - 1 + 'px')
+    })
+    $('#font-bold').click(function () {
+        let activeInput = $('.insert-input-active')
+        console.log(activeInput.css('font-weight'), activeInput.css('font-weight') === '700')
+        if (activeInput.css('font-weight') === 'bold' || activeInput.css('font-weight') === '700'){
+            activeInput.css('font-weight', 'normal')
+        }
+        else {
+            activeInput.css('font-weight', 'bold')
+        }
+    })
+    $('#font-italic').click(function () {
+        let activeInput = $('.insert-input-active')
+        console.log(activeInput.css('font-style'))
+        if (activeInput.css('font-style') === 'italic'){
+            activeInput.css('font-style', 'normal')
+        }
+        else {
+            activeInput.css('font-style', 'italic')
+        }
+    })
+    $('#input-del').click(function () {
+        let activeInput = $('.insert-input-active')
+        activeInput.remove()
     })
 }
