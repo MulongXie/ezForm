@@ -325,11 +325,14 @@ $('#btn-insert').on('click', function () {
             if (content && content.textContent === ''){
                 $(inputs[i]).remove()
             }
+            else{
+                inputs.find('.btn-group-font').hide()
+            }
         }
         $('.insert-input-active').removeClass('insert-input-active')
         let inputBox = '<div id="insert-input-' + insertedInputID + '" class="insert-input insert-input-active"' +
             ' style="left: ' + (e.pageX - pageContainer.offset().left) + 'px; top: ' + (e.pageY  - pageContainer.offset().top - 10) + 'px; ' +
-            'position: absolute; min-width: 100px; min-height: 20px; font-size: 15px">' +
+            'position: absolute; min-width: 150px; min-height: 20px; font-size: 15px">' +
             '    <div class="insert-input-content" contenteditable="true" style="width: calc(100% - 40px); height: 100%; float: left"></div>' +
             '    <div class="btn-group btn-group-font" style="float: right">\n' +
             '            <a id="btn-front-up-' + insertedInputID + '" class="btn btn-danger btn-input-font btn-input-font-up">+</a>\n' +
@@ -338,10 +341,14 @@ $('#btn-insert').on('click', function () {
             '</div>'
         pageContainer.append(inputBox)
 
-        // Resizable with mouse
-        let insertedBox = $('.insert-input-active')
-        insertedBox.on('click', function (e) {
-            e.stopPropagation();
+        // while clicking the input box
+        $('.insert-input').on('click', function (e) {
+            e.stopPropagation()
+            console.log($(this).find('.btn-group-font'))
+            $('.insert-input-active').removeClass('insert-input-active')
+            $('.btn-group-font').hide()
+            $(this).addClass('insert-input-active')
+            $(this).find('.btn-group-font').show()
         })
 
         // change the font size
@@ -372,6 +379,7 @@ $('#btn-insert').on('click', function () {
         }
         else{
             previousBox.removeClass('insert-input-active')
+            $('.btn-group-font').hide()
         }
     })
 })

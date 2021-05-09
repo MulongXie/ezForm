@@ -8,6 +8,11 @@
     <style>
         #resizable { width: 150px; height: 150px; padding: 0.5em; }
         #resizable h3 { text-align: center; margin: 0; }
+        .btn-input-font{
+            height: 20px;
+            width: 20px;
+            padding: 0 !important;
+        }
     </style>
 <!--    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -17,13 +22,45 @@
             $( "#resizable" ).resizable();
         } );
     </script>
+
+    <link rel="stylesheet" href="./bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="./bootstrap/bootstrap.min.js"></script>
 </head>
 <body>
 
-<div id="resizable" contenteditable="true" class="ui-widget-content">
-    <p class="ui-widget-header" style="background-color: whitesmoke; height: 100%; margin: 0">Resizable</p>
+<!--<div id="resizable" contenteditable="true" class="ui-widget-content">-->
+<!--    <div style="background-color: whitesmoke; height: 100%; margin: 0; font-size: 15px">-->
+<!--        <p class="ui-widget-header" style="background-color: whitesmoke; margin: 0;"></p>-->
+<!--        <div class="btn-group btn-group-font" style="float: right">-->
+<!--            <a class="btn btn-danger btn-input-font btn-input-font-up">+</a>-->
+<!--            <a class="btn btn-danger btn-input-font btn-input-font-down">-</a>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+
+<div id="resizable" contenteditable="true" class="ui-widget-content" style="width: 150px; height: 150px;">\n' +
+    <div style="background-color: whitesmoke; height: 100%; margin: 0; font-size: 15px">
+        <p id="ui-widget-header-' + insertedInputID + '" class="ui-widget-header" style="background-color: whitesmoke; margin: 0; height: 100%"></p>
+        <div id="font-btn-' + insertedInputID + '" class="btn-group btn-group-font" style="float: right">
+                <a class="btn btn-danger btn-input-font btn-input-font-up">+</a>
+                <a class="btn btn-danger btn-input-font btn-input-font-down">-</a>
+        </div>
+    </div>
 </div>
 
+<script>
+    $('.btn-input-font-up').on('click', function () {
+        let fontSize = $('.ui-widget-header').css('font-size')
+        console.log(parseInt(fontSize))
+        $('.ui-widget-header').css('font-size', parseInt(fontSize) + 1 + 'px')
+    })
+    $('.btn-input-font-down').on('click', function () {
+        let fontSize = $('.ui-widget-header').css('font-size')
+        console.log(fontSize)
+        $('.ui-widget-header').css('font-size', parseInt(fontSize) - 1 + 'px')
+    })
+</script>
 
 </body>
 </html>

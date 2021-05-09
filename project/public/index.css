@@ -219,13 +219,19 @@ body{
 }
 
 .insert-input{
-    min-width: 100px;
-    min-height: 20px;
-    position: absolute;
+    /*min-width: 100px;*/
+    /*min-height: 20px;*/
+    /*position: absolute;*/
 }
 
 .insert-input-active{
     border: #d9534f 2px solid;
+}
+
+.btn-input-font{
+    width: 20px;
+    height: 20px;
+    padding: 0 !important;
 }
 
 #wrapper-pagination{
