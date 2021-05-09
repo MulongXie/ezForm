@@ -287,6 +287,7 @@ $('#btn-export').on('click', function () {
         })
 })
 
+var insertedInputID = 0
 $('#btn-insert').on('click', function () {
     // show preview tab
     $('#previewer-detect-res').removeClass('active in')
@@ -321,32 +322,54 @@ $('#btn-insert').on('click', function () {
         let inputs = $('.insert-input')
         for (let i = 0; i < inputs.length; i ++){
             if (inputs[i].textContent === ''){
-                inputs[i].remove()
+                $(inputs[i]).parent().remove()
             }
         }
         $('.insert-input-active').removeClass('insert-input-active')
-        let inputBox = '<div class="insert-input insert-input-active" contenteditable="true" ' +
-            'style="left: ' + (e.pageX - pageContainer.offset().left) + 'px; top: ' + (e.pageY  - pageContainer.offset().top) + 'px; position: absolute"></div>'
+        let inputBox = '<div id="insert-input-' + insertedInputID + '" style="left: ' + (e.pageX - pageContainer.offset().left) + 'px; top: ' + (e.pageY  - pageContainer.offset().top - 10) + 'px; ' +
+            'position: absolute; min-width: 100px; min-height: 20px; font-size: 15px">' +
+            '    <div class="insert-input insert-input-active" contenteditable="true" style="width: calc(100% - 40px); height: 100%; float: left"></div>' +
+            '    <div class="btn-group btn-group-font" style="float: right">\n' +
+            '            <a id="btn-front-up-' + insertedInputID + '" class="btn btn-danger btn-input-font btn-input-font-up">+</a>\n' +
+            '            <a id="btn-front-down-' + insertedInputID + '" class="btn btn-danger btn-input-font btn-input-font-down">-</a>\n' +
+            '    </div>' +
+            '</div>'
         pageContainer.append(inputBox)
 
         // Resizable with mouse
         let insertedBox = $('.insert-input-active')
-        insertedBox.append('<p class="ui-widget-header" style="background-color: whitesmoke; height: 100%; margin: 0"></p>')
-        insertedBox.resizable();
         insertedBox.on('click', function (e) {
             e.stopPropagation();
         })
-    })
 
-    // hide the active input while clicking outside
-    $(document).click(function () {
-        // insert input box
-        let previousBox = $('.insert-input-active')
-        if (previousBox.text() === ''){
-            previousBox.remove()
-        }
-        else{
-            previousBox.removeClass('insert-input-active')
-        }
+        // change the font size
+        $('.btn-input-font-up').on('click', function () {
+            let id = $(this).attr('id').split('-')
+            id = id[id.length - 1]
+            let inputBox =  $('#insert-input-' + id)
+            let fontSize = inputBox.css('font-size')
+            console.log('#insert-input-' + id, parseInt(fontSize))
+            inputBox.css('font-size', parseInt(fontSize) + 1 + 'px')
+        })
+        $('.btn-input-font-down').on('click', function () {
+            let id = $(this).attr('id').split('-')
+            id = id[id.length - 1]
+            let inputBox =  $('#insert-input-' + id)
+            let fontSize = inputBox.css('font-size')
+            inputBox.css('font-size', parseInt(fontSize) - 1 + 'px')
+        })
+        insertedInputID ++
     })
+})
+
+// hide the active input while clicking outside
+$(document).click(function () {
+    // insert input box
+    let previousBox = $('.insert-input-active')
+    if (previousBox.text() === ''){
+        previousBox.parent().remove()
+    }
+    else{
+        previousBox.removeClass('insert-input-active')
+    }
 })
