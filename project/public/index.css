@@ -139,6 +139,25 @@ body{
     display: none;
 }
 
+#nav-font-adjust{
+    background-color: #f1f1f1;
+    position: absolute;
+    width: 40px;
+    height: 100%;
+    display: none;
+    z-index: 10;
+    padding-top: 35px;
+}
+
+.btn-input-font{
+    /*width: 20px;*/
+    /*height: 20px;*/
+    padding: 5px !important;
+    background-color: white;
+    border: #777777 1px solid !important;
+    color: black;
+}
+
 .note{
     background-color: pink;
     position: absolute;
@@ -146,6 +165,7 @@ body{
     height: 30px;
     padding-top: 5px;
     display: none;
+    z-index: 10;
 }
 
 #btn-insert{
@@ -226,12 +246,6 @@ body{
 
 .insert-input-active{
     border: #d9534f 2px solid;
-}
-
-.btn-input-font{
-    width: 20px;
-    height: 20px;
-    padding: 0 !important;
 }
 
 #wrapper-pagination{

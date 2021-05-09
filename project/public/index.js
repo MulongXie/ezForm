@@ -308,9 +308,14 @@ $('#btn-insert').on('click', function () {
         $('.img-viewer').removeClass('img-viewer-insert')
     }
 
-    // insert input box while clicking the image
+    insertInputBox()
+})
+
+function insertInputBox() {
+// insert input box while clicking the image
     $('.img-viewer-insert').on('click', function (e) {
         e.stopPropagation();
+        $('#nav-font-adjust').show("slide", { direction: "left" }, 200)
 
         let id = $(this).attr('id').split('-')
         let pageID = id[id.length - 1]
@@ -318,37 +323,37 @@ $('#btn-insert').on('click', function () {
         pageContainer.width($(this).width())
         pageContainer.css('margin', '20px auto')
 
-        // insert input box
+        // clean empty inserted inputs
         let inputs = $('.insert-input')
         for (let i = 0; i < inputs.length; i ++){
             let content = $(inputs[i]).find('.insert-input-content')[0]
             if (content && content.textContent === ''){
                 $(inputs[i]).remove()
             }
-            else{
-                inputs.find('.btn-group-font').hide()
-            }
         }
         $('.insert-input-active').removeClass('insert-input-active')
-        let inputBox = '<div id="insert-input-' + insertedInputID + '" class="insert-input insert-input-active"' +
+
+        // insert new input box
+        let inputBox = '<div id="insert-input-' + insertedInputID + '" class="insert-input insert-input-active text-left"' +
             ' style="left: ' + (e.pageX - pageContainer.offset().left) + 'px; top: ' + (e.pageY  - pageContainer.offset().top - 10) + 'px; ' +
-            'position: absolute; min-width: 150px; min-height: 20px; font-size: 15px">' +
-            '    <div class="insert-input-content" contenteditable="true" style="width: calc(100% - 40px); height: 100%; float: left"></div>' +
-            '    <div class="btn-group btn-group-font" style="float: right">\n' +
-            '            <a id="btn-front-up-' + insertedInputID + '" class="btn btn-danger btn-input-font btn-input-font-up">+</a>\n' +
-            '            <a id="btn-front-down-' + insertedInputID + '" class="btn btn-danger btn-input-font btn-input-font-down">-</a>\n' +
-            '    </div>' +
-            '</div>'
+            'position: absolute; min-width: 100px; min-height: 20px; font-size: 15px" contenteditable="true"></div>'
         pageContainer.append(inputBox)
 
-        // while clicking the input box
+        // activate the input box while clicking
         $('.insert-input').on('click', function (e) {
             e.stopPropagation()
-            console.log($(this).find('.btn-group-font'))
             $('.insert-input-active').removeClass('insert-input-active')
-            $('.btn-group-font').hide()
             $(this).addClass('insert-input-active')
-            $(this).find('.btn-group-font').show()
+            // show side font adjustment bar
+            $('#nav-font-adjust').show("slide", { direction: "left" }, 200)
+        })
+
+        // make the input box draggable
+        $('.insert-input').draggable()
+            .click(function() {
+                $(this).draggable({ disabled: false });
+            }).dblclick(function() {
+            $(this).draggable({ disabled: true });
         })
 
         // change the font size
@@ -371,7 +376,9 @@ $('#btn-insert').on('click', function () {
 
     // hide the active input while clicking outside
     $(document).click(function () {
-        // insert input box
+        $('#nav-font-adjust').hide("slide", { direction: "left" }, 200)
+
+        // hide or delete the previous box
         let previousBox = $('.insert-input-active')
         let content = previousBox.find('.insert-input-content')[0]
         if (content && content.textContent === ''){
@@ -379,7 +386,6 @@ $('#btn-insert').on('click', function () {
         }
         else{
             previousBox.removeClass('insert-input-active')
-            $('.btn-group-font').hide()
         }
     })
-})
+}

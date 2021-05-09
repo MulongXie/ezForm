@@ -8,6 +8,9 @@
     <!-- Resizable -->
     <!--    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">-->
     <!--    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>-->
+    <!-- Draggable -->
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <!-- Zip -->
     <script src="jszip/jszip.js"></script>
     <script src="fileSaver/FileSaver.js"></script>
@@ -124,6 +127,14 @@
 <!--                        </div>-->
                     </div>
                     <div id="preview-filled-res" class="text-center tab-pane fade">
+                        <div id="nav-font-adjust">
+                            <div class="btn-group-vertical">
+                                <a class="btn btn-input-font"><span style="font-size: 12px"><span class="glyphicon glyphicon-font"></span>+</span></a>
+                                <a class="btn btn-input-font"><span style="font-size: 12px"><span class="glyphicon glyphicon-font"></span>-</span></a>
+                                <a class="btn btn-input-font"><span style="font-size: 12px"><span class="glyphicon glyphicon-bold"></span></span></a>
+                                <a class="btn btn-input-font"><span style="font-size: 12px"><span class="glyphicon glyphicon-italic"></span></span></a>
+                            </div>
+                        </div>
                         <div class="note"><i><span class="glyphicon glyphicon-exclamation-sign"></span>Click on image to insert input box</i></div>
 <!--                        <div id="fill-img-wrapper-1" class="text-center page page-active">-->
 <!--                            <img id="img-filled-res-1" class="img-viewer" src="data/pdf-upload1/upload1_1/upload1_1.jpg">-->
