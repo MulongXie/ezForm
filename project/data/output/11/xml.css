@@ -1,0 +1,56 @@
+p{
+	margin: 5px !important;
+}
+.section-title:hover{
+	background-color: #BFBEBE;
+}
+th{
+	text-align: center !important;
+	border: 1px solid black;
+}
+label{
+	margin: 5px;
+}
+.speaker{
+	margin-left: 10px;
+}
+.section-title{
+	cursor: pointer;
+	background-color: lightgrey;
+	border: 1px solid black;
+	margin-bottom: 10px;
+	margin-top: 10px;
+	transition: 0.5s;
+	justify-content: center;
+}
+table input{
+	margin: 0;
+	border: 1px solid black;
+	width: 97%;
+}
+table{
+	border: 1px solid black;
+	width: 100%;
+}
+.input-wrapper{
+}
+td{
+	height: 20px;
+}
+.text-wrapper{
+	margin: 10px;
+	justify-content: space-around;
+}
+input{
+	margin: 5px;
+}
+.section-wrapper{
+	margin: 20px;
+	padding: 10px;
+	background-color: #f1f1f1;
+}
+.border-line{
+}
+.content{
+	display: None;
+}
