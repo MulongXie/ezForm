@@ -198,14 +198,44 @@ body{
     background-color: #f1f1f1;
 }
 
-#btn-sig-clear{
+#btn-sig-use{
     z-index: 30;
-    margin-top: 115px;
-    margin-left: 147px;
+    margin-top: 120px;
     position: absolute;
     width: 55px;
-    padding: 5px;
+    padding: 2px;
     font-size: 12px;
+}
+
+#btn-sig-clear{
+    z-index: 30;
+    margin-top: 120px;
+    margin-left: 58px;
+    position: absolute;
+    width: 55px;
+    padding: 2px;
+    font-size: 12px;
+}
+
+.inserted-signature-img{
+    width: 100px;
+    height: 50px;
+    position: absolute;
+}
+
+.inserted-signature-img-active img{
+    border: #d9534f 2px solid;
+}
+
+.inserted-signature-img-active .del-sig{
+    display: inline-block !important;
+}
+
+.del-sig{
+    padding: 0 !important;
+    width: 5px;
+    margin-top: -37px;
+    display: none;
 }
 
 .bar-header{

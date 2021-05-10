@@ -293,7 +293,7 @@ $('#btn-export').on('click', function () {
 //************************
 var insertedInputID = 0
 $('#btn-insert').on('click', function () {
-    // show preview tab
+    // show the preview tab
     $('#previewer-detect-res').removeClass('active in')
     $('#li-tab-detect-res').removeClass('active')
     $('#preview-filled-res').addClass('active in')
@@ -405,7 +405,6 @@ function fontAdjustment() {
     })
     $('#font-bold').click(function () {
         let activeInput = $('.insert-input-active')
-        console.log(activeInput.css('font-weight'), activeInput.css('font-weight') === '700')
         if (activeInput.css('font-weight') === 'bold' || activeInput.css('font-weight') === '700'){
             activeInput.css('font-weight', 'normal')
         }
@@ -415,7 +414,6 @@ function fontAdjustment() {
     })
     $('#font-italic').click(function () {
         let activeInput = $('.insert-input-active')
-        console.log(activeInput.css('font-style'))
         if (activeInput.css('font-style') === 'italic'){
             activeInput.css('font-style', 'normal')
         }
@@ -445,6 +443,7 @@ $(document).click(function () {
 
     // hide signature
     $('#signature').hide()
+    $('.inserted-signature-img-active').removeClass('inserted-signature-img-active')
 })
 
 
@@ -457,6 +456,35 @@ $(function () {
     $('#btn-sig-clear').on('click', function(){
         signaturePad.clear();
     });
+
+    $('#btn-sig-use').on('click', function (e) {
+        e.stopPropagation()
+        // show the preview tab
+        $('#previewer-detect-res').removeClass('active in')
+        $('#li-tab-detect-res').removeClass('active')
+        $('#preview-filled-res').addClass('active in')
+        $('#li-tab-filled-res').addClass('active')
+
+        let signature = canvas.toDataURL("image/png")
+        let pageContainer = $('.filled-img-viewer.page-active')
+        let img = '<div class="inserted-signature-img inserted-signature-img-active" style="top:0; left: 0">' +
+            '   <img src="' + signature + '" style="width: calc(100% - 10px)">' +
+            '   <a class="btn del-sig" style="display: none">x</a>' +
+            '</div>'
+        pageContainer.append(img)
+
+        let insertedSig = $('.inserted-signature-img')
+        insertedSig.draggable()
+        insertedSig.on('click', function (e) {
+            e.stopPropagation()
+            $('.inserted-signature-img-active').removeClass('inserted-signature-img-active')
+            $(this).addClass('inserted-signature-img-active')
+        })
+
+        $('.del-sig').on('click', function () {
+            $(this).parent().remove()
+        })
+    })
 })
 
 $('#btn-signature').click(function (e) {
