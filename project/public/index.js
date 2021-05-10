@@ -23,6 +23,14 @@ $('#btn-reload').on('click', function () {
 //****** Upload Form ******
 //*************************
 $('#input-upload-form').on('change', function () {
+    // show the detection result tab
+    $('#preview-filled-res').removeClass('active in')
+    $('#li-tab-filled-res').removeClass('active')
+    $('#previewer-detect-res').addClass('active in')
+    $('#li-tab-detect-res').addClass('active')
+    // hide note
+    $('.note').hide()
+
     if (this.files && this.files[0]){
         if (this.files[0].type.includes('image')){
             $(this).attr('data-type', 'image')
@@ -132,7 +140,7 @@ function presentResultPage(pageID, resultFiles){
             let offset = overlay.offset().top - imgWrapper.offset().top + imgWrapper.scrollTop()
             imgWrapper.animate({scrollTop: offset},'slow')
 
-            // show the preview tab
+            // show the detection result tab
             $('#preview-filled-res').removeClass('active in')
             $('#li-tab-filled-res').removeClass('active')
             $('#previewer-detect-res').addClass('active in')
@@ -481,6 +489,8 @@ $(function () {
 
     $('#btn-sig-use').on('click', function (e) {
         e.stopPropagation()
+        $('.insert-input-active').removeClass('insert-input-active')
+
         // show the preview tab
         $('#previewer-detect-res').removeClass('active in')
         $('#li-tab-detect-res').removeClass('active')
@@ -500,6 +510,7 @@ $(function () {
         insertedSig.on('click', function (e) {
             e.stopPropagation()
             $('.inserted-signature-img-active').removeClass('inserted-signature-img-active')
+            $('.insert-input-active').removeClass('insert-input-active')
             $(this).addClass('inserted-signature-img-active')
         })
 
@@ -516,8 +527,13 @@ $(function () {
 
 $('#btn-signature').click(function (e) {
     e.stopPropagation()
+    $('.inserted-signature-img-active').removeClass('inserted-signature-img-active')
+    $('.insert-input-active').removeClass('insert-input-active')
+
     $('.signature-element').click(function (e) {
         e.stopPropagation()
+        $('.inserted-signature-img-active').removeClass('inserted-signature-img-active')
+        $('.insert-input-active').removeClass('insert-input-active')
     })
     $('#signature').toggle()
 })

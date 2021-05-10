@@ -395,3 +395,59 @@
 
 4/5/2021
 1. *** Add input component tracing function while clicking ***
+
+
+5/5/2021
+*** Support PDF input (screenshot it rather than using metadata) ***
+
+1. Save pdf page's screenshot and process them
+
+2. Front-end supports pdf upload and limits uploading formats
+
+
+6/5/2021
+1. Server supports pdf upload and limits uploading formats
+
+*** Multi-page present ***
+2. Web page supports multi images
+
+3. Web page supports multi htmls
+
+4. Connection between pages and htmls
+
+
+7/5/2021
+*** Multi page ***
+1. Overlay in each page
+
+2. Multipage-compatible for single page
+
+3. Fix font bug in generation
+
+
+8/5/2021
+*** Multi page ***
+1. Fill result in multi pages
+
+2. Export result in multi pages
+
+*** Inputbox insertion ***
+3. Insert input box while clicking
+
+4. Resize input box with drag and drop
+
+5. Change font size
+
+
+9/5/2021
+*** Inputbox insertion ***
+1. Make element draggable
+
+
+10/5/2021
+*** Inputbox insertion ***
+1. Add side bar to adjust inserted input font
+
+2. Add signature pad
+
+3. Use signature

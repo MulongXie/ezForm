@@ -1,56 +1,56 @@
-.input-wrapper{
-}
 .speaker{
 	margin-left: 10px;
 }
-.border-line{
-}
-.text-wrapper{
-	margin: 10px;
-	justify-content: space-around;
+td{
+	height: 20px;
 }
 th{
 	text-align: center !important;
 	border: 1px solid black;
 }
-td{
-	height: 20px;
+.border-line{
 }
-table{
-	border: 1px solid black;
-	width: 100%;
-}
-input{
-	margin: 5px;
-}
-.section-title{
-	margin-bottom: 10px;
-	margin-top: 10px;
-	transition: 0.5s;
-	border: 1px solid black;
-	justify-content: center;
-	background-color: lightgrey;
-	cursor: pointer;
-}
-table input{
-	margin: 0;
-	border: 1px solid black;
-	width: 97%;
-}
-label{
-	margin: 5px;
-}
-.content{
-	display: None;
+.section-title:hover{
+	background-color: #BFBEBE;
 }
 p{
 	margin: 5px !important;
 }
 .section-wrapper{
-	margin: 20px;
 	padding: 10px;
+	margin: 20px;
 	background-color: #f1f1f1;
 }
-.section-title:hover{
-	background-color: #BFBEBE;
+table{
+	border: 1px solid black;
+	width: 100%;
+}
+label{
+	margin: 5px;
+}
+.section-title{
+	justify-content: center;
+	transition: 0.5s;
+	margin-top: 10px;
+	background-color: lightgrey;
+	margin-bottom: 10px;
+	cursor: pointer;
+	border: 1px solid black;
+}
+.input-wrapper{
+}
+.content{
+	display: None;
+}
+input{
+	margin: 5px;
+}
+.text-wrapper{
+	justify-content: space-around;
+	margin: 10px;
+}
+table input{
+	border: 1px solid black;
+	margin: 0;
+	width: 97%;
 }

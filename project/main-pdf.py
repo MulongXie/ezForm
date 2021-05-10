@@ -13,7 +13,7 @@ from generation.Generator import *
 
 def form_img_process(img_file, export_dir):
     form = form_compo_detection(form_img_file_name=img_file, export_dir=export_dir)
-    form.visualize_detection_result()
+    #form.visualize_detection_result()
 
     gen = Generator(form, export_dir=export_dir)
     gen.init_html_compos()
