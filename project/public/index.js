@@ -196,6 +196,9 @@ function process(img, inputType){
                 if (resp.resultPaths.length === 1){
                     $('#wrapper-pagination').hide()
                 }
+                else {
+                    $('#wrapper-pagination').show()
+                }
 
                 // reset the container's size according to the form image
                 setTimeout(function () {
