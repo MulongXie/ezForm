@@ -1,5 +1,27 @@
 var resultPaths = null;
 
+
+$('.btn-flip').on('click', function () {
+    let wrappers = $('.content-wrapper')
+    if (wrappers.hasClass('col-md-6')){
+        wrappers.removeClass('col-md-6')
+        wrappers.addClass('col-md-12')
+    }
+    else if(wrappers.hasClass('col-md-12')){
+        wrappers.removeClass('col-md-12')
+        wrappers.addClass('col-md-6')
+    }
+})
+
+$('#btn-reload').on('click', function () {
+    let page = $('#iframe-page-fill')
+    page.prop('src', page.prop('src') + '?' + new Date().getTime())
+})
+
+
+//*************************
+//****** Upload Form ******
+//*************************
 $('#input-upload-form').on('change', function () {
     if (this.files && this.files[0]){
         if (this.files[0].type.includes('image')){
@@ -28,6 +50,37 @@ $('#input-upload-form').on('change', function () {
     }
 })
 
+
+//***********************
+//***** Export Form *****
+//***********************
+$('#btn-export').on('click', function () {
+    var zip = new JSZip();
+    for (let i = 0; i < $('.page-btn').length; i ++) {
+        // read the img as base64
+        let img = document.getElementById("img-filled-res-" + (i+1))
+        let canvas = document.createElement("canvas");
+        canvas.width = img.naturalWidth
+        canvas.height = img.naturalHeight
+        let ctx = canvas.getContext("2d");
+        ctx.drawImage(img, 0, 0);
+        let imgBase = canvas.toDataURL("image/png");
+        imgBase = imgBase.replace(/^data:image.*;base64,/, "")
+
+        // zip and download
+        zip.file("filledForm-" + (i+1) +".jpg", imgBase, {base64: true});
+    }
+    zip.generateAsync({type: "blob"})
+        .then(function (content) {
+            // see FileSaver.js
+            saveAs(content, "form.zip");
+        })
+})
+
+
+//************************
+//***** Process Form *****
+//************************
 function presentResultPage(pageID, resultFiles){
     // 1. pagination
     $('.pagination').append('<li><a class="page-btn">'+ pageID +'</a></li>')
@@ -169,6 +222,10 @@ $('.img-exp-form').on('click', function () {
     process($(this).attr('src'), 'path')
 })
 
+
+//*********************
+//***** Fill Form *****
+//*********************
 $('.btn-fill').on('click', function () {
     // show waiting loading
     $('#waiting-filling h4').text('Filling Form ...')
@@ -235,23 +292,6 @@ $('.btn-fill').on('click', function () {
     )
 })
 
-$('.btn-flip').on('click', function () {
-    let wrappers = $('.content-wrapper')
-    if (wrappers.hasClass('col-md-6')){
-        wrappers.removeClass('col-md-6')
-        wrappers.addClass('col-md-12')
-    }
-    else if(wrappers.hasClass('col-md-12')){
-        wrappers.removeClass('col-md-12')
-        wrappers.addClass('col-md-6')
-    }
-})
-
-$('#btn-reload').on('click', function () {
-    let page = $('#iframe-page-fill')
-    page.prop('src', page.prop('src') + '?' + new Date().getTime())
-})
-
 $('#btn-show-filled').on('click', function () {
     // show preview tab
     $('#previewer-detect-res').removeClass('active')
@@ -264,33 +304,10 @@ $('#btn-show-filled').on('click', function () {
     $('html,body').animate({scrollTop: $('#li-tab-filled-res').offset().top},'slow');
 })
 
-$('#btn-export').on('click', function () {
-    var zip = new JSZip();
-    for (let i = 0; i < $('.page-btn').length; i ++) {
-        // read the img as base64
-        let img = document.getElementById("img-filled-res-" + (i+1))
-        let canvas = document.createElement("canvas");
-        canvas.width = img.naturalWidth
-        canvas.height = img.naturalHeight
-        let ctx = canvas.getContext("2d");
-        ctx.drawImage(img, 0, 0);
-        let imgBase = canvas.toDataURL("image/png");
-        imgBase = imgBase.replace(/^data:image.*;base64,/, "")
 
-        // zip and download
-        zip.file("filledForm-" + (i+1) +".jpg", imgBase, {base64: true});
-    }
-    zip.generateAsync({type: "blob"})
-        .then(function (content) {
-            // see FileSaver.js
-            saveAs(content, "form.zip");
-        })
-})
-
-
-//************************
-//*** Insert Input Box ***
-//************************
+//****************************
+//***** Insert Input Box *****
+//****************************
 var insertedInputID = 0
 $('#btn-insert').on('click', function () {
     // show the preview tab
@@ -305,11 +322,6 @@ $('#btn-insert').on('click', function () {
         note.slideToggle()
         $('.filled-img-viewer').css('margin-top', '20px')
         $('.img-viewer').addClass('img-viewer-insert')
-    }
-    else {
-        note.slideToggle()
-        $('.filled-img-viewer').css('margin-top', '')
-        $('.img-viewer').removeClass('img-viewer-insert')
     }
 
     insertInputBox()
@@ -450,9 +462,9 @@ $(document).click(function () {
 })
 
 
-//*****************
-//*** Signature ***
-//*****************
+//*********************
+//***** Signature *****
+//*********************
 $(function () {
     var canvas = document.getElementById("signature-pad");
     var signaturePad = new SignaturePad(canvas);
