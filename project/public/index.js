@@ -132,6 +132,11 @@ function presentResultPage(pageID, resultFiles){
             let offset = overlay.offset().top - imgWrapper.offset().top + imgWrapper.scrollTop()
             imgWrapper.animate({scrollTop: offset},'slow')
 
+            // show the preview tab
+            $('#preview-filled-res').removeClass('active in')
+            $('#li-tab-filled-res').removeClass('active')
+            $('#previewer-detect-res').addClass('active in')
+            $('#li-tab-detect-res').addClass('active')
         })
     }, 1000)
 
@@ -187,6 +192,9 @@ function process(img, inputType){
                 for(let i = 0; i < resp.resultPaths.length; i ++){
                     // console.log(i, resp.resultPaths[i])
                     presentResultPage(i + 1, resp.resultPaths[i])
+                }
+                if (resp.resultPaths.length === 1){
+                    $('#wrapper-pagination').hide()
                 }
 
                 // reset the container's size according to the form image
@@ -308,7 +316,6 @@ $('#btn-show-filled').on('click', function () {
 //****************************
 //***** Insert Input Box *****
 //****************************
-var insertedInputID = 0
 $('#btn-insert').on('click', function () {
     // show the preview tab
     $('#previewer-detect-res').removeClass('active in')
@@ -329,7 +336,7 @@ $('#btn-insert').on('click', function () {
 })
 
 function insertInputBox() {
-// insert input box while clicking the image
+    // insert input box while clicking the image
     $('.img-viewer-insert').on('click', function (e) {
         e.stopPropagation();
         // hide font bar
@@ -347,15 +354,14 @@ function insertInputBox() {
         // clean empty inserted inputs
         let inputs = $('.insert-input')
         for (let i = 0; i < inputs.length; i ++){
-            let content = $(inputs[i]).find('.insert-input-content')[0]
-            if (content && content.textContent === ''){
+            if ($(inputs[i]).text() === ''){
                 $(inputs[i]).remove()
             }
         }
         $('.insert-input-active').removeClass('insert-input-active')
 
         // insert new input box
-        let inputBox = '<div id="insert-input-' + insertedInputID + '" class="insert-input insert-input-active text-left"' +
+        let inputBox = '<div class="insert-input insert-input-active text-left"' +
             ' style="left: ' + (e.pageX - pageContainer.offset().left) + 'px; top: ' + (e.pageY  - pageContainer.offset().top - 10) + 'px; ' +
             'position: absolute; min-width: 100px; min-height: 20px; font-size: 15px" contenteditable="true"></div>'
         pageContainer.append(inputBox)
@@ -396,7 +402,6 @@ function insertInputBox() {
             let fontSize = inputBox.css('font-size')
             inputBox.css('font-size', parseInt(fontSize) - 1 + 'px')
         })
-        insertedInputID ++
     })
 
     $('.btn-input-font').click(function (e) {
@@ -448,8 +453,7 @@ $(document).click(function () {
 
     // hide or delete the previous box
     let previousBox = $('.insert-input-active')
-    let content = previousBox.find('.insert-input-content')[0]
-    if (content && content.textContent === ''){
+    if (previousBox.text() === ''){
         previousBox.remove()
     }
     else{
