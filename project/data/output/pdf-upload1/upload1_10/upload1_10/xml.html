@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Title</title>
+	<link rel="stylesheet" href="xml.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></head>
+<body>
+<div id="blk-0" class="section-wrapper">
+</div>
+<div id="blk-2" class="section-wrapper">
+	<div id="blk-1" class=" section-title">
+		<p id="p-0">Part 0- Additional details<button class="speaker" data-target="p-0" onclick="speak(this)"><span class="glyphicon glyphicon-volume-up"></span></button></p>
+	</div>
+	<div id="blk-3" class="content input-wrapper">
+		<div class="input-group">
+			<label id="label-input-15" class="input-group-addon" for="input-15">Additional information</label>
+			<input type="text" id="input-15" class="form-control">
+			<div class="input-group-btn">
+				<button class="speaker btn btn-default" data-target="label-input-15" onclick="speak(this)"><span class="glyphicon glyphicon-volume-up"></span></button>
+			</div>
+		</div>
+	</div>
+	<div id="blk-4" class="content input-wrapper">
+		<div class="input-group">
+			<label id="label-input-16" class="input-group-addon" for="input-16">Question number</label>
+			<input type="text" id="input-16" class="form-control">
+			<div class="input-group-btn">
+				<button class="speaker btn btn-default" data-target="label-input-16" onclick="speak(this)"><span class="glyphicon glyphicon-volume-up"></span></button>
+			</div>
+		</div>
+	</div>
+	<div id="blk-5" class="text-wrapper content">
+		<p id="p-1">45<button class="speaker" data-target="p-1" onclick="speak(this)"><span class="glyphicon glyphicon-volume-up"></span></button></p>
+	</div>
+</div>
+<div id="blk-8" class="section-wrapper">
+	<div id="blk-7" class=" section-title">
+		<p id="p-2">Part P- Declaration<button class="speaker" data-target="p-2" onclick="speak(this)"><span class="glyphicon glyphicon-volume-up"></span></button></p>
+	</div>
+	<div id="blk-9" class="text-wrapper content">
+		<p id="p-3">WARNING: Gving false or misleading intomation is a serious offence.<button class="speaker" data-target="p-3" onclick="speak(this)"><span class="glyphicon glyphicon-volume-up"></span></button></p>
+	</div>
+	<div id="blk-10" class="text-wrapper content">
+		<p id="p-4">46 declare that<button class="speaker" data-target="p-4" onclick="speak(this)"><span class="glyphicon glyphicon-volume-up"></span></button></p>
+	</div>
+	<div id="blk-11" class="text-wrapper content">
+		<p id="p-5">• the information/ have supplied in this amalication is complete,</br>correct and up- to- date in every detai.<button class="speaker" data-target="p-5" onclick="speak(this)"><span class="glyphicon glyphicon-volume-up"></span></button></p>
+	</div>
+	<div id="blk-12" class="text-wrapper content">
+		<p id="p-6">. I have read and understood the formation supplied to me<button class="speaker" data-target="p-6" onclick="speak(this)"><span class="glyphicon glyphicon-volume-up"></span></button></p>
+	</div>
+	<div id="blk-13" class="text-wrapper content">
+		<p id="p-7">. I have read the information contained in form 1442 Privacy notice.<button class="speaker" data-target="p-7" onclick="speak(this)"><span class="glyphicon glyphicon-volume-up"></span></button></p>
+	</div>
+	<div id="blk-14" class="text-wrapper content">
+		<p id="p-8">•/ understand the department may collect use and disclose my</br>personal formation( including biometric information and other</br>sensitive information) as outlined in form 1442/ Privacy notice<button class="speaker" data-target="p-8" onclick="speak(this)"><span class="glyphicon glyphicon-volume-up"></span></button></p>
+	</div>
+	<div id="blk-15" class="content input-wrapper">
+		<div class="input-group">
+			<label id="label-input-13" class="input-group-addon" for="input-13">Signature of
+		applicant</label>
+			<input type="text" id="input-13" class="form-control">
+			<div class="input-group-btn">
+				<button class="speaker btn btn-default" data-target="label-input-13" onclick="speak(this)"><span class="glyphicon glyphicon-volume-up"></span></button>
+			</div>
+		</div>
+	</div>
+	<div id="blk-16" class="content input-wrapper">
+		<div class="input-group">
+			<label id="label-input-14" class="input-group-addon" for="input-14">Date</label>
+			<input type="date" id="input-14" class="form-control">
+			<div class="input-group-btn">
+				<button class="speaker btn btn-default" data-target="label-input-14" onclick="speak(this)"><span class="glyphicon glyphicon-volume-up"></span></button>
+			</div>
+		</div>
+	</div>
+	<div id="blk-17" class="text-wrapper content">
+		<p id="p-9">We strongly advise that you keep a copy of your application<button class="speaker" data-target="p-9" onclick="speak(this)"><span class="glyphicon glyphicon-volume-up"></span></button></p>
+	</div>
+	<div id="blk-18" class="text-wrapper content">
+		<p id="p-10">and all attachments for your records.<button class="speaker" data-target="p-10" onclick="speak(this)"><span class="glyphicon glyphicon-volume-up"></span></button></p>
+	</div>
+	<div id="blk-20" class="text-wrapper content">
+		<p id="p-11">1221 Design de 109 Page 10<button class="speaker" data-target="p-11" onclick="speak(this)"><span class="glyphicon glyphicon-volume-up"></span></button></p>
+		<p id="p-12">COMMONWEALTH OF AUSTRALIA, 2015<button class="speaker" data-target="p-12" onclick="speak(this)"><span class="glyphicon glyphicon-volume-up"></span></button></p>
+	</div>
+</div>
+
+    <script>
+        var sectionTitle = document.getElementsByClassName("section-title")
+        for(let i = 0; i < sectionTitle.length; i++){
+            sectionTitle[i].addEventListener("click", function () {
+                this.classList.toggle("active")
+                let sibling = this.nextElementSibling
+                while(sibling){
+                    if (sibling.style.display === "block" || sibling.style.display === "flex") {
+                        sibling.style.display = "none";
+                    } else {
+                        if (sibling.classList.contains('input-wrapper')) {
+                            sibling.style.display = "block";
+                        }
+                        else if (sibling.classList.contains('text-wrapper')){
+                            sibling.style.display = "flex";
+                        }
+                    }
+                    sibling = sibling.nextElementSibling
+                }
+            })
+        }
+        function addRow(ele) {
+            let table = document.getElementById(ele.dataset.target)
+            let rowNum = table.rows.length
+            let row = table.insertRow(rowNum)
+            for (let i=0; i < table.rows[rowNum - 1].cells.length; i++){
+                let cell = row.insertCell(i)
+                let cell_id = ele.dataset.target + '-col-' + i.toString() + '-row-' + rowNum.toString()
+                cell.innerHTML = '<input id="' + cell_id + '">'
+            }
+        }
+        function delRow(ele) {
+            let table = document.getElementById(ele.dataset.target)
+            let rowNum = table.rows.length
+            if (rowNum > 1){
+                table.deleteRow(rowNum - 1)
+            }
+        }
+        function speak(ele) {
+            let p = document.getElementById(ele.dataset.target)
+            console.log()
+    
+            var msg = new SpeechSynthesisUtterance();
+            msg.text = p.innerText
+            window.speechSynthesis.speak(msg)
+        }
+    </script>
+    </body>
+</html>

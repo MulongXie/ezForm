@@ -11,6 +11,8 @@
     <!-- Draggable -->
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <!-- Signature -->
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/signature_pad/1.5.3/signature_pad.min.js'></script><script  src="./script.js"></script>
     <!-- Zip -->
     <script src="jszip/jszip.js"></script>
     <script src="fileSaver/FileSaver.js"></script>
@@ -102,8 +104,8 @@
                 <div class="content-bar">
                     <span class="bar-header">Re-generated Form</span>
                     <a class="btn btn-danger btn-flip" data-toggle="tooltip" title="Flip the page"><span class="glyphicon glyphicon-retweet"></span></a>
-                    <button id="top-btn-fill" class="btn btn-primary btn-fill" data-toggle="modal" data-target="#modal-filling"><span class="glyphicon glyphicon-pencil" style="margin-right: 5px;font-size: 10px;"></span>Fill Form</button>
-                    <button id="btn-reload" class="btn btn-primary"><span class="glyphicon glyphicon-refresh" style="margin-right: 5px;font-size: 10px;"></span>Reload Form</button>
+                    <button id="top-btn-fill" class="btn btn-primary btn-fill" data-toggle="modal" data-target="#modal-filling"><span class="glyphicon glyphicon-edit" style="margin-right: 5px;"></span>Fill Form</button>
+                    <button id="btn-reload" class="btn btn-primary"><span class="glyphicon glyphicon-refresh" style="margin-right: 5px;"></span>Reload Form</button>
                 </div>
 <!--                <iframe id="iframe-page-fill-1" class="iframe-viewer page page-active" src="data/pdf-upload1/upload1_1/upload1_1/xml.html"></iframe>-->
 <!--                <iframe id="iframe-page-fill-2" class="iframe-viewer page" src="data/pdf-upload1/upload1_2/upload1_2/xml.html"></iframe>-->
@@ -114,7 +116,14 @@
                         <li id="li-tab-detect-res" class="active"><a data-toggle="tab" href="#previewer-detect-res">Detection Result</a></li>
                         <li id="li-tab-filled-res"><a data-toggle="tab" href="#preview-filled-res">Preview</a></li>
                         <li style="float: right"><button id="btn-export" class="btn btn-danger"><span class="glyphicon glyphicon-download-alt" style="margin-right: 5px"></span>Export</button></li>
-                        <li style="float: right"><button id="btn-insert" class="btn btn-danger">Insert Input</button></li>
+                        <li style="float: right"><button id="btn-insert" class="btn btn-danger"><span class="glyphicon glyphicon-plus-sign" style="margin-right: 5px"></span>Insert Input</button></li>
+                        <li style="float: right">
+                            <button id="btn-signature" class="btn btn-danger"><span class="glyphicon glyphicon-pencil" style="margin-right: 5px"></span>Add signature</button>
+                            <div id="signature">
+                                <canvas id="signature-pad" class="signature-element"></canvas>
+                                <a id="btn-sig-clear" class="btn btn-default signature-element"><span class="glyphicon glyphicon-erase" style="margin-right: 3px"></span>Clear</a>
+                            </div>
+                        </li>
                     </ul>
                 </div>
                 <div class="img-wrapper tab-content">

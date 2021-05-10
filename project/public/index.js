@@ -287,6 +287,10 @@ $('#btn-export').on('click', function () {
         })
 })
 
+
+//************************
+//*** Insert Input Box ***
+//************************
 var insertedInputID = 0
 $('#btn-insert').on('click', function () {
     // show preview tab
@@ -316,7 +320,10 @@ function insertInputBox() {
 // insert input box while clicking the image
     $('.img-viewer-insert').on('click', function (e) {
         e.stopPropagation();
+        // hide font bar
         $('#nav-font-adjust').show("slide", { direction: "left" }, 300)
+        // hide signature
+        $('#signature').hide()
 
         let id = $(this).attr('id').split('-')
         let pageID = id[id.length - 1]
@@ -343,6 +350,9 @@ function insertInputBox() {
         // activate the input box while clicking
         $('.insert-input').on('click', function (e) {
             e.stopPropagation()
+            // hide signature
+            $('#signature').hide()
+            // activate the input
             $('.insert-input-active').removeClass('insert-input-active')
             $(this).addClass('insert-input-active')
             // show side font adjustment bar
@@ -375,23 +385,10 @@ function insertInputBox() {
         insertedInputID ++
     })
 
-    // hide the active input while clicking outside
-    $(document).click(function () {
-        $('#nav-font-adjust').hide("slide", { direction: "left" }, 300)
-
-        // hide or delete the previous box
-        let previousBox = $('.insert-input-active')
-        let content = previousBox.find('.insert-input-content')[0]
-        if (content && content.textContent === ''){
-            previousBox.remove()
-        }
-        else{
-            previousBox.removeClass('insert-input-active')
-        }
-    })
-
     $('.btn-input-font').click(function (e) {
         e.stopPropagation()
+        // hide signature
+        $('#signature').hide()
     })
 }
 
@@ -431,3 +428,41 @@ function fontAdjustment() {
         activeInput.remove()
     })
 }
+
+// hide the active input while clicking outside
+$(document).click(function () {
+    $('#nav-font-adjust').hide("slide", { direction: "left" }, 300)
+
+    // hide or delete the previous box
+    let previousBox = $('.insert-input-active')
+    let content = previousBox.find('.insert-input-content')[0]
+    if (content && content.textContent === ''){
+        previousBox.remove()
+    }
+    else{
+        previousBox.removeClass('insert-input-active')
+    }
+
+    // hide signature
+    $('#signature').hide()
+})
+
+
+//*****************
+//*** Signature ***
+//*****************
+$(function () {
+    var canvas = document.getElementById("signature-pad");
+    var signaturePad = new SignaturePad(canvas);
+    $('#btn-sig-clear').on('click', function(){
+        signaturePad.clear();
+    });
+})
+
+$('#btn-signature').click(function (e) {
+    e.stopPropagation()
+    $('.signature-element').click(function (e) {
+        e.stopPropagation()
+    })
+    $('#signature').toggle()
+})

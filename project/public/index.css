@@ -3,6 +3,10 @@ body{
     font-family: "Open Sans", sans-serif;
 }
 
+.glyphicon{
+    font-size: 12px;
+}
+
 .btn-flip{
     margin: -3px;
     float: right;
@@ -172,6 +176,36 @@ body{
     /*float: right;*/
     margin-top: 2px;
     margin-right: 7px;
+}
+
+#signature{
+    display: none;
+}
+
+#btn-signature{
+    margin-top: 2px;
+    margin-right: 7px;
+}
+
+#signature-pad{
+    border: 1px solid grey;
+    width: 300px;
+    height: 150px;
+    position: absolute;
+    /*margin-top: 38px;*/
+    z-index: 20;
+    right: -70px;
+    background-color: #f1f1f1;
+}
+
+#btn-sig-clear{
+    z-index: 30;
+    margin-top: 115px;
+    margin-left: 147px;
+    position: absolute;
+    width: 55px;
+    padding: 5px;
+    font-size: 12px;
 }
 
 .bar-header{
