@@ -324,6 +324,7 @@ function insertInputBox() {
         $('#nav-font-adjust').show("slide", { direction: "left" }, 300)
         // hide signature
         $('#signature').hide()
+        $('.inserted-signature-img-active').removeClass('inserted-signature-img-active')
 
         let id = $(this).attr('id').split('-')
         let pageID = id[id.length - 1]
@@ -352,6 +353,7 @@ function insertInputBox() {
             e.stopPropagation()
             // hide signature
             $('#signature').hide()
+            $('.inserted-signature-img-active').removeClass('inserted-signature-img-active')
             // activate the input
             $('.insert-input-active').removeClass('insert-input-active')
             $(this).addClass('insert-input-active')
@@ -389,6 +391,7 @@ function insertInputBox() {
         e.stopPropagation()
         // hide signature
         $('#signature').hide()
+        $('.inserted-signature-img-active').removeClass('inserted-signature-img-active')
     })
 }
 
@@ -467,20 +470,25 @@ $(function () {
 
         let signature = canvas.toDataURL("image/png")
         let pageContainer = $('.filled-img-viewer.page-active')
-        let img = '<div class="inserted-signature-img inserted-signature-img-active" style="top:0; left: 0">' +
-            '   <img src="' + signature + '" style="width: calc(100% - 10px)">' +
+        let img = '<div class="inserted-signature-img inserted-signature-img-active" style="top:0; left: 0; position: absolute">' +
+            '   <img src="' + signature + '" style="width: 90%; height: 90%">' +
             '   <a class="btn del-sig" style="display: none">x</a>' +
             '</div>'
         pageContainer.append(img)
 
+        // activate the div while clicking
         let insertedSig = $('.inserted-signature-img')
-        insertedSig.draggable()
         insertedSig.on('click', function (e) {
             e.stopPropagation()
             $('.inserted-signature-img-active').removeClass('inserted-signature-img-active')
             $(this).addClass('inserted-signature-img-active')
         })
 
+        // make the div draggable and resizable
+        insertedSig.draggable()
+        insertedSig.resizable()
+
+        // delete button
         $('.del-sig').on('click', function () {
             $(this).parent().remove()
         })
