@@ -59,6 +59,7 @@ class Page:
         # for compo
         self.css['.border-line'] = CSS(name='.border-line')  # for cutting line (ungrouped rectangle or line)
         self.css['.speaker'] = CSS(name='.speaker', margin_left='10px')
+        self.css['.input-active'] = CSS(name='.input-active', background_color='yellow !important')
         # for normal div wrapper
         self.css['.content'] = CSS(name='.content', display='None')  # for content in a section that is not title
         self.css['.text-wrapper'] = CSS(name='.text-wrapper', margin='10px', justify_content='space-around')

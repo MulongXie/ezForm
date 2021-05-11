@@ -2,25 +2,22 @@ table{
 	border: 1px solid black;
 	width: 100%;
 }
-label{
-	margin: 5px;
+.content{
+	display: None;
+}
+.input-wrapper{
 }
 .section-title{
 	border: 1px solid black;
-	background-color: lightgrey;
-	margin-bottom: 10px;
-	transition: 0.5s;
-	margin-top: 10px;
-	justify-content: center;
 	cursor: pointer;
+	transition: 0.5s;
+	justify-content: center;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	background-color: lightgrey;
 }
-table input{
-	margin: 0;
-	border: 1px solid black;
-	width: 97%;
-}
-.content{
-	display: None;
+td{
+	height: 20px;
 }
 input{
 	margin: 5px;
@@ -28,11 +25,18 @@ input{
 .speaker{
 	margin-left: 10px;
 }
-p{
-	margin: 5px !important;
+table input{
+	border: 1px solid black;
+	width: 97%;
+	margin: 0;
 }
-td{
-	height: 20px;
+.section-wrapper{
+	background-color: #f1f1f1;
+	margin: 20px;
+	padding: 10px;
+}
+.input-active{
+	background-color: yellow !important;
 }
 .section-title:hover{
 	background-color: #BFBEBE;
@@ -41,16 +45,15 @@ th{
 	border: 1px solid black;
 	text-align: center !important;
 }
-.border-line{
-}
 .text-wrapper{
 	margin: 10px;
 	justify-content: space-around;
 }
-.section-wrapper{
-	padding: 10px;
-	background-color: #f1f1f1;
-	margin: 20px;
+p{
+	margin: 5px !important;
 }
-.input-wrapper{
+.border-line{
+}
+label{
+	margin: 5px;
 }

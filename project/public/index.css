@@ -282,13 +282,13 @@ body{
 
 .overlay{
     position: absolute;
-    /*opacity: 0.8;*/
-    /*background-color: yellow;*/
+    background-color: rgba(0, 0, 255, 0.5);
+    text-align: left;
+    color: black;
 }
 
 .overlay-active{
-    background-color: yellow;
-    opacity: 0.8;
+    background-color: rgba(255, 255, 0, 0.8);
 }
 
 #preview-note{

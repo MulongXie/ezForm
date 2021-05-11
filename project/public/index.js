@@ -96,7 +96,7 @@ function presentResultPage(pageID, resultFiles){
     $('#viewer-iframe').append('<iframe id="iframe-page-fill-' + pageID + '" class="iframe-viewer page" src="' + resultFiles.resultPage + '"></iframe>\n')
     // 3. page detection result
     let wrapper = '<div id="detection-img-wrapper-'+ pageID +'" class="overlay-container page">\n' +
-        '    <img id="img-detection-res-'+ pageID +'" class="img-viewer" src="'+ resultFiles.resultImg +'">\n' +
+        '    <img id="img-detection-res-'+ pageID +'" class="img-viewer" src="'+ resultFiles.inputImg +'">\n' +
         '</div>'
     $('#previewer-detect-res').append(wrapper)
     // 4. page filled result
@@ -127,10 +127,14 @@ function presentResultPage(pageID, resultFiles){
     })
 
     // Trace input inner the iframe page
-    setTimeout(function () {
+    $('#iframe-page-fill-' + pageID).on('load', function () {
         let frame = $('#iframe-page-fill-' + pageID)[0].contentWindow.document
-        // console.log($(frame))
+        // Trace overlay
         $(frame).find('input').click(function () {
+            // remove active compo
+            let activeCompo = frame.getElementsByClassName('input-active')
+            if (activeCompo.length > 0) {activeCompo[0].classList.remove('input-active')}
+
             let inputId = this.id
             let overlay =  $('#overlay-' + inputId + '-' + pageID)
             $('.overlay-active').removeClass('overlay-active')
@@ -146,7 +150,36 @@ function presentResultPage(pageID, resultFiles){
             $('#previewer-detect-res').addClass('active in')
             $('#li-tab-detect-res').addClass('active')
         })
-    }, 1000)
+        // realtime type in on overlay
+        $(frame).find('input').on('input', function () {
+            let inputId = this.id
+            let overlay =  $('#overlay-' + inputId + '-' + pageID)
+            overlay.text($(this).val())
+        })
+
+        // Trace input compo
+        $('.overlay').on('click', function () {
+            // remove active compo
+            let activeCompo = frame.getElementsByClassName('input-active')
+            if (activeCompo.length > 0) {activeCompo[0].classList.remove('input-active')}
+
+            // remove active overlay
+            $('.overlay-active').removeClass('overlay-active')
+
+            let inputCompo = frame.getElementById($(this).attr('data-target'))
+            if (inputCompo){
+                inputCompo.scrollIntoView(false)
+                inputCompo.classList.add('input-active')
+            }
+        })
+        // realtime type in on input compo
+        $('.overlay').on('input', function () {
+            let inputCompo = frame.getElementById($(this).attr('data-target'))
+            if (inputCompo){
+                inputCompo.value = $(this).text()
+            }
+        })
+    })
 
     // add overlay
     $.getJSON(resultFiles.compoLocFile, function (result) {
@@ -154,7 +187,8 @@ function presentResultPage(pageID, resultFiles){
         $.each(result, function (i, field) {
             field = field[0]
             // console.log(i, field)
-            overlays += '<div id="overlay-' + i + '-' + pageID +'" class="overlay" style="top: ' + field['top'] + 'px; left: ' + field['left'] +
+            overlays += '<div id="overlay-' + i + '-' + pageID +'" contenteditable="true" ' + 'data-target="' + i + '"' +
+                'class="overlay" style="top: ' + field['top'] + 'px; left: ' + field['left'] +
                 'px; width: ' + (field['right'] - field['left']) + 'px; height: ' + (field['bottom'] - field['top']) + 'px;"></div>\n'
         })
         $('#detection-img-wrapper-'+ pageID).append(overlays)
