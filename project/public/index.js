@@ -176,6 +176,10 @@ function presentResultPage(pageID, resultFiles){
             // remove active overlay
             $('.overlay-active').removeClass('overlay-active')
 
+            // add editing overlay
+            $('.overlay-editing').removeClass('overlay-editing')
+            $(this).addClass('overlay-editing')
+
             // activate the input compo
             let inputCompo = frame.getElementById($(this).attr('data-target'))
             if (inputCompo){
@@ -388,7 +392,6 @@ $('#btn-insert').on('click', function () {
     }
 
     insertInputBox()
-    fontAdjustment()
 })
 
 function insertInputBox() {
@@ -400,6 +403,9 @@ function insertInputBox() {
         // hide signature
         $('#signature').hide()
         $('.inserted-signature-img-active').removeClass('inserted-signature-img-active')
+
+        // stop editing overlay
+        $('.overlay-editing').removeClass('overlay-editing')
 
         let id = $(this).attr('id').split('-')
         let pageID = id[id.length - 1]
@@ -447,19 +453,21 @@ $('.btn-input-font').click(function (e) {
     $('.inserted-signature-img-active').removeClass('inserted-signature-img-active')
 })
 
+fontAdjustment()
+
 function fontAdjustment() {
     $('#font-up').click(function () {
-        let activeInput = $('.insert-input-active')
+        let activeInput = $('.insert-input-active, .overlay-editing')
         let fontSize = activeInput.css('font-size')
         activeInput.css('font-size', parseInt(fontSize) + 1 + 'px')
     })
     $('#font-down').click(function () {
-        let activeInput = $('.insert-input-active')
+        let activeInput = $('.insert-input-active, .overlay-editing')
         let fontSize = activeInput.css('font-size')
         activeInput.css('font-size', parseInt(fontSize) - 1 + 'px')
     })
     $('#font-bold').click(function () {
-        let activeInput = $('.insert-input-active')
+        let activeInput = $('.insert-input-active, .overlay-editing')
         if (activeInput.css('font-weight') === 'bold' || activeInput.css('font-weight') === '700'){
             activeInput.css('font-weight', 'normal')
         }
@@ -468,7 +476,7 @@ function fontAdjustment() {
         }
     })
     $('#font-italic').click(function () {
-        let activeInput = $('.insert-input-active')
+        let activeInput = $('.insert-input-active, .overlay-editing')
         if (activeInput.css('font-style') === 'italic'){
             activeInput.css('font-style', 'normal')
         }

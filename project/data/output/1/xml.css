@@ -1,59 +1,59 @@
-.input-wrapper{
+p{
+	margin: 5px !important;
+}
+table{
+	width: 100%;
+	border: 1px solid black;
+}
+.section-title{
+	justify-content: center;
+	background-color: lightgrey;
+	transition: 0.5s;
+	cursor: pointer;
+	margin-top: 10px;
+	border: 1px solid black;
+	margin-bottom: 10px;
+}
+.content{
+	display: None;
 }
 .text-wrapper{
 	justify-content: space-around;
 	margin: 10px;
+}
+.section-title:hover{
+	background-color: #BFBEBE;
+}
+.speaker{
+	margin-left: 10px;
+}
+th{
+	text-align: center !important;
+	border: 1px solid black;
+}
+.input-wrapper{
+}
+.border-line{
+}
+input{
+	margin: 5px;
+}
+table input{
+	margin: 0;
+	width: 97%;
+	border: 1px solid black;
 }
 .section-wrapper{
 	padding: 10px;
 	margin: 20px;
 	background-color: #f1f1f1;
 }
-.content{
-	display: None;
-}
-.section-title:hover{
-	background-color: #BFBEBE;
+label{
+	margin: 5px;
 }
 td{
 	height: 20px;
 }
-.border-line{
-}
-th{
-	text-align: center !important;
-	border: 1px solid black;
-}
-.speaker{
-	margin-left: 10px;
-}
-table input{
-	border: 1px solid black;
-	margin: 0;
-	width: 97%;
-}
-label{
-	margin: 5px;
-}
 .input-active{
 	background-color: yellow !important;
-}
-input{
-	margin: 5px;
-}
-table{
-	border: 1px solid black;
-	width: 100%;
-}
-p{
-	margin: 5px !important;
-}
-.section-title{
-	transition: 0.5s;
-	cursor: pointer;
-	justify-content: center;
-	margin-top: 10px;
-	border: 1px solid black;
-	margin-bottom: 10px;
-	background-color: lightgrey;
 }
