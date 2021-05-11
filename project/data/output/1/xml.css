@@ -1,59 +1,59 @@
-table{
-	border: 1px solid black;
-	width: 100%;
+.input-wrapper{
+}
+.text-wrapper{
+	justify-content: space-around;
+	margin: 10px;
+}
+.section-wrapper{
+	padding: 10px;
+	margin: 20px;
+	background-color: #f1f1f1;
 }
 .content{
 	display: None;
 }
-.input-wrapper{
-}
-.section-title{
-	border: 1px solid black;
-	cursor: pointer;
-	transition: 0.5s;
-	justify-content: center;
-	margin-top: 10px;
-	margin-bottom: 10px;
-	background-color: lightgrey;
+.section-title:hover{
+	background-color: #BFBEBE;
 }
 td{
 	height: 20px;
 }
-input{
-	margin: 5px;
+.border-line{
+}
+th{
+	text-align: center !important;
+	border: 1px solid black;
 }
 .speaker{
 	margin-left: 10px;
 }
 table input{
 	border: 1px solid black;
-	width: 97%;
 	margin: 0;
+	width: 97%;
 }
-.section-wrapper{
-	background-color: #f1f1f1;
-	margin: 20px;
-	padding: 10px;
+label{
+	margin: 5px;
 }
 .input-active{
 	background-color: yellow !important;
 }
-.section-title:hover{
-	background-color: #BFBEBE;
+input{
+	margin: 5px;
 }
-th{
+table{
 	border: 1px solid black;
-	text-align: center !important;
-}
-.text-wrapper{
-	margin: 10px;
-	justify-content: space-around;
+	width: 100%;
 }
 p{
 	margin: 5px !important;
 }
-.border-line{
-}
-label{
-	margin: 5px;
+.section-title{
+	transition: 0.5s;
+	cursor: pointer;
+	justify-content: center;
+	margin-top: 10px;
+	border: 1px solid black;
+	margin-bottom: 10px;
+	background-color: lightgrey;
 }

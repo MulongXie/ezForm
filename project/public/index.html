@@ -113,7 +113,7 @@
             <div class="col-md-6 col-xs-12 content-wrapper" style="padding: 0">
                 <div class="content-bar" style="padding: 0">
                     <ul class="nav nav-tabs">
-                        <li id="li-tab-detect-res" class="active"><a data-toggle="tab" href="#previewer-detect-res">Detection Result</a></li>
+                        <li id="li-tab-detect-res" class="active"><a data-toggle="tab" href="#preview-detect-res">Detection Result</a></li>
                         <li id="li-tab-filled-res"><a data-toggle="tab" href="#preview-filled-res">Preview</a></li>
                         <li style="float: right"><button id="btn-export" class="btn btn-danger"><span class="glyphicon glyphicon-download-alt" style="margin-right: 5px"></span>Export</button></li>
                         <li style="float: right"><button id="btn-insert" class="btn btn-default" style="background-color: #2ECC71"><span class="glyphicon glyphicon-plus-sign" style="margin-right: 5px"></span>Insert Input</button></li>
@@ -128,15 +128,8 @@
                     </ul>
                 </div>
                 <div class="img-wrapper tab-content">
-                    <div id="previewer-detect-res" class="text-center tab-pane fade in active">
-<!--                        <div id="detection-img-wrapper-1" class="overlay-container page page-active">-->
-<!--                            <img id="img-detection-res-1" class="img-viewer" src="data/pdf-upload1/upload1_1/upload1_1/detection.jpg">-->
-<!--                        </div>-->
-<!--                        <div id="detection-img-wrapper-2" class="overlay-container page">-->
-<!--                            <img id="img-detection-res-2" class="img-viewer" src="data/pdf-upload1/upload1_2/upload1_2/detection.jpg">-->
-<!--                        </div>-->
-                    </div>
-                    <div id="preview-filled-res" class="text-center tab-pane fade">
+                    <div id="preview-detect-res" class="text-center tab-pane fade in active">
+                        <div class="note"><i><span class="glyphicon glyphicon-exclamation-sign"></span>Click on image to insert input box</i></div>
                         <div id="nav-font-adjust">
                             <div class="btn-group-vertical">
                                 <a id="font-up" class="btn btn-input-font"><span style="font-size: 12px"><span class="glyphicon glyphicon-font"></span>+</span></a>
@@ -146,7 +139,14 @@
                                 <a id="input-del" class="btn btn-input-font"><span style="font-size: 12px"><span class="glyphicon glyphicon-trash"></span></span></a>
                             </div>
                         </div>
-                        <div class="note"><i><span class="glyphicon glyphicon-exclamation-sign"></span>Click on image to insert input box</i></div>
+<!--                        <div id="detection-img-wrapper-1" class="overlay-container page page-active">-->
+<!--                            <img id="img-detection-res-1" class="img-viewer" src="data/pdf-upload1/upload1_1/upload1_1/detection.jpg">-->
+<!--                        </div>-->
+<!--                        <div id="detection-img-wrapper-2" class="overlay-container page">-->
+<!--                            <img id="img-detection-res-2" class="img-viewer" src="data/pdf-upload1/upload1_2/upload1_2/detection.jpg">-->
+<!--                        </div>-->
+                    </div>
+                    <div id="preview-filled-res" class="text-center tab-pane fade">
 <!--                        <div id="fill-img-wrapper-1" class="text-center page page-active">-->
 <!--                            <img id="img-filled-res-1" class="img-viewer" src="data/pdf-upload1/upload1_1/upload1_1.jpg">-->
 <!--                        </div>-->

@@ -149,7 +149,7 @@ body{
     width: 40px;
     height: 100%;
     display: none;
-    z-index: 10;
+    z-index: 7;
     padding-top: 35px;
 }
 
@@ -277,7 +277,7 @@ body{
 
 .overlay-container{
     position: relative;
-    margin: 20px auto;
+    margin: 0 auto;
 }
 
 .overlay{

@@ -26,7 +26,7 @@ $('#input-upload-form').on('change', function () {
     // show the detection result tab
     $('#preview-filled-res').removeClass('active in')
     $('#li-tab-filled-res').removeClass('active')
-    $('#previewer-detect-res').addClass('active in')
+    $('#preview-detect-res').addClass('active in')
     $('#li-tab-detect-res').addClass('active')
     // hide note
     $('.note').hide()
@@ -98,7 +98,7 @@ function presentResultPage(pageID, resultFiles){
     let wrapper = '<div id="detection-img-wrapper-'+ pageID +'" class="overlay-container page">\n' +
         '    <img id="img-detection-res-'+ pageID +'" class="img-viewer" src="'+ resultFiles.inputImg +'">\n' +
         '</div>'
-    $('#previewer-detect-res').append(wrapper)
+    $('#preview-detect-res').append(wrapper)
     // 4. page filled result
     wrapper = '<div id="fill-img-wrapper-' + pageID + '" class="text-center page filled-img-viewer">\n' +
         '     <img id="img-filled-res-' + pageID + '" class="img-viewer" src="'+ resultFiles.inputImg +'">\n' +
@@ -147,7 +147,7 @@ function presentResultPage(pageID, resultFiles){
             // show the detection result tab
             $('#preview-filled-res').removeClass('active in')
             $('#li-tab-filled-res').removeClass('active')
-            $('#previewer-detect-res').addClass('active in')
+            $('#preview-detect-res').addClass('active in')
             $('#li-tab-detect-res').addClass('active')
         })
         // realtime type in on overlay
@@ -158,7 +158,17 @@ function presentResultPage(pageID, resultFiles){
         })
 
         // Trace input compo
-        $('.overlay').on('click', function () {
+        $('.overlay').on('click', function (e) {
+            e.stopPropagation()
+            cleanInsertedInput()
+
+            // hide signature
+            $('#signature').hide()
+            $('.inserted-signature-img-active').removeClass('inserted-signature-img-active')
+
+            // show side font adjustment bar
+            $('#nav-font-adjust').show("slide", { direction: "left" }, 300)
+
             // remove active compo
             let activeCompo = frame.getElementsByClassName('input-active')
             if (activeCompo.length > 0) {activeCompo[0].classList.remove('input-active')}
@@ -166,6 +176,7 @@ function presentResultPage(pageID, resultFiles){
             // remove active overlay
             $('.overlay-active').removeClass('overlay-active')
 
+            // activate the input compo
             let inputCompo = frame.getElementById($(this).attr('data-target'))
             if (inputCompo){
                 inputCompo.scrollIntoView(false)
@@ -347,8 +358,8 @@ $('.btn-fill').on('click', function () {
 
 $('#btn-show-filled').on('click', function () {
     // show preview tab
-    $('#previewer-detect-res').removeClass('active')
-    $('#previewer-detect-res').removeClass('in')
+    $('#preview-detect-res').removeClass('active')
+    $('#preview-detect-res').removeClass('in')
     $('#li-tab-detect-res').removeClass('active')
     $('#preview-filled-res').addClass('active')
     $('#preview-filled-res').addClass('in')
@@ -362,11 +373,11 @@ $('#btn-show-filled').on('click', function () {
 //***** Insert Input Box *****
 //****************************
 $('#btn-insert').on('click', function () {
-    // show the preview tab
-    $('#previewer-detect-res').removeClass('active in')
-    $('#li-tab-detect-res').removeClass('active')
-    $('#preview-filled-res').addClass('active in')
-    $('#li-tab-filled-res').addClass('active')
+    // show the detection result tab
+    $('#preview-filled-res').removeClass('active in')
+    $('#li-tab-filled-res').removeClass('active')
+    $('#preview-detect-res').addClass('active in')
+    $('#li-tab-detect-res').addClass('active')
 
     // show the note
     let note = $('.note')
@@ -392,18 +403,12 @@ function insertInputBox() {
 
         let id = $(this).attr('id').split('-')
         let pageID = id[id.length - 1]
-        let pageContainer = $('#fill-img-wrapper-' + pageID)
+        let pageContainer = $('#detection-img-wrapper-' + pageID)
         pageContainer.width($(this).width())
-        pageContainer.css('margin', '20px auto')
+        // pageContainer.css('margin', '20px auto')
 
         // clean empty inserted inputs
-        let inputs = $('.insert-input')
-        for (let i = 0; i < inputs.length; i ++){
-            if ($(inputs[i]).text() === ''){
-                $(inputs[i]).remove()
-            }
-        }
-        $('.insert-input-active').removeClass('insert-input-active')
+        cleanInsertedInput()
 
         // insert new input box
         let inputBox = '<div class="insert-input insert-input-active text-left"' +
@@ -431,31 +436,16 @@ function insertInputBox() {
             }).dblclick(function() {
             $(this).draggable({ disabled: true });
         })
-
-        // change the font size
-        $('.btn-input-font-up').on('click', function () {
-            let id = $(this).attr('id').split('-')
-            id = id[id.length - 1]
-            let inputBox =  $('#insert-input-' + id)
-            let fontSize = inputBox.css('font-size')
-            inputBox.css('font-size', parseInt(fontSize) + 1 + 'px')
-        })
-        $('.btn-input-font-down').on('click', function () {
-            let id = $(this).attr('id').split('-')
-            id = id[id.length - 1]
-            let inputBox =  $('#insert-input-' + id)
-            let fontSize = inputBox.css('font-size')
-            inputBox.css('font-size', parseInt(fontSize) - 1 + 'px')
-        })
     })
 
-    $('.btn-input-font').click(function (e) {
-        e.stopPropagation()
-        // hide signature
-        $('#signature').hide()
-        $('.inserted-signature-img-active').removeClass('inserted-signature-img-active')
-    })
 }
+
+$('.btn-input-font').click(function (e) {
+    e.stopPropagation()
+    // hide signature
+    $('#signature').hide()
+    $('.inserted-signature-img-active').removeClass('inserted-signature-img-active')
+})
 
 function fontAdjustment() {
     $('#font-up').click(function () {
@@ -492,6 +482,16 @@ function fontAdjustment() {
     })
 }
 
+function cleanInsertedInput(){
+    let inputs = $('.insert-input')
+    for (let i = 0; i < inputs.length; i ++){
+        if ($(inputs[i]).text() === ''){
+            $(inputs[i]).remove()
+        }
+    }
+    $('.insert-input-active').removeClass('insert-input-active')
+}
+
 // hide the active input while clicking outside
 $(document).click(function () {
     $('#nav-font-adjust').hide("slide", { direction: "left" }, 300)
@@ -525,15 +525,15 @@ $(function () {
         e.stopPropagation()
         $('.insert-input-active').removeClass('insert-input-active')
 
-        // show the preview tab
-        $('#previewer-detect-res').removeClass('active in')
-        $('#li-tab-detect-res').removeClass('active')
-        $('#preview-filled-res').addClass('active in')
-        $('#li-tab-filled-res').addClass('active')
+        // show the detection result tab
+        $('#preview-filled-res').removeClass('active in')
+        $('#li-tab-filled-res').removeClass('active')
+        $('#preview-detect-res').addClass('active in')
+        $('#li-tab-detect-res').addClass('active')
 
         let signature = canvas.toDataURL("image/png")
-        let pageContainer = $('.filled-img-viewer.page-active')
-        let img = '<div class="inserted-signature-img inserted-signature-img-active" style="top:0; left: 0; position: absolute">' +
+        let pageContainer = $('.overlay-container.page-active')
+        let img = '<div class="inserted-signature-img inserted-signature-img-active" style="top:200px; left: 200px; position: absolute">' +
             '   <img src="' + signature + '" style="width: 90%; height: 90%">' +
             '   <a class="btn del-sig" style="display: none">x</a>' +
             '</div>'
