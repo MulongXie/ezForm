@@ -150,7 +150,7 @@ body{
     height: 100%;
     display: none;
     z-index: 7;
-    padding-top: 35px;
+    padding-top: 10px;
 }
 
 .btn-input-font{
@@ -221,6 +221,7 @@ body{
     width: 100px;
     height: 50px;
     position: absolute;
+    cursor: move;
 }
 
 .inserted-signature-img-active img{

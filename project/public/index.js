@@ -296,71 +296,71 @@ $('.img-exp-form').on('click', function () {
 //*********************
 //***** Fill Form *****
 //*********************
-$('.btn-fill').on('click', function () {
-    // show waiting loading
-    $('#waiting-filling h4').text('Filling Form ...')
-    $('#waiting-filling .loader').slideDown()
-    $('#btn-show-filled').hide()
-
-    let data_pages = []
-    for (let i = 0; i < $('.page-btn').length; i ++){
-        let page = document.getElementById('iframe-page-fill-' + (i+1)).contentWindow.document
-        let inputs = page.getElementsByTagName('input')
-        let data = {}
-        for (let i = 0; i < inputs.length; i++){
-            if (inputs[i].type === 'checkbox'){
-                if (inputs[i].checked){
-                    data[inputs[i].id] = 'Y'
-                }
-                else{
-                    data[inputs[i].id] = ''
-                }
-            }
-            else if (inputs[i].type === 'date'){
-                data[inputs[i].id] = inputs[i].value.replace(/-/g, '/')
-            }
-            else{
-                data[inputs[i].id] = inputs[i].value
-            }
-        }
-        if (Object.keys(data).length === 0){
-            data_pages.push(null)
-        }
-        else{
-            data_pages.push(data)
-        }
-    }
-    console.log(data_pages)
-
-    $.ajax({
-            url: '/fillForm',
-            type: 'post',
-            data:{
-                inputData: data_pages,
-                resultPaths: resultPaths
-            },
-            success: function (resp) {
-                if (resp.code === 1){
-                    for (let i = 0; i < resp.filledFormImages.length; i++){
-                        let imgFilledRes = $('#img-filled-res-' + (i+1))
-                        imgFilledRes.prop('src', resp.filledFormImages[i] + '?' + new Date().getTime())
-                    }
-
-                    $('#waiting-filling h4').text('Form Filled')
-                    $('#waiting-filling .loader').slideUp()
-
-                    $('#btn-show-filled').slideDown()
-                    $('#btn-export').slideDown()
-                }
-                else {
-                    alert('Filling form failed')
-                    $('#waiting-filling h4').text('Filling form failed')
-                    $('#waiting-filling .loader').slideUp()
-                }
-            }
-        }
-    )
-})
+// $('.btn-fill').on('click', function () {
+//     // show waiting loading
+//     $('#waiting-filling h4').text('Filling Form ...')
+//     $('#waiting-filling .loader').slideDown()
+//     $('#btn-show-filled').hide()
+//
+//     let data_pages = []
+//     for (let i = 0; i < $('.page-btn').length; i ++){
+//         let page = document.getElementById('iframe-page-fill-' + (i+1)).contentWindow.document
+//         let inputs = page.getElementsByTagName('input')
+//         let data = {}
+//         for (let i = 0; i < inputs.length; i++){
+//             if (inputs[i].type === 'checkbox'){
+//                 if (inputs[i].checked){
+//                     data[inputs[i].id] = 'Y'
+//                 }
+//                 else{
+//                     data[inputs[i].id] = ''
+//                 }
+//             }
+//             else if (inputs[i].type === 'date'){
+//                 data[inputs[i].id] = inputs[i].value.replace(/-/g, '/')
+//             }
+//             else{
+//                 data[inputs[i].id] = inputs[i].value
+//             }
+//         }
+//         if (Object.keys(data).length === 0){
+//             data_pages.push(null)
+//         }
+//         else{
+//             data_pages.push(data)
+//         }
+//     }
+//     console.log(data_pages)
+//
+//     $.ajax({
+//             url: '/fillForm',
+//             type: 'post',
+//             data:{
+//                 inputData: data_pages,
+//                 resultPaths: resultPaths
+//             },
+//             success: function (resp) {
+//                 if (resp.code === 1){
+//                     for (let i = 0; i < resp.filledFormImages.length; i++){
+//                         let imgFilledRes = $('#img-filled-res-' + (i+1))
+//                         imgFilledRes.prop('src', resp.filledFormImages[i] + '?' + new Date().getTime())
+//                     }
+//
+//                     $('#waiting-filling h4').text('Form Filled')
+//                     $('#waiting-filling .loader').slideUp()
+//
+//                     $('#btn-show-filled').slideDown()
+//                     $('#btn-export').slideDown()
+//                 }
+//                 else {
+//                     alert('Filling form failed')
+//                     $('#waiting-filling h4').text('Filling form failed')
+//                     $('#waiting-filling .loader').slideUp()
+//                 }
+//             }
+//         }
+//     )
+// })
 
 $('#btn-show-filled').on('click', function () {
     // show preview tab
@@ -576,8 +576,80 @@ $('#btn-signature').click(function (e) {
 
     $('.signature-element').click(function (e) {
         e.stopPropagation()
-        $('.inserted-signature-img-active').removeClass('inserted-signature-img-active')
+        // $('.inserted-signature-img-active').removeClass('inserted-signature-img-active')
         $('.insert-input-active').removeClass('insert-input-active')
     })
     $('#signature').toggle()
+})
+
+
+// *************************
+// ***** HTML to Image *****
+// *************************
+function getDivImage(pageID) {
+    let detectionImgWrapper = $('#detection-img-wrapper-' + pageID)
+    console.log(pageID)
+    console.log(detectionImgWrapper)
+
+    let getCanvas
+    html2canvas(detectionImgWrapper, {
+        onrendered: function (canvas) {
+            getCanvas = canvas;
+            let imgData = getCanvas.toDataURL('image/png')
+            $('#img-filled-res-' + pageID).attr('src', imgData)
+        }
+    })
+}
+
+function cloneInput(node){
+    let clone = node.cloneNode(true)
+    clone.removeAttribute('id')
+    clone.removeAttribute('contenteditable')
+    clone.removeAttribute('class')
+    clone.removeAttribute('data-target')
+    clone.classList.add('filled-input')
+    clone.style.position = "absolute"
+    clone.style.textAlign = "left"
+    return clone
+}
+
+$('.btn-fill').on('click', function (){
+    // show preview tab
+    $('#preview-detect-res').removeClass('active')
+    $('#preview-detect-res').removeClass('in')
+    $('#li-tab-detect-res').removeClass('active')
+    $('#preview-filled-res').addClass('active')
+    $('#preview-filled-res').addClass('in')
+    $('#li-tab-filled-res').addClass('active')
+
+    // reset wrapper to fit
+    let pageID = $('.page-btn-active').text()
+    let filledWrapper = $('#fill-img-wrapper-' + pageID)
+    filledWrapper.width($('#img-filled-res-' + pageID).width())
+    filledWrapper.css('margin', '0 auto')
+
+    // add overlay on filled result image
+    $('.filled-input').remove()
+    let overlays = $('.overlay')
+    for (let i = 0; i < overlays.length; i ++){
+        if (overlays[i].textContent !== ''){
+            let clone = cloneInput(overlays[i])
+            console.log(clone)
+            filledWrapper.append(clone)
+        }
+    }
+    let insertedInputs = $('.insert-input')
+    for (let i = 0; i < insertedInputs.length; i ++){
+        if (insertedInputs[i].textContent !== ''){
+            let clone = cloneInput(insertedInputs[i])
+            console.log(clone)
+            filledWrapper.append(clone)
+        }
+    }
+    let sigImg = $('.inserted-signature-img')
+    for (let i = 0; i < sigImg.length; i ++){
+        let clone = sigImg[i].cloneNode(true)
+        filledWrapper.append(clone)
+    }
+    // getDivImage()
 })
