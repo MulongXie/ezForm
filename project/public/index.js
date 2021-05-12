@@ -96,7 +96,7 @@ function presentResultPage(pageID, resultFiles){
     $('#viewer-iframe').append('<iframe id="iframe-page-fill-' + pageID + '" class="iframe-viewer page" src="' + resultFiles.resultPage + '"></iframe>\n')
     // 3. page detection result
     let wrapper = '<div id="detection-img-wrapper-'+ pageID +'" class="overlay-container page">\n' +
-        '    <img id="img-detection-res-'+ pageID +'" class="img-viewer" src="'+ resultFiles.inputImg +'">\n' +
+        '    <img id="img-detection-res-'+ pageID +'" class="img-viewer img-viewer-insert" src="'+ resultFiles.inputImg +'">\n' +
         '</div>'
     $('#preview-detect-res').append(wrapper)
     // 4. page filled result
@@ -265,6 +265,8 @@ function process(img, inputType){
                         $('#img-filled-res-' + (i+1)).width(imgWidth)
                     }
                 }, 1000)
+
+                insertInputBox()
             }
             else {
                 alert('Processing form failed. Probably try image of .PNG or .JPG')
@@ -376,23 +378,23 @@ $('#btn-show-filled').on('click', function () {
 //****************************
 //***** Insert Input Box *****
 //****************************
-$('#btn-insert').on('click', function () {
-    // show the detection result tab
-    $('#preview-filled-res').removeClass('active in')
-    $('#li-tab-filled-res').removeClass('active')
-    $('#preview-detect-res').addClass('active in')
-    $('#li-tab-detect-res').addClass('active')
-
-    // show the note
-    let note = $('.note')
-    if (! note.is(':visible') ){
-        note.slideToggle()
-        $('.filled-img-viewer').css('margin-top', '20px')
-        $('.img-viewer').addClass('img-viewer-insert')
-    }
-
-    insertInputBox()
-})
+// $('#btn-insert').on('click', function () {
+//     // show the detection result tab
+//     $('#preview-filled-res').removeClass('active in')
+//     $('#li-tab-filled-res').removeClass('active')
+//     $('#preview-detect-res').addClass('active in')
+//     $('#li-tab-detect-res').addClass('active')
+//
+//     // show the note
+//     let note = $('.note')
+//     if (! note.is(':visible') ){
+//         note.slideToggle()
+//         $('.filled-img-viewer').css('margin-top', '20px')
+//         $('.img-viewer').addClass('img-viewer-insert')
+//     }
+//
+//     insertInputBox()
+// })
 
 function insertInputBox() {
     // insert input box while clicking the image
