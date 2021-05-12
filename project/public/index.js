@@ -61,9 +61,23 @@ $('#input-upload-form').on('change', function () {
 //************************
 //***** Process Form *****
 //************************
+function goToPage(pageID){
+    let pageBtnID = '#page-btn-' + pageID
+    $('.page-btn-active').removeClass('page-btn-active')
+    $(pageBtnID).addClass('page-btn-active')
+
+    let iframePageID = '#iframe-page-fill-' + pageID
+    let detectionResPageID = '#detection-img-wrapper-' + pageID
+    let filledResPageID = '#fill-img-wrapper-' + pageID
+    $('.page-active').removeClass('page-active')
+    $(iframePageID).addClass('page-active')
+    $(detectionResPageID).addClass('page-active')
+    $(filledResPageID).addClass('page-active')
+}
+
 function presentResultPage(pageID, resultFiles){
     // 1. pagination
-    $('.pagination').append('<li><a class="page-btn">'+ pageID +'</a></li>')
+    $('.pagination').append('<li><a id="page-btn-' + pageID + '" class="page-btn">'+ pageID +'</a></li>')
     // 2. page iframe
     $('#viewer-iframe').append('<iframe id="iframe-page-fill-' + pageID + '" class="iframe-viewer page" src="' + resultFiles.resultPage + '"></iframe>\n')
     // 3. page detection result
@@ -85,17 +99,7 @@ function presentResultPage(pageID, resultFiles){
     }
 
     $('.page-btn').on('click', function () {
-        $('.page-btn-active').removeClass('page-btn-active')
-        $(this).addClass('page-btn-active')
-
-        let id = $(this).text()
-        let iframePageID = '#iframe-page-fill-' + id
-        let detectionResPageID = '#detection-img-wrapper-' + id
-        let filledResPageID = '#fill-img-wrapper-' + id
-        $('.page-active').removeClass('page-active')
-        $(iframePageID).addClass('page-active')
-        $(detectionResPageID).addClass('page-active')
-        $(filledResPageID).addClass('page-active')
+        goToPage($(this).text())
     })
 
     // Trace input inner the iframe page
@@ -640,26 +644,58 @@ function getDivImage(pageID) {
 
 $('#btn-export').on('click', function () {
     let pageID = $('.page-btn-active').text()
-    getDivImage(pageID)
+    // getDivImage(pageID)
+    var zip = new JSZip();
 
-    // var zip = new JSZip();
+    // show the full image
+    $('.content-wrapper').css('overflow', 'unset')
+    $('.img-wrapper').css('overflow', 'unset')
+    let imgViewer = $('.img-viewer')
+    imgViewer.css('border', 'none')
+    imgViewer.css('box-shadow', 'none')
+
+    // convert html to image
+    let filledImgWrapper = $('#fill-img-wrapper-' + pageID)
+    console.log(filledImgWrapper)
+    html2canvas(filledImgWrapper,{
+        onrendered: function (canvas) {
+            let imgData = canvas.toDataURL('image/png')
+            $('#filling-rest').attr('src', imgData)
+            imgData = imgData.replace(/^data:image.*;base64,/, "")
+            // zip and download
+            zip.file("filledForm-" + pageID +".jpg", imgData, {base64: true});
+            $('.content-wrapper').css('overflow', 'auto')
+            $('.img-wrapper').css('overflow', 'auto')
+            let imgViewer = $('.img-viewer')
+            imgViewer.css('border', '1px solid')
+            imgViewer.css('box-shadow', '5px 10px lightgrey')
+        }
+    })
+    setTimeout(function () {
+        zip.generateAsync({type: "blob"})
+            .then(function (content) {
+                // see FileSaver.js
+                saveAs(content, "form.zip");
+            })
+    }, 1000)
+
     // for (let i = 0; i < $('.page-btn').length; i ++) {
-    //     // read the img as base64
-    //     let img = document.getElementById("img-filled-res-" + (i+1))
-    //     let canvas = document.createElement("canvas");
-    //     canvas.width = img.naturalWidth
-    //     canvas.height = img.naturalHeight
-    //     let ctx = canvas.getContext("2d");
-    //     ctx.drawImage(img, 0, 0);
-    //     let imgBase = canvas.toDataURL("image/png");
-    //     imgBase = imgBase.replace(/^data:image.*;base64,/, "")
+    //     console.log(i)
+    //     let pageID = i + 1
+    //     // show the full image
+    //     $('.content-wrapper').css('overflow', 'unset')
+    //     $('.img-wrapper').css('overflow', 'unset')
+    //     let imgViewer = $('.img-viewer')
+    //     imgViewer.css('border', 'none')
+    //     imgViewer.css('box-shadow', 'none')
     //
-    //     // zip and download
-    //     zip.file("filledForm-" + (i+1) +".jpg", imgBase, {base64: true});
     // }
-    // zip.generateAsync({type: "blob"})
-    //     .then(function (content) {
-    //         // see FileSaver.js
-    //         saveAs(content, "form.zip");
-    //     })
+    // setTimeout(function () {
+    //     goToPage(curPage)
+    //     zip.generateAsync({type: "blob"})
+    //         .then(function (content) {
+    //             // see FileSaver.js
+    //             saveAs(content, "form.zip");
+    //         })
+    // }, 1000)
 })
