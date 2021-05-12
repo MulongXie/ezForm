@@ -618,39 +618,48 @@ $('.btn-fill').on('click', function (){
 //***** Export Form *****
 //***********************
 function getDivImage(pageID) {
-    let detectionImgWrapper = $('#detection-img-wrapper-' + pageID)
-    console.log(pageID)
-    console.log(detectionImgWrapper)
+    $('.content-wrapper').css('overflow', 'unset')
+    $('.img-wrapper').css('overflow', 'unset')
+    let imgViewer = $('.img-viewer')
+    imgViewer.css('border', 'none')
+    imgViewer.css('box-shadow', 'none')
 
-    let getCanvas
-    html2canvas(detectionImgWrapper, {
+    let filledImgWrapper = $('#fill-img-wrapper-' + pageID)
+    html2canvas(filledImgWrapper,{
         onrendered: function (canvas) {
-            getCanvas = canvas;
-            let imgData = getCanvas.toDataURL('image/png')
-            $('#img-filled-res-' + pageID).attr('src', imgData)
+            let imgData = canvas.toDataURL('image/png')
+            $('#filling-rest').attr('src', imgData)
+            $('.content-wrapper').css('overflow', 'auto')
+            $('.img-wrapper').css('overflow', 'auto')
+            let imgViewer = $('.img-viewer')
+            imgViewer.css('border', '1px solid')
+            imgViewer.css('box-shadow', '5px 10px lightgrey')
         }
     })
 }
 
 $('#btn-export').on('click', function () {
-    var zip = new JSZip();
-    for (let i = 0; i < $('.page-btn').length; i ++) {
-        // read the img as base64
-        let img = document.getElementById("img-filled-res-" + (i+1))
-        let canvas = document.createElement("canvas");
-        canvas.width = img.naturalWidth
-        canvas.height = img.naturalHeight
-        let ctx = canvas.getContext("2d");
-        ctx.drawImage(img, 0, 0);
-        let imgBase = canvas.toDataURL("image/png");
-        imgBase = imgBase.replace(/^data:image.*;base64,/, "")
+    let pageID = $('.page-btn-active').text()
+    getDivImage(pageID)
 
-        // zip and download
-        zip.file("filledForm-" + (i+1) +".jpg", imgBase, {base64: true});
-    }
-    zip.generateAsync({type: "blob"})
-        .then(function (content) {
-            // see FileSaver.js
-            saveAs(content, "form.zip");
-        })
+    // var zip = new JSZip();
+    // for (let i = 0; i < $('.page-btn').length; i ++) {
+    //     // read the img as base64
+    //     let img = document.getElementById("img-filled-res-" + (i+1))
+    //     let canvas = document.createElement("canvas");
+    //     canvas.width = img.naturalWidth
+    //     canvas.height = img.naturalHeight
+    //     let ctx = canvas.getContext("2d");
+    //     ctx.drawImage(img, 0, 0);
+    //     let imgBase = canvas.toDataURL("image/png");
+    //     imgBase = imgBase.replace(/^data:image.*;base64,/, "")
+    //
+    //     // zip and download
+    //     zip.file("filledForm-" + (i+1) +".jpg", imgBase, {base64: true});
+    // }
+    // zip.generateAsync({type: "blob"})
+    //     .then(function (content) {
+    //         // see FileSaver.js
+    //         saveAs(content, "form.zip");
+    //     })
 })
