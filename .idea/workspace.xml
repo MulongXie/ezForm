@@ -2,150 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="866c7d34-205d-4de3-879f-0db0fbcbb180" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/project/data/output/pdf-upload3/upload3_6/upload3_6/xml.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/data/output/pdf-upload3/upload3_7/upload3_7/xml.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/data/output/pdf-upload3/upload3_8/upload3_8/xml.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/data/output/pdf-upload3/upload3_9/upload3_9/xml.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/data/output/pdf-upload5/filled/filled2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/data/output/upload1/detection.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/data/output/upload4/detection.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/data/output/upload4/input_loc.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/data/output/upload4/xml.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/data/output/upload4/xml.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/data/upload/upload4.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/log.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/1/filled/filled1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/project/data/output/1/filled/filled1.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/1/filled/input_data1.json" beforeDir="false" afterPath="$PROJECT_DIR$/project/data/output/1/filled/input_data1.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/1/input_loc.json" beforeDir="false" afterPath="$PROJECT_DIR$/project/data/output/1/input_loc.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/1/xml.css" beforeDir="false" afterPath="$PROJECT_DIR$/project/data/output/1/xml.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/11/input_loc.json" beforeDir="false" afterPath="$PROJECT_DIR$/project/data/output/11/input_loc.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/11/xml.css" beforeDir="false" afterPath="$PROJECT_DIR$/project/data/output/11/xml.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/3/input_loc.json" beforeDir="false" afterPath="$PROJECT_DIR$/project/data/output/3/input_loc.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/3/xml.css" beforeDir="false" afterPath="$PROJECT_DIR$/project/data/output/3/xml.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/pdf-upload1/filled/filled1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/project/data/output/pdf-upload5/filled/filled1.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/pdf-upload1/filled/filled2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/pdf-upload1/filled/input_data1.json" beforeDir="false" afterPath="$PROJECT_DIR$/project/data/output/pdf-upload5/filled/input_data1.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/pdf-upload1/filled/input_data2.json" beforeDir="false" afterPath="$PROJECT_DIR$/project/data/output/pdf-upload5/filled/input_data2.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/pdf-upload1/upload1_1/upload1_1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/pdf-upload1/upload1_1/upload1_1/detection.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/pdf-upload1/upload1_1/upload1_1/input_loc.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/pdf-upload1/upload1_1/upload1_1/xml.css" beforeDir="false" afterPath="$PROJECT_DIR$/project/data/output/pdf-upload3/upload3_10/upload3_10/xml.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/pdf-upload1/upload1_1/upload1_1/xml.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/pdf-upload1/upload1_10/upload1_10.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/project/data/output/pdf-upload3/upload3_10/upload3_10.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/pdf-upload1/upload1_10/upload1_10/detection.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/project/data/output/pdf-upload3/upload3_10/upload3_10/detection.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/pdf-upload1/upload1_10/upload1_10/input_loc.json" beforeDir="false" afterPath="$PROJECT_DIR$/project/data/output/pdf-upload3/upload3_10/upload3_10/input_loc.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/pdf-upload1/upload1_10/upload1_10/xml.css" beforeDir="false" afterPath="$PROJECT_DIR$/project/data/output/pdf-upload3/upload3_3/upload3_3/xml.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/pdf-upload1/upload1_10/upload1_10/xml.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/data/output/pdf-upload3/upload3_10/upload3_10/xml.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/pdf-upload1/upload1_2/upload1_2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/pdf-upload1/upload1_2/upload1_2/detection.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/pdf-upload1/upload1_2/upload1_2/input_loc.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/pdf-upload1/upload1_2/upload1_2/xml.css" beforeDir="false" afterPath="$PROJECT_DIR$/project/data/output/pdf-upload3/upload3_4/upload3_4/xml.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/pdf-upload1/upload1_2/upload1_2/xml.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/pdf-upload1/upload1_3/upload1_3.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/project/data/output/pdf-upload3/upload3_3/upload3_3.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/pdf-upload1/upload1_3/upload1_3/detection.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/project/data/output/pdf-upload3/upload3_3/upload3_3/detection.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/pdf-upload1/upload1_3/upload1_3/input_loc.json" beforeDir="false" afterPath="$PROJECT_DIR$/project/data/output/pdf-upload3/upload3_3/upload3_3/input_loc.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/pdf-upload1/upload1_3/upload1_3/xml.css" beforeDir="false" afterPath="$PROJECT_DIR$/project/data/output/pdf-upload3/upload3_5/upload3_5/xml.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/pdf-upload1/upload1_3/upload1_3/xml.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/data/output/pdf-upload3/upload3_3/upload3_3/xml.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/pdf-upload1/upload1_4/upload1_4.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/project/data/output/pdf-upload3/upload3_4/upload3_4.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/pdf-upload1/upload1_4/upload1_4/detection.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/project/data/output/pdf-upload3/upload3_4/upload3_4/detection.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/pdf-upload1/upload1_4/upload1_4/input_loc.json" beforeDir="false" afterPath="$PROJECT_DIR$/project/data/output/pdf-upload3/upload3_4/upload3_4/input_loc.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/pdf-upload1/upload1_4/upload1_4/xml.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/pdf-upload1/upload1_4/upload1_4/xml.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/data/output/pdf-upload3/upload3_4/upload3_4/xml.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/pdf-upload1/upload1_5/upload1_5.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/project/data/output/pdf-upload3/upload3_5/upload3_5.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/pdf-upload1/upload1_5/upload1_5/detection.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/project/data/output/pdf-upload3/upload3_5/upload3_5/detection.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/pdf-upload1/upload1_5/upload1_5/input_loc.json" beforeDir="false" afterPath="$PROJECT_DIR$/project/data/output/pdf-upload3/upload3_5/upload3_5/input_loc.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/pdf-upload1/upload1_5/upload1_5/xml.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/pdf-upload1/upload1_5/upload1_5/xml.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/data/output/pdf-upload3/upload3_5/upload3_5/xml.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/pdf-upload1/upload1_6/upload1_6.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/project/data/output/pdf-upload3/upload3_6/upload3_6.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/pdf-upload1/upload1_6/upload1_6/detection.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/project/data/output/pdf-upload3/upload3_6/upload3_6/detection.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/pdf-upload1/upload1_6/upload1_6/input_loc.json" beforeDir="false" afterPath="$PROJECT_DIR$/project/data/output/pdf-upload3/upload3_6/upload3_6/input_loc.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/pdf-upload1/upload1_6/upload1_6/xml.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/pdf-upload1/upload1_6/upload1_6/xml.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/data/output/pdf-upload3/upload3_6/upload3_6/xml.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/pdf-upload1/upload1_7/upload1_7.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/project/data/output/pdf-upload3/upload3_7/upload3_7.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/pdf-upload1/upload1_7/upload1_7/detection.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/project/data/output/pdf-upload3/upload3_7/upload3_7/detection.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/pdf-upload1/upload1_7/upload1_7/input_loc.json" beforeDir="false" afterPath="$PROJECT_DIR$/project/data/output/pdf-upload3/upload3_7/upload3_7/input_loc.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/pdf-upload1/upload1_7/upload1_7/xml.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/pdf-upload1/upload1_7/upload1_7/xml.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/data/output/pdf-upload3/upload3_7/upload3_7/xml.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/pdf-upload1/upload1_8/upload1_8.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/project/data/output/pdf-upload3/upload3_8/upload3_8.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/pdf-upload1/upload1_8/upload1_8/detection.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/project/data/output/pdf-upload3/upload3_8/upload3_8/detection.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/pdf-upload1/upload1_8/upload1_8/input_loc.json" beforeDir="false" afterPath="$PROJECT_DIR$/project/data/output/pdf-upload3/upload3_8/upload3_8/input_loc.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/pdf-upload1/upload1_8/upload1_8/xml.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/pdf-upload1/upload1_8/upload1_8/xml.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/data/output/pdf-upload3/upload3_8/upload3_8/xml.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/pdf-upload1/upload1_9/upload1_9.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/project/data/output/pdf-upload3/upload3_9/upload3_9.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/pdf-upload1/upload1_9/upload1_9/detection.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/project/data/output/pdf-upload3/upload3_9/upload3_9/detection.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/pdf-upload1/upload1_9/upload1_9/input_loc.json" beforeDir="false" afterPath="$PROJECT_DIR$/project/data/output/pdf-upload3/upload3_9/upload3_9/input_loc.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/pdf-upload1/upload1_9/upload1_9/xml.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/pdf-upload1/upload1_9/upload1_9/xml.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/data/output/pdf-upload3/upload3_9/upload3_9/xml.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/pdf-upload2/upload2_1/upload2_1/xml.css" beforeDir="false" afterPath="$PROJECT_DIR$/project/data/output/pdf-upload2/upload2_1/upload2_1/xml.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/pdf-upload2/upload2_2/upload2_2/input_loc.json" beforeDir="false" afterPath="$PROJECT_DIR$/project/data/output/pdf-upload2/upload2_2/upload2_2/input_loc.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/pdf-upload2/upload2_2/upload2_2/xml.css" beforeDir="false" afterPath="$PROJECT_DIR$/project/data/output/pdf-upload2/upload2_2/upload2_2/xml.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/pdf-upload3/upload3_1/upload3_1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/project/data/output/pdf-upload3/upload3_1/upload3_1.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/pdf-upload3/upload3_1/upload3_1/detection.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/project/data/output/pdf-upload3/upload3_1/upload3_1/detection.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/pdf-upload3/upload3_1/upload3_1/input_loc.json" beforeDir="false" afterPath="$PROJECT_DIR$/project/data/output/pdf-upload3/upload3_1/upload3_1/input_loc.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/pdf-upload3/upload3_1/upload3_1/xml.css" beforeDir="false" afterPath="$PROJECT_DIR$/project/data/output/pdf-upload3/upload3_1/upload3_1/xml.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/pdf-upload3/upload3_1/upload3_1/xml.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/data/output/pdf-upload3/upload3_1/upload3_1/xml.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/pdf-upload3/upload3_2/upload3_2.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/project/data/output/pdf-upload3/upload3_2/upload3_2.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/pdf-upload3/upload3_2/upload3_2/detection.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/project/data/output/pdf-upload3/upload3_2/upload3_2/detection.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/pdf-upload3/upload3_2/upload3_2/input_loc.json" beforeDir="false" afterPath="$PROJECT_DIR$/project/data/output/pdf-upload3/upload3_2/upload3_2/input_loc.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/pdf-upload3/upload3_2/upload3_2/xml.css" beforeDir="false" afterPath="$PROJECT_DIR$/project/data/output/pdf-upload3/upload3_2/upload3_2/xml.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/pdf-upload3/upload3_2/upload3_2/xml.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/data/output/pdf-upload3/upload3_2/upload3_2/xml.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/pdf-upload4/upload4_1/upload4_1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/pdf-upload4/upload4_1/upload4_1/detection.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/pdf-upload4/upload4_1/upload4_1/input_loc.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/pdf-upload4/upload4_1/upload4_1/xml.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/pdf-upload4/upload4_1/upload4_1/xml.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/pdf-upload4/upload4_2/upload4_2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/pdf-upload4/upload4_2/upload4_2/detection.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/pdf-upload4/upload4_2/upload4_2/input_loc.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/pdf-upload4/upload4_2/upload4_2/xml.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/pdf-upload4/upload4_2/upload4_2/xml.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/pdf-upload5/upload5_1/upload5_1/xml.css" beforeDir="false" afterPath="$PROJECT_DIR$/project/data/output/pdf-upload5/upload5_1/upload5_1/xml.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/pdf-upload5/upload5_2/upload5_2/input_loc.json" beforeDir="false" afterPath="$PROJECT_DIR$/project/data/output/pdf-upload5/upload5_2/upload5_2/input_loc.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/pdf-upload5/upload5_2/upload5_2/xml.css" beforeDir="false" afterPath="$PROJECT_DIR$/project/data/output/pdf-upload5/upload5_2/upload5_2/xml.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/pdf-upload6/upload6_1/upload6_1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/pdf-upload6/upload6_1/upload6_1/detection.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/pdf-upload6/upload6_1/upload6_1/input_loc.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/pdf-upload6/upload6_1/upload6_1/xml.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/pdf-upload6/upload6_1/upload6_1/xml.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/pdf-upload6/upload6_2/upload6_2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/pdf-upload6/upload6_2/upload6_2/detection.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/pdf-upload6/upload6_2/upload6_2/input_loc.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/pdf-upload6/upload6_2/upload6_2/xml.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/pdf-upload6/upload6_2/upload6_2/xml.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/pdf-upload7/upload7_1/upload7_1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/pdf-upload7/upload7_1/upload7_1/detection.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/pdf-upload7/upload7_1/upload7_1/input_loc.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/pdf-upload7/upload7_1/upload7_1/xml.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/pdf-upload7/upload7_1/upload7_1/xml.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/pdf-upload7/upload7_2/upload7_2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/pdf-upload7/upload7_2/upload7_2/detection.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/pdf-upload7/upload7_2/upload7_2/input_loc.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/pdf-upload7/upload7_2/upload7_2/xml.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/pdf-upload7/upload7_2/upload7_2/xml.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/temp.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/upload1/input_loc.json" beforeDir="false" afterPath="$PROJECT_DIR$/project/data/output/upload1/input_loc.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/upload1/xml.css" beforeDir="false" afterPath="$PROJECT_DIR$/project/data/output/upload1/xml.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/upload1/xml.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/data/output/upload1/xml.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/upload/upload1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/project/data/upload/upload1.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/upload/upload1.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/project/data/upload/upload1.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/upload/upload3.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/project/data/upload/upload3.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/upload/upload4.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/upload/upload6.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/upload/upload7.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/main-pdf.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/main-pdf.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project/public/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/project/public/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/server/data/3/detection.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/server/data/3/filled/filled1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/server/data/3/filled/input_data1.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/server/data/3/input_loc.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/server/data/3/xml.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/server/data/3/xml.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/server/index.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/server/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/server/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/server/xml.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/server/xml.html" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -181,7 +40,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../UI2CODE-WebAPP" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="restartRequiresConfirmation" value="false" />
   </component>
@@ -424,7 +283,10 @@
       <workItem from="1620431422761" duration="11410000" />
       <workItem from="1620566403402" duration="939000" />
       <workItem from="1620598715302" duration="20108000" />
-      <workItem from="1620641099112" duration="1573000" />
+      <workItem from="1620641099112" duration="3134000" />
+      <workItem from="1620689158176" duration="17016000" />
+      <workItem from="1620773520461" duration="26543000" />
+      <workItem from="1620862372327" duration="5492000" />
     </task>
     <servers />
   </component>
@@ -443,7 +305,7 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="92" y="92" width="1736" height="856" key="DiffContextDialog/1920.-64.1280.693/0.0.1920.1040@0.0.1920.1040" timestamp="1619083840341" />
-    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1620609549582">
+    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1620776865650">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="493" y="180" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1619743044981" />
@@ -451,44 +313,44 @@
     <state x="740" y="275" key="FileChooserDialogImpl/1920.0.1280.693/0.0.1920.1040/3840.0.1280.984@0.0.1920.1040" timestamp="1613467729861" />
     <state x="740" y="275" key="FileChooserDialogImpl/1920.0.1280.693/0.0.1920.1040/3840.0.1920.1040@0.0.1920.1040" timestamp="1620609549582" />
     <state x="740" y="275" key="FileChooserDialogImpl/1920.0.1280.693/3840.0.1280.984/0.0.1920.1040@0.0.1920.1040" timestamp="1614327263982" />
-    <state x="740" y="275" key="FileChooserDialogImpl/1920.0.1280.693/3840.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1620287425676" />
+    <state x="740" y="275" key="FileChooserDialogImpl/1920.0.1280.693/3840.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1620776865650" />
     <state x="4580" y="275" key="FileChooserDialogImpl/1920.0.1280.693/3840.0.1920.1040/0.0.1920.1040@3840.0.1920.1040" timestamp="1620282121849" />
     <state x="740" y="286" key="FileChooserDialogImpl/1920.0.1280.693/3840.0.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1615363621131" />
-    <state width="1899" height="208" key="GridCell.Tab.0.bottom" timestamp="1620567351970">
+    <state width="949" height="208" key="GridCell.Tab.0.bottom" timestamp="1620818542610">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="208" key="GridCell.Tab.0.bottom/1920.-64.1280.693/0.0.1920.1040@0.0.1920.1040" timestamp="1620567351970" />
+    <state width="1899" height="208" key="GridCell.Tab.0.bottom/1920.-64.1280.693/0.0.1920.1040@0.0.1920.1040" timestamp="1620646834065" />
     <state width="1237" height="247" key="GridCell.Tab.0.bottom/1920.-64.1280.693/0.0.1920.1040@1920.-64.1280.693" timestamp="1618931905683" />
-    <state width="1877" height="157" key="GridCell.Tab.0.bottom/1920.0.1280.693/0.0.1920.1040/3840.0.1920.1040@0.0.1920.1040" timestamp="1614924288418" />
+    <state width="1899" height="208" key="GridCell.Tab.0.bottom/1920.0.1280.693/0.0.1920.1040/3840.0.1920.1040@0.0.1920.1040" timestamp="1620714103649" />
     <state width="1877" height="157" key="GridCell.Tab.0.bottom/1920.0.1280.693/3840.0.1280.984/0.0.1920.1040@0.0.1920.1040" timestamp="1614733019291" />
-    <state width="1899" height="208" key="GridCell.Tab.0.bottom/1920.0.1280.693/3840.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1620375266534" />
+    <state width="949" height="208" key="GridCell.Tab.0.bottom/1920.0.1280.693/3840.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1620818542610" />
     <state width="1877" height="157" key="GridCell.Tab.0.bottom/1920.0.1280.693/3840.0.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1615369624812" />
-    <state width="1899" height="208" key="GridCell.Tab.0.center" timestamp="1620567351970">
+    <state width="949" height="208" key="GridCell.Tab.0.center" timestamp="1620818542610">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="208" key="GridCell.Tab.0.center/1920.-64.1280.693/0.0.1920.1040@0.0.1920.1040" timestamp="1620567351970" />
+    <state width="1899" height="208" key="GridCell.Tab.0.center/1920.-64.1280.693/0.0.1920.1040@0.0.1920.1040" timestamp="1620646834065" />
     <state width="1237" height="247" key="GridCell.Tab.0.center/1920.-64.1280.693/0.0.1920.1040@1920.-64.1280.693" timestamp="1618931905682" />
-    <state width="1877" height="157" key="GridCell.Tab.0.center/1920.0.1280.693/0.0.1920.1040/3840.0.1920.1040@0.0.1920.1040" timestamp="1614924288418" />
+    <state width="1899" height="208" key="GridCell.Tab.0.center/1920.0.1280.693/0.0.1920.1040/3840.0.1920.1040@0.0.1920.1040" timestamp="1620714103649" />
     <state width="1877" height="157" key="GridCell.Tab.0.center/1920.0.1280.693/3840.0.1280.984/0.0.1920.1040@0.0.1920.1040" timestamp="1614733019291" />
-    <state width="1899" height="208" key="GridCell.Tab.0.center/1920.0.1280.693/3840.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1620375266534" />
+    <state width="949" height="208" key="GridCell.Tab.0.center/1920.0.1280.693/3840.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1620818542610" />
     <state width="1877" height="157" key="GridCell.Tab.0.center/1920.0.1280.693/3840.0.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1615369624811" />
-    <state width="1899" height="208" key="GridCell.Tab.0.left" timestamp="1620567351970">
+    <state width="949" height="208" key="GridCell.Tab.0.left" timestamp="1620818542610">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="208" key="GridCell.Tab.0.left/1920.-64.1280.693/0.0.1920.1040@0.0.1920.1040" timestamp="1620567351970" />
+    <state width="1899" height="208" key="GridCell.Tab.0.left/1920.-64.1280.693/0.0.1920.1040@0.0.1920.1040" timestamp="1620646834065" />
     <state width="1237" height="247" key="GridCell.Tab.0.left/1920.-64.1280.693/0.0.1920.1040@1920.-64.1280.693" timestamp="1618931905682" />
-    <state width="1877" height="157" key="GridCell.Tab.0.left/1920.0.1280.693/0.0.1920.1040/3840.0.1920.1040@0.0.1920.1040" timestamp="1614924288417" />
+    <state width="1899" height="208" key="GridCell.Tab.0.left/1920.0.1280.693/0.0.1920.1040/3840.0.1920.1040@0.0.1920.1040" timestamp="1620714103649" />
     <state width="1877" height="157" key="GridCell.Tab.0.left/1920.0.1280.693/3840.0.1280.984/0.0.1920.1040@0.0.1920.1040" timestamp="1614733019290" />
-    <state width="1899" height="208" key="GridCell.Tab.0.left/1920.0.1280.693/3840.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1620375266534" />
+    <state width="949" height="208" key="GridCell.Tab.0.left/1920.0.1280.693/3840.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1620818542610" />
     <state width="1877" height="157" key="GridCell.Tab.0.left/1920.0.1280.693/3840.0.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1615369624811" />
-    <state width="1899" height="208" key="GridCell.Tab.0.right" timestamp="1620567351970">
+    <state width="949" height="208" key="GridCell.Tab.0.right" timestamp="1620818542610">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="208" key="GridCell.Tab.0.right/1920.-64.1280.693/0.0.1920.1040@0.0.1920.1040" timestamp="1620567351970" />
+    <state width="1899" height="208" key="GridCell.Tab.0.right/1920.-64.1280.693/0.0.1920.1040@0.0.1920.1040" timestamp="1620646834065" />
     <state width="1237" height="247" key="GridCell.Tab.0.right/1920.-64.1280.693/0.0.1920.1040@1920.-64.1280.693" timestamp="1618931905683" />
-    <state width="1877" height="157" key="GridCell.Tab.0.right/1920.0.1280.693/0.0.1920.1040/3840.0.1920.1040@0.0.1920.1040" timestamp="1614924288418" />
+    <state width="1899" height="208" key="GridCell.Tab.0.right/1920.0.1280.693/0.0.1920.1040/3840.0.1920.1040@0.0.1920.1040" timestamp="1620714103649" />
     <state width="1877" height="157" key="GridCell.Tab.0.right/1920.0.1280.693/3840.0.1280.984/0.0.1920.1040@0.0.1920.1040" timestamp="1614733019291" />
-    <state width="1899" height="208" key="GridCell.Tab.0.right/1920.0.1280.693/3840.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1620375266534" />
+    <state width="949" height="208" key="GridCell.Tab.0.right/1920.0.1280.693/3840.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1620818542610" />
     <state width="1877" height="157" key="GridCell.Tab.0.right/1920.0.1280.693/3840.0.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1615369624812" />
     <state width="1899" height="348" key="GridCell.Tab.1.bottom" timestamp="1619097379433">
       <screen x="0" y="0" width="1920" height="1040" />
@@ -552,5 +414,21 @@
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/1920.-64.1280.693/0.0.1920.1040@0.0.1920.1040" timestamp="1617759268978" />
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/1920.0.1280.693/0.0.1920.1040/3840.0.1280.984@0.0.1920.1040" timestamp="1614641822859" />
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/1920.0.1280.693/0.0.1920.1040/3840.0.1920.1040@0.0.1920.1040" timestamp="1614923105603" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/project/public/index.js</url>
+          <line>84</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/project/public/index.js</url>
+          <line>356</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

@@ -451,3 +451,23 @@
 2. Add signature pad
 
 3. Use signature
+
+
+11/5/2021
+1. Add overlay on detection result image
+
+2. Type in real-time on overlay
+
+3. Track input compo while clicking overlay
+
+4. Type in input compo real time
+
+
+12/5/2021
+1. Add overlay on filling result image
+
+2. Export according to overlays
+
+
+13/2/2021
+1. Export for multi-page form according to overlays
