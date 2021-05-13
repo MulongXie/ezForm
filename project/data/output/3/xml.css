@@ -1,59 +1,59 @@
-.speaker{
-	margin-left: 10px;
-}
-input{
-	margin: 5px;
-}
-.section-wrapper{
-	background-color: #f1f1f1;
-	margin: 20px;
-	padding: 10px;
+.content{
+	display: None;
 }
 td{
 	height: 20px;
-}
-table input{
-	margin: 0;
-	width: 97%;
-	border: 1px solid black;
-}
-.input-wrapper{
-}
-.section-title{
-	margin-bottom: 10px;
-	background-color: lightgrey;
-	margin-top: 10px;
-	cursor: pointer;
-	justify-content: center;
-	border: 1px solid black;
-	transition: 0.5s;
-}
-th{
-	text-align: center !important;
-	border: 1px solid black;
-}
-.input-active{
-	background-color: yellow !important;
-}
-.text-wrapper{
-	margin: 10px;
-	justify-content: space-around;
-}
-label{
-	margin: 5px;
-}
-.border-line{
 }
 table{
 	width: 100%;
 	border: 1px solid black;
 }
-p{
-	margin: 5px !important;
+.border-line{
 }
-.content{
-	display: None;
+.section-wrapper{
+	margin: 20px;
+	background-color: #f1f1f1;
+	padding: 10px;
+}
+table input{
+	width: 97%;
+	border: 1px solid black;
+	margin: 0;
+}
+.speaker{
+	margin-left: 10px;
+}
+.input-active{
+	background-color: yellow !important;
 }
 .section-title:hover{
 	background-color: #BFBEBE;
+}
+p{
+	margin: 5px !important;
+}
+th{
+	text-align: center !important;
+	border: 1px solid black;
+}
+label{
+	margin: 5px;
+}
+input{
+	margin: 5px;
+}
+.input-wrapper{
+}
+.section-title{
+	justify-content: center;
+	border: 1px solid black;
+	margin-top: 10px;
+	transition: 0.5s;
+	margin-bottom: 10px;
+	background-color: lightgrey;
+	cursor: pointer;
+}
+.text-wrapper{
+	justify-content: space-around;
+	margin: 10px;
 }
