@@ -1,18 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="866c7d34-205d-4de3-879f-0db0fbcbb180" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/1/input_loc.json" beforeDir="false" afterPath="$PROJECT_DIR$/project/data/output/1/input_loc.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/1/xml.css" beforeDir="false" afterPath="$PROJECT_DIR$/project/data/output/1/xml.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/11/detection.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/project/data/output/11/detection.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/11/input_loc.json" beforeDir="false" afterPath="$PROJECT_DIR$/project/data/output/11/input_loc.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/11/xml.css" beforeDir="false" afterPath="$PROJECT_DIR$/project/data/output/11/xml.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/data/output/11/xml.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/data/output/11/xml.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/public/exps/11.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/project/public/exps/11.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/public/exps/2.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/project/public/exps/2.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/public/index.html" afterDir="false" />
-    </list>
+    <list default="true" id="866c7d34-205d-4de3-879f-0db0fbcbb180" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -293,7 +282,7 @@
       <workItem from="1620641099112" duration="3134000" />
       <workItem from="1620689158176" duration="17016000" />
       <workItem from="1620773520461" duration="26543000" />
-      <workItem from="1620862372327" duration="7707000" />
+      <workItem from="1620862372327" duration="8306000" />
     </task>
     <servers />
   </component>

@@ -598,7 +598,6 @@ $('.btn-fill').on('click', function (){
     for (let i = 0; i < overlays.length; i ++){
         if (overlays[i].textContent !== ''){
             let clone = cloneInput(overlays[i])
-            console.log(clone)
             filledWrapper.append(clone)
         }
     }
@@ -606,7 +605,6 @@ $('.btn-fill').on('click', function (){
     for (let i = 0; i < insertedInputs.length; i ++){
         if (insertedInputs[i].textContent !== ''){
             let clone = cloneInput(insertedInputs[i])
-            console.log(clone)
             filledWrapper.append(clone)
         }
     }
@@ -689,6 +687,12 @@ function screenshotHTMLPage(zip, pageID){
 $('#btn-export').on('click', function () {
     // let pageID = $('.page-btn-active').text()
     // getDivImage(pageID)
+
+    // show the detection result tab
+    $('#preview-detect-res').removeClass('active in')
+    $('#li-tab-detect-res').removeClass('active')
+    $('#preview-filled-res').addClass('active in')
+    $('#li-tab-filled-res').addClass('active')
 
     // show the full image
     $('.content-wrapper').css('overflow', 'unset')
