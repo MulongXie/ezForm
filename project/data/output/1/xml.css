@@ -1,59 +1,59 @@
-td{
-	height: 20px;
-}
-.content{
-	display: None;
-}
-.input-wrapper{
+th{
+	text-align: center !important;
+	border: 1px solid black;
 }
 .section-wrapper{
-	padding: 10px;
 	background-color: #f1f1f1;
+	padding: 10px;
 	margin: 20px;
+}
+table{
+	width: 100%;
+	border: 1px solid black;
+}
+.border-line{
+}
+table input{
+	width: 97%;
+	border: 1px solid black;
+	margin: 0;
+}
+p{
+	margin: 5px !important;
+}
+.speaker{
+	margin-left: 10px;
+}
+label{
+	margin: 5px;
+}
+.input-wrapper{
 }
 .text-wrapper{
 	justify-content: space-around;
 	margin: 10px;
 }
-label{
-	margin: 5px;
-}
-.section-title:hover{
-	background-color: #BFBEBE;
+td{
+	height: 20px;
 }
 input{
 	margin: 5px;
 }
-table{
-	border: 1px solid black;
-	width: 100%;
-}
 .input-active{
 	background-color: yellow !important;
 }
-th{
-	border: 1px solid black;
-	text-align: center !important;
-}
 .section-title{
-	justify-content: center;
-	margin-bottom: 10px;
-	border: 1px solid black;
-	cursor: pointer;
-	transition: 0.5s;
 	background-color: lightgrey;
-	margin-top: 10px;
-}
-table input{
 	border: 1px solid black;
-	width: 97%;
-	margin: 0;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	justify-content: center;
+	transition: 0.5s;
+	cursor: pointer;
 }
-.speaker{
-	margin-left: 10px;
+.section-title:hover{
+	background-color: #BFBEBE;
 }
-p{
-	margin: 5px !important;
-}
-.border-line{
+.content{
+	display: None;
 }

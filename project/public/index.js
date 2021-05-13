@@ -169,6 +169,11 @@ function presentResultPage(pageID, resultFiles){
             if (inputCompo){
                 inputCompo.value = $(this).text()
             }
+            // resize font to fit the box
+            while ($(this)[0].scrollHeight > $(this).innerHeight() && parseInt($(this).css('font-size')) > 7){
+                console.log($(this)[0].scrollHeight, $(this).innerHeight())
+                $(this).css('font-size', (parseInt($(this).css('font-size')) - 1) + 'px')
+            }
         })
     })
 
