@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="866c7d34-205d-4de3-879f-0db0fbcbb180" name="Default Changelist" comment="" />
+    <list default="true" id="866c7d34-205d-4de3-879f-0db0fbcbb180" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/data/output/1/input_loc.json" beforeDir="false" afterPath="$PROJECT_DIR$/project/data/output/1/input_loc.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/data/output/1/xml.css" beforeDir="false" afterPath="$PROJECT_DIR$/project/data/output/1/xml.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/public/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/project/public/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/public/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/project/public/index.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -282,7 +289,7 @@
       <workItem from="1620641099112" duration="3134000" />
       <workItem from="1620689158176" duration="17016000" />
       <workItem from="1620773520461" duration="26543000" />
-      <workItem from="1620862372327" duration="8306000" />
+      <workItem from="1620862372327" duration="9925000" />
     </task>
     <servers />
   </component>
@@ -404,6 +411,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="309" y="0" width="840" height="845" key="dock-window-1/1920.0.1280.693/0.0.1920.1040/3840.0.1920.1040@0.0.1920.1040" timestamp="1617926203696" />
+    <state x="616" y="240" key="run.anything.popup" timestamp="1620873236642">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="616" y="240" key="run.anything.popup/1920.0.1280.693/3840.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1620873236642" />
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1617759268978">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -421,8 +432,14 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/project/public/index.js</url>
-          <line>356</line>
+          <line>365</line>
           <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/project/public/index.js</url>
+          <line>149</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="6" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

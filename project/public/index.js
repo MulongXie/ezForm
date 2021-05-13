@@ -29,7 +29,7 @@ $('#input-upload-form').on('change', function () {
     $('#preview-detect-res').addClass('active in')
     $('#li-tab-detect-res').addClass('active')
     // hide note
-    $('.note').hide()
+    // $('.note').hide()
 
     if (this.files && this.files[0]){
         if (this.files[0].type.includes('image')){
@@ -87,7 +87,7 @@ function presentResultPage(pageID, resultFiles){
     $('#preview-detect-res').append(wrapper)
     // 4. page filled result
     wrapper = '<div id="fill-img-wrapper-' + pageID + '" class="text-center page filled-img-viewer">\n' +
-        '     <img id="img-filled-res-' + pageID + '" class="img-viewer" src="'+ resultFiles.inputImg +'">\n' +
+        '     <img id="img-filled-res-' + pageID + '" class="img-viewer img-viewer-preview" src="'+ resultFiles.inputImg +'">\n' +
         '</div>'
     $('#preview-filled-res').append(wrapper)
 
@@ -243,6 +243,15 @@ function process(img, inputType){
                 }, 1000)
 
                 insertInputBox()
+
+                // click the preview image and jump back to editing
+                $('.img-viewer-preview').on('click', function () {
+                    // show the detection result tab
+                    $('#preview-filled-res').removeClass('active in')
+                    $('#li-tab-filled-res').removeClass('active')
+                    $('#preview-detect-res').addClass('active in')
+                    $('#li-tab-detect-res').addClass('active')
+                })
             }
             else {
                 alert('Processing form failed. Probably try image of .PNG or .JPG')
@@ -576,7 +585,7 @@ function cloneInput(node){
 
 $('.btn-fill').on('click', function (){
     // show export btn
-    $('#btn-export').slideDown()
+    // $('#btn-export').slideDown()
 
     // show preview tab
     $('#preview-detect-res').removeClass('active')
