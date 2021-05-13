@@ -642,10 +642,53 @@ function getDivImage(pageID) {
     })
 }
 
+function screenshotHTMLPage(zip, pageID){
+    if (pageID <= $('.page-btn').length){
+        console.log('Page ID:', pageID)
+        // show the page
+        $('.page-btn-active').removeClass('page-btn-active')
+        $('#page-btn-' + pageID).addClass('page-btn-active')
+        $('.page-active').removeClass('page-active')
+        $('#iframe-page-fill-' + pageID).addClass('page-active')
+        $('#detection-img-wrapper-' + pageID).addClass('page-active')
+        $('#fill-img-wrapper-' + pageID).addClass('page-active')
+
+        // convert html to image
+        let filledImgWrapper = $('#fill-img-wrapper-' + pageID)
+        console.log(filledImgWrapper)
+        html2canvas(filledImgWrapper,{
+            onrendered: function (canvas) {
+                let imgData = canvas.toDataURL('image/png')
+                $('#filling-rest').attr('src', imgData)
+                imgData = imgData.replace(/^data:image.*;base64,/, "")
+                // zip and download
+                zip.file("filledForm-" + pageID +".jpg", imgData, {base64: true});
+
+                screenshotHTMLPage(zip, pageID + 1)
+            }
+        })
+    }
+    else {
+        // hide full image overflow
+        $('.content-wrapper').css('overflow', 'auto')
+        $('.img-wrapper').css('overflow', 'auto')
+        let imgViewer = $('.img-viewer')
+        imgViewer.css('border', '1px solid')
+        imgViewer.css('box-shadow', '5px 10px lightgrey')
+
+        goToPage(1)
+
+        zip.generateAsync({type: "blob"})
+            .then(function (content) {
+                // see FileSaver.js
+                saveAs(content, "form.zip");
+            })
+    }
+}
+
 $('#btn-export').on('click', function () {
-    let pageID = $('.page-btn-active').text()
+    // let pageID = $('.page-btn-active').text()
     // getDivImage(pageID)
-    var zip = new JSZip();
 
     // show the full image
     $('.content-wrapper').css('overflow', 'unset')
@@ -654,30 +697,8 @@ $('#btn-export').on('click', function () {
     imgViewer.css('border', 'none')
     imgViewer.css('box-shadow', 'none')
 
-    // convert html to image
-    let filledImgWrapper = $('#fill-img-wrapper-' + pageID)
-    console.log(filledImgWrapper)
-    html2canvas(filledImgWrapper,{
-        onrendered: function (canvas) {
-            let imgData = canvas.toDataURL('image/png')
-            $('#filling-rest').attr('src', imgData)
-            imgData = imgData.replace(/^data:image.*;base64,/, "")
-            // zip and download
-            zip.file("filledForm-" + pageID +".jpg", imgData, {base64: true});
-            $('.content-wrapper').css('overflow', 'auto')
-            $('.img-wrapper').css('overflow', 'auto')
-            let imgViewer = $('.img-viewer')
-            imgViewer.css('border', '1px solid')
-            imgViewer.css('box-shadow', '5px 10px lightgrey')
-        }
-    })
-    setTimeout(function () {
-        zip.generateAsync({type: "blob"})
-            .then(function (content) {
-                // see FileSaver.js
-                saveAs(content, "form.zip");
-            })
-    }, 1000)
+    var zip = new JSZip();
+    screenshotHTMLPage(zip, 1)
 
     // for (let i = 0; i < $('.page-btn').length; i ++) {
     //     console.log(i)

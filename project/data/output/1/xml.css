@@ -1,59 +1,59 @@
-p{
-	margin: 5px !important;
+.input-wrapper{
 }
 table{
 	width: 100%;
 	border: 1px solid black;
 }
-.section-title{
-	justify-content: center;
-	background-color: lightgrey;
-	transition: 0.5s;
-	cursor: pointer;
-	margin-top: 10px;
-	border: 1px solid black;
-	margin-bottom: 10px;
+.section-wrapper{
+	margin: 20px;
+	padding: 10px;
+	background-color: #f1f1f1;
 }
-.content{
-	display: None;
+p{
+	margin: 5px !important;
 }
 .text-wrapper{
-	justify-content: space-around;
 	margin: 10px;
-}
-.section-title:hover{
-	background-color: #BFBEBE;
+	justify-content: space-around;
 }
 .speaker{
 	margin-left: 10px;
 }
+.content{
+	display: None;
+}
+.input-active{
+	background-color: yellow !important;
+}
 th{
 	text-align: center !important;
 	border: 1px solid black;
-}
-.input-wrapper{
-}
-.border-line{
-}
-input{
-	margin: 5px;
 }
 table input{
 	margin: 0;
 	width: 97%;
 	border: 1px solid black;
 }
-.section-wrapper{
-	padding: 10px;
-	margin: 20px;
-	background-color: #f1f1f1;
-}
-label{
-	margin: 5px;
-}
 td{
 	height: 20px;
 }
-.input-active{
-	background-color: yellow !important;
+.section-title:hover{
+	background-color: #BFBEBE;
+}
+.section-title{
+	margin-bottom: 10px;
+	justify-content: center;
+	margin-top: 10px;
+	border: 1px solid black;
+	transition: 0.5s;
+	background-color: lightgrey;
+	cursor: pointer;
+}
+input{
+	margin: 5px;
+}
+.border-line{
+}
+label{
+	margin: 5px;
 }
