@@ -471,3 +471,5 @@
 
 13/2/2021
 1. Export for multi-page form according to overlays
+
+2. Font fits to the cell automatically
