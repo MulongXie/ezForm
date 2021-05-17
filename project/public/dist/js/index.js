@@ -132,6 +132,7 @@ function presentResultPage(pageID, resultFiles){
             // remove active compo
             let activeCompo = frame.getElementsByClassName('input-active')
             if (activeCompo.length > 0) {activeCompo[0].classList.remove('input-active')}
+            $(this).addClass('input-active')
 
             let inputId = this.id
             let overlay =  $('#overlay-' + inputId + '-' + pageID)
