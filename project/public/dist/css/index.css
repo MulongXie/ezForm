@@ -201,7 +201,7 @@ html {
 
 #btn-signature{
   margin-top: 2px;
-  margin-right: 7px;
+  margin-left: 7px;
 }
 
 #signature-pad{
@@ -272,7 +272,7 @@ html {
 }
 
 #top-btn-fill, #btn-reload, #btn-flip{
-  margin: -3px 10px;
+  margin: -3px 3px;
 }
 
 .img-wrapper{

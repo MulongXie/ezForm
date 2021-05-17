@@ -104,7 +104,7 @@ function presentResultPage(pageID, resultFiles){
     $('#viewer-iframe').append('<iframe id="iframe-page-fill-' + pageID + '" class="iframe-viewer page" src="' + resultFiles.resultPage + '"></iframe>\n')
     // 3. page detection result
     let wrapper = '<div id="detection-img-wrapper-'+ pageID +'" class="overlay-container page">\n' +
-        '    <img id="img-detection-res-'+ pageID +'" class="img-viewer img-viewer-insert" src="'+ resultFiles.inputImg +'">\n' +
+        '    <img id="img-detection-res-'+ pageID +'" class="img-viewer img-viewer-insert" src="'+ resultFiles.inputImg +'" data-toggle="tooltip" title="Click the image to insert input box">\n' +
         '</div>'
     $('#preview-detect-res').append(wrapper)
     // 4. page filled result
@@ -218,7 +218,7 @@ function presentResultPage(pageID, resultFiles){
             field = field[0]
             // console.log(i, field)
             overlays += '<div id="overlay-' + i + '-' + pageID +'" contenteditable="true" ' + 'data-target="' + i + '"' +
-                'class="overlay" style="top: ' + field['top'] + 'px; left: ' + field['left'] +
+                ' data-toggle="tooltip" title="Click to edit" class="overlay" style="top: ' + field['top'] + 'px; left: ' + field['left'] +
                 'px; width: ' + (field['right'] - field['left']) + 'px; height: ' + (field['bottom'] - field['top']) + 'px;"></div>\n'
         })
         $('#detection-img-wrapper-'+ pageID).append(overlays)
@@ -376,7 +376,8 @@ function insertInputBox() {
         // insert new input box
         let inputBox = '<div class="insert-input insert-input-active text-left"' +
             ' style="left: ' + (e.pageX - pageContainer.offset().left) + 'px; top: ' + (e.pageY  - pageContainer.offset().top - 10) + 'px; ' +
-            'position: absolute; min-width: 100px; min-height: 20px; font-size: 15px" contenteditable="true"></div>'
+            'position: absolute; min-width: 100px; min-height: 20px; font-size: 15px" contenteditable="true"' +
+            ' data-toggle="tooltip" title="Drag to move & Click to edit"></div>'
         pageContainer.append(inputBox)
 
         // activate the input box while clicking
