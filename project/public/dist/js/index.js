@@ -139,7 +139,7 @@ function presentResultPage(pageID, resultFiles){
             overlay.addClass('overlay-active')
 
             let imgWrapper = $('.img-wrapper')
-            let offset = overlay.offset().top - imgWrapper.offset().top + imgWrapper.scrollTop()
+            let offset = overlay.offset().top - imgWrapper.offset().top + imgWrapper.scrollTop() - 35
             imgWrapper.animate({scrollTop: offset},'slow')
 
             // show the detection result tab
