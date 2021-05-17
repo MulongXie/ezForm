@@ -317,6 +317,7 @@ html {
 
 .filled-img-viewer{
   position: relative;
+  margin: auto;
 }
 
 .img-viewer-insert:hover{

@@ -282,6 +282,7 @@ function process(img, inputType){
                 setTimeout(function () {
                     let imgWidth = $('#img-detection-res-1').width()
                     $('.overlay-container').width(imgWidth)
+                    $('.filled-img-viewer').width(imgWidth)
                     for (let i = 0; i < $('.page-btn').length; i ++) {
                         $('#img-filled-res-' + (i+1)).width(imgWidth)
                     }
@@ -354,7 +355,7 @@ function insertInputBox() {
         let id = $(this).attr('id').split('-')
         let pageID = id[id.length - 1]
         let pageContainer = $('#detection-img-wrapper-' + pageID)
-        pageContainer.width($(this).width())
+        // pageContainer.width($(this).width())
         // pageContainer.css('margin', '20px auto')
 
         // clean empty inserted inputs
@@ -555,8 +556,8 @@ $('.btn-fill').on('click', function (){
     // reset wrapper to fit
     let pageID = $('.page-btn-active').text()
     let filledWrapper = $('#fill-img-wrapper-' + pageID)
-    filledWrapper.width($('#img-filled-res-' + pageID).width())
-    filledWrapper.css('margin', '0 auto')
+    // filledWrapper.width($('#img-filled-res-' + pageID).width() + 'px')
+    // filledWrapper.css('margin', '0 auto')
 
     // add overlay on filled result image
     $('.filled-input').remove()

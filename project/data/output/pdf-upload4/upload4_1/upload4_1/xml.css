@@ -1,0 +1,59 @@
+td{
+	height: 20px;
+}
+.section-title{
+	justify-content: center;
+	border: 1px solid black;
+	margin-bottom: 10px;
+	margin-top: 10px;
+	transition: 0.5s;
+	background-color: lightgrey;
+	cursor: pointer;
+}
+label{
+	margin: 5px;
+}
+.speaker{
+	margin-left: 10px;
+}
+.section-title:hover{
+	background-color: #BFBEBE;
+}
+.section-wrapper{
+	padding: 10px;
+	margin: 20px;
+	background-color: #f1f1f1;
+}
+p{
+	margin: 5px !important;
+}
+input{
+	margin: 5px;
+}
+.border-line{
+}
+table{
+	border: 1px solid black;
+	width: 100%;
+}
+table input{
+	border: 1px solid black;
+	width: 97%;
+	margin: 0;
+}
+.input-wrapper{
+}
+.text-wrapper{
+	justify-content: space-around;
+	margin: 10px;
+}
+.input-active{
+	background-color: yellow !important;
+}
+.content{
+	display: None;
+}
+th{
+	border: 1px solid black;
+	text-align: center !important;
+}
