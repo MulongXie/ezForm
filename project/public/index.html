@@ -1,10 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>ezForm</title>
-    <link rel="stylesheet" href="index.css">
-<!--    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>-->
+    <!-- Font -->
+    <link href="https://fonts.googleapis.com/css?family=Heebo:400,700|IBM+Plex+Sans:600" rel="stylesheet">
+    <!-- Jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Scrollreveal -->
+    <script src="https://unpkg.com/scrollreveal@4.0.0/dist/scrollreveal.min.js"></script>
     <!-- Resizable -->
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
@@ -18,42 +24,34 @@
     <!-- Zip -->
     <script src="jszip/jszip.js"></script>
     <script src="fileSaver/FileSaver.js"></script>
+    <!-- Font Awesome -->
+    <link href="https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Custom -->
+    <link rel="stylesheet" href="dist/css/style.css">
+    <link rel="stylesheet" href="dist/css/index.css">
     <!-- Bootstrap -->
     <link rel="stylesheet" href="./bootstrap/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="./bootstrap/bootstrap.min.js"></script>
 </head>
 <body>
-
-<nav class="navbar navbar-default">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <a class="navbar-brand" style="color: #337ab7;" href="">ezForm</a>
+<div class="body-wrap boxed-container" id="header">
+    <!-- Navigation -->
+    <header class="site-header">
+        <div class="container">
+            <div class="site-header-inner">
+                <div class="brand header-brand">
+                    <a href="">
+                        <img class="header-logo-image asset-light" src="dist/images/logo-light.svg" alt="Logo">
+                    </a>
+                </div>
+                <button id="navbar-btn" class="btn btn-danger btn-upload pull-right" data-toggle="modal" data-target="#modal-upload"><span class="glyphicon glyphicon-cloud-upload" style="margin-right: 5px"></span>Upload New Form</button>
+            </div>
         </div>
-        <div class="nav navbar-nav navbar-right">
-            <button class="btn navbar-btn btn-danger btn-upload" data-toggle="modal" data-target="#modal-upload"><span class="glyphicon glyphicon-cloud-upload" style="margin-right: 5px"></span>Upload New Form</button>
-        </div>
-    </div>
-</nav>
+    </header>
 
-<main>
-    <div id="cover-page" class="text-center">
-        <h3 class="cover-heading"><i>ezForm - Intelligent Form Filler</i></h3>
-        <button id="btn-start" class="btn btn-primary btn-upload" data-toggle="modal" data-target="#modal-upload">Upload Form Image</button>
-        <div id="wrapper-exps">
-            <h4>OR</h4>
-            <h4>Play with some examples</h4>
-            <img class="img-exp-form" src="public/exps/1.jpg">
-            <img class="img-exp-form" src="public/exps/11.jpg">
-            <img class="img-exp-form" src="public/exps/3.jpg">
-        </div>
-
-        <div id="waiting-processing" class="text-center">
-            <h5>Processing ...</h5>
-            <div class="loader"></div>
-        </div>
-    </div>
-
+    <!-- Modal ** Upload -->
     <div class="modal fade" id="modal-upload" role="dialog">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
@@ -63,118 +61,265 @@
                 </div>
                 <div class="modal-body">
                     <form>
-                        <div>
-                            <input type="file" class="form-control" id="input-upload-form">
+                        <div id="modal-image-upload-wrap" class="image-upload-wrap">
+                            <input type="file" class="file-upload-input">
+                            <div class="drag-text">
+                                <h3>Drag and drop a file or select add Image</h3>
+                            </div>
                         </div>
                     </form>
-                    <div class="text-center">
-                        <h4>Only support image (.PNG & .JPG) and PDF formats</h4>
-                        <img id="img-form-uploaded">
+                    <div id="modal-waiting-processing" class="text-center">
+                        <h5>Processing ...</h5>
+                        <div class="loader"></div>
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <button id="btn-process" type="button" class="btn btn-primary" disabled data-dismiss="modal">Process</button>
                 </div>
             </div>
         </div>
     </div>
 
-<!--    <div class="modal fade" id="modal-filling" role="dialog">-->
-<!--        <div class="modal-dialog modal-lg">-->
-<!--            <div class="modal-content">-->
-<!--                <div class="modal-body">-->
-<!--                    <div id="waiting-filling" class="text-center">-->
-<!--                        <h4>Filling Form ...</h4>-->
-<!--                        <div class="loader"></div>-->
-<!--                        <button id="btn-show-filled" class="btn btn-primary" data-dismiss="modal">Check the filled form</button>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
-
-    <div id="main-contents" class="container-fluid">
-        <div id="wrapper-pagination">
-            <ul class="pagination" style="padding: 0">
-<!--                <li><a class="page-btn page-btn-active">1</a></li>-->
-<!--                <li><a class="page-btn">2</a></li>-->
-            </ul>
-        </div>
-
-        <div class="row">
-            <div id="viewer-iframe" class="col-md-6 col-xs-12 content-wrapper" style="padding: 0; overflow: hidden">
-                <div class="content-bar">
-                    <span class="bar-header">Re-generated Form</span>
-                    <a class="btn btn-primary btn-flip" data-toggle="tooltip" title="Flip the page"><span class="glyphicon glyphicon-retweet"></span></a>
-                    <button id="top-btn-fill" class="btn btn-success btn-fill"><span class="glyphicon glyphicon-edit" style="margin-right: 5px;"></span>Fill Form</button>
-<!--                    <button id="btn-reload" class="btn btn-primary"><span class="glyphicon glyphicon-refresh" style="margin-right: 5px;"></span>Reload Form</button>-->
+    <main>
+        <!-- Introduction -->
+        <section class="hero">
+            <div class="container">
+                <div class="hero-inner">
+                    <div class="hero-copy">
+                        <h1 class="hero-title mt-0">Intelligent Form Filler</h1>
+                        <p class="hero-paragraph">A novel way to make form filling hand-writing free and coding-free</p>
+                        <div class="hero-cta">
+                            <a class="button button-primary" href="#cover-page">Try it now</a>
+                        </div>
+                    </div>
+                    <div class="hero-media">
+                        <div class="header-illustration">
+                            <img class="header-illustration-image asset-light" src="dist/images/header-illustration-light.svg" alt="Header illustration">
+                        </div>
+                        <div class="hero-media-illustration">
+                            <img class="hero-media-illustration-image asset-light" src="dist/images/hero-media-illustration-light.svg" alt="Hero media illustration">
+                        </div>
+                        <div class="hero-media-container">
+                            <video id="video" width="538" controls class="hero-media-image asset-light" >
+                                <source src="dist/video/tutorial.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
                 </div>
-<!--                <iframe id="iframe-page-fill-1" class="iframe-viewer page page-active" src="data/pdf-upload1/upload1_1/upload1_1/xml.html"></iframe>-->
-<!--                <iframe id="iframe-page-fill-2" class="iframe-viewer page" src="data/pdf-upload1/upload1_2/upload1_2/xml.html"></iframe>-->
             </div>
-            <div class="col-md-6 col-xs-12 content-wrapper" style="padding: 0">
-                <div class="content-bar" style="padding: 0">
-                    <ul class="nav nav-tabs">
-                        <li id="li-tab-detect-res" class="active"><a data-toggle="tab" href="#preview-detect-res">Detection Result</a></li>
-                        <li id="li-tab-filled-res"><a data-toggle="tab" class="btn-fill" href="#preview-filled-res">Preview</a></li>
-                        <li>
-                            <button id="btn-signature" class="btn btn-info"><span class="glyphicon glyphicon-pencil" style="margin-right: 5px"></span>Add signature</button>
-                            <div id="signature">
-                                <canvas id="signature-pad" class="signature-element"></canvas>
-                                <a id="btn-sig-use" class="btn btn-default signature-element"><span class="glyphicon glyphicon-check" style="margin-right: 3px"></span>Use</a>
-                                <a id="btn-sig-clear" class="btn btn-default signature-element"><span class="glyphicon glyphicon-erase" style="margin-right: 3px"></span>Clear</a>
-                            </div>
-                        </li>
-                        <li style="float: right"><button id="btn-export" class="btn btn-danger"><span class="glyphicon glyphicon-download-alt" style="margin-right: 5px"></span>Export</button></li>
-                        <li style="float: right; margin-top:2px; margin-right: 5px"><button class="btn btn-success btn-fill"><span class="glyphicon glyphicon-check" style="margin-right: 5px"></span>Done</button></li>
-                    </ul>
-                </div>
-                <div class="img-wrapper tab-content">
-                    <div id="preview-detect-res" class="text-center tab-pane fade in active">
-                        <div class="note"><i><span class="glyphicon glyphicon-exclamation-sign"></span>Click on <span class="non-blue">Non-Blue Area</span> of the image to insert input box</i></div>
-                        <div id="nav-font-adjust">
-                            <div class="btn-group-vertical">
-                                <a id="font-up" class="btn btn-input-font"><span style="font-size: 12px"><span class="glyphicon glyphicon-font"></span>+</span></a>
-                                <a id="font-down" class="btn btn-input-font"><span style="font-size: 12px"><span class="glyphicon glyphicon-font"></span>-</span></a>
-                                <a id="font-bold" class="btn btn-input-font"><span style="font-size: 12px"><span class="glyphicon glyphicon-bold"></span></span></a>
-                                <a id="font-italic" class="btn btn-input-font"><span style="font-size: 12px"><span class="glyphicon glyphicon-italic"></span></span></a>
-                                <a id="input-del" class="btn btn-input-font"><span style="font-size: 12px"><span class="glyphicon glyphicon-trash"></span></span></a>
+        </section>
+
+        <!-- Functions -->
+        <section class="features section" id="cover-page">
+            <div class="container">
+                <div class="features-inner section-inner has-bottom-divider">
+                    <div class="features-header text-center">
+                        <div class="container-sm">
+                            <h2 class="section-title mt-0">Take a Try</h2>
+                            <p class="section-paragraph">Upload your form OR Play with some examples</p>
+                        </div>
+                    </div>
+
+                    <div class="row text-center" id="wrapper-exps">
+                        <div class="col-sm-3">
+                            <div class="image-upload-wrap">
+                                <input type="file" class="file-upload-input">
+                                <div class="drag-text">
+                                    <h3>Drag and drop a file or select add Image</h3>
+                                </div>
                             </div>
                         </div>
-<!--                        <div id="detection-img-wrapper-1" class="overlay-container page page-active">-->
-<!--                            <img id="img-detection-res-1" class="img-viewer" src="data/pdf-upload1/upload1_1/upload1_1/detection.jpg">-->
-<!--                        </div>-->
-<!--                        <div id="detection-img-wrapper-2" class="overlay-container page">-->
-<!--                            <img id="img-detection-res-2" class="img-viewer" src="data/pdf-upload1/upload1_2/upload1_2/detection.jpg">-->
-<!--                        </div>-->
+                        <div class="col-sm-3">
+                            <img class="img-exp-form" src="public/exps/1.jpg">
+                        </div>
+                        <div class="col-sm-3">
+                            <img class="img-exp-form" src="public/exps/2.jpg">
+                        </div>
+                        <div class="col-sm-3">
+                            <img class="img-exp-form" src="public/exps/3.jpg">
+                        </div>
                     </div>
-                    <div id="preview-filled-res" class="text-center tab-pane fade">
-<!--                        <div id="fill-img-wrapper-1" class="text-center page page-active">-->
-<!--                            <img id="img-filled-res-1" class="img-viewer" src="data/pdf-upload1/upload1_1/upload1_1.jpg">-->
-<!--                        </div>-->
-<!--                        <div id="fill-img-wrapper-2" class="text-center page">-->
-<!--                            <img id="img-filled-res-2" class="img-viewer" src="data/pdf-upload1/upload1_2/upload1_2.jpg">-->
-<!--                        </div>-->
+
+                    <div id="waiting-processing" class="text-center">
+                        <h5>Processing ...</h5>
+                        <div class="loader"></div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Detection Results -->
+        <section class="cta section">
+            <div class="container">
+                <div class="cta-inner section-inner">
+                    <div class="cta-header text-center">
+                        <h2 class="section-title mt-0">Examples of Detection Results</h2>
+                        <p class="section-paragraph">Some illustration?</p>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 col-center">
+                            <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="0">
+                                <!-- Carousel indicators -->
+                                <ol class="carousel-indicators">
+                                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                                    <li data-target="#myCarousel" data-slide-to="1"></li>
+                                </ol>
+                                <!-- Wrapper for carousel items -->
+                                <div class="carousel-inner">
+                                    <div class="item active">
+                                        <div class="row">
+                                            <div class="col-sm-4"><div class="img-box"><img src="public/exps/dr1.jpeg" class="img-responsive" alt=""></div></div>
+                                            <div class="col-sm-4"><div class="img-box"><img src="public/exps/dr2.jpeg" class="img-responsive" alt=""></div></div>
+                                            <div class="col-sm-4"><div class="img-box"><img src="public/exps/dr3.jpeg" class="img-responsive" alt=""></div></div>
+                                        </div>
+                                    </div>
+                                    <div class="item">
+                                        <div class="row">
+                                            <div class="col-sm-4"><div class="img-box"><img src="public/exps/dr4.jpeg" class="img-responsive" alt=""></div></div>
+                                            <div class="col-sm-4"><div class="img-box"><img src="public/exps/dr5.jpeg" class="img-responsive" alt=""></div></div>
+                                            <div class="col-sm-4"><div class="img-box"><img src="public/exps/dr6.jpeg" class="img-responsive" alt=""></div></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Carousel controls -->
+                                <a class="carousel-control left" href="#myCarousel" data-slide="prev">
+                                    <i class="fa fa-chevron-left"></i>
+                                </a>
+                                <a class="carousel-control right" href="#myCarousel" data-slide="next">
+                                    <i class="fa fa-chevron-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Modal ** Filling -->
+        <div class="modal fade" id="modal-filling" role="dialog">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div id="waiting-filling" class="text-center">
+                            <h4>Filling Form ...</h4>
+                            <div class="loader"></div>
+                            <button id="btn-show-filled" class="btn btn-primary" data-dismiss="modal">Check the filled form</button>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</main>
 
-<img id="filling-rest" style="display: none">
+        <!-- Main Contents -->
+        <section id="main-contents" class="container-fluid">
+            <div id="wrapper-pagination">
+                <ul class="pagination" style="padding: 0">
+                </ul>
+            </div>
 
-<footer>
-    <div class="footer">
-        <p>Copyright © 2021 All rights reserved</p>
-        <address style="margin: 0">
-            Contact:
-            <a href="mailto:mulong.xie@anu.edu.au">mulong.xie@anu.edu.au</a>
-        </address>
-    </div>
-</footer>
+            <div class="row">
+                <div id="viewer-iframe" class="col-md-6 col-xs-12 content-wrapper" style="padding: 0; overflow: hidden">
+                    <div class="content-bar">
+                        <span class="bar-header">Re-generated Form</span>
+                        <button id="btn-flip" class="btn btn-primary btn-flip pull-right" data-toggle="tooltip" title="Flip the page"><span class="glyphicon glyphicon-retweet"></span></button>
+                        <button id="top-btn-fill" class="btn btn-success btn-fill pull-right"><span class="glyphicon glyphicon-edit" style="margin-right: 5px;"></span>Fill Form</button>
+                        <!--                    <button id="btn-reload" class="btn btn-primary pull-right"><span class="glyphicon glyphicon-refresh" style="margin-right: 5px;"></span>Reload Form</button>-->
+                    </div>
+                </div>
+                <div class="col-md-6 col-xs-12 content-wrapper" style="padding: 0">
+                    <div class="content-bar" style="padding: 0">
+                        <ul class="nav nav-tabs">
+                            <li id="li-tab-detect-res" class="active"><a data-toggle="tab" href="#preview-detect-res">Detection Result</a></li>
+                            <li id="li-tab-filled-res"><a data-toggle="tab" class="btn-fill" href="#preview-filled-res">Preview</a></li>
+                            <li>
+                                <button id="btn-signature" class="btn btn-info"><span class="glyphicon glyphicon-pencil" style="margin-right: 5px"></span>Add signature</button>
+                                <div id="signature">
+                                    <canvas id="signature-pad" class="signature-element"></canvas>
+                                    <a id="btn-sig-use" class="btn btn-default signature-element"><span class="glyphicon glyphicon-check" style="margin-right: 3px"></span>Use</a>
+                                    <a id="btn-sig-clear" class="btn btn-default signature-element"><span class="glyphicon glyphicon-erase" style="margin-right: 3px"></span>Clear</a>
+                                </div>
+                            </li>
+                            <li style="float: right"><button id="btn-export" class="btn btn-danger"><span class="glyphicon glyphicon-download-alt" style="margin-right: 5px"></span>Export</button></li>
+                            <li style="float: right; margin-top:2px; margin-right: 5px"><button class="btn btn-success btn-fill"><span class="glyphicon glyphicon-check" style="margin-right: 5px"></span>Done</button></li>
+                        </ul>
+                    </div>
+                    <div class="img-wrapper tab-content">
+                        <div id="preview-detect-res" class="text-center tab-pane fade in active">
+                            <div class="note"><i><span class="glyphicon glyphicon-exclamation-sign"></span>Click on <span class="non-blue">Non-Blue Area</span> of the image to insert input box</i></div>
+                            <div id="nav-font-adjust">
+                                <div class="btn-group-vertical">
+                                    <a id="font-up" class="btn btn-input-font"><span style="font-size: 12px"><span class="glyphicon glyphicon-font"></span>+</span></a>
+                                    <a id="font-down" class="btn btn-input-font"><span style="font-size: 12px"><span class="glyphicon glyphicon-font"></span>-</span></a>
+                                    <a id="font-bold" class="btn btn-input-font"><span style="font-size: 12px"><span class="glyphicon glyphicon-bold"></span></span></a>
+                                    <a id="font-italic" class="btn btn-input-font"><span style="font-size: 12px"><span class="glyphicon glyphicon-italic"></span></span></a>
+                                    <a id="input-del" class="btn btn-input-font"><span style="font-size: 12px"><span class="glyphicon glyphicon-trash"></span></span></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="preview-filled-res" class="text-center tab-pane fade">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-<script src="index.js"></script>
+    </main>
 
+    <!-- Footer -->
+    <footer class="site-footer has-top-divider">
+        <div class="container">
+            <div class="site-footer-inner">
+                <div class="brand footer-brand">
+                    <a href="#">
+                        <img class="footer-logo-image asset-light" src="dist/images/logo-dark.svg" alt="Logo">
+                    </a>
+                </div>
+                <ul class="footer-links list-reset">
+                    <li>
+                        <a href="#">Contact</a>
+                    </li>
+                    <li>
+                        <a href="#">About us</a>
+                    </li>
+                    <li>
+                        <a href="#">FAQ's</a>
+                    </li>
+                    <li>
+                        <a href="#">Support</a>
+                    </li>
+                </ul>
+                <ul class="footer-social-links list-reset">
+                    <li>
+                        <a href="#">
+                            <span class="screen-reader-text">Facebook</span>
+                            <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M6.023 16L6 9H3V6h3V4c0-2.7 1.672-4 4.08-4 1.153 0 2.144.086 2.433.124v2.821h-1.67c-1.31 0-1.563.623-1.563 1.536V6H13l-1 3H9.28v7H6.023z" fill="#FFF"/>
+                            </svg>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span class="screen-reader-text">Twitter</span>
+                            <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M16 3c-.6.3-1.2.4-1.9.5.7-.4 1.2-1 1.4-1.8-.6.4-1.3.6-2.1.8-.6-.6-1.5-1-2.4-1-1.7 0-3.2 1.5-3.2 3.3 0 .3 0 .5.1.7-2.7-.1-5.2-1.4-6.8-3.4-.3.5-.4 1-.4 1.7 0 1.1.6 2.1 1.5 2.7-.5 0-1-.2-1.5-.4C.7 7.7 1.8 9 3.3 9.3c-.3.1-.6.1-.9.1-.2 0-.4 0-.6-.1.4 1.3 1.6 2.3 3.1 2.3-1.1.9-2.5 1.4-4.1 1.4H0c1.5.9 3.2 1.5 5 1.5 6 0 9.3-5 9.3-9.3v-.4C15 4.3 15.6 3.7 16 3z" fill="#FFF"/>
+                            </svg>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span class="screen-reader-text">Google</span>
+                            <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M7.9 7v2.4H12c-.2 1-1.2 3-4 3-2.4 0-4.3-2-4.3-4.4 0-2.4 2-4.4 4.3-4.4 1.4 0 2.3.6 2.8 1.1l1.9-1.8C11.5 1.7 9.9 1 8 1 4.1 1 1 4.1 1 8s3.1 7 7 7c4 0 6.7-2.8 6.7-6.8 0-.5 0-.8-.1-1.2H7.9z" fill="#FFF"/>
+                            </svg>
+                        </a>
+                    </li>
+                </ul>
+                <div class="footer-copyright">Copyright &copy; 2021 All rights reserved</div>
+            </div>
+        </div>
+    </footer>
+</div>
+
+
+<script src="dist/js/main.min.js"></script>
+<script src="dist/js/index.js"></script>
 </body>
 </html>
