@@ -153,6 +153,17 @@ function presentResultPage(pageID, resultFiles){
             let inputId = this.id
             let overlay =  $('#overlay-' + inputId + '-' + pageID)
             overlay.text($(this).val())
+
+            // resize font to fit the box
+            while ($(overlay)[0].scrollHeight > $(overlay).innerHeight() && parseInt($(overlay).css('font-size')) > 7){
+                console.log($(overlay)[0].scrollHeight, $(overlay).innerHeight())
+                $(overlay).css('font-size', (parseInt($(overlay).css('font-size')) - 1) + 'px')
+            }
+
+            // enable font adjustment
+            $('#nav-font-adjust').show("slide", { direction: "left" }, 300)
+            $('.overlay-editing').removeClass('overlay-editing')
+            $(overlay).addClass('overlay-editing')
         })
 
         // Trace input compo
@@ -378,6 +389,8 @@ function insertInputBox() {
             $(this).addClass('insert-input-active')
             // show side font adjustment bar
             $('#nav-font-adjust').show("slide", { direction: "left" }, 300)
+            // remove overlay-editing
+            $('.overlay-editing').remove()
         })
 
         // make the input box draggable
@@ -430,8 +443,16 @@ function fontAdjustment() {
         }
     })
     $('#input-del').click(function () {
-        let activeInput = $('.insert-input-active')
-        activeInput.remove()
+        // clean overlay and corresponding input compo
+        if ($('.overlay-editing').length > 0){
+            $('.overlay-editing').text('')
+            let pageID = $('.page-btn-active').text()
+            $('#iframe-page-fill-' + pageID).contents().find(".input-active")[0].value = ''
+        }
+        // remove inserted input box
+        else if($('.insert-input-active').length > 0){
+            $('.insert-input-active').remove()
+        }
     })
 }
 
