@@ -479,3 +479,11 @@
 1. Merge Sidong's cover page
 
 2. Fix bug of multi-page filling
+
+3. Adjust font automatically while inputting from the application page
+
+4. Fix bug of deleting input
+
+5. Fix background width
+
+6. Add tooltips
