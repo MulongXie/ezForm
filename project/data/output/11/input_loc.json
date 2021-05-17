@@ -1,354 +1,242 @@
 {
-    "input-63": [
+    "input-75": [
         {
-            "top": 397,
-            "right": 651,
-            "bottom": 412,
-            "left": 637
-        }
-    ],
-    "input-33": [
-        {
-            "top": 682,
-            "right": 673,
-            "bottom": 753,
-            "left": 360
-        }
-    ],
-    "input-45": [
-        {
-            "top": 736,
-            "right": 323,
-            "bottom": 750,
-            "left": 309
-        }
-    ],
-    "input-31": [
-        {
-            "top": 853,
-            "right": 345,
-            "bottom": 898,
-            "left": 32
-        }
-    ],
-    "input-34": [
-        {
-            "top": 586,
-            "right": 673,
-            "bottom": 666,
-            "left": 360
+            "left": 155,
+            "bottom": 340,
+            "right": 169,
+            "top": 326
         }
     ],
     "input-72": [
         {
-            "top": 216,
-            "right": 344,
-            "bottom": 242,
-            "left": 34
-        }
-    ],
-    "input-35": [
-        {
-            "top": 429,
-            "right": 673,
-            "bottom": 514,
-            "left": 360
-        }
-    ],
-    "input-69": [
-        {
-            "top": 271,
-            "right": 652,
-            "bottom": 285,
-            "left": 637
-        }
-    ],
-    "input-29": [
-        {
-            "top": 913,
-            "right": 345,
-            "bottom": 967,
-            "left": 31
-        }
-    ],
-    "input-64": [
-        {
-            "top": 379,
-            "right": 607,
-            "bottom": 393,
-            "left": 593
-        }
-    ],
-    "input-60": [
-        {
-            "top": 509,
+            "left": 202,
+            "bottom": 523,
             "right": 216,
-            "bottom": 523,
-            "left": 202
-        }
-    ],
-    "input-55": [
-        {
-            "top": 565,
-            "right": 72,
-            "bottom": 579,
-            "left": 58
-        }
-    ],
-    "input-41": [
-        {
-            "top": 825,
-            "right": 322,
-            "bottom": 839,
-            "left": 308
-        }
-    ],
-    "input-48": [
-        {
-            "top": 653,
-            "right": 72,
-            "bottom": 667,
-            "left": 57
-        }
-    ],
-    "input-56": [
-        {
-            "top": 554,
-            "right": 651,
-            "bottom": 568,
-            "left": 637
-        }
-    ],
-    "input-32": [
-        {
-            "top": 809,
-            "right": 674,
-            "bottom": 879,
-            "left": 361
-        }
-    ],
-    "input-57": [
-        {
-            "top": 554,
-            "right": 607,
-            "bottom": 568,
-            "left": 593
-        }
-    ],
-    "input-59": [
-        {
-            "top": 509,
-            "right": 72,
-            "bottom": 523,
-            "left": 58
-        }
-    ],
-    "input-39": [
-        {
-            "top": 433,
-            "right": 344,
-            "bottom": 459,
-            "left": 34
-        }
-    ],
-    "input-65": [
-        {
-            "top": 378,
-            "right": 651,
-            "bottom": 392,
-            "left": 637
-        }
-    ],
-    "input-54": [
-        {
-            "top": 582,
-            "right": 72,
-            "bottom": 596,
-            "left": 57
-        }
-    ],
-    "input-40": [
-        {
-            "top": 826,
-            "right": 279,
-            "bottom": 840,
-            "left": 265
+            "top": 509
         }
     ],
     "input-53": [
         {
-            "top": 599,
+            "left": 360,
+            "bottom": 879,
+            "right": 675,
+            "top": 808
+        }
+    ],
+    "input-69": [
+        {
+            "left": 58,
+            "bottom": 614,
             "right": 72,
-            "bottom": 613,
-            "left": 58
+            "top": 599
         }
     ],
-    "input-52": [
+    "input-57": [
         {
-            "top": 582,
-            "right": 215,
-            "bottom": 596,
-            "left": 201
+            "left": 34,
+            "bottom": 413,
+            "right": 344,
+            "top": 360
         }
     ],
-    "input-44": [
+    "input-80": [
         {
-            "top": 737,
-            "right": 279,
-            "bottom": 751,
-            "left": 265
-        }
-    ],
-    "input-49": [
-        {
-            "top": 653,
-            "right": 174,
-            "bottom": 667,
-            "left": 160
-        }
-    ],
-    "input-46": [
-        {
-            "top": 675,
-            "right": 48,
-            "bottom": 689,
-            "left": 34
-        }
-    ],
-    "input-66": [
-        {
-            "top": 326,
-            "right": 169,
-            "bottom": 340,
-            "left": 155
-        }
-    ],
-    "input-68": [
-        {
-            "top": 326,
-            "right": 48,
-            "bottom": 340,
-            "left": 34
-        }
-    ],
-    "input-47": [
-        {
-            "top": 653,
-            "right": 258,
-            "bottom": 667,
-            "left": 244
-        }
-    ],
-    "input-43": [
-        {
-            "top": 776,
-            "right": 607,
-            "bottom": 790,
-            "left": 593
-        }
-    ],
-    "input-30": [
-        {
-            "top": 893,
-            "right": 674,
-            "bottom": 968,
-            "left": 361
-        }
-    ],
-    "input-62": [
-        {
-            "top": 399,
-            "right": 607,
-            "bottom": 412,
-            "left": 593
-        }
-    ],
-    "input-42": [
-        {
-            "top": 776,
-            "right": 651,
-            "bottom": 790,
-            "left": 637
+            "bottom": 278,
+            "left": 226,
+            "right": 282,
+            "top": 278
         }
     ],
     "input-70": [
         {
-            "top": 272,
-            "right": 608,
-            "bottom": 286,
-            "left": 594
-        }
-    ],
-    "input-71": [
-        {
-            "top": 279,
-            "bottom": 279,
-            "right": 281,
-            "left": 225
-        }
-    ],
-    "input-58": [
-        {
-            "top": 528,
+            "left": 58,
+            "bottom": 596,
             "right": 72,
-            "bottom": 542,
-            "left": 58
-        }
-    ],
-    "input-67": [
-        {
-            "top": 326,
-            "right": 106,
-            "bottom": 340,
-            "left": 92
+            "top": 582
         }
     ],
     "input-61": [
         {
-            "top": 492,
-            "right": 48,
-            "bottom": 507,
-            "left": 34
+            "left": 637,
+            "bottom": 790,
+            "right": 651,
+            "top": 776
         }
     ],
-    "input-37": [
+    "input-74": [
         {
-            "top": 293,
+            "left": 593,
+            "bottom": 393,
+            "right": 607,
+            "top": 379
+        }
+    ],
+    "input-54": [
+        {
+            "left": 360,
+            "bottom": 753,
+            "right": 674,
+            "top": 681
+        }
+    ],
+    "input-60": [
+        {
+            "left": 265,
+            "bottom": 840,
+            "right": 279,
+            "top": 826
+        }
+    ],
+    "input-58": [
+        {
+            "left": 34,
+            "bottom": 459,
+            "right": 344,
+            "top": 433
+        }
+    ],
+    "input-66": [
+        {
+            "left": 57,
+            "bottom": 667,
+            "right": 72,
+            "top": 653
+        }
+    ],
+    "input-56": [
+        {
+            "left": 34,
+            "bottom": 320,
             "right": 157,
-            "bottom": 319,
-            "left": 34
+            "top": 293
         }
     ],
     "input-51": [
         {
-            "top": 617,
-            "right": 48,
-            "bottom": 631,
-            "left": 34
+            "left": 31,
+            "bottom": 967,
+            "right": 345,
+            "top": 913
         }
     ],
-    "input-50": [
+    "input-73": [
         {
-            "top": 636,
+            "left": 58,
+            "bottom": 542,
+            "right": 72,
+            "top": 528
+        }
+    ],
+    "input-76": [
+        {
+            "left": 92,
+            "bottom": 340,
+            "right": 106,
+            "top": 326
+        }
+    ],
+    "input-71": [
+        {
+            "left": 34,
+            "bottom": 562,
             "right": 48,
+            "top": 548
+        }
+    ],
+    "input-62": [
+        {
+            "left": 593,
+            "bottom": 790,
+            "right": 607,
+            "top": 776
+        }
+    ],
+    "input-64": [
+        {
+            "left": 33,
+            "bottom": 691,
+            "right": 50,
+            "top": 674
+        }
+    ],
+    "input-79": [
+        {
+            "bottom": 216,
+            "left": 81,
+            "right": 130,
+            "top": 216
+        }
+    ],
+    "input-65": [
+        {
+            "left": 244,
+            "bottom": 667,
+            "right": 258,
+            "top": 653
+        }
+    ],
+    "input-63": [
+        {
+            "left": 309,
+            "bottom": 750,
+            "right": 323,
+            "top": 736
+        }
+    ],
+    "input-68": [
+        {
+            "left": 34,
             "bottom": 650,
-            "left": 34
+            "right": 48,
+            "top": 636
         }
     ],
-    "input-38": [
+    "input-67": [
         {
-            "top": 360,
-            "right": 344,
-            "bottom": 413,
-            "left": 34
+            "left": 160,
+            "bottom": 667,
+            "right": 174,
+            "top": 653
         }
     ],
-    "input-36": [
+    "input-52": [
         {
-            "top": 302,
-            "right": 672,
-            "bottom": 371,
-            "left": 362
+            "left": 32,
+            "bottom": 899,
+            "right": 346,
+            "top": 853
+        }
+    ],
+    "input-77": [
+        {
+            "left": 34,
+            "bottom": 340,
+            "right": 48,
+            "top": 326
+        }
+    ],
+    "input-78": [
+        {
+            "left": 594,
+            "bottom": 286,
+            "right": 608,
+            "top": 272
+        }
+    ],
+    "input-59": [
+        {
+            "left": 307,
+            "bottom": 841,
+            "right": 325,
+            "top": 824
+        }
+    ],
+    "input-55": [
+        {
+            "left": 360,
+            "bottom": 666,
+            "right": 674,
+            "top": 586
         }
     ]
 }
