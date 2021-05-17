@@ -546,11 +546,9 @@ $('.btn-fill').on('click', function (){
     // $('#btn-export').slideDown()
 
     // show preview tab
-    $('#preview-detect-res').removeClass('active')
-    $('#preview-detect-res').removeClass('in')
+    $('#preview-detect-res').removeClass('active in')
     $('#li-tab-detect-res').removeClass('active')
-    $('#preview-filled-res').addClass('active')
-    $('#preview-filled-res').addClass('in')
+    $('#preview-filled-res').addClass('active in')
     $('#li-tab-filled-res').addClass('active')
 
     // reset wrapper to fit
@@ -560,22 +558,22 @@ $('.btn-fill').on('click', function (){
     // filledWrapper.css('margin', '0 auto')
 
     // add overlay on filled result image
-    $('.filled-input').remove()
-    let overlays = $('.overlay')
+    $('#fill-img-wrapper-' + pageID + '>.filled-input').remove()
+    let overlays = $('#detection-img-wrapper-' + pageID + '>.overlay')
     for (let i = 0; i < overlays.length; i ++){
         if (overlays[i].textContent !== ''){
             let clone = cloneInput(overlays[i])
             filledWrapper.append(clone)
         }
     }
-    let insertedInputs = $('.insert-input')
+    let insertedInputs = $('#detection-img-wrapper-' + pageID + '>.insert-input')
     for (let i = 0; i < insertedInputs.length; i ++){
         if (insertedInputs[i].textContent !== ''){
             let clone = cloneInput(insertedInputs[i])
             filledWrapper.append(clone)
         }
     }
-    let sigImg = $('.inserted-signature-img')
+    let sigImg = $('#detection-img-wrapper-' + pageID + '>.inserted-signature-img')
     for (let i = 0; i < sigImg.length; i ++){
         let clone = sigImg[i].cloneNode(true)
         filledWrapper.append(clone)
