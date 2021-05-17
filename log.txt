@@ -469,7 +469,13 @@
 2. Export according to overlays
 
 
-13/2/2021
+13/5/2021
 1. Export for multi-page form according to overlays
 
 2. Font fits to the cell automatically
+
+
+17/5/2021
+1. Merge Sidong's cover page
+
+2. Fix bug of multi-page filling
