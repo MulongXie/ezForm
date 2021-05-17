@@ -486,7 +486,7 @@ $(function () {
         let signature = canvas.toDataURL("image/png")
         let pageContainer = $('.overlay-container.page-active')
         let img = '<div class="inserted-signature-img inserted-signature-img-active" style="top:200px; left: 200px; position: absolute">' +
-            '   <img src="' + signature + '" style="width: 90%; height: 90%">' +
+            '   <img src="' + signature + '" style="width: 100%; height: 100%">' +
             '   <a class="btn del-sig" style="display: none">x</a>' +
             '</div>'
         pageContainer.append(img)

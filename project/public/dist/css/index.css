@@ -252,8 +252,9 @@ html {
 .del-sig{
   padding: 0 !important;
   width: 5px;
-  margin-top: -37px;
-  display: none;
+  position: absolute;
+  top: 0;
+  right: 8px;
 }
 
 .ui-icon-gripsmall-diagonal-se{
