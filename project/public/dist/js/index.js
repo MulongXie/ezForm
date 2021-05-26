@@ -573,58 +573,58 @@ function fillData(callback){
     $('#preview-filled-res').addClass('active in')
     $('#li-tab-filled-res').addClass('active')
 
-    // reset wrapper to fit
-    let pageID = $('.page-btn-active').text()
-    let filledWrapper = $('#fill-img-wrapper-' + pageID)
-    // filledWrapper.width($('#img-filled-res-' + pageID).width() + 'px')
-    // filledWrapper.css('margin', '0 auto')
+    let pageBtn = $('.page-btn')
+    for (let i = 0; i < pageBtn.length; i++){
+        // reset wrapper to fit
+        let pageID = $(pageBtn[i]).text()
+        let filledWrapper = $('#fill-img-wrapper-' + pageID)
 
-    // add overlay on filled result image
-    $('#fill-img-wrapper-' + pageID + '>.filled-input').remove()
-    let overlays = $('#detection-img-wrapper-' + pageID + '>.overlay')
-    for (let i = 0; i < overlays.length; i ++){
-        if (overlays[i].textContent !== ''){
-            let clone = cloneInput(overlays[i])
+        // add overlay on filled result image
+        $('#fill-img-wrapper-' + pageID + '>.filled-input').remove()
+        let overlays = $('#detection-img-wrapper-' + pageID + '>.overlay')
+        for (let i = 0; i < overlays.length; i ++){
+            if (overlays[i].textContent !== ''){
+                let clone = cloneInput(overlays[i])
+                filledWrapper.append(clone)
+
+                let data = overlays[i]
+                let jsonData = {'type':'text', 'top': data.style.top, 'left': data.style.left,
+                    'fontWeight': data.style.fontWeight, 'fontSize': data.style.fontSize, 'fontStyle':data.style.fontStyle,
+                    'fontFamily':data.style.fontFamily, 'fontColor': data.style.color}
+                fillingData.push(jsonData)
+            }
+        }
+        let insertedInputs = $('#detection-img-wrapper-' + pageID + '>.insert-input')
+        for (let i = 0; i < insertedInputs.length; i ++){
+            if (insertedInputs[i].textContent !== ''){
+                let clone = cloneInput(insertedInputs[i])
+                filledWrapper.append(clone)
+
+                let data = insertedInputs[i]
+                let jsonData = {'type':'text', 'top': data.style.top, 'left': data.style.left,
+                    'fontWeight': data.style.fontWeight, 'fontSize': data.style.fontSize, 'fontStyle':data.style.fontStyle,
+                    'fontFamily':data.style.fontFamily, 'fontColor': data.style.color}
+                fillingData.push(jsonData)
+            }
+        }
+        let sigImg = $('#detection-img-wrapper-' + pageID + '>.inserted-signature-img')
+        for (let i = 0; i < sigImg.length; i ++){
+            let clone = sigImg[i].cloneNode(true)
             filledWrapper.append(clone)
 
-            let data = overlays[i]
-            let jsonData = {'type':'text', 'top': data.style.top, 'left': data.style.left,
-                'fontWeight': data.style.fontWeight, 'fontSize': data.style.fontSize, 'fontStyle':data.style.fontStyle,
-                'fontFamily':data.style.fontFamily, 'fontColor': data.style.color}
+            let data = sigImg[i]
+            let jsonData = {'id':i, 'type':'img', 'top': data.style.top, 'left': data.style.left,
+                'width':data.style.width, 'height':data.style.height}
             fillingData.push(jsonData)
         }
     }
-    let insertedInputs = $('#detection-img-wrapper-' + pageID + '>.insert-input')
-    for (let i = 0; i < insertedInputs.length; i ++){
-        if (insertedInputs[i].textContent !== ''){
-            let clone = cloneInput(insertedInputs[i])
-            filledWrapper.append(clone)
-
-            let data = insertedInputs[i]
-            let jsonData = {'type':'text', 'top': data.style.top, 'left': data.style.left,
-                'fontWeight': data.style.fontWeight, 'fontSize': data.style.fontSize, 'fontStyle':data.style.fontStyle,
-                'fontFamily':data.style.fontFamily, 'fontColor': data.style.color}
-            fillingData.push(jsonData)
-        }
+    if(typeof callback === 'function'){
+        callback(fillingData)
     }
-    let sigImg = $('#detection-img-wrapper-' + pageID + '>.inserted-signature-img')
-    for (let i = 0; i < sigImg.length; i ++){
-        let clone = sigImg[i].cloneNode(true)
-        filledWrapper.append(clone)
-
-        let data = sigImg[i]
-        let jsonData = {'id':i, 'type':'img', 'top': data.style.top, 'left': data.style.left,
-            'width':data.style.width, 'height':data.style.height}
-        fillingData.push(jsonData)
-    }
-
-    callback(fillingData)
 }
 
 $('.btn-fill').on('click', function (){
-   fillData(function (fillingData) {
-       console.log(fillingData)
-   })
+    fillData()
 })
 
 
