@@ -109,7 +109,7 @@ function presentResultPage(pageID, resultFiles){
     $('#preview-detect-res').append(wrapper)
     // 4. page filled result
     wrapper = '<div id="fill-img-wrapper-' + pageID + '" class="text-center page filled-img-viewer">\n' +
-        '     <img id="img-filled-res-' + pageID + '" class="img-viewer img-viewer-preview" src="'+ resultFiles.inputImg +'">\n' +
+        '     <img id="img-filled-res-' + pageID + '" class="img-viewer img-viewer-preview" src="'+ resultFiles.inputImg +'" data-toggle="tooltip" title="Click the image to edit">\n' +
         '</div>'
     $('#preview-filled-res').append(wrapper)
 
@@ -157,7 +157,7 @@ function presentResultPage(pageID, resultFiles){
 
             // resize font to fit the box
             while ($(overlay)[0].scrollHeight > $(overlay).innerHeight() && parseInt($(overlay).css('font-size')) > 7){
-                console.log($(overlay)[0].scrollHeight, $(overlay).innerHeight())
+                // console.log($(overlay)[0].scrollHeight, $(overlay).innerHeight())
                 $(overlay).css('font-size', (parseInt($(overlay).css('font-size')) - 1) + 'px')
             }
 
@@ -509,7 +509,7 @@ $(function () {
 
         let signature = canvas.toDataURL("image/png")
         let pageContainer = $('.overlay-container.page-active')
-        let img = '<div class="inserted-signature-img inserted-signature-img-active" style="top:200px; left: 200px; position: absolute">' +
+        let img = '<div class="inserted-signature-img inserted-signature-img-active" style="top:200px; left: 200px; position: absolute; width: 100px; height: 50px">' +
             '   <img src="' + signature + '" style="width: 100%; height: 100%">' +
             '   <a class="btn del-sig" style="display: none">x</a>' +
             '</div>'
@@ -549,9 +549,9 @@ $('#btn-signature').click(function (e) {
 })
 
 
-// *************************
-// ***** HTML to Image *****
-// *************************
+// *********************
+// ***** Fill Data *****
+// *********************
 function cloneInput(node){
     let clone = node.cloneNode(true)
     clone.removeAttribute('id')
@@ -564,9 +564,8 @@ function cloneInput(node){
     return clone
 }
 
-$('.btn-fill').on('click', function (){
-    // show export btn
-    // $('#btn-export').slideDown()
+function fillData(callback){
+    let fillingData = []
 
     // show preview tab
     $('#preview-detect-res').removeClass('active in')
@@ -587,6 +586,12 @@ $('.btn-fill').on('click', function (){
         if (overlays[i].textContent !== ''){
             let clone = cloneInput(overlays[i])
             filledWrapper.append(clone)
+
+            let data = overlays[i]
+            let jsonData = {'type':'text', 'top': data.style.top, 'left': data.style.left,
+                'fontWeight': data.style.fontWeight, 'fontSize': data.style.fontSize, 'fontStyle':data.style.fontStyle,
+                'fontFamily':data.style.fontFamily, 'fontColor': data.style.color}
+            fillingData.push(jsonData)
         }
     }
     let insertedInputs = $('#detection-img-wrapper-' + pageID + '>.insert-input')
@@ -594,40 +599,38 @@ $('.btn-fill').on('click', function (){
         if (insertedInputs[i].textContent !== ''){
             let clone = cloneInput(insertedInputs[i])
             filledWrapper.append(clone)
+
+            let data = insertedInputs[i]
+            let jsonData = {'type':'text', 'top': data.style.top, 'left': data.style.left,
+                'fontWeight': data.style.fontWeight, 'fontSize': data.style.fontSize, 'fontStyle':data.style.fontStyle,
+                'fontFamily':data.style.fontFamily, 'fontColor': data.style.color}
+            fillingData.push(jsonData)
         }
     }
     let sigImg = $('#detection-img-wrapper-' + pageID + '>.inserted-signature-img')
     for (let i = 0; i < sigImg.length; i ++){
         let clone = sigImg[i].cloneNode(true)
         filledWrapper.append(clone)
+
+        let data = sigImg[i]
+        let jsonData = {'id':i, 'type':'img', 'top': data.style.top, 'left': data.style.left,
+            'width':data.style.width, 'height':data.style.height}
+        fillingData.push(jsonData)
     }
+
+    callback(fillingData)
+}
+
+$('.btn-fill').on('click', function (){
+   fillData(function (fillingData) {
+       console.log(fillingData)
+   })
 })
 
 
 //***********************
 //***** Export Form *****
 //***********************
-function getDivImage(pageID) {
-    $('.content-wrapper').css('overflow', 'unset')
-    $('.img-wrapper').css('overflow', 'unset')
-    let imgViewer = $('.img-viewer')
-    imgViewer.css('border', 'none')
-    imgViewer.css('box-shadow', 'none')
-
-    let filledImgWrapper = $('#fill-img-wrapper-' + pageID)
-    html2canvas(filledImgWrapper,{
-        onrendered: function (canvas) {
-            let imgData = canvas.toDataURL('image/png')
-            $('#filling-rest').attr('src', imgData)
-            $('.content-wrapper').css('overflow', 'auto')
-            $('.img-wrapper').css('overflow', 'auto')
-            let imgViewer = $('.img-viewer')
-            imgViewer.css('border', '1px solid')
-            imgViewer.css('box-shadow', '5px 10px lightgrey')
-        }
-    })
-}
-
 function screenshotHTMLPage(zip, pageID){
     if (pageID <= $('.page-btn').length){
         console.log('Page ID:', pageID)
