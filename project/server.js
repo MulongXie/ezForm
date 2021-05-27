@@ -75,7 +75,7 @@ function processImg(inputImgPath, res){
                 let resultPaths = JSON.parse(stdout.replace(/'/g, '"'))
                 // console.log(resultPaths)
                 console.log('Processing successfully');
-                res.json({code:1, resultPaths: resultPaths})
+                res.json({code:1, resultPaths: resultPaths, uploadFilePath:inputImgPath})
             }
         });
     processer.on('exit', function () {
@@ -83,54 +83,39 @@ function processImg(inputImgPath, res){
     });
 }
 
-app.post('/fillForm', function (req, res) {
+app.post('/exportForm', function (req, res) {
     // console.log(req.body)
-    let inputData = req.body.inputData
-    let resultPaths = req.body.resultPaths
+    let inputData = req.body.fillingData
+    if (inputData === undefined){inputData = []}
+    let uploadFilePath = req.body.uploadFilePath
+    let filledResultDir = req.body.filledResultDir
 
-    let inputPathSplit = resultPaths[0].inputImg.split('/');
-    let resultDir = './data/output/' + inputPathSplit[2].split('.')[0] + '/filled';
-    let filledFormImages = []
-
-    for (let i = 0; i < inputData.length; i ++){
-        // console.log(resultPaths[i])
-
-        let data = inputData[i]
-        let filledDataFile = resultDir + '/input_data' + (i+1) + '.json'
-        let filledFormImg = resultDir + '/filled' + (i+1) + '.jpg'
-
-        // store input data
-        fs.writeFile(filledDataFile, JSON.stringify(data, null, '\t'), function (err) {
-            if (! err){
-                // console.log('data store')
-                // fill the data on the form img
-                let processer = child_process.exec('python generation/fill.py ' + resultPaths[i].inputImg + ' ' + resultPaths[i].compoLocFile + ' ' + filledDataFile + ' ' + filledFormImg,
-                    function (error, stdout, stderr) {
-                        if (! error){
-                            filledFormImages.push(filledFormImg)
-                            console.log('Filling form successfully', filledFormImages.length);
-                            if (filledFormImages.length === inputData.length){
-                                filledFormImages.sort()
-                                // console.log(filledFormImages)
-                                res.json({code:1, filledFormImages:filledFormImages})
-                            }
-                        }
-                        else {
-                            console.log(stdout)
-                            console.log(error)
-                            res.json({code:0})
-                        }
-                    });
-                processer.on('exit', function () {
-                    // console.log('Program Completed');
+    // store input data
+    let filledDataFile = filledResultDir + 'input.json'
+    fs.writeFile(filledDataFile, JSON.stringify(inputData, null, '\t'), function (err) {
+        if (! err){
+            console.log('Filling data stored to ', filledDataFile)
+            // fill the data on the form img
+            let processer = child_process.exec('python generation/fill.py ' + filledDataFile + ' ' + uploadFilePath + ' ' + filledResultDir,
+                function (error, stdout, stderr) {
+                    if (! error){
+                        console.log('Filling form successfully');
+                        res.json({code:1, filledResultPDF:filledResultDir + 'filled.pdf'})
+                    }
+                    else {
+                        console.log(error)
+                        res.json({code:0})
+                    }
                 });
-            }
-            else{
-                console.log(err)
-                res.json({code:0})
-            }
-        });
-    }
+            processer.on('exit', function () {
+                // console.log('Program Completed');
+            });
+        }
+        else{
+            console.log(err)
+            res.json({code:0})
+        }
+    });
 })
 
 app.listen(3000,function(){

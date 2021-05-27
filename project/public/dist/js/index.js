@@ -1,4 +1,5 @@
 var resultPaths = null;
+var uploadFilePath = null
 
 //*********************
 //***** Modification *****
@@ -205,7 +206,7 @@ function presentResultPage(pageID, resultFiles){
             }
             // resize font to fit the box
             while ($(this)[0].scrollHeight > $(this).innerHeight() && parseInt($(this).css('font-size')) > 7){
-                console.log($(this)[0].scrollHeight, $(this).innerHeight())
+                // console.log($(this)[0].scrollHeight, $(this).innerHeight())
                 $(this).css('font-size', (parseInt($(this).css('font-size')) - 1) + 'px')
             }
         })
@@ -219,7 +220,7 @@ function presentResultPage(pageID, resultFiles){
             // console.log(i, field)
             overlays += '<div id="overlay-' + i + '-' + pageID +'" contenteditable="true" ' + 'data-target="' + i + '"' +
                 ' data-toggle="tooltip" title="Click to edit" class="overlay" style="top: ' + field['top'] + 'px; left: ' + field['left'] +
-                'px; width: ' + (field['right'] - field['left']) + 'px; height: ' + (field['bottom'] - field['top']) + 'px;"></div>\n'
+                'px; width: ' + (field['right'] - field['left']) + 'px; height: ' + (field['bottom'] - field['top']) + 'px; font-size: 15px"></div>\n'
         })
         $('#detection-img-wrapper-'+ pageID).append(overlays)
     })
@@ -278,6 +279,7 @@ function process(img, inputType){
 
                 // Add viewers to present results of each page (if many)
                 resultPaths = resp.resultPaths
+                uploadFilePath = resp.uploadFilePath
                 console.log(resp.resultPaths)
                 for(let i = 0; i < resp.resultPaths.length; i ++){
                     // console.log(i, resp.resultPaths[i])
@@ -588,7 +590,7 @@ function fillData(callback){
                 filledWrapper.append(clone)
 
                 let data = overlays[i]
-                let jsonData = {'type':'text', 'top': data.style.top, 'left': data.style.left,
+                let jsonData = {'page':pageID, 'type':'text', 'text':data.innerText, 'top': data.style.top, 'left': data.style.left,
                     'fontWeight': data.style.fontWeight, 'fontSize': data.style.fontSize, 'fontStyle':data.style.fontStyle,
                     'fontFamily':data.style.fontFamily, 'fontColor': data.style.color}
                 fillingData.push(jsonData)
@@ -601,7 +603,7 @@ function fillData(callback){
                 filledWrapper.append(clone)
 
                 let data = insertedInputs[i]
-                let jsonData = {'type':'text', 'top': data.style.top, 'left': data.style.left,
+                let jsonData = {'page':pageID, 'type':'text', 'text':data.innerText, 'top': data.style.top, 'left': data.style.left,
                     'fontWeight': data.style.fontWeight, 'fontSize': data.style.fontSize, 'fontStyle':data.style.fontStyle,
                     'fontFamily':data.style.fontFamily, 'fontColor': data.style.color}
                 fillingData.push(jsonData)
@@ -613,7 +615,8 @@ function fillData(callback){
             filledWrapper.append(clone)
 
             let data = sigImg[i]
-            let jsonData = {'id':i, 'type':'img', 'top': data.style.top, 'left': data.style.left,
+            let jsonData = {'page':pageID, 'id':i, 'type':'img', 'img':data.children[0].src,
+                'top': data.style.top, 'left': data.style.left,
                 'width':data.style.width, 'height':data.style.height}
             fillingData.push(jsonData)
         }
@@ -676,42 +679,21 @@ function screenshotHTMLPage(zip, pageID){
 }
 
 $('#btn-export').on('click', function () {
-    // let pageID = $('.page-btn-active').text()
-    // getDivImage(pageID)
-
-    // show the detection result tab
-    $('#preview-detect-res').removeClass('active in')
-    $('#li-tab-detect-res').removeClass('active')
-    $('#preview-filled-res').addClass('active in')
-    $('#li-tab-filled-res').addClass('active')
-
-    // show the full image
-    $('.content-wrapper').css('overflow', 'unset')
-    $('.img-wrapper').css('overflow', 'unset')
-    let imgViewer = $('.img-viewer')
-    imgViewer.css('border', 'none')
-    imgViewer.css('box-shadow', 'none')
-
-    var zip = new JSZip();
-    screenshotHTMLPage(zip, 1)
-
-    // for (let i = 0; i < $('.page-btn').length; i ++) {
-    //     console.log(i)
-    //     let pageID = i + 1
-    //     // show the full image
-    //     $('.content-wrapper').css('overflow', 'unset')
-    //     $('.img-wrapper').css('overflow', 'unset')
-    //     let imgViewer = $('.img-viewer')
-    //     imgViewer.css('border', 'none')
-    //     imgViewer.css('box-shadow', 'none')
-    //
-    // }
-    // setTimeout(function () {
-    //     goToPage(curPage)
-    //     zip.generateAsync({type: "blob"})
-    //         .then(function (content) {
-    //             // see FileSaver.js
-    //             saveAs(content, "form.zip");
-    //         })
-    // }, 1000)
+    fillData(function (fillingData) {
+        let fillingDir = resultPaths[0]['resultImg'].split('/')
+        fillingDir = 'data/output/' + fillingDir[2] + '/filled/'
+        $.ajax({
+            url: '/exportForm',
+            type: 'post',
+            data: {fillingData: fillingData, uploadFilePath:uploadFilePath, filledResultDir:fillingDir},
+            success: function (resp) {
+                if (resp.code === 1){
+                    alert('success')
+                }
+                else{
+                    alert('failed')
+                }
+            }
+        })
+    })
 })
