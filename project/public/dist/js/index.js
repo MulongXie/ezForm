@@ -312,8 +312,8 @@ function process(img, inputType){
                 // reset the container's size according to the form image
                 setTimeout(function () {
                     let imgWidth = $('#img-detection-res-1').width()
-                    $('.overlay-container').width(imgWidth)
-                    $('.filled-img-viewer').width(imgWidth)
+                    $('.overlay-container').width(imgWidth + 2)
+                    $('.filled-img-viewer').width(imgWidth + 2)
                     for (let i = 0; i < $('.page-btn').length; i ++) {
                         $('#img-filled-res-' + (i+1)).width(imgWidth)
                     }
