@@ -98,6 +98,49 @@ function goToPage(pageID){
     $(filledResPageID).addClass('page-active')
 }
 
+function inputCompoTracingOverlay(frame, pageID) {
+    // Trace overlay
+    $(frame).find('input').click(function () {
+        // remove active compo
+        let activeCompo = frame.getElementsByClassName('input-active')
+        if (activeCompo.length > 0) {activeCompo[0].classList.remove('input-active')}
+        $(this).addClass('input-active')
+
+        let inputId = this.id
+        let overlay =  $('#overlay-' + inputId + '-' + pageID)
+        $('.overlay-active').removeClass('overlay-active')
+        overlay.addClass('overlay-active')
+
+        let imgWrapper = $('.img-wrapper')
+        let offset = overlay.offset().top - imgWrapper.offset().top + imgWrapper.scrollTop() - 35
+        imgWrapper.animate({scrollTop: offset},'slow')
+
+        // show the detection result tab
+        $('#preview-filled-res').removeClass('active in')
+        $('#li-tab-filled-res').removeClass('active')
+        $('#preview-detect-res').addClass('active in')
+        $('#li-tab-detect-res').addClass('active')
+    })
+
+    // realtime type in on overlay
+    $(frame).find('input').on('input', function () {
+        let inputId = this.id
+        let overlay =  $('#overlay-' + inputId + '-' + pageID)
+        overlay.text($(this).val())
+
+        // resize font to fit the box
+        while ($(overlay)[0].scrollHeight > $(overlay).innerHeight() && parseInt($(overlay).css('font-size')) > 7){
+            // console.log($(overlay)[0].scrollHeight, $(overlay).innerHeight())
+            $(overlay).css('font-size', (parseInt($(overlay).css('font-size')) - 1) + 'px')
+        }
+
+        // enable font adjustment
+        $('#nav-font-adjust').show("slide", { direction: "left" }, 300)
+        $('.overlay-editing').removeClass('overlay-editing')
+        $(overlay).addClass('overlay-editing')
+    })
+}
+
 function presentResultPage(pageID, resultFiles){
     // 1. pagination
     $('.pagination').append('<li><a id="page-btn-' + pageID + '" class="page-btn">'+ pageID +'</a></li>')
@@ -128,44 +171,18 @@ function presentResultPage(pageID, resultFiles){
     // Trace input inner the iframe page
     $('#iframe-page-fill-' + pageID).on('load', function () {
         let frame = $('#iframe-page-fill-' + pageID)[0].contentWindow.document
-        // Trace overlay
-        $(frame).find('input').click(function () {
-            // remove active compo
-            let activeCompo = frame.getElementsByClassName('input-active')
-            if (activeCompo.length > 0) {activeCompo[0].classList.remove('input-active')}
-            $(this).addClass('input-active')
-
-            let inputId = this.id
-            let overlay =  $('#overlay-' + inputId + '-' + pageID)
-            $('.overlay-active').removeClass('overlay-active')
-            overlay.addClass('overlay-active')
-
-            let imgWrapper = $('.img-wrapper')
-            let offset = overlay.offset().top - imgWrapper.offset().top + imgWrapper.scrollTop() - 35
-            imgWrapper.animate({scrollTop: offset},'slow')
-
-            // show the detection result tab
-            $('#preview-filled-res').removeClass('active in')
-            $('#li-tab-filled-res').removeClass('active')
-            $('#preview-detect-res').addClass('active in')
-            $('#li-tab-detect-res').addClass('active')
-        })
-        // realtime type in on overlay
-        $(frame).find('input').on('input', function () {
-            let inputId = this.id
-            let overlay =  $('#overlay-' + inputId + '-' + pageID)
-            overlay.text($(this).val())
-
-            // resize font to fit the box
-            while ($(overlay)[0].scrollHeight > $(overlay).innerHeight() && parseInt($(overlay).css('font-size')) > 7){
-                // console.log($(overlay)[0].scrollHeight, $(overlay).innerHeight())
-                $(overlay).css('font-size', (parseInt($(overlay).css('font-size')) - 1) + 'px')
+        inputCompoTracingOverlay(frame, pageID)
+        // add new row in table
+        $(frame).find('.btn-add-row').click(function () {
+            let table = $(frame).find('#' + $(this).attr('data-target'))[0]
+            let rowNum = table.rows.length
+            let row = table.insertRow(rowNum)
+            for (let i=0; i < table.rows[rowNum - 1].cells.length; i++){
+                let cell = row.insertCell(i)
+                let cell_id = $(this).attr('data-target') + '-col-' + i.toString() + '-row-' + rowNum.toString()
+                cell.innerHTML = '<input id="' + cell_id + '">'
             }
-
-            // enable font adjustment
-            $('#nav-font-adjust').show("slide", { direction: "left" }, 300)
-            $('.overlay-editing').removeClass('overlay-editing')
-            $(overlay).addClass('overlay-editing')
+            inputCompoTracingOverlay(frame, pageID)
         })
 
         // Trace input compo
