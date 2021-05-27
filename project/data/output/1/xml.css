@@ -1,31 +1,30 @@
+.section-wrapper{
+	background-color: #f1f1f1;
+	padding: 10px;
+	margin: 20px;
+}
+.border-line{
+}
+table{
+	border: 1px solid black;
+	width: 100%;
+}
 th{
 	border: 1px solid black;
 	text-align: center !important;
 }
-.speaker{
-	margin-left: 10px;
+.content{
+	display: None;
 }
-.input-active{
-	background-color: yellow !important;
-}
-.border-line{
-}
-.section-title{
-	margin-bottom: 10px;
-	background-color: lightgrey;
-	border: 1px solid black;
-	justify-content: center;
-	transition: 0.5s;
-	margin-top: 10px;
-	cursor: pointer;
+td{
+	height: 20px;
 }
 table input{
-	width: 97%;
 	border: 1px solid black;
+	width: 97%;
 	margin: 0;
 }
-input{
-	margin: 5px;
+.input-wrapper{
 }
 label{
 	margin: 5px;
@@ -33,27 +32,28 @@ label{
 .section-title:hover{
 	background-color: #BFBEBE;
 }
-.section-wrapper{
-	background-color: #f1f1f1;
-	padding: 10px;
-	margin: 20px;
+p{
+	margin: 5px !important;
 }
-.input-wrapper{
-}
-td{
-	height: 20px;
-}
-table{
-	width: 100%;
+.section-title{
+	background-color: lightgrey;
 	border: 1px solid black;
+	margin-top: 10px;
+	cursor: pointer;
+	justify-content: center;
+	margin-bottom: 10px;
+	transition: 0.5s;
+}
+.input-active{
+	background-color: yellow !important;
 }
 .text-wrapper{
 	justify-content: space-around;
 	margin: 10px;
 }
-p{
-	margin: 5px !important;
+input{
+	margin: 5px;
 }
-.content{
-	display: None;
+.speaker{
+	margin-left: 10px;
 }

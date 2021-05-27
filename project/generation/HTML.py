@@ -190,7 +190,7 @@ class HTML:
 
         # add button to insert new row
         html += '<div style="display:block; margin-left:10px; width:80px">\n'
-        html += self.indent() + '<button class="btn btn-primary" style="padding:0; width: 80px; height: 35px" onclick="addRow(this)" data-target="' + self.id + '">Add Row</button>\n'
+        html += self.indent() + '<button class="btn btn-add-row btn-primary" style="padding:0; width: 80px; height: 35px" data-target="' + self.id + '">Add Row</button>\n'
         html += self.indent() + '<button class="btn btn-danger" style="padding:0; width: 80px; height: 35px" onclick="delRow(this)" data-target="' + self.id + '">Delete Row</button>\n'
         html += '</div>\n'
 

@@ -487,3 +487,29 @@
 5. Fix background width
 
 6. Add tooltips
+
+
+24/5/2021
+1. Add google analytic
+
+
+25/5/2021
+1. Set HTTPs
+
+2. Use python to edit pdf with text and image
+
+
+26/5/2021
+1. Transfer filling data from the web page
+
+2. Fill data into pdf
+
+
+27/5/2021
+1. Convert image form into pdf
+
+2. The tool supports export high quality pdf result
+
+3. Deploy on server
+
+**************** Archive Release 2.2 *********************
