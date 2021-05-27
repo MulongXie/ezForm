@@ -94,12 +94,12 @@ app.post('/exportForm', function (req, res) {
     let filledDataFile = filledResultDir + 'input.json'
     fs.writeFile(filledDataFile, JSON.stringify(inputData, null, '\t'), function (err) {
         if (! err){
-            console.log('Filling data stored to ', filledDataFile)
+            console.log('Filling data stored to', filledDataFile)
             // fill the data on the form img
             let processer = child_process.exec('python generation/fill.py ' + filledDataFile + ' ' + uploadFilePath + ' ' + filledResultDir,
                 function (error, stdout, stderr) {
                     if (! error){
-                        console.log('Filling form successfully');
+                        console.log('Filling form successfully', filledResultDir + 'filled.pdf');
                         res.json({code:1, filledResultPDF:filledResultDir + 'filled.pdf'})
                     }
                     else {

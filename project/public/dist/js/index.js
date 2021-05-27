@@ -688,7 +688,8 @@ $('#btn-export').on('click', function () {
             data: {fillingData: fillingData, uploadFilePath:uploadFilePath, filledResultDir:fillingDir},
             success: function (resp) {
                 if (resp.code === 1){
-                    alert('success')
+                    alert('Form Filled!')
+                    window.open(resp.filledResultPDF)
                 }
                 else{
                     alert('failed')
