@@ -621,7 +621,7 @@ function fillData(callback){
                 let data = overlays[i]
                 let jsonData = {'page':pageID, 'type':'text', 'text':data.innerText, 'top': data.style.top, 'left': data.style.left,
                     'fontWeight': data.style.fontWeight, 'fontSize': data.style.fontSize, 'fontStyle':data.style.fontStyle,
-                    'fontFamily':data.style.fontFamily, 'fontColor': data.style.color}
+                    'fontFamily':data.style.fontFamily, 'fontColor': data.style.color, 'textAlign': data.style.textAlign, 'boxWidth':data.style.width, 'boxHeight':data.style.height}
                 fillingData.push(jsonData)
             }
         }
@@ -634,7 +634,7 @@ function fillData(callback){
                 let data = insertedInputs[i]
                 let jsonData = {'page':pageID, 'type':'text', 'text':data.innerText, 'top': data.style.top, 'left': data.style.left,
                     'fontWeight': data.style.fontWeight, 'fontSize': data.style.fontSize, 'fontStyle':data.style.fontStyle,
-                    'fontFamily':data.style.fontFamily, 'fontColor': data.style.color}
+                    'fontFamily':data.style.fontFamily, 'fontColor': data.style.color, 'textAlign': data.style.textAlign}
                 fillingData.push(jsonData)
             }
         }
@@ -735,7 +735,7 @@ $('#btn-export').on('click', function () {
             data: {fillingData: fillingData, uploadFilePath:uploadFilePath, filledResultDir:fillingDir},
             success: function (resp) {
                 if (resp.code === 1){
-                    alert('Form Filled!')
+                    alert('Filling form successfully!')
                     window.open(resp.filledResultPDF)
                 }
                 else{

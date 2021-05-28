@@ -15,14 +15,17 @@ def resize_img_by_height(org, resize_height):
 
 def get_rect_box(data):
     if data['type'] == 'text':
-        print(data['fontSize'])
-        width = fitz.getTextlength(text=data['text'], fontsize=int(data['fontSize'][:-2])) + 2
-        height = int(data['fontSize'][:-2]) + 2
+        if 'boxWidth' in data:
+            width = int(data['boxWidth'].replace('px', ''))
+            height = int(data['boxHeight'].replace('px', ''))
+        else:
+            width = fitz.getTextlength(text=data['text'], fontsize=int(data['fontSize'][:-2])) + 2
+            height = int(data['fontSize'][:-2]) + 2
     elif data['type'] == 'img':
         width = float(data['width'][:-2])
         height = float(data['height'][:-2])
 
-    rect_x1 = float(data['left'][:-2])
+    rect_x1 = float(data['left'][:-2]) + 3
     rect_y1 = float(data['top'][:-2])
     rect_x2 = rect_x1 + width
     rect_y2 = rect_y1 + height
@@ -52,7 +55,8 @@ def fill_pdf(input_data_file, original_file, filled_result_dir):
     for data in input_data:
         page = doc[int(data['page']) - 1]
         if data['type'] == 'text':
-            page.insertTextbox(get_rect_box(data), data['text'], fontsize=int(data['fontSize'][:-2]), color=(0, 0, 0))
+            align_map = {'left':0, 'center':1, 'right':2, '':0}
+            page.insertTextbox(get_rect_box(data), data['text'], fontsize=int(data['fontSize'][:-2]), color=(0, 0, 0), align=align_map[data['textAlign']])
         elif data['type'] == 'img':
             sig_img = filled_result_dir + data['page'] + '-' + data['id'] + '.png'
             open(sig_img, 'wb').write(base64.b64decode(data['img'].replace('data:image/png;base64,', '')))
