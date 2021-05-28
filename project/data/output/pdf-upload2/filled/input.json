@@ -1,0 +1,45 @@
+[
+	{
+		"page": "1",
+		"type": "text",
+		"text": "ewqewq",
+		"top": "85.1493px",
+		"left": "87.059px",
+		"fontWeight": "bold",
+		"fontSize": "18px",
+		"fontStyle": "",
+		"fontFamily": "",
+		"fontColor": "",
+		"textAlign": ""
+	},
+	{
+		"page": "2",
+		"type": "text",
+		"text": "ewqewq",
+		"top": "236px",
+		"left": "72px",
+		"fontWeight": "",
+		"fontSize": "15px",
+		"fontStyle": "",
+		"fontFamily": "",
+		"fontColor": "",
+		"textAlign": "center",
+		"boxWidth": "113px",
+		"boxHeight": "26px"
+	},
+	{
+		"page": "2",
+		"type": "text",
+		"text": "321321",
+		"top": "236px",
+		"left": "185px",
+		"fontWeight": "",
+		"fontSize": "15px",
+		"fontStyle": "",
+		"fontFamily": "",
+		"fontColor": "",
+		"textAlign": "",
+		"boxWidth": "283px",
+		"boxHeight": "26px"
+	}
+]

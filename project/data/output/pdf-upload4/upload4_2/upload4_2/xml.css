@@ -1,0 +1,59 @@
+label{
+	margin: 5px;
+}
+.section-title{
+	cursor: pointer;
+	border: 1px solid black;
+	justify-content: center;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	transition: 0.5s;
+	background-color: lightgrey;
+}
+.speaker{
+	margin-left: 10px;
+}
+table{
+	border: 1px solid black;
+	width: 100%;
+}
+input{
+	margin: 5px;
+}
+.input-active{
+	background-color: yellow !important;
+}
+.content{
+	display: None;
+}
+.text-wrapper{
+	justify-content: space-around;
+	margin: 10px;
+}
+.border-line{
+}
+.section-wrapper{
+	padding: 10px;
+	background-color: #f1f1f1;
+	margin: 20px;
+}
+th{
+	text-align: center !important;
+	border: 1px solid black;
+}
+.input-wrapper{
+}
+p{
+	margin: 5px !important;
+}
+td{
+	height: 20px;
+}
+table input{
+	margin: 0;
+	border: 1px solid black;
+	width: 97%;
+}
+.section-title:hover{
+	background-color: #BFBEBE;
+}
