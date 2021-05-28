@@ -237,7 +237,7 @@ function presentResultPage(pageID, resultFiles){
             // console.log(i, field)
             overlays += '<div id="overlay-' + i + '-' + pageID +'" contenteditable="true" ' + 'data-target="' + i + '"' +
                 ' data-toggle="tooltip" title="Click to edit" class="overlay" style="top: ' + field['top'] + 'px; left: ' + field['left'] +
-                'px; width: ' + (field['right'] - field['left']) + 'px; height: ' + (field['bottom'] - field['top']) + 'px; font-size: 15px"></div>\n'
+                'px; width: ' + (field['right'] - field['left']) + 'px; height: ' + (field['bottom'] - field['top']) + 'px; font-size: 15px; padding-left: 3px;"></div>\n'
         })
         $('#detection-img-wrapper-'+ pageID).append(overlays)
     })
@@ -276,6 +276,7 @@ function process(img, inputType){
                 // alert('success')
                 $('.hero').slideUp()
                 $('.cta').slideUp()
+                $('#sect-description').slideUp()
                 $('#cover-page').slideUp()
                 $('#main-contents').slideDown()
                 $('#navbar-btn').slideDown()
@@ -395,7 +396,7 @@ function insertInputBox() {
         // insert new input box
         let inputBox = '<div class="insert-input insert-input-active text-left"' +
             ' style="left: ' + (e.pageX - pageContainer.offset().left) + 'px; top: ' + (e.pageY  - pageContainer.offset().top - 10) + 'px; ' +
-            'position: absolute; min-width: 100px; min-height: 20px; font-size: 15px" contenteditable="true"' +
+            'position: absolute; min-width: 100px; min-height: 20px; font-size: 15px; padding-left: 3px" contenteditable="true"' +
             ' data-toggle="tooltip" title="Drag to move & Click to edit"></div>'
         pageContainer.append(inputBox)
 
@@ -462,6 +463,15 @@ function fontAdjustment() {
         else {
             activeInput.css('font-style', 'italic')
         }
+    })
+    $('#font-center').click(function () {
+        $('.overlay-editing').css('text-align', 'center')
+    })
+    $('#font-left').click(function () {
+        $('.overlay-editing').css('text-align', 'left')
+    })
+    $('#font-right').click(function () {
+        $('.overlay-editing').css('text-align', 'right')
     })
     $('#input-del').click(function () {
         // clean overlay and corresponding input compo
@@ -579,7 +589,9 @@ function cloneInput(node){
     clone.removeAttribute('data-target')
     clone.classList.add('filled-input')
     clone.style.position = "absolute"
-    clone.style.textAlign = "left"
+    if (clone.style.textAlign === ''){
+        clone.style.textAlign = "left"
+    }
     return clone
 }
 

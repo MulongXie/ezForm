@@ -2,6 +2,14 @@ html {
   scroll-behavior: smooth;
 }
 
+/*******************/
+/*** Description ***/
+/*******************/
+#sect-description{
+  position: relative;
+  margin-top: 50px;
+}
+
 .file-upload-input {
   position: absolute;
   margin: 0;
