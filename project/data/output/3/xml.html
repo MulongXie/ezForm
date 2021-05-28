@@ -112,7 +112,7 @@
 				</tr>
 		</table>
 		<div style="display:block; margin-left:10px; width:80px">
-			<button class="btn btn-primary" style="padding:0; width: 80px; height: 35px" onclick="addRow(this)" data-target="tb-16">Add Row</button>
+			<button class="btn btn-add-row btn-primary" style="padding:0; width: 80px; height: 35px" data-target="tb-16">Add Row</button>
 			<button class="btn btn-danger" style="padding:0; width: 80px; height: 35px" onclick="delRow(this)" data-target="tb-16">Delete Row</button>
 		</div>
 	</div>
@@ -304,16 +304,16 @@
                 }
             })
         }
-        function addRow(ele) {
-            let table = document.getElementById(ele.dataset.target)
-            let rowNum = table.rows.length
-            let row = table.insertRow(rowNum)
-            for (let i=0; i < table.rows[rowNum - 1].cells.length; i++){
-                let cell = row.insertCell(i)
-                let cell_id = ele.dataset.target + '-col-' + i.toString() + '-row-' + rowNum.toString()
-                cell.innerHTML = '<input id="' + cell_id + '">'
-            }
-        }
+        // function addRow(ele) {
+        //    let table = document.getElementById(ele.dataset.target)
+        //    let rowNum = table.rows.length
+        //    let row = table.insertRow(rowNum)
+        //    for (let i=0; i < table.rows[rowNum - 1].cells.length; i++){
+        //        let cell = row.insertCell(i)
+        //        let cell_id = ele.dataset.target + '-col-' + i.toString() + '-row-' + rowNum.toString()
+        //        cell.innerHTML = '<input id="' + cell_id + '">'
+        //    }
+        // }
         function delRow(ele) {
             let table = document.getElementById(ele.dataset.target)
             let rowNum = table.rows.length

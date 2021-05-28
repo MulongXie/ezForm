@@ -1,54 +1,52 @@
+.speaker{
+	margin-left: 10px;
+}
+.input-active{
+	background-color: yellow !important;
+}
+th{
+	text-align: center !important;
+	border: 1px solid black;
+}
 p{
 	margin: 5px !important;
 }
-.input-wrapper{
+table input{
+	margin: 0;
+	width: 97%;
+	border: 1px solid black;
 }
 .section-title{
-	cursor: pointer;
 	margin-bottom: 10px;
-	justify-content: center;
 	border: 1px solid black;
 	margin-top: 10px;
-	background-color: lightgrey;
 	transition: 0.5s;
+	justify-content: center;
+	background-color: lightgrey;
+	cursor: pointer;
 }
-.speaker{
-	margin-left: 10px;
+label{
+	margin: 5px;
+}
+.section-title:hover{
+	background-color: #BFBEBE;
+}
+td{
+	height: 20px;
 }
 .section-wrapper{
 	padding: 10px;
 	background-color: #f1f1f1;
 	margin: 20px;
 }
-td{
-	height: 20px;
-}
-.input-active{
-	background-color: yellow !important;
-}
-table input{
-	width: 97%;
-	border: 1px solid black;
-	margin: 0;
-}
-label{
+input{
 	margin: 5px;
 }
-.border-line{
+.input-wrapper{
 }
 table{
 	width: 100%;
 	border: 1px solid black;
-}
-th{
-	text-align: center !important;
-	border: 1px solid black;
-}
-input{
-	margin: 5px;
-}
-.section-title:hover{
-	background-color: #BFBEBE;
 }
 .content{
 	display: None;
@@ -56,4 +54,6 @@ input{
 .text-wrapper{
 	justify-content: space-around;
 	margin: 10px;
+}
+.border-line{
 }

@@ -1,51 +1,41 @@
+.speaker{
+	margin-left: 10px;
+}
+.input-active{
+	background-color: yellow !important;
+}
+.border-line{
+}
 .section-wrapper{
 	background-color: #f1f1f1;
 	padding: 10px;
 	margin: 20px;
 }
-.border-line{
-}
-table{
-	border: 1px solid black;
-	width: 100%;
-}
 th{
-	border: 1px solid black;
 	text-align: center !important;
-}
-.content{
-	display: None;
-}
-td{
-	height: 20px;
+	border: 1px solid black;
 }
 table input{
-	border: 1px solid black;
 	width: 97%;
+	border: 1px solid black;
 	margin: 0;
 }
-.input-wrapper{
+.section-title{
+	justify-content: center;
+	margin-top: 10px;
+	border: 1px solid black;
+	cursor: pointer;
+	margin-bottom: 10px;
+	background-color: lightgrey;
+	transition: 0.5s;
 }
 label{
 	margin: 5px;
 }
+.input-wrapper{
+}
 .section-title:hover{
 	background-color: #BFBEBE;
-}
-p{
-	margin: 5px !important;
-}
-.section-title{
-	background-color: lightgrey;
-	border: 1px solid black;
-	margin-top: 10px;
-	cursor: pointer;
-	justify-content: center;
-	margin-bottom: 10px;
-	transition: 0.5s;
-}
-.input-active{
-	background-color: yellow !important;
 }
 .text-wrapper{
 	justify-content: space-around;
@@ -54,6 +44,16 @@ p{
 input{
 	margin: 5px;
 }
-.speaker{
-	margin-left: 10px;
+p{
+	margin: 5px !important;
+}
+table{
+	width: 100%;
+	border: 1px solid black;
+}
+td{
+	height: 20px;
+}
+.content{
+	display: None;
 }
