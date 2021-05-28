@@ -656,7 +656,16 @@ function fillData(callback){
 }
 
 $('.btn-fill').on('click', function (){
-    fillData()
+    fillData(function () {
+        // click the filled input to jump back
+        $('.filled-input').click(function () {
+            // show the detection result tab
+            $('#preview-filled-res').removeClass('active in')
+            $('#li-tab-filled-res').removeClass('active')
+            $('#preview-detect-res').addClass('active in')
+            $('#li-tab-detect-res').addClass('active')
+        })
+    })
 })
 
 
@@ -709,6 +718,15 @@ function screenshotHTMLPage(zip, pageID){
 
 $('#btn-export').on('click', function () {
     fillData(function (fillingData) {
+        // click the filled input to jump back
+        $('.filled-input').click(function () {
+            // show the detection result tab
+            $('#preview-filled-res').removeClass('active in')
+            $('#li-tab-filled-res').removeClass('active')
+            $('#preview-detect-res').addClass('active in')
+            $('#li-tab-detect-res').addClass('active')
+        })
+
         let fillingDir = resultPaths[0]['resultImg'].split('/')
         fillingDir = 'data/output/' + fillingDir[2] + '/filled/'
         $.ajax({
