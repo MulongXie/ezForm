@@ -1,59 +1,59 @@
-label{
-	margin: 5px;
-}
-table input{
-	margin: 0;
+.section-title{
 	border: 1px solid black;
-	width: 97%;
+	margin-top: 10px;
+	justify-content: center;
+	background-color: lightgrey;
+	transition: 0.5s;
+	margin-bottom: 10px;
+	cursor: pointer;
 }
-.content{
-	display: None;
+p{
+	margin: 5px !important;
 }
 .speaker{
 	margin-left: 10px;
+}
+input{
+	margin: 5px;
+}
+td{
+	height: 20px;
 }
 .text-wrapper{
 	margin: 10px;
 	justify-content: space-around;
 }
-table{
+table input{
+	width: 97%;
+	margin: 0;
 	border: 1px solid black;
-	width: 100%;
 }
 .section-title:hover{
 	background-color: #BFBEBE;
 }
-input{
-	margin: 5px;
+table{
+	width: 100%;
+	border: 1px solid black;
 }
-.input-active{
-	background-color: yellow !important;
+.content{
+	display: None;
+}
+.input-wrapper{
 }
 .border-line{
 }
-.section-title{
-	margin-top: 10px;
-	cursor: pointer;
-	margin-bottom: 10px;
-	background-color: lightgrey;
-	border: 1px solid black;
-	transition: 0.5s;
-	justify-content: center;
+.section-wrapper{
+	background-color: #f1f1f1;
+	margin: 20px;
+	padding: 10px;
+}
+label{
+	margin: 5px;
 }
 th{
 	text-align: center !important;
 	border: 1px solid black;
 }
-p{
-	margin: 5px !important;
-}
-.input-wrapper{
-}
-td{
-	height: 20px;
-}
-.section-wrapper{
-	margin: 20px;
-	background-color: #f1f1f1;
-	padding: 10px;
+.input-active{
+	background-color: yellow !important;
 }

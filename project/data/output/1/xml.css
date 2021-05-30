@@ -1,59 +1,59 @@
-.section-title{
-	background-color: lightgrey;
-	justify-content: center;
-	margin-bottom: 10px;
-	margin-top: 10px;
-	cursor: pointer;
-	transition: 0.5s;
-	border: 1px solid black;
-}
-td{
-	height: 20px;
-}
-table{
-	width: 100%;
-	border: 1px solid black;
-}
-input{
-	margin: 5px;
-}
-table input{
-	width: 97%;
-	border: 1px solid black;
-	margin: 0;
-}
 p{
 	margin: 5px !important;
 }
-.section-title:hover{
-	background-color: #BFBEBE;
-}
-.content{
-	display: None;
-}
-.input-active{
-	background-color: yellow !important;
-}
-label{
-	margin: 5px;
-}
-.input-wrapper{
-}
-.border-line{
-}
 .section-wrapper{
-	background-color: #f1f1f1;
 	margin: 20px;
+	background-color: #f1f1f1;
 	padding: 10px;
 }
 .speaker{
 	margin-left: 10px;
 }
 .text-wrapper{
-	justify-content: space-around;
 	margin: 10px;
+	justify-content: space-around;
+}
+table input{
+	border: 1px solid black;
+	width: 97%;
+	margin: 0;
+}
+.section-title{
+	margin-top: 10px;
+	margin-bottom: 10px;
+	justify-content: center;
+	background-color: lightgrey;
+	transition: 0.5s;
+	border: 1px solid black;
+	cursor: pointer;
+}
+.border-line{
+}
+.input-wrapper{
+}
+.section-title:hover{
+	background-color: #BFBEBE;
 }
 th{
 	text-align: center !important;
 	border: 1px solid black;
+}
+label{
+	margin: 5px;
+}
+input{
+	margin: 5px;
+}
+td{
+	height: 20px;
+}
+table{
+	border: 1px solid black;
+	width: 100%;
+}
+.input-active{
+	background-color: yellow !important;
+}
+.content{
+	display: None;
 }

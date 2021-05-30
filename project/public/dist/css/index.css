@@ -10,6 +10,43 @@ html {
   margin-top: 50px;
 }
 
+.desp-wrapper{
+  /*border: 1px solid black;*/
+  height: 800px;
+}
+
+.desp-input{
+  height: 38%;
+  margin: 10px;
+}
+
+.desp-input-img{
+  height: 90%;
+  box-shadow: 0 0 5px 5px lightgrey;
+  margin: 5px auto 10px;
+}
+
+.desp-ezform{
+  position: relative;
+  height: 800px;
+}
+
+.desp-detect-img{
+  /*box-shadow: 0 0 5px 5px lightgrey;*/
+  /*width: 90%;*/
+  margin: 0 auto 15px
+}
+
+.desp-export{
+  margin-top: 30px;
+}
+
+.desp-filling-page{
+  box-shadow: 0 0 5px 5px lightgrey;
+  border: 1px solid black;
+  margin: 0 auto 20px;
+}
+
 .file-upload-input {
   position: absolute;
   margin: 0;
