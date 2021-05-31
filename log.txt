@@ -528,4 +528,5 @@
 
 2. Start animation while scrolled to certain position
 
+3. Decorate the page
 **************** Archive Release 2.3 *********************

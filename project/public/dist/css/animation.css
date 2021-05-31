@@ -131,7 +131,7 @@
 }
 
 .bounce-in-filled {
-    animation: bounce-in 4s ease;
+    animation: bounce-in 3s ease;
 }
 @keyframes bounce-in {
     0% {

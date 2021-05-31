@@ -8,6 +8,22 @@ html {
 #sect-description{
   position: relative;
   margin-top: 50px;
+  margin-bottom: 80px;
+}
+
+.desp-container{
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.stamp{
+  width: 50px;
+  height: 50px;
+  background: antiquewhite;
+  border-radius: 50%;
+  padding: 12px;
+  margin-bottom: -43px;
+  color: brown;
 }
 
 .desp-wrapper{
@@ -45,6 +61,52 @@ html {
   box-shadow: 0 0 5px 5px lightgrey;
   border: 1px solid black;
   margin: 0 auto 20px;
+}
+
+.color-ezform{
+  color: darkorange;
+  font-weight: bold;
+}
+
+.color-cv{
+  font-size: 17px;
+  font-style: italic;
+  font-weight: bold;
+  background: -webkit-linear-gradient(deepskyblue, greenyellow);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.color-excel{
+  color: #3c763d;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.color-pdf{
+  color: red;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.color-photo{
+  color: #c0a16b;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.color-screenshot{
+  color: #31b0d5;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.color-smart{
+  background: -webkit-linear-gradient(deepskyblue, greenyellow);
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  font-weight: bold;
+  font-size: 16px;
 }
 
 .file-upload-input {
