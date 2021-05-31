@@ -513,3 +513,19 @@
 3. Deploy on server
 
 **************** Archive Release 2.2 *********************
+
+
+28/5/2021
+1. Adjust text align in input box
+
+
+30/5/2021
+1. Add description section
+
+
+31/5/2021
+1. Add animation for description section
+
+2. Start animation while scrolled to certain position
+
+**************** Archive Release 2.3 *********************
