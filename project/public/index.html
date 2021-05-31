@@ -30,6 +30,7 @@
     <!-- Custom -->
     <link rel="stylesheet" href="dist/css/style.css">
     <link rel="stylesheet" href="dist/css/index.css">
+    <link rel="stylesheet" href="dist/css/animation.css">
     <!-- Bootstrap -->
     <link rel="stylesheet" href="./bootstrap/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -127,32 +128,40 @@
                         <div class="row">
                             <div class="col-sm-8" style="height: 800px">
                                 <div class="desp-input text-center">
-                                    <img src="description/photo.png" class="desp-input-img">
-                                    <p>Photo of paper form</p>
+                                    <img src="description/photo.png" class="rotate-in-down-left desp-input-img">
+                                    <p class="bounce-in">Photo of paper form</p>
                                 </div>
                                 <div class="text-center" style="height: 12%; margin:30px 0 40px;">
-                                    <img src="description/pdf.png" class="desp-input-img" style="box-shadow:none">
-                                    <p>PDF file of e-form</p>
+                                    <img src="description/pdf.png" class="rotate-in-down-left desp-input-img" style="box-shadow:none">
+                                    <p class="bounce-in">PDF file of e-form</p>
                                 </div>
                                 <div class="desp-input text-center">
-                                    <img src="description/screenshot.jpg" class="desp-input-img">
-                                    <p>Screenshot of e-form</p>
+                                    <img src="description/screenshot.jpg" class="rotate-in-down-left desp-input-img">
+                                    <p class="bounce-in">Screenshot of e-form</p>
                                 </div>
                             </div>
                             <div class="col-sm-4" style="height: 800px; position: relative">
-                                <img src="description/arrows.png" style="position: absolute; top: 34%">
+                                <img src="description/arrows.png" class="bounce-in-left" style="position: absolute; top: 34%">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+<!--                        <img src="description/ezform.png" class="wobble" style="position: absolute; top: 45%; width: 95%">-->
+                        <div class="row">
+                            <div class="col-sm-8 desp-ezform">
+                                <img src="description/logo-light.svg" class="gelatine" style="position: absolute; top: 45%; width: 90%">
+                            </div>
+                            <div class="col-sm-4 desp-ezform">
+                                <img src="description/arrow-single.png" class="bounce-in-left-later" style="position: absolute; top: 47%;">
                             </div>
                         </div>
                     </div>
                     <div class="col-md-4 desp-wrapper">
-                        <img src="description/ezform.png" style="position: absolute; top: 45%; width: 95%">
-                    </div>
-                    <div class="col-md-4 desp-wrapper">
                         <div class="row" style="height: 800px; position: relative;">
                             <div class="text-center" style="position: absolute; top: 20%;">
-                                <img src="description/1.png" class="desp-detect-img">
-                                <p>Detected Text & Input compos through </p>
-                                <p>Computer Vision Techniques</p>
+                                <img src="description/1.png" class="grow desp-detect-img">
+                                <p class="bounce-in">Detected Text & Input compos through </p>
+                                <p class="bounce-in">Computer Vision Techniques</p>
                             </div>
                         </div>
                     </div>
@@ -161,12 +170,12 @@
                 <div class="row text-center">
                     <h4>Filling the form and get the filled result</h4>
                     <div class="col-sm-7 desp-export text-center">
-                        <img class="desp-filling-page" src="description/filling.jpg">
-                        <p>Filling the form using generated SMART</p>
+                        <img class="desp-filling-page wobble" src="description/filling.jpg">
+                        <p class="bounce-in-filled">Filling the form using generated SMART</p>
                     </div>
                     <div class="col-sm-5 desp-export text-center">
-                        <img src="description/export.png" style="margin-bottom: 20px; margin-top: 10px">
-                        <p>Export the filled form in PDF format along with an Excel</p>
+                        <img class="bounce-in-left-filled" src="description/export.png" style="margin-bottom: 20px; margin-top: 10px">
+                        <p class="bounce-in-filled">Export the filled form in PDF format along with an Excel</p>
                     </div>
                 </div>
             </div>
