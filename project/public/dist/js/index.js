@@ -2,6 +2,34 @@ var resultPaths = null;
 var uploadFilePath = null
 
 //*********************
+//***** Animation *****
+//*********************
+$(document).ready(function () {
+    let despDetection = $('#desp-detection')
+    let despFilling = $('#desp-filling')
+    $(this).scroll(function () {
+        // ! despDetection.is(':visible') || ! despFilling.is(':visible')
+        if (true){
+            let descriptSectionScrollTop = $('#sect-description').offset().top - $(this).scrollTop()
+            if (descriptSectionScrollTop > 0){
+                if ($(window).height() - descriptSectionScrollTop > 300){
+                    despDetection.slideDown()
+                }
+            }
+            else{
+                let descpDetectionScroolTop = despDetection.offset().top + despDetection.height() - $(this).scrollTop()
+                console.log($(window).height() - descpDetectionScroolTop)
+                if (descpDetectionScroolTop > 0){
+                    if ($(window).height() - descpDetectionScroolTop > 300){
+                        despFilling.slideDown()
+                    }
+                }
+            }
+        }
+    })
+})
+
+//*********************
 //***** Modification *****
 //*********************
 $('video').bind('play', function (e) {
