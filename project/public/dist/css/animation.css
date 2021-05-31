@@ -38,12 +38,10 @@
 }
 
 .gelatine {
-    animation: gelatine 7s ;
+    animation: gelatine 5s ;
 }
 @keyframes gelatine {
-    30% { transform: scale(1, 1); }
-    40% { transform: scale(0.8, 1.2); }
-    50% { transform: scale(1.2, 0.8); }
+    50% { transform: scale(1, 1); }
     60% { transform: scale(0.8, 1.1); }
     70% { transform: scale(1.1, 0.9); }
     80% { transform: scale(0.9, 1.1); }
@@ -52,7 +50,7 @@
 }
 
 .bounce-in-left-later {
-    animation: bounce-in-left-later 9s ease;
+    animation: bounce-in-left-later 7s ease;
 }
 @keyframes bounce-in-left-later {
     0% {
@@ -71,7 +69,7 @@
 }
 
 .grow {
-    animation: grow 10s ease;
+    animation: grow 7s ease;
 }
 @keyframes grow {
     0% {transform: scale(0);}
@@ -80,7 +78,7 @@
 }
 
 .bounce-in {
-    animation: bounce-in 10s ease;
+    animation: bounce-in 7s ease;
 }
 @keyframes bounce-in {
     0% {
