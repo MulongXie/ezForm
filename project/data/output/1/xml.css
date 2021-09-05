@@ -1,59 +1,59 @@
 p{
 	margin: 5px !important;
 }
-.section-wrapper{
-	margin: 20px;
-	background-color: #f1f1f1;
-	padding: 10px;
+td{
+	height: 20px;
 }
-.speaker{
-	margin-left: 10px;
+.content{
+	display: None;
 }
 .text-wrapper{
-	margin: 10px;
 	justify-content: space-around;
+	margin: 10px;
 }
-table input{
-	border: 1px solid black;
-	width: 97%;
-	margin: 0;
+label{
+	margin: 5px;
 }
-.section-title{
-	margin-top: 10px;
-	margin-bottom: 10px;
-	justify-content: center;
-	background-color: lightgrey;
-	transition: 0.5s;
-	border: 1px solid black;
-	cursor: pointer;
+.section-wrapper{
+	padding: 10px;
+	margin: 20px;
+	background-color: #f1f1f1;
 }
 .border-line{
 }
 .input-wrapper{
 }
-.section-title:hover{
-	background-color: #BFBEBE;
+.input-active{
+	background-color: yellow !important;
 }
-th{
-	text-align: center !important;
+table{
+	width: 100%;
 	border: 1px solid black;
 }
-label{
-	margin: 5px;
+.section-title{
+	cursor: pointer;
+	background-color: lightgrey;
+	justify-content: center;
+	margin-bottom: 10px;
+	margin-top: 10px;
+	border: 1px solid black;
+	transition: 0.5s;
+}
+table input{
+	border: 1px solid black;
+	margin: 0;
+	width: 97%;
 }
 input{
 	margin: 5px;
 }
-td{
-	height: 20px;
+.speaker{
+	margin-left: 10px;
 }
-table{
+th{
 	border: 1px solid black;
-	width: 100%;
+	text-align: center !important;
 }
-.input-active{
-	background-color: yellow !important;
-}
-.content{
-	display: None;
+.section-title:hover{
+	background-color: #BFBEBE;
 }

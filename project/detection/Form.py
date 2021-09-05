@@ -11,6 +11,8 @@ import time
 import numpy as np
 import string
 import os
+import json
+from os.path import join as pjoin
 
 
 def form_compo_detection(form_img_file_name, resize_height=None, export_dir='data/output/'):
@@ -71,7 +73,7 @@ class Form:
         self.img_file_name = img_file_name
         self.resize_height = resize_height
         self.img = Image(img_file_name, resize_height=resize_height)
-        self.form_name = img_file_name.split('/')[-1][:-4]
+        self.form_name = img_file_name.replace('\\', '/').split('/')[-1][:-4]
 
         # atomic elements
         self.texts = []             # detected by ocr
@@ -97,8 +99,9 @@ class Form:
         self.unit_groups = []  # 3-d list, groups of units segmented by separators, [[[sep1-left-group], [sep1-right-group], [sep1-top-group], [sep1-bottom-group]]]
 
         self.detection_result_img = None
+        self.detection_result_json = None
         self.export_dir = os.path.join(export_dir, self.form_name)
-        os.makedirs(self.export_dir, exist_ok=True)
+        # os.makedirs(self.export_dir, exist_ok=True)
 
     '''
     ****************************
@@ -1113,3 +1116,69 @@ class Form:
             export_dir = self.export_dir
         # print('Write to:', os.path.join(export_dir, 'detection.jpg'))
         cv2.imwrite(os.path.join(export_dir, 'detection.jpg'), board)
+
+    def export_texts(self, write_dir):
+        '''
+        write out visualized result and json file: {id, type:'text', content, location:{left, top, bottom, right}}
+        '''
+        os.makedirs(write_dir, exist_ok=True)
+        board = self.get_img_copy()
+        texts_json = []
+        for text in self.texts:
+            text.visualize_element(board)
+            texts_json.append({'id': text.id, 'type': 'text', 'content': text.content, 'location': text.location})
+        cv2.imwrite(pjoin(write_dir, self.form_name + '.jpg'), board)
+        json.dump(texts_json, open(pjoin(write_dir, self.form_name + '.json'), 'w'), indent=4)
+        print('Export texts to:', pjoin(write_dir, self.form_name + '.json'))
+
+    def export_shapes(self, write_dir):
+        '''
+        write out visualized result and json file: {id, type, location:{left, top, bottom, right}}
+        '''
+        os.makedirs(write_dir, exist_ok=True)
+        board = self.get_img_copy()
+        shapes_json = []
+        for shape in self.rectangles + self.squares + self.lines:
+            # if not rec.is_abandoned:
+            shape.visualize_element(board)
+            shapes_json.append({'id': shape.id, 'type': shape.type, 'location': shape.location})
+        cv2.imwrite(pjoin(write_dir, self.form_name + '.jpg'), board)
+        json.dump(shapes_json, open(pjoin(write_dir, self.form_name + '.json'), 'w'), indent=4)
+        print('Export shapes to:', pjoin(write_dir, self.form_name + '.json'))
+
+    def export_final_results(self, write_dir):
+        '''
+        write out visualized result and json file: {id, type, location:{left, top, bottom, right}}
+        '''
+        os.makedirs(write_dir, exist_ok=True)
+        board = self.get_img_copy()
+        compos_json = []
+        for text in self.texts:
+            if not text.in_box and not text.is_abandoned and not text.is_module_part:
+                text.visualize_element(board)
+                compos_json.append({'id': text.id, 'type': 'text', 'content': text.content, 'location': text.location})
+
+        for rec in self.rectangles:
+            if not rec.is_abandoned and not rec.is_module_part:
+                rec.visualize_element(board)
+                compos_json.append({'id': rec.id, 'type': rec.type, 'location': rec.location})
+
+        for line in self.lines:
+            if not line.is_abandoned and not line.is_module_part:
+                line.visualize_element(board)
+                compos_json.append({'id': line.id, 'type': line.type, 'location': line.location})
+
+        for table in self.tables:
+            table.visualize_element(board, color=(255, 255, 0))
+            compos_json.append({'id': table.id, 'type': table.type, 'location': table.location})
+
+        for ipt in self.inputs:
+            ipt.visualize_element(board, color=(255, 0, 255))
+            compos_json.append({'id': ipt.id, 'type': ipt.type, 'label': ipt.guide_text.content, 'location': ipt.location})
+
+        self.detection_result_img = board
+        self.detection_result_json = compos_json
+
+        cv2.imwrite(pjoin(write_dir, self.form_name + '.jpg'), board)
+        json.dump(compos_json, open(pjoin(write_dir, self.form_name + '.json'), 'w'), indent=4)
+        print('Export final result to:', pjoin(write_dir, self.form_name + '.json'))
