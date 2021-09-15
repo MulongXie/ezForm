@@ -30,6 +30,8 @@ def form_compo_detection(form_img_file_name, resize_height=None, export_dir='dat
     form.shrink_text_and_filter_noises()
     form.assign_element_ids()
     # form.visualize_all_elements()
+    form.export_texts(pjoin(export_dir, 'text'))
+    form.export_shapes(pjoin(export_dir, 'shape'))
 
     # *** 3. Special element recognition ***
     form.border_and_textbox_recognition()
@@ -56,15 +58,15 @@ def form_compo_detection(form_img_file_name, resize_height=None, export_dir='dat
     # form.visualize_all_elements()
 
     # *** 7. Input compound recognition ***
+    form.text_refine()
     form.input_compound_recognition()
     # form.visualize_detection_result()
     form.input_refine()
-    # form.visualize_inputs()
-    form.text_refine()
     # form.visualize_detection_result()
+    form.export_final_results(pjoin(export_dir, 'detection'))
 
     # *** 8. Export ***
-    form.export_detection_result_img()
+    # form.export_detection_result_img()
     return form
 
 
@@ -1129,7 +1131,7 @@ class Form:
             texts_json.append({'id': text.id, 'type': 'text', 'content': text.content, 'location': text.location})
         cv2.imwrite(pjoin(write_dir, self.form_name + '.jpg'), board)
         json.dump(texts_json, open(pjoin(write_dir, self.form_name + '.json'), 'w'), indent=4)
-        print('Export texts to:', pjoin(write_dir, self.form_name + '.json'))
+        # print('Export texts to:', pjoin(write_dir, self.form_name + '.json'))
 
     def export_shapes(self, write_dir):
         '''
@@ -1144,7 +1146,7 @@ class Form:
             shapes_json.append({'id': shape.id, 'type': shape.type, 'location': shape.location})
         cv2.imwrite(pjoin(write_dir, self.form_name + '.jpg'), board)
         json.dump(shapes_json, open(pjoin(write_dir, self.form_name + '.json'), 'w'), indent=4)
-        print('Export shapes to:', pjoin(write_dir, self.form_name + '.json'))
+        # print('Export shapes to:', pjoin(write_dir, self.form_name + '.json'))
 
     def export_final_results(self, write_dir):
         '''
@@ -1181,4 +1183,4 @@ class Form:
 
         cv2.imwrite(pjoin(write_dir, self.form_name + '.jpg'), board)
         json.dump(compos_json, open(pjoin(write_dir, self.form_name + '.json'), 'w'), indent=4)
-        print('Export final result to:', pjoin(write_dir, self.form_name + '.json'))
+        # print('Export final result to:', pjoin(write_dir, self.form_name + '.json'))
