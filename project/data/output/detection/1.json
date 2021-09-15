@@ -1,0 +1,281 @@
+[
+    {
+        "location": {
+            "right": 578,
+            "bottom": 680,
+            "left": 49,
+            "top": 642
+        },
+        "content": "I give permission for my academic record and other documents to be held by ANUSA and the University to be assessed for the\nANU Book Award. Any information supplied will be treated in confidence and will be used by ANUSA and the University to determine\neligibility for this program only. I declare that the information provided on this form is true and complete.",
+        "type": "text",
+        "id": 17
+    },
+    {
+        "location": {
+            "right": 583,
+            "bottom": 731,
+            "left": 44,
+            "top": 712
+        },
+        "type": "textbox",
+        "id": 39
+    },
+    {
+        "location": {
+            "right": 583,
+            "bottom": 643,
+            "left": 44,
+            "top": 622
+        },
+        "type": "textbox",
+        "id": 42
+    },
+    {
+        "location": {
+            "right": 583,
+            "bottom": 389,
+            "left": 44,
+            "top": 368
+        },
+        "type": "textbox",
+        "id": 55
+    },
+    {
+        "location": {
+            "right": 583,
+            "bottom": 228,
+            "left": 44,
+            "top": 208
+        },
+        "type": "textbox",
+        "id": 71
+    },
+    {
+        "location": {
+            "right": 583,
+            "bottom": 133,
+            "left": 44,
+            "top": 112
+        },
+        "type": "textbox",
+        "id": 79
+    },
+    {
+        "location": {
+            "right": 584,
+            "bottom": 113,
+            "left": 43,
+            "top": 77
+        },
+        "type": "textbox",
+        "id": 80
+    },
+    {
+        "location": {
+            "right": 583,
+            "bottom": 369,
+            "left": 44,
+            "top": 228
+        },
+        "type": "table",
+        "id": 1
+    },
+    {
+        "location": {
+            "right": 583,
+            "bottom": 806,
+            "left": 330,
+            "top": 788
+        },
+        "label": "Date:",
+        "type": "input",
+        "id": null
+    },
+    {
+        "location": {
+            "right": 329,
+            "bottom": 806,
+            "left": 44,
+            "top": 788
+        },
+        "label": "Co- signed:",
+        "type": "input",
+        "id": null
+    },
+    {
+        "location": {
+            "right": 583,
+            "bottom": 787,
+            "left": 330,
+            "top": 769
+        },
+        "label": "Date:",
+        "type": "input",
+        "id": null
+    },
+    {
+        "location": {
+            "right": 329,
+            "bottom": 787,
+            "left": 44,
+            "top": 769
+        },
+        "label": "Co- signed:",
+        "type": "input",
+        "id": null
+    },
+    {
+        "location": {
+            "right": 583,
+            "bottom": 768,
+            "left": 330,
+            "top": 750
+        },
+        "label": "Date of decision:",
+        "type": "input",
+        "id": null
+    },
+    {
+        "location": {
+            "right": 329,
+            "bottom": 768,
+            "left": 44,
+            "top": 750
+        },
+        "label": "Decision on application and amount awarded:",
+        "type": "input",
+        "id": null
+    },
+    {
+        "location": {
+            "right": 583,
+            "bottom": 750,
+            "left": 330,
+            "top": 731
+        },
+        "label": "Date received:",
+        "type": "input",
+        "id": null
+    },
+    {
+        "location": {
+            "right": 329,
+            "bottom": 750,
+            "left": 44,
+            "top": 731
+        },
+        "label": "Application received by:",
+        "type": "input",
+        "id": null
+    },
+    {
+        "location": {
+            "right": 583,
+            "bottom": 712,
+            "left": 330,
+            "top": 681
+        },
+        "label": "Date:",
+        "type": "input",
+        "id": null
+    },
+    {
+        "location": {
+            "right": 329,
+            "bottom": 712,
+            "left": 44,
+            "top": 681
+        },
+        "label": "Signature of applicant:",
+        "type": "input",
+        "id": null
+    },
+    {
+        "location": {
+            "right": 583,
+            "bottom": 209,
+            "left": 44,
+            "top": 190
+        },
+        "label": "Domestic or International student:",
+        "type": "input",
+        "id": null
+    },
+    {
+        "location": {
+            "right": 583,
+            "bottom": 190,
+            "left": 44,
+            "top": 171
+        },
+        "label": "Program of study:( eg, Bachelor or Master of Visual Arts)",
+        "type": "input",
+        "id": null
+    },
+    {
+        "location": {
+            "right": 583,
+            "bottom": 171,
+            "left": 330,
+            "top": 153
+        },
+        "label": "Email:",
+        "type": "input",
+        "id": null
+    },
+    {
+        "location": {
+            "right": 329,
+            "bottom": 171,
+            "left": 175,
+            "top": 153
+        },
+        "label": "Phone:",
+        "type": "input",
+        "id": null
+    },
+    {
+        "location": {
+            "right": 174,
+            "bottom": 171,
+            "left": 44,
+            "top": 151
+        },
+        "label": "Date of birth:",
+        "type": "input",
+        "id": null
+    },
+    {
+        "location": {
+            "right": 583,
+            "bottom": 152,
+            "left": 330,
+            "top": 134
+        },
+        "label": "Student ID:",
+        "type": "input",
+        "id": null
+    },
+    {
+        "location": {
+            "right": 329,
+            "bottom": 152,
+            "left": 44,
+            "top": 134
+        },
+        "label": "Name:",
+        "type": "input",
+        "id": null
+    },
+    {
+        "location": {
+            "right": 583,
+            "bottom": 622,
+            "left": 44,
+            "top": 390
+        },
+        "label": "Please explain your situation and your reasons for needing assistance, including the steps that you have taken to resolve your\ncurrent financial situation.",
+        "type": "input",
+        "id": null
+    }
+]

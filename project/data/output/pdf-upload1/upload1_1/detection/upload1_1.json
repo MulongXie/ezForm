@@ -1,0 +1,944 @@
+[
+    {
+        "content": "10.007 06/2016",
+        "location": {
+            "top": 17,
+            "bottom": 22,
+            "right": 572,
+            "left": 528
+        },
+        "id": 0,
+        "type": "text"
+    },
+    {
+        "content": "Access\nCanberra.",
+        "location": {
+            "top": 29,
+            "bottom": 57,
+            "right": 204,
+            "left": 133
+        },
+        "id": 1,
+        "type": "text"
+    },
+    {
+        "content": "Application for a Driver Licence",
+        "location": {
+            "top": 36,
+            "bottom": 53,
+            "right": 571,
+            "left": 332
+        },
+        "id": 3,
+        "type": "text"
+    },
+    {
+        "content": "ACT",
+        "location": {
+            "top": 31,
+            "bottom": 46,
+            "right": 103,
+            "left": 68
+        },
+        "id": 4,
+        "type": "text"
+    },
+    {
+        "content": "Government",
+        "location": {
+            "top": 47,
+            "bottom": 55,
+            "right": 104,
+            "left": 69
+        },
+        "id": 5,
+        "type": "text"
+    },
+    {
+        "content": "Personal details",
+        "location": {
+            "top": 63,
+            "bottom": 74,
+            "right": 104,
+            "left": 30
+        },
+        "id": 6,
+        "type": "text"
+    },
+    {
+        "content": "Gender",
+        "location": {
+            "top": 115,
+            "bottom": 123,
+            "right": 332,
+            "left": 300
+        },
+        "id": 10,
+        "type": "text"
+    },
+    {
+        "content": "Previous name/ s",
+        "location": {
+            "top": 260,
+            "bottom": 268,
+            "right": 282,
+            "left": 209
+        },
+        "id": 22,
+        "type": "text"
+    },
+    {
+        "content": "Please provide details if you hold( or have held) any of the following ACT issued cards( one card is sufficient):",
+        "location": {
+            "top": 328,
+            "bottom": 342,
+            "right": 457,
+            "left": 29
+        },
+        "id": 29,
+        "type": "text"
+    },
+    {
+        "content": "ACT Issued Drivers Licence",
+        "location": {
+            "top": 346,
+            "bottom": 354,
+            "right": 241,
+            "left": 132
+        },
+        "id": 32,
+        "type": "text"
+    },
+    {
+        "content": "Licence number",
+        "location": {
+            "top": 346,
+            "bottom": 354,
+            "right": 548,
+            "left": 486
+        },
+        "id": 33,
+        "type": "text"
+    },
+    {
+        "content": "Customer number",
+        "location": {
+            "top": 365,
+            "bottom": 373,
+            "right": 556,
+            "left": 486
+        },
+        "id": 37,
+        "type": "text"
+    },
+    {
+        "content": "Licence number",
+        "location": {
+            "top": 383,
+            "bottom": 391,
+            "right": 548,
+            "left": 486
+        },
+        "id": 40,
+        "type": "text"
+    },
+    {
+        "content": "Registration number",
+        "location": {
+            "top": 401,
+            "bottom": 408,
+            "right": 564,
+            "left": 485
+        },
+        "id": 44,
+        "type": "text"
+    },
+    {
+        "content": "Previous licence details",
+        "location": {
+            "top": 417,
+            "bottom": 428,
+            "right": 140,
+            "left": 29
+        },
+        "id": 45,
+        "type": "text"
+    },
+    {
+        "content": "Licence surrendered",
+        "location": {
+            "top": 469,
+            "bottom": 481,
+            "right": 513,
+            "left": 424
+        },
+        "id": 52,
+        "type": "text"
+    },
+    {
+        "content": "For interstate transfer of licence",
+        "location": {
+            "top": 510,
+            "bottom": 519,
+            "right": 179,
+            "left": 28
+        },
+        "id": 55,
+        "type": "text"
+    },
+    {
+        "content": "National heavy vehicle applicant",
+        "location": {
+            "top": 540,
+            "bottom": 552,
+            "right": 182,
+            "left": 29
+        },
+        "id": 59,
+        "type": "text"
+    },
+    {
+        "content": "Provisional/ Probationary",
+        "location": {
+            "top": 586,
+            "bottom": 601,
+            "right": 152,
+            "left": 30
+        },
+        "id": 64,
+        "type": "text"
+    },
+    {
+        "content": "Additional provisional",
+        "location": {
+            "top": 586,
+            "bottom": 600,
+            "right": 392,
+            "left": 288
+        },
+        "id": 67,
+        "type": "text"
+    },
+    {
+        "content": "Application continues over the page.",
+        "location": {
+            "top": 648,
+            "bottom": 660,
+            "right": 393,
+            "left": 202
+        },
+        "id": 71,
+        "type": "text"
+    },
+    {
+        "content": "Office use only",
+        "location": {
+            "top": 661,
+            "bottom": 671,
+            "right": 101,
+            "left": 30
+        },
+        "id": 72,
+        "type": "text"
+    },
+    {
+        "content": "Eye test results",
+        "location": {
+            "top": 751,
+            "bottom": 762,
+            "right": 101,
+            "left": 29
+        },
+        "id": 81,
+        "type": "text"
+    },
+    {
+        "content": "Both",
+        "location": {
+            "top": 767,
+            "bottom": 775,
+            "right": 49,
+            "left": 30
+        },
+        "id": 82,
+        "type": "text"
+    },
+    {
+        "content": "Right",
+        "location": {
+            "top": 767,
+            "bottom": 776,
+            "right": 110,
+            "left": 88
+        },
+        "id": 83,
+        "type": "text"
+    },
+    {
+        "content": "Left",
+        "location": {
+            "top": 767,
+            "bottom": 774,
+            "right": 158,
+            "left": 143
+        },
+        "id": 87,
+        "type": "text"
+    },
+    {
+        "content": "Normal",
+        "location": {
+            "top": 765,
+            "bottom": 775,
+            "right": 421,
+            "left": 390
+        },
+        "id": 89,
+        "type": "text"
+    },
+    {
+        "content": "Contact lenses",
+        "location": {
+            "top": 779,
+            "bottom": 787,
+            "right": 274,
+            "left": 210
+        },
+        "id": 90,
+        "type": "text"
+    },
+    {
+        "content": "Referred to HSA for full medical",
+        "location": {
+            "top": 789,
+            "bottom": 800,
+            "right": 529,
+            "left": 390
+        },
+        "id": 93,
+        "type": "text"
+    },
+    {
+        "content": "Referred to private doctor",
+        "location": {
+            "top": 803,
+            "bottom": 812,
+            "right": 502,
+            "left": 390
+        },
+        "id": 94,
+        "type": "text"
+    },
+    {
+        "content": "Road Transport Authority| PO Box 582 Dickson ACT 2602| Phone: 13 22 81",
+        "location": {
+            "top": 816,
+            "bottom": 831,
+            "right": 465,
+            "left": 128
+        },
+        "id": 95,
+        "type": "text"
+    },
+    {
+        "location": {
+            "top": 779,
+            "bottom": 805,
+            "right": 198,
+            "left": 142
+        },
+        "id": 98,
+        "type": "textbox"
+    },
+    {
+        "location": {
+            "top": 779,
+            "bottom": 805,
+            "right": 85,
+            "left": 28
+        },
+        "id": 100,
+        "type": "textbox"
+    },
+    {
+        "location": {
+            "top": 342,
+            "bottom": 358,
+            "right": 483,
+            "left": 372
+        },
+        "id": 124,
+        "type": "rectangle"
+    },
+    {
+        "location": {
+            "top": 232,
+            "bottom": 236,
+            "right": 48,
+            "left": 38
+        },
+        "id": 161,
+        "type": "border"
+    },
+    {
+        "label": "6/",
+        "location": {
+            "top": 779,
+            "bottom": 805,
+            "right": 141,
+            "left": 85
+        },
+        "id": null,
+        "type": "input"
+    },
+    {
+        "label": "Concession type\nPension number",
+        "location": {
+            "top": 710,
+            "bottom": 751,
+            "right": 282,
+            "left": 28
+        },
+        "id": null,
+        "type": "input"
+    },
+    {
+        "label": "ACT Issued Proof of Identity( Proof of Age)",
+        "location": {
+            "top": 362,
+            "bottom": 376,
+            "right": 483,
+            "left": 132
+        },
+        "id": null,
+        "type": "input"
+    },
+    {
+        "label": "ACT Issued High Risk Work Licence",
+        "location": {
+            "top": 379,
+            "bottom": 394,
+            "right": 483,
+            "left": 132
+        },
+        "id": null,
+        "type": "input"
+    },
+    {
+        "label": "ACT Issued Working with Vulnerable People Registration",
+        "location": {
+            "top": 397,
+            "bottom": 412,
+            "right": 483,
+            "left": 132
+        },
+        "id": null,
+        "type": "input"
+    },
+    {
+        "label": "Yes",
+        "location": {
+            "top": 266,
+            "bottom": 292,
+            "right": 566,
+            "left": 177
+        },
+        "id": null,
+        "type": "input"
+    },
+    {
+        "label": "Given name\nSurname",
+        "location": {
+            "top": 77,
+            "bottom": 112,
+            "right": 566,
+            "left": 29
+        },
+        "id": null,
+        "type": "input"
+    },
+    {
+        "label": "Other name( s)",
+        "location": {
+            "top": 109,
+            "bottom": 148,
+            "right": 296,
+            "left": 29
+        },
+        "id": null,
+        "type": "input"
+    },
+    {
+        "label": "Female\nPhysical address",
+        "location": {
+            "top": 140,
+            "bottom": 185,
+            "right": 566,
+            "left": 28
+        },
+        "id": null,
+        "type": "input"
+    },
+    {
+        "label": "Postal address( if different from physical address)",
+        "location": {
+            "top": 189,
+            "bottom": 221,
+            "right": 566,
+            "left": 29
+        },
+        "id": null,
+        "type": "input"
+    },
+    {
+        "label": "E- mail address",
+        "location": {
+            "top": 224,
+            "bottom": 257,
+            "right": 566,
+            "left": 29
+        },
+        "id": null,
+        "type": "input"
+    },
+    {
+        "label": "Contact number( other)\nContact number( mobile phone)",
+        "location": {
+            "top": 296,
+            "bottom": 328,
+            "right": 566,
+            "left": 29
+        },
+        "id": null,
+        "type": "input"
+    },
+    {
+        "label": "Licence number( West overseas) Type",
+        "location": {
+            "top": 435,
+            "bottom": 468,
+            "right": 312,
+            "left": 28
+        },
+        "id": null,
+        "type": "input"
+    },
+    {
+        "label": "Class",
+        "location": {
+            "top": 435,
+            "bottom": 468,
+            "right": 412,
+            "left": 324
+        },
+        "id": null,
+        "type": "input"
+    },
+    {
+        "label": "State/ Country issued",
+        "location": {
+            "top": 435,
+            "bottom": 468,
+            "right": 567,
+            "left": 421
+        },
+        "id": null,
+        "type": "input"
+    },
+    {
+        "label": "Expiry date",
+        "location": {
+            "top": 472,
+            "bottom": 506,
+            "right": 115,
+            "left": 28
+        },
+        "id": null,
+        "type": "input"
+    },
+    {
+        "label": "Surname on licence",
+        "location": {
+            "top": 472,
+            "bottom": 506,
+            "right": 411,
+            "left": 180
+        },
+        "id": null,
+        "type": "input"
+    },
+    {
+        "label": "Place of birth",
+        "location": {
+            "top": 552,
+            "bottom": 586,
+            "right": 277,
+            "left": 28
+        },
+        "id": null,
+        "type": "input"
+    },
+    {
+        "label": "Eye colour",
+        "location": {
+            "top": 552,
+            "bottom": 586,
+            "right": 422,
+            "left": 287
+        },
+        "id": null,
+        "type": "input"
+    },
+    {
+        "label": "Height",
+        "location": {
+            "top": 552,
+            "bottom": 586,
+            "right": 567,
+            "left": 432
+        },
+        "id": null,
+        "type": "input"
+    },
+    {
+        "label": "Period held",
+        "location": {
+            "top": 602,
+            "bottom": 635,
+            "right": 169,
+            "left": 28
+        },
+        "id": null,
+        "type": "input"
+    },
+    {
+        "label": "ACT expiry\nPeriod held\nClass\nACT expiry",
+        "location": {
+            "top": 602,
+            "bottom": 635,
+            "right": 567,
+            "left": 176
+        },
+        "id": null,
+        "type": "input"
+    },
+    {
+        "label": "Licence type",
+        "location": {
+            "top": 672,
+            "bottom": 712,
+            "right": 282,
+            "left": 179
+        },
+        "id": null,
+        "type": "input"
+    },
+    {
+        "label": "Licence number",
+        "location": {
+            "top": 674,
+            "bottom": 712,
+            "right": 173,
+            "left": 29
+        },
+        "id": null,
+        "type": "input"
+    },
+    {
+        "label": "Proof of residency\nClass/ Condition",
+        "location": {
+            "top": 675,
+            "bottom": 712,
+            "right": 566,
+            "left": 288
+        },
+        "id": null,
+        "type": "input"
+    },
+    {
+        "label": "Proof of identity\nCSO initials\nPhysical condition",
+        "location": {
+            "top": 711,
+            "bottom": 765,
+            "right": 566,
+            "left": 288
+        },
+        "id": null,
+        "type": "input"
+    },
+    {
+        "label": "Referred to HSA for eye test",
+        "location": {
+            "top": 779,
+            "bottom": 789,
+            "right": 513,
+            "left": 336
+        },
+        "id": null,
+        "type": "input"
+    },
+    {
+        "label": "With/ Without spectacles",
+        "location": {
+            "top": 767,
+            "bottom": 777,
+            "right": 346,
+            "left": 210
+        },
+        "id": null,
+        "type": "input"
+    },
+    {
+        "label": "No",
+        "location": {
+            "top": 523,
+            "bottom": 537,
+            "right": 567,
+            "left": 534
+        },
+        "id": null,
+        "type": "input"
+    },
+    {
+        "label": "If Yes, would you like to renew today? Yes",
+        "location": {
+            "top": 523,
+            "bottom": 537,
+            "right": 529,
+            "left": 317
+        },
+        "id": null,
+        "type": "input"
+    },
+    {
+        "label": "No",
+        "location": {
+            "top": 522,
+            "bottom": 538,
+            "right": 302,
+            "left": 264
+        },
+        "id": null,
+        "type": "input"
+    },
+    {
+        "label": "Does your licence expire within 12 months? Yes",
+        "location": {
+            "top": 523,
+            "bottom": 537,
+            "right": 264,
+            "left": 28
+        },
+        "id": null,
+        "type": "input"
+    },
+    {
+        "label": "No",
+        "location": {
+            "top": 489,
+            "bottom": 502,
+            "right": 495,
+            "left": 462
+        },
+        "id": null,
+        "type": "input"
+    },
+    {
+        "label": "Yes",
+        "location": {
+            "top": 489,
+            "bottom": 502,
+            "right": 457,
+            "left": 423
+        },
+        "id": null,
+        "type": "input"
+    },
+    {
+        "label": "No",
+        "location": {
+            "top": 399,
+            "bottom": 411,
+            "right": 102,
+            "left": 74
+        },
+        "id": null,
+        "type": "input"
+    },
+    {
+        "label": "Yes",
+        "location": {
+            "top": 399,
+            "bottom": 411,
+            "right": 59,
+            "left": 29
+        },
+        "id": null,
+        "type": "input"
+    },
+    {
+        "label": "No",
+        "location": {
+            "top": 381,
+            "bottom": 393,
+            "right": 104,
+            "left": 74
+        },
+        "id": null,
+        "type": "input"
+    },
+    {
+        "label": "Yes",
+        "location": {
+            "top": 381,
+            "bottom": 393,
+            "right": 61,
+            "left": 29
+        },
+        "id": null,
+        "type": "input"
+    },
+    {
+        "label": "No",
+        "location": {
+            "top": 363,
+            "bottom": 375,
+            "right": 102,
+            "left": 74
+        },
+        "id": null,
+        "type": "input"
+    },
+    {
+        "label": "Yes",
+        "location": {
+            "top": 363,
+            "bottom": 375,
+            "right": 59,
+            "left": 29
+        },
+        "id": null,
+        "type": "input"
+    },
+    {
+        "label": "No",
+        "location": {
+            "top": 344,
+            "bottom": 356,
+            "right": 102,
+            "left": 74
+        },
+        "id": null,
+        "type": "input"
+    },
+    {
+        "label": "Yes",
+        "location": {
+            "top": 344,
+            "bottom": 356,
+            "right": 59,
+            "left": 29
+        },
+        "id": null,
+        "type": "input"
+    },
+    {
+        "label": "No",
+        "location": {
+            "top": 278,
+            "bottom": 289,
+            "right": 190,
+            "left": 161
+        },
+        "id": null,
+        "type": "input"
+    },
+    {
+        "label": "Have you ever been known\nby any other name/ s?",
+        "location": {
+            "top": 265,
+            "bottom": 287,
+            "right": 172,
+            "left": 28
+        },
+        "id": null,
+        "type": "input"
+    },
+    {
+        "label": "Unknown",
+        "location": {
+            "top": 126,
+            "bottom": 137,
+            "right": 537,
+            "left": 488
+        },
+        "id": null,
+        "type": "input"
+    },
+    {
+        "label": "Unspecified indeterminate/ Intersex",
+        "location": {
+            "top": 139,
+            "bottom": 150,
+            "right": 565,
+            "left": 431
+        },
+        "id": null,
+        "type": "input"
+    },
+    {
+        "label": "Intersex",
+        "location": {
+            "top": 126,
+            "bottom": 137,
+            "right": 476,
+            "left": 431
+        },
+        "id": null,
+        "type": "input"
+    },
+    {
+        "label": "Indeterminate",
+        "location": {
+            "top": 139,
+            "bottom": 150,
+            "right": 418,
+            "left": 354
+        },
+        "id": null,
+        "type": "input"
+    },
+    {
+        "label": "Unspecified",
+        "location": {
+            "top": 126,
+            "bottom": 137,
+            "right": 412,
+            "left": 354
+        },
+        "id": null,
+        "type": "input"
+    },
+    {
+        "label": "Male",
+        "location": {
+            "top": 126,
+            "bottom": 137,
+            "right": 332,
+            "left": 299
+        },
+        "id": null,
+        "type": "input"
+    },
+    {
+        "label": "Date of birth",
+        "location": {
+            "top": 224,
+            "bottom": 233,
+            "right": 82,
+            "left": 30
+        },
+        "id": null,
+        "type": "input"
+    }
+]

@@ -19,6 +19,8 @@ app.get('/',function(req,res){
 var uploadedImgId = 0
 app.post('/process', function (req, res) {
     console.log('\nStart processing')
+    const d = new Date();
+    console.log(d)
     // Processing uploaded forms
     if (req.body.inputType === 'image'){
         uploadedImgId ++

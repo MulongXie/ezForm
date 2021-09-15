@@ -1,0 +1,343 @@
+[
+    {
+        "location": {
+            "right": 379,
+            "bottom": 145,
+            "left": 334,
+            "top": 138
+        },
+        "content": "Student ID:",
+        "type": "text",
+        "id": 0
+    },
+    {
+        "location": {
+            "right": 359,
+            "bottom": 165,
+            "left": 335,
+            "top": 157
+        },
+        "content": "Email:",
+        "type": "text",
+        "id": 1
+    },
+    {
+        "location": {
+            "right": 166,
+            "bottom": 102,
+            "left": 50,
+            "top": 90
+        },
+        "content": "ANU Book Award",
+        "type": "text",
+        "id": 2
+    },
+    {
+        "location": {
+            "right": 174,
+            "bottom": 127,
+            "left": 50,
+            "top": 112
+        },
+        "content": "APPLICANT INFORMATION",
+        "type": "text",
+        "id": 3
+    },
+    {
+        "location": {
+            "right": 75,
+            "bottom": 147,
+            "left": 50,
+            "top": 139
+        },
+        "content": "Name:",
+        "type": "text",
+        "id": 4
+    },
+    {
+        "location": {
+            "right": 104,
+            "bottom": 166,
+            "left": 49,
+            "top": 151
+        },
+        "content": "Date of birth:",
+        "type": "text",
+        "id": 5
+    },
+    {
+        "location": {
+            "right": 207,
+            "bottom": 166,
+            "left": 180,
+            "top": 157
+        },
+        "content": "Phone:",
+        "type": "text",
+        "id": 6
+    },
+    {
+        "location": {
+            "right": 286,
+            "bottom": 187,
+            "left": 51,
+            "top": 171
+        },
+        "content": "Program of study:( eg, Bachelor or Master of Visual Arts)",
+        "type": "text",
+        "id": 7
+    },
+    {
+        "location": {
+            "right": 188,
+            "bottom": 204,
+            "left": 49,
+            "top": 190
+        },
+        "content": "Domestic or International student:",
+        "type": "text",
+        "id": 8
+    },
+    {
+        "location": {
+            "right": 314,
+            "bottom": 224,
+            "left": 50,
+            "top": 215
+        },
+        "content": "BOOKS REQUIRED FOR CURRENTLY ENROLLED COURSES",
+        "type": "text",
+        "id": 9
+    },
+    {
+        "location": {
+            "right": 102,
+            "bottom": 241,
+            "left": 48,
+            "top": 228
+        },
+        "content": "Course Code:",
+        "type": "text",
+        "id": 10
+    },
+    {
+        "location": {
+            "right": 290,
+            "bottom": 243,
+            "left": 180,
+            "top": 228
+        },
+        "content": "Name of Book( s) Required:",
+        "type": "text",
+        "id": 11
+    },
+    {
+        "location": {
+            "right": 572,
+            "bottom": 243,
+            "left": 507,
+            "top": 232
+        },
+        "content": "Cost of Book( s):",
+        "type": "text",
+        "id": 12
+    },
+    {
+        "location": {
+            "right": 182,
+            "bottom": 383,
+            "left": 50,
+            "top": 375
+        },
+        "content": "REASONS FOR APPLICATION",
+        "type": "text",
+        "id": 13
+    },
+    {
+        "location": {
+            "right": 579,
+            "bottom": 403,
+            "left": 50,
+            "top": 390
+        },
+        "content": "Please explain your situation and your reasons for needing assistance, including the steps that you have taken to resolve your",
+        "type": "text",
+        "id": 14
+    },
+    {
+        "location": {
+            "right": 155,
+            "bottom": 412,
+            "left": 50,
+            "top": 401
+        },
+        "content": "current financial situation.",
+        "type": "text",
+        "id": 15
+    },
+    {
+        "location": {
+            "right": 110,
+            "bottom": 636,
+            "left": 50,
+            "top": 629
+        },
+        "content": "SIGNATURES",
+        "type": "text",
+        "id": 16
+    },
+    {
+        "location": {
+            "right": 578,
+            "bottom": 656,
+            "left": 50,
+            "top": 642
+        },
+        "content": "I give permission for my academic record and other documents to be held by ANUSA and the University to be assessed for the",
+        "type": "text",
+        "id": 17
+    },
+    {
+        "location": {
+            "right": 577,
+            "bottom": 670,
+            "left": 49,
+            "top": 655
+        },
+        "content": "ANU Book Award. Any information supplied will be treated in confidence and will be used by ANUSA and the University to determine",
+        "type": "text",
+        "id": 18
+    },
+    {
+        "location": {
+            "right": 479,
+            "bottom": 680,
+            "left": 51,
+            "top": 665
+        },
+        "content": "eligibility for this program only. I declare that the information provided on this form is true and complete.",
+        "type": "text",
+        "id": 19
+    },
+    {
+        "location": {
+            "right": 140,
+            "bottom": 697,
+            "left": 48,
+            "top": 681
+        },
+        "content": "Signature of applicant:",
+        "type": "text",
+        "id": 20
+    },
+    {
+        "location": {
+            "right": 355,
+            "bottom": 691,
+            "left": 334,
+            "top": 684
+        },
+        "content": "Date:",
+        "type": "text",
+        "id": 21
+    },
+    {
+        "location": {
+            "right": 130,
+            "bottom": 724,
+            "left": 49,
+            "top": 718
+        },
+        "content": "OFFICE USE ONLY",
+        "type": "text",
+        "id": 22
+    },
+    {
+        "location": {
+            "right": 145,
+            "bottom": 747,
+            "left": 49,
+            "top": 736
+        },
+        "content": "Application received by:",
+        "type": "text",
+        "id": 23
+    },
+    {
+        "location": {
+            "right": 235,
+            "bottom": 765,
+            "left": 50,
+            "top": 750
+        },
+        "content": "Decision on application and amount awarded:",
+        "type": "text",
+        "id": 24
+    },
+    {
+        "location": {
+            "right": 92,
+            "bottom": 783,
+            "left": 50,
+            "top": 773
+        },
+        "content": "Co- signed:",
+        "type": "text",
+        "id": 25
+    },
+    {
+        "location": {
+            "right": 91,
+            "bottom": 801,
+            "left": 48,
+            "top": 792
+        },
+        "content": "Co- signed:",
+        "type": "text",
+        "id": 26
+    },
+    {
+        "location": {
+            "right": 391,
+            "bottom": 744,
+            "left": 334,
+            "top": 736
+        },
+        "content": "Date received:",
+        "type": "text",
+        "id": 27
+    },
+    {
+        "location": {
+            "right": 402,
+            "bottom": 762,
+            "left": 334,
+            "top": 754
+        },
+        "content": "Date of decision:",
+        "type": "text",
+        "id": 28
+    },
+    {
+        "location": {
+            "right": 356,
+            "bottom": 782,
+            "left": 336,
+            "top": 774
+        },
+        "content": "Date:",
+        "type": "text",
+        "id": 29
+    },
+    {
+        "location": {
+            "right": 355,
+            "bottom": 800,
+            "left": 335,
+            "top": 793
+        },
+        "content": "Date:",
+        "type": "text",
+        "id": 30
+    }
+]

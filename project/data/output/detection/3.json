@@ -1,0 +1,422 @@
+[
+    {
+        "content": "Part A: PERSONAL PARTICULARS",
+        "id": 4,
+        "type": "text",
+        "location": {
+            "right": 225,
+            "top": 103,
+            "left": 18,
+            "bottom": 121
+        }
+    },
+    {
+        "content": "Part B: EXPENSES- Invoices( Tax or overseas) MUST be attached to verify ALL claims",
+        "id": 14,
+        "type": "text",
+        "location": {
+            "right": 531,
+            "top": 206,
+            "left": 18,
+            "bottom": 224
+        }
+    },
+    {
+        "content": "Receipt\n#",
+        "id": 15,
+        "type": "text",
+        "location": {
+            "right": 48,
+            "top": 228,
+            "left": 21,
+            "bottom": 245
+        }
+    },
+    {
+        "content": "Staff",
+        "id": 21,
+        "type": "text",
+        "location": {
+            "right": 176,
+            "top": 192,
+            "left": 156,
+            "bottom": 198
+        }
+    },
+    {
+        "content": "Student",
+        "id": 22,
+        "type": "text",
+        "location": {
+            "right": 300,
+            "top": 192,
+            "left": 268,
+            "bottom": 199
+        }
+    },
+    {
+        "content": "Part C: BANK DETAILS",
+        "id": 27,
+        "type": "text",
+        "location": {
+            "right": 156,
+            "top": 572,
+            "left": 18,
+            "bottom": 589
+        }
+    },
+    {
+        "content": "Part D: DECLARATION",
+        "id": 36,
+        "type": "text",
+        "location": {
+            "right": 154,
+            "top": 714,
+            "left": 18,
+            "bottom": 730
+        }
+    },
+    {
+        "content": "I acknowledge I have read the instruczons relating to reimbursements and that the above costs were incurred by me in accordance\nwith ANU Policies and I have attached relevant supporting documents",
+        "id": 37,
+        "type": "text",
+        "location": {
+            "right": 541,
+            "top": 733,
+            "left": 32,
+            "bottom": 752
+        }
+    },
+    {
+        "location": {
+            "right": 678,
+            "top": 781,
+            "left": 18,
+            "bottom": 803
+        },
+        "id": 55,
+        "type": "textbox"
+    },
+    {
+        "location": {
+            "right": 678,
+            "top": 632,
+            "left": 18,
+            "bottom": 652
+        },
+        "id": 61,
+        "type": "textbox"
+    },
+    {
+        "location": {
+            "right": 678,
+            "top": 550,
+            "left": 18,
+            "bottom": 571
+        },
+        "id": 66,
+        "type": "textbox"
+    },
+    {
+        "location": {
+            "right": 538,
+            "top": 529,
+            "left": 18,
+            "bottom": 550
+        },
+        "id": 68,
+        "type": "textbox"
+    },
+    {
+        "location": {
+            "right": 678,
+            "top": 185,
+            "left": 386,
+            "bottom": 205
+        },
+        "id": 129,
+        "type": "textbox"
+    },
+    {
+        "location": {
+            "right": 134,
+            "top": 185,
+            "left": 18,
+            "bottom": 205
+        },
+        "id": 130,
+        "type": "textbox"
+    },
+    {
+        "location": {
+            "right": 678,
+            "top": 60,
+            "left": 18,
+            "bottom": 103
+        },
+        "id": 145,
+        "type": "textbox"
+    },
+    {
+        "location": {
+            "right": 697,
+            "top": 912,
+            "left": 0,
+            "bottom": 914
+        },
+        "id": 173,
+        "type": "border"
+    },
+    {
+        "location": {
+            "right": 678,
+            "top": 226,
+            "left": 18,
+            "bottom": 529
+        },
+        "id": 1,
+        "type": "table"
+    },
+    {
+        "location": {
+            "right": 268,
+            "top": 593,
+            "left": 17,
+            "bottom": 613
+        },
+        "id": null,
+        "type": "input",
+        "label": "BSB"
+    },
+    {
+        "location": {
+            "right": 403,
+            "top": 754,
+            "left": 17,
+            "bottom": 781
+        },
+        "id": null,
+        "type": "input",
+        "label": "Signature"
+    },
+    {
+        "location": {
+            "right": 403,
+            "top": 826,
+            "left": 17,
+            "bottom": 852
+        },
+        "id": null,
+        "type": "input",
+        "label": "Signature"
+    },
+    {
+        "location": {
+            "right": 268,
+            "top": 613,
+            "left": 18,
+            "bottom": 632
+        },
+        "id": null,
+        "type": "input",
+        "label": "Name of Bank"
+    },
+    {
+        "location": {
+            "right": 677,
+            "top": 652,
+            "left": 18,
+            "bottom": 672
+        },
+        "id": null,
+        "type": "input",
+        "label": "Bank Street Address"
+    },
+    {
+        "location": {
+            "right": 677,
+            "top": 672,
+            "left": 18,
+            "bottom": 692
+        },
+        "id": null,
+        "type": "input",
+        "label": "SWIFT/ BIC CODE"
+    },
+    {
+        "location": {
+            "right": 232,
+            "top": 803,
+            "left": 18,
+            "bottom": 824
+        },
+        "id": null,
+        "type": "input",
+        "label": "Name of Delegate"
+    },
+    {
+        "location": {
+            "right": 677,
+            "top": 165,
+            "left": 18,
+            "bottom": 185
+        },
+        "id": null,
+        "type": "input",
+        "label": "Non- ANU address"
+    },
+    {
+        "location": {
+            "right": 249,
+            "top": 145,
+            "left": 18,
+            "bottom": 165
+        },
+        "id": null,
+        "type": "input",
+        "label": "Business Unit"
+    },
+    {
+        "location": {
+            "right": 266,
+            "top": 125,
+            "left": 18,
+            "bottom": 145
+        },
+        "id": null,
+        "type": "input",
+        "label": "Family Name"
+    },
+    {
+        "location": {
+            "right": 677,
+            "top": 692,
+            "left": 20,
+            "bottom": 712
+        },
+        "id": null,
+        "type": "input",
+        "label": "IBAN"
+    },
+    {
+        "location": {
+            "right": 356,
+            "top": 803,
+            "left": 232,
+            "bottom": 824
+        },
+        "id": null,
+        "type": "input",
+        "label": "Uni ID"
+    },
+    {
+        "location": {
+            "right": 677,
+            "top": 593,
+            "left": 268,
+            "bottom": 613
+        },
+        "id": null,
+        "type": "input",
+        "label": "Account Number"
+    },
+    {
+        "location": {
+            "right": 677,
+            "top": 613,
+            "left": 268,
+            "bottom": 632
+        },
+        "id": null,
+        "type": "input",
+        "label": "Account Name"
+    },
+    {
+        "location": {
+            "right": 439,
+            "top": 145,
+            "left": 268,
+            "bottom": 165
+        },
+        "id": null,
+        "type": "input",
+        "label": "Phone"
+    },
+    {
+        "location": {
+            "right": 438,
+            "top": 125,
+            "left": 268,
+            "bottom": 145
+        },
+        "id": null,
+        "type": "input",
+        "label": "First Name"
+    },
+    {
+        "location": {
+            "right": 677,
+            "top": 803,
+            "left": 356,
+            "bottom": 823
+        },
+        "id": null,
+        "type": "input",
+        "label": "Job Title"
+    },
+    {
+        "location": {
+            "right": 677,
+            "top": 754,
+            "left": 404,
+            "bottom": 781
+        },
+        "id": null,
+        "type": "input",
+        "label": "Date"
+    },
+    {
+        "location": {
+            "right": 678,
+            "top": 825,
+            "left": 407,
+            "bottom": 852
+        },
+        "id": null,
+        "type": "input",
+        "label": "Date"
+    },
+    {
+        "location": {
+            "right": 677,
+            "top": 145,
+            "left": 439,
+            "bottom": 165
+        },
+        "id": null,
+        "type": "input",
+        "label": "Related Travel Request ID"
+    },
+    {
+        "location": {
+            "right": 676,
+            "top": 125,
+            "left": 439,
+            "bottom": 145
+        },
+        "id": null,
+        "type": "input",
+        "label": "Vendor/ Uni ID"
+    },
+    {
+        "location": {
+            "right": 679,
+            "top": 528,
+            "left": 539,
+            "bottom": 551
+        },
+        "id": null,
+        "type": "input",
+        "label": "$ 0.00"
+    }
+]

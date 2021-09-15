@@ -1,0 +1,530 @@
+[
+    {
+        "content": "Send completed form to invoice.workflow@ anu.edu.au",
+        "id": 0,
+        "type": "text",
+        "location": {
+            "right": 667,
+            "top": 67,
+            "left": 448,
+            "bottom": 77
+        }
+    },
+    {
+        "content": "EXPENSE REIMBURSEMENT FORM",
+        "id": 1,
+        "type": "text",
+        "location": {
+            "right": 428,
+            "top": 75,
+            "left": 156,
+            "bottom": 88
+        }
+    },
+    {
+        "content": "Finance& Business Services, Bldg 10c",
+        "id": 2,
+        "type": "text",
+        "location": {
+            "right": 606,
+            "top": 76,
+            "left": 449,
+            "bottom": 87
+        }
+    },
+    {
+        "content": "Enquiries:( 02) 6125 4777",
+        "id": 3,
+        "type": "text",
+        "location": {
+            "right": 551,
+            "top": 85,
+            "left": 447,
+            "bottom": 99
+        }
+    },
+    {
+        "content": "Part A: PERSONAL PARTICULARS",
+        "id": 4,
+        "type": "text",
+        "location": {
+            "right": 225,
+            "top": 103,
+            "left": 18,
+            "bottom": 121
+        }
+    },
+    {
+        "content": "Family Name",
+        "id": 5,
+        "type": "text",
+        "location": {
+            "right": 85,
+            "top": 130,
+            "left": 29,
+            "bottom": 138
+        }
+    },
+    {
+        "content": "First Name",
+        "id": 6,
+        "type": "text",
+        "location": {
+            "right": 327,
+            "top": 131,
+            "left": 281,
+            "bottom": 138
+        }
+    },
+    {
+        "content": "Vendor/ Uni ID",
+        "id": 7,
+        "type": "text",
+        "location": {
+            "right": 516,
+            "top": 131,
+            "left": 446,
+            "bottom": 138
+        }
+    },
+    {
+        "content": "Business Unit",
+        "id": 8,
+        "type": "text",
+        "location": {
+            "right": 89,
+            "top": 145,
+            "left": 30,
+            "bottom": 158
+        }
+    },
+    {
+        "content": "Phone",
+        "id": 9,
+        "type": "text",
+        "location": {
+            "right": 308,
+            "top": 151,
+            "left": 281,
+            "bottom": 159
+        }
+    },
+    {
+        "content": "Related Travel Request ID",
+        "id": 10,
+        "type": "text",
+        "location": {
+            "right": 543,
+            "top": 144,
+            "left": 444,
+            "bottom": 159
+        }
+    },
+    {
+        "content": "Non- ANU address",
+        "id": 11,
+        "type": "text",
+        "location": {
+            "right": 107,
+            "top": 170,
+            "left": 30,
+            "bottom": 178
+        }
+    },
+    {
+        "content": "Pay group( select one)",
+        "id": 12,
+        "type": "text",
+        "location": {
+            "right": 122,
+            "top": 190,
+            "left": 30,
+            "bottom": 199
+        }
+    },
+    {
+        "content": "Person of Interest/ Visitor/ Other",
+        "id": 13,
+        "type": "text",
+        "location": {
+            "right": 542,
+            "top": 184,
+            "left": 396,
+            "bottom": 199
+        }
+    },
+    {
+        "content": "Part B: EXPENSES- Invoices( Tax or overseas) MUST be attached to verify ALL claims",
+        "id": 14,
+        "type": "text",
+        "location": {
+            "right": 531,
+            "top": 206,
+            "left": 18,
+            "bottom": 224
+        }
+    },
+    {
+        "content": "Receipt",
+        "id": 15,
+        "type": "text",
+        "location": {
+            "right": 48,
+            "top": 228,
+            "left": 21,
+            "bottom": 239
+        }
+    },
+    {
+        "content": "FBT",
+        "id": 16,
+        "type": "text",
+        "location": {
+            "right": 664,
+            "top": 226,
+            "left": 642,
+            "bottom": 235
+        }
+    },
+    {
+        "content": "Charge Code",
+        "id": 17,
+        "type": "text",
+        "location": {
+            "right": 123,
+            "top": 233,
+            "left": 67,
+            "bottom": 241
+        }
+    },
+    {
+        "content": "Description of Item Purchased",
+        "id": 18,
+        "type": "text",
+        "location": {
+            "right": 354,
+            "top": 234,
+            "left": 226,
+            "bottom": 244
+        }
+    },
+    {
+        "content": "Total AUD incl GST",
+        "id": 19,
+        "type": "text",
+        "location": {
+            "right": 624,
+            "top": 234,
+            "left": 543,
+            "bottom": 241
+        }
+    },
+    {
+        "content": "Applies",
+        "id": 20,
+        "type": "text",
+        "location": {
+            "right": 668,
+            "top": 240,
+            "left": 637,
+            "bottom": 249
+        }
+    },
+    {
+        "content": "Staff",
+        "id": 21,
+        "type": "text",
+        "location": {
+            "right": 176,
+            "top": 192,
+            "left": 156,
+            "bottom": 198
+        }
+    },
+    {
+        "content": "Student",
+        "id": 22,
+        "type": "text",
+        "location": {
+            "right": 300,
+            "top": 192,
+            "left": 268,
+            "bottom": 199
+        }
+    },
+    {
+        "content": "#",
+        "id": 23,
+        "type": "text",
+        "location": {
+            "right": 35,
+            "top": 240,
+            "left": 31,
+            "bottom": 245
+        }
+    },
+    {
+        "content": "TOTAL AMOUNT AUD",
+        "id": 24,
+        "type": "text",
+        "location": {
+            "right": 432,
+            "top": 536,
+            "left": 305,
+            "bottom": 545
+        }
+    },
+    {
+        "content": "$ 0.00",
+        "id": 25,
+        "type": "text",
+        "location": {
+            "right": 577,
+            "top": 535,
+            "left": 543,
+            "bottom": 545
+        }
+    },
+    {
+        "content": "Former Students& Visitors: MUST provide your current bank account information below. Current Staff& Students should log onto HORUS/ ISIS to update their account detalls.",
+        "id": 26,
+        "type": "text",
+        "location": {
+            "right": 658,
+            "top": 556,
+            "left": 23,
+            "bottom": 564
+        }
+    },
+    {
+        "content": "Part C: BANK DETAILS",
+        "id": 27,
+        "type": "text",
+        "location": {
+            "right": 156,
+            "top": 572,
+            "left": 18,
+            "bottom": 589
+        }
+    },
+    {
+        "content": "BSB",
+        "id": 28,
+        "type": "text",
+        "location": {
+            "right": 37,
+            "top": 596,
+            "left": 17,
+            "bottom": 604
+        }
+    },
+    {
+        "content": "Account Number",
+        "id": 29,
+        "type": "text",
+        "location": {
+            "right": 342,
+            "top": 596,
+            "left": 268,
+            "bottom": 607
+        }
+    },
+    {
+        "content": "Name of Bank",
+        "id": 30,
+        "type": "text",
+        "location": {
+            "right": 80,
+            "top": 616,
+            "left": 18,
+            "bottom": 626
+        }
+    },
+    {
+        "content": "Account Name",
+        "id": 31,
+        "type": "text",
+        "location": {
+            "right": 332,
+            "top": 613,
+            "left": 268,
+            "bottom": 628
+        }
+    },
+    {
+        "content": "Additional information required for foreign bank accounts",
+        "id": 32,
+        "type": "text",
+        "location": {
+            "right": 502,
+            "top": 638,
+            "left": 236,
+            "bottom": 648
+        }
+    },
+    {
+        "content": "Bank Street Address",
+        "id": 33,
+        "type": "text",
+        "location": {
+            "right": 105,
+            "top": 656,
+            "left": 18,
+            "bottom": 667
+        }
+    },
+    {
+        "content": "SWIFT/ BIC CODE",
+        "id": 34,
+        "type": "text",
+        "location": {
+            "right": 96,
+            "top": 676,
+            "left": 18,
+            "bottom": 686
+        }
+    },
+    {
+        "content": "IBAN",
+        "id": 35,
+        "type": "text",
+        "location": {
+            "right": 39,
+            "top": 697,
+            "left": 20,
+            "bottom": 703
+        }
+    },
+    {
+        "content": "Part D: DECLARATION",
+        "id": 36,
+        "type": "text",
+        "location": {
+            "right": 154,
+            "top": 714,
+            "left": 18,
+            "bottom": 730
+        }
+    },
+    {
+        "content": "I acknowledge I have read the instruczons relating to reimbursements and that the above costs were incurred by me in accordance",
+        "id": 37,
+        "type": "text",
+        "location": {
+            "right": 541,
+            "top": 733,
+            "left": 35,
+            "bottom": 744
+        }
+    },
+    {
+        "content": "with ANU Policies and I have attached relevant supporting documents",
+        "id": 38,
+        "type": "text",
+        "location": {
+            "right": 302,
+            "top": 742,
+            "left": 32,
+            "bottom": 752
+        }
+    },
+    {
+        "content": "Signature",
+        "id": 39,
+        "type": "text",
+        "location": {
+            "right": 56,
+            "top": 761,
+            "left": 17,
+            "bottom": 771
+        }
+    },
+    {
+        "content": "Date",
+        "id": 40,
+        "type": "text",
+        "location": {
+            "right": 425,
+            "top": 760,
+            "left": 404,
+            "bottom": 771
+        }
+    },
+    {
+        "content": "( It is the responsibility of the Delegare zo ensure they have Financial Delegation ID 220 and the appropriate limit.)",
+        "id": 41,
+        "type": "text",
+        "location": {
+            "right": 657,
+            "top": 789,
+            "left": 226,
+            "bottom": 798
+        }
+    },
+    {
+        "content": "Part E: DELEGATE APPROVAL",
+        "id": 42,
+        "type": "text",
+        "location": {
+            "right": 205,
+            "top": 782,
+            "left": 23,
+            "bottom": 796
+        }
+    },
+    {
+        "content": "Name of Delegate",
+        "id": 43,
+        "type": "text",
+        "location": {
+            "right": 96,
+            "top": 810,
+            "left": 25,
+            "bottom": 820
+        }
+    },
+    {
+        "content": "Uni ID",
+        "id": 44,
+        "type": "text",
+        "location": {
+            "right": 258,
+            "top": 809,
+            "left": 235,
+            "bottom": 816
+        }
+    },
+    {
+        "content": "Job Title",
+        "id": 45,
+        "type": "text",
+        "location": {
+            "right": 391,
+            "top": 807,
+            "left": 356,
+            "bottom": 817
+        }
+    },
+    {
+        "content": "Signature",
+        "id": 46,
+        "type": "text",
+        "location": {
+            "right": 56,
+            "top": 831,
+            "left": 17,
+            "bottom": 844
+        }
+    },
+    {
+        "content": "Date",
+        "id": 47,
+        "type": "text",
+        "location": {
+            "right": 424,
+            "top": 834,
+            "left": 407,
+            "bottom": 842
+        }
+    }
+]

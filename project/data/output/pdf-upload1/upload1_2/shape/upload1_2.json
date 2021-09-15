@@ -1,0 +1,212 @@
+[
+    {
+        "location": {
+            "top": 788,
+            "bottom": 814,
+            "right": 567,
+            "left": 432
+        },
+        "id": 77,
+        "type": "rectangle"
+    },
+    {
+        "location": {
+            "top": 788,
+            "bottom": 814,
+            "right": 426,
+            "left": 28
+        },
+        "id": 78,
+        "type": "rectangle"
+    },
+    {
+        "location": {
+            "top": 552,
+            "bottom": 572,
+            "right": 568,
+            "left": 29
+        },
+        "id": 79,
+        "type": "rectangle"
+    },
+    {
+        "location": {
+            "top": 531,
+            "bottom": 552,
+            "right": 568,
+            "left": 29
+        },
+        "id": 80,
+        "type": "rectangle"
+    },
+    {
+        "location": {
+            "top": 451,
+            "bottom": 461,
+            "right": 561,
+            "left": 551
+        },
+        "id": 81,
+        "type": "square"
+    },
+    {
+        "location": {
+            "top": 451,
+            "bottom": 461,
+            "right": 520,
+            "left": 511
+        },
+        "id": 82,
+        "type": "square"
+    },
+    {
+        "location": {
+            "top": 163,
+            "bottom": 173,
+            "right": 561,
+            "left": 551
+        },
+        "id": 83,
+        "type": "square"
+    },
+    {
+        "location": {
+            "top": 150,
+            "bottom": 160,
+            "right": 561,
+            "left": 551
+        },
+        "id": 84,
+        "type": "square"
+    },
+    {
+        "location": {
+            "top": 75,
+            "bottom": 85,
+            "right": 520,
+            "left": 511
+        },
+        "id": 85,
+        "type": "square"
+    },
+    {
+        "location": {
+            "top": 476,
+            "bottom": 478,
+            "right": 560,
+            "left": 37
+        },
+        "id": 86,
+        "type": "line"
+    },
+    {
+        "location": {
+            "top": 434,
+            "bottom": 436,
+            "right": 560,
+            "left": 37
+        },
+        "id": 87,
+        "type": "line"
+    },
+    {
+        "location": {
+            "top": 404,
+            "bottom": 407,
+            "right": 560,
+            "left": 37
+        },
+        "id": 88,
+        "type": "line"
+    },
+    {
+        "location": {
+            "top": 374,
+            "bottom": 377,
+            "right": 560,
+            "left": 37
+        },
+        "id": 89,
+        "type": "line"
+    },
+    {
+        "location": {
+            "top": 344,
+            "bottom": 347,
+            "right": 560,
+            "left": 37
+        },
+        "id": 90,
+        "type": "line"
+    },
+    {
+        "location": {
+            "top": 314,
+            "bottom": 317,
+            "right": 560,
+            "left": 37
+        },
+        "id": 91,
+        "type": "line"
+    },
+    {
+        "location": {
+            "top": 284,
+            "bottom": 287,
+            "right": 560,
+            "left": 37
+        },
+        "id": 92,
+        "type": "line"
+    },
+    {
+        "location": {
+            "top": 254,
+            "bottom": 257,
+            "right": 560,
+            "left": 37
+        },
+        "id": 93,
+        "type": "line"
+    },
+    {
+        "location": {
+            "top": 224,
+            "bottom": 227,
+            "right": 560,
+            "left": 37
+        },
+        "id": 94,
+        "type": "line"
+    },
+    {
+        "location": {
+            "top": 195,
+            "bottom": 197,
+            "right": 560,
+            "left": 37
+        },
+        "id": 95,
+        "type": "line"
+    },
+    {
+        "location": {
+            "top": 139,
+            "bottom": 141,
+            "right": 560,
+            "left": 37
+        },
+        "id": 96,
+        "type": "line"
+    },
+    {
+        "location": {
+            "top": 100,
+            "bottom": 102,
+            "right": 560,
+            "left": 37
+        },
+        "id": 97,
+        "type": "line"
+    }
+]

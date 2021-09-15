@@ -1,0 +1,45 @@
+[
+	{
+		"page": "1",
+		"type": "text",
+		"text": "ewqewq",
+		"top": "91px",
+		"left": "29px",
+		"fontWeight": "",
+		"fontSize": "15px",
+		"fontStyle": "",
+		"fontFamily": "",
+		"fontColor": "",
+		"textAlign": "",
+		"boxWidth": "537px",
+		"boxHeight": "21px"
+	},
+	{
+		"page": "1",
+		"type": "text",
+		"text": "21312",
+		"top": "448px",
+		"left": "28px",
+		"fontWeight": "",
+		"fontSize": "15px",
+		"fontStyle": "",
+		"fontFamily": "",
+		"fontColor": "",
+		"textAlign": "",
+		"boxWidth": "140px",
+		"boxHeight": "20px"
+	},
+	{
+		"page": "2",
+		"type": "text",
+		"text": "ewqeqw",
+		"top": "221.614px",
+		"left": "310.233px",
+		"fontWeight": "",
+		"fontSize": "15px",
+		"fontStyle": "",
+		"fontFamily": "",
+		"fontColor": "",
+		"textAlign": ""
+	}
+]

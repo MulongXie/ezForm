@@ -1,0 +1,849 @@
+[
+    {
+        "content": "Licence questionnaire",
+        "location": {
+            "top": 21,
+            "bottom": 30,
+            "right": 133,
+            "left": 29
+        },
+        "id": 0,
+        "type": "text"
+    },
+    {
+        "content": "Note: All questions must be answered. If you answer' yes' to the first question, include the following details: Date, Place, Nature of Offence,",
+        "location": {
+            "top": 35,
+            "bottom": 45,
+            "right": 573,
+            "left": 22
+        },
+        "id": 1,
+        "type": "text"
+    },
+    {
+        "content": "Reason for Cancellation, Suspension, Disqualification or Refusal and Penalty or Period.",
+        "location": {
+            "top": 45,
+            "bottom": 56,
+            "right": 369,
+            "left": 22
+        },
+        "id": 2,
+        "type": "text"
+    },
+    {
+        "content": "Is your licence currently or pending action to be suspended, cancelled, or disqualified",
+        "location": {
+            "top": 69,
+            "bottom": 80,
+            "right": 424,
+            "left": 50
+        },
+        "id": 3,
+        "type": "text"
+    },
+    {
+        "content": "Yes",
+        "location": {
+            "top": 76,
+            "bottom": 84,
+            "right": 501,
+            "left": 487
+        },
+        "id": 4,
+        "type": "text"
+    },
+    {
+        "content": "No U",
+        "location": {
+            "top": 74,
+            "bottom": 85,
+            "right": 561,
+            "left": 530
+        },
+        "id": 5,
+        "type": "text"
+    },
+    {
+        "content": "anywhere in Australia?",
+        "location": {
+            "top": 79,
+            "bottom": 94,
+            "right": 149,
+            "left": 50
+        },
+        "id": 6,
+        "type": "text"
+    },
+    {
+        "content": "1.1",
+        "location": {
+            "top": 116,
+            "bottom": 124,
+            "right": 39,
+            "left": 29
+        },
+        "id": 7,
+        "type": "text"
+    },
+    {
+        "content": "Are you currently serving a good behaviour' election period as an alternative to a demerit",
+        "location": {
+            "top": 110,
+            "bottom": 122,
+            "right": 445,
+            "left": 49
+        },
+        "id": 8,
+        "type": "text"
+    },
+    {
+        "content": "points suspension anywhere in Australia?",
+        "location": {
+            "top": 118,
+            "bottom": 133,
+            "right": 233,
+            "left": 49
+        },
+        "id": 9,
+        "type": "text"
+    },
+    {
+        "content": "Yes",
+        "location": {
+            "top": 117,
+            "bottom": 124,
+            "right": 500,
+            "left": 485
+        },
+        "id": 10,
+        "type": "text"
+    },
+    {
+        "content": "No",
+        "location": {
+            "top": 117,
+            "bottom": 124,
+            "right": 541,
+            "left": 530
+        },
+        "id": 11,
+        "type": "text"
+    },
+    {
+        "content": "1.2",
+        "location": {
+            "top": 163,
+            "bottom": 170,
+            "right": 41,
+            "left": 29
+        },
+        "id": 12,
+        "type": "text"
+    },
+    {
+        "content": "What demerit point suspension period would you have had if you did not elect for a good",
+        "location": {
+            "top": 157,
+            "bottom": 169,
+            "right": 439,
+            "left": 50
+        },
+        "id": 13,
+        "type": "text"
+    },
+    {
+        "content": "behaviour period?",
+        "location": {
+            "top": 166,
+            "bottom": 180,
+            "right": 129,
+            "left": 50
+        },
+        "id": 14,
+        "type": "text"
+    },
+    {
+        "content": "3 months",
+        "location": {
+            "top": 151,
+            "bottom": 158,
+            "right": 542,
+            "left": 502
+        },
+        "id": 15,
+        "type": "text"
+    },
+    {
+        "content": "4 months",
+        "location": {
+            "top": 163,
+            "bottom": 171,
+            "right": 542,
+            "left": 502
+        },
+        "id": 16,
+        "type": "text"
+    },
+    {
+        "content": "5 months",
+        "location": {
+            "top": 176,
+            "bottom": 184,
+            "right": 542,
+            "left": 502
+        },
+        "id": 17,
+        "type": "text"
+    },
+    {
+        "content": "2.",
+        "location": {
+            "top": 205,
+            "bottom": 212,
+            "right": 35,
+            "left": 29
+        },
+        "id": 18,
+        "type": "text"
+    },
+    {
+        "content": "Is your right to drive currently or pending action to be suspended anywhere in Australia?",
+        "location": {
+            "top": 206,
+            "bottom": 217,
+            "right": 437,
+            "left": 51
+        },
+        "id": 19,
+        "type": "text"
+    },
+    {
+        "content": "Yes",
+        "location": {
+            "top": 207,
+            "bottom": 213,
+            "right": 500,
+            "left": 485
+        },
+        "id": 20,
+        "type": "text"
+    },
+    {
+        "content": "No I",
+        "location": {
+            "top": 205,
+            "bottom": 215,
+            "right": 560,
+            "left": 530
+        },
+        "id": 21,
+        "type": "text"
+    },
+    {
+        "content": "3.",
+        "location": {
+            "top": 235,
+            "bottom": 242,
+            "right": 35,
+            "left": 29
+        },
+        "id": 22,
+        "type": "text"
+    },
+    {
+        "content": "Do you have epilepsy?",
+        "location": {
+            "top": 236,
+            "bottom": 247,
+            "right": 150,
+            "left": 51
+        },
+        "id": 23,
+        "type": "text"
+    },
+    {
+        "content": "Yes",
+        "location": {
+            "top": 237,
+            "bottom": 243,
+            "right": 500,
+            "left": 485
+        },
+        "id": 24,
+        "type": "text"
+    },
+    {
+        "content": "No D",
+        "location": {
+            "top": 235,
+            "bottom": 245,
+            "right": 560,
+            "left": 530
+        },
+        "id": 25,
+        "type": "text"
+    },
+    {
+        "content": ". 4",
+        "location": {
+            "top": 265,
+            "bottom": 272,
+            "right": 34,
+            "left": 28
+        },
+        "id": 26,
+        "type": "text"
+    },
+    {
+        "content": "Do you have diabetes?",
+        "location": {
+            "top": 266,
+            "bottom": 277,
+            "right": 150,
+            "left": 50
+        },
+        "id": 27,
+        "type": "text"
+    },
+    {
+        "content": "Yes 0",
+        "location": {
+            "top": 265,
+            "bottom": 276,
+            "right": 521,
+            "left": 486
+        },
+        "id": 28,
+        "type": "text"
+    },
+    {
+        "content": "No",
+        "location": {
+            "top": 267,
+            "bottom": 273,
+            "right": 541,
+            "left": 530
+        },
+        "id": 29,
+        "type": "text"
+    },
+    {
+        "content": "ch",
+        "location": {
+            "top": 296,
+            "bottom": 303,
+            "right": 34,
+            "left": 28
+        },
+        "id": 30,
+        "type": "text"
+    },
+    {
+        "content": "Do you have a heart condition/ disease or paralysis?",
+        "location": {
+            "top": 296,
+            "bottom": 307,
+            "right": 284,
+            "left": 51
+        },
+        "id": 31,
+        "type": "text"
+    },
+    {
+        "content": "Yes",
+        "location": {
+            "top": 297,
+            "bottom": 303,
+            "right": 500,
+            "left": 485
+        },
+        "id": 32,
+        "type": "text"
+    },
+    {
+        "content": "No",
+        "location": {
+            "top": 297,
+            "bottom": 304,
+            "right": 540,
+            "left": 530
+        },
+        "id": 33,
+        "type": "text"
+    },
+    {
+        "content": "6.",
+        "location": {
+            "top": 325,
+            "bottom": 332,
+            "right": 35,
+            "left": 28
+        },
+        "id": 34,
+        "type": "text"
+    },
+    {
+        "content": "Do you have any long term disability to either hand, arm, foot, leg or eye?",
+        "location": {
+            "top": 326,
+            "bottom": 337,
+            "right": 373,
+            "left": 51
+        },
+        "id": 35,
+        "type": "text"
+    },
+    {
+        "content": "Yes",
+        "location": {
+            "top": 327,
+            "bottom": 334,
+            "right": 501,
+            "left": 486
+        },
+        "id": 36,
+        "type": "text"
+    },
+    {
+        "content": "No",
+        "location": {
+            "top": 327,
+            "bottom": 335,
+            "right": 541,
+            "left": 530
+        },
+        "id": 37,
+        "type": "text"
+    },
+    {
+        "content": ". 7",
+        "location": {
+            "top": 355,
+            "bottom": 361,
+            "right": 35,
+            "left": 28
+        },
+        "id": 38,
+        "type": "text"
+    },
+    {
+        "content": "Have you ever had a head injury or stroke?",
+        "location": {
+            "top": 356,
+            "bottom": 367,
+            "right": 240,
+            "left": 51
+        },
+        "id": 39,
+        "type": "text"
+    },
+    {
+        "content": "Yes",
+        "location": {
+            "top": 357,
+            "bottom": 363,
+            "right": 500,
+            "left": 485
+        },
+        "id": 40,
+        "type": "text"
+    },
+    {
+        "content": "No",
+        "location": {
+            "top": 357,
+            "bottom": 363,
+            "right": 541,
+            "left": 530
+        },
+        "id": 41,
+        "type": "text"
+    },
+    {
+        "content": "8.",
+        "location": {
+            "top": 385,
+            "bottom": 391,
+            "right": 35,
+            "left": 29
+        },
+        "id": 42,
+        "type": "text"
+    },
+    {
+        "content": "Are you taking any medication that may impact your ability to drive?",
+        "location": {
+            "top": 386,
+            "bottom": 397,
+            "right": 347,
+            "left": 50
+        },
+        "id": 43,
+        "type": "text"
+    },
+    {
+        "content": "Yes",
+        "location": {
+            "top": 386,
+            "bottom": 395,
+            "right": 500,
+            "left": 486
+        },
+        "id": 44,
+        "type": "text"
+    },
+    {
+        "content": "No",
+        "location": {
+            "top": 386,
+            "bottom": 393,
+            "right": 541,
+            "left": 530
+        },
+        "id": 45,
+        "type": "text"
+    },
+    {
+        "content": "9.",
+        "location": {
+            "top": 415,
+            "bottom": 424,
+            "right": 36,
+            "left": 30
+        },
+        "id": 46,
+        "type": "text"
+    },
+    {
+        "content": "Are you taking any illicit drugs?",
+        "location": {
+            "top": 416,
+            "bottom": 427,
+            "right": 186,
+            "left": 50
+        },
+        "id": 47,
+        "type": "text"
+    },
+    {
+        "content": "Yes",
+        "location": {
+            "top": 416,
+            "bottom": 423,
+            "right": 500,
+            "left": 486
+        },
+        "id": 48,
+        "type": "text"
+    },
+    {
+        "content": "No",
+        "location": {
+            "top": 416,
+            "bottom": 424,
+            "right": 541,
+            "left": 530
+        },
+        "id": 49,
+        "type": "text"
+    },
+    {
+        "content": "10.",
+        "location": {
+            "top": 450,
+            "bottom": 457,
+            "right": 40,
+            "left": 29
+        },
+        "id": 50,
+        "type": "text"
+    },
+    {
+        "content": "Do you have any long term illness, injury or condition that could affect your ability to drive",
+        "location": {
+            "top": 445,
+            "bottom": 456,
+            "right": 442,
+            "left": 51
+        },
+        "id": 51,
+        "type": "text"
+    },
+    {
+        "content": "safely?",
+        "location": {
+            "top": 455,
+            "bottom": 468,
+            "right": 79,
+            "left": 49
+        },
+        "id": 52,
+        "type": "text"
+    },
+    {
+        "content": "Yes",
+        "location": {
+            "top": 452,
+            "bottom": 459,
+            "right": 500,
+            "left": 485
+        },
+        "id": 53,
+        "type": "text"
+    },
+    {
+        "content": "No",
+        "location": {
+            "top": 452,
+            "bottom": 459,
+            "right": 541,
+            "left": 530
+        },
+        "id": 54,
+        "type": "text"
+    },
+    {
+        "content": "If you answered YES to any of questions 3 to 10 you are required to provide a Driver Licence Medical form completed by your",
+        "location": {
+            "top": 486,
+            "bottom": 496,
+            "right": 564,
+            "left": 29
+        },
+        "id": 55,
+        "type": "text"
+    },
+    {
+        "content": "own doctor stating that you are a medically fit person to drive a motor vehicle before renewal of your licence.",
+        "location": {
+            "top": 493,
+            "bottom": 507,
+            "right": 494,
+            "left": 29
+        },
+        "id": 56,
+        "type": "text"
+    },
+    {
+        "content": "you answered Yes to any of these questions please provide details here",
+        "location": {
+            "top": 516,
+            "bottom": 527,
+            "right": 354,
+            "left": 33
+        },
+        "id": 57,
+        "type": "text"
+    },
+    {
+        "content": "Privacy Statement: The information you provide on this form is being collected for driver licensing purposes. The information may be used by the Road",
+        "location": {
+            "top": 588,
+            "bottom": 597,
+            "right": 572,
+            "left": 21
+        },
+        "id": 58,
+        "type": "text"
+    },
+    {
+        "content": "Transport Authority for the purpose of any of its statutory functions. The information may be disclosed to Commonwealth, Territory or State law enforcement",
+        "location": {
+            "top": 594,
+            "bottom": 605,
+            "right": 573,
+            "left": 21
+        },
+        "id": 59,
+        "type": "text"
+    },
+    {
+        "content": "agencies, transport authorities, government agencies authorised by law; Compulsory Third Party Insurers, and individuals, their agents or insurers",
+        "location": {
+            "top": 604,
+            "bottom": 614,
+            "right": 573,
+            "left": 21
+        },
+        "id": 60,
+        "type": "text"
+    },
+    {
+        "content": "following a motor vehicle accident. The Road Transport Authority is authorised to retain a digital copy of your photograph and signature under Part 4 of the",
+        "location": {
+            "top": 613,
+            "bottom": 624,
+            "right": 572,
+            "left": 21
+        },
+        "id": 61,
+        "type": "text"
+    },
+    {
+        "content": "Road Transport( Driver Licensing) Act 1999. Retained images may be used to assist in addressing identity fraud and disclosed to law enforcement and court",
+        "location": {
+            "top": 621,
+            "bottom": 632,
+            "right": 573,
+            "left": 22
+        },
+        "id": 62,
+        "type": "text"
+    },
+    {
+        "content": "agencies, interstate road authorities, or when authorised by law. The information Privacy Act 2014 prevents the ACT Government from using your information and",
+        "location": {
+            "top": 629,
+            "bottom": 641,
+            "right": 573,
+            "left": 21
+        },
+        "id": 63,
+        "type": "text"
+    },
+    {
+        "content": "retained images for any unauthorised purpose and require it to implement safeguards to protect the information and retained images from unauthorised access.",
+        "location": {
+            "top": 639,
+            "bottom": 651,
+            "right": 574,
+            "left": 21
+        },
+        "id": 64,
+        "type": "text"
+    },
+    {
+        "content": "Declaration",
+        "location": {
+            "top": 657,
+            "bottom": 666,
+            "right": 82,
+            "left": 29
+        },
+        "id": 65,
+        "type": "text"
+    },
+    {
+        "content": "This is a document required by law under the Road Transport Driver Licensing Act 1999. If you knowingly provide false information on this",
+        "location": {
+            "top": 668,
+            "bottom": 684,
+            "right": 570,
+            "left": 22
+        },
+        "id": 66,
+        "type": "text"
+    },
+    {
+        "content": "application, you may be prosecuted.",
+        "location": {
+            "top": 679,
+            "bottom": 691,
+            "right": 166,
+            "left": 29
+        },
+        "id": 67,
+        "type": "text"
+    },
+    {
+        "content": "I understand that in consideration of the Australian Capital Territory permitting me to undertake the Practical Driving Test Assessment( the Test) the Australian",
+        "location": {
+            "top": 695,
+            "bottom": 704,
+            "right": 566,
+            "left": 29
+        },
+        "id": 68,
+        "type": "text"
+    },
+    {
+        "content": "Capital Territory accepts no liability for injury sustained including any injury sustained as a result of or arising out of the negligence of the Australian Capital",
+        "location": {
+            "top": 703,
+            "bottom": 714,
+            "right": 567,
+            "left": 29
+        },
+        "id": 69,
+        "type": "text"
+    },
+    {
+        "content": "Territory, its officers, servants and agents in the course of undergoing the Test.",
+        "location": {
+            "top": 711,
+            "bottom": 723,
+            "right": 305,
+            "left": 29
+        },
+        "id": 70,
+        "type": "text"
+    },
+    {
+        "content": "I consent to the RTA conducting a Certificate Validation check of my documents and declare to the best of my knowledge that the information",
+        "location": {
+            "top": 722,
+            "bottom": 736,
+            "right": 566,
+            "left": 29
+        },
+        "id": 71,
+        "type": "text"
+    },
+    {
+        "content": "in this application is true and correct and request the issue of a Driver Licence.",
+        "location": {
+            "top": 734,
+            "bottom": 744,
+            "right": 331,
+            "left": 29
+        },
+        "id": 72,
+        "type": "text"
+    },
+    {
+        "content": "By signing this application you agree that, if at any time, you have any long term illnesses, injury or incapacity that may",
+        "location": {
+            "top": 750,
+            "bottom": 760,
+            "right": 566,
+            "left": 29
+        },
+        "id": 73,
+        "type": "text"
+    },
+    {
+        "content": "impair you ability to drive safely. You will notify the RTA within 7 days.",
+        "location": {
+            "top": 757,
+            "bottom": 769,
+            "right": 294,
+            "left": 29
+        },
+        "id": 74,
+        "type": "text"
+    },
+    {
+        "content": "Applicants signature",
+        "location": {
+            "top": 774,
+            "bottom": 785,
+            "right": 119,
+            "left": 30
+        },
+        "id": 75,
+        "type": "text"
+    },
+    {
+        "content": "Date",
+        "location": {
+            "top": 774,
+            "bottom": 781,
+            "right": 456,
+            "left": 437
+        },
+        "id": 76,
+        "type": "text"
+    }
+]
