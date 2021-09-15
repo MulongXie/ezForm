@@ -1,0 +1,882 @@
+[
+    {
+        "id": 0,
+        "content": "Form",
+        "type": "text",
+        "location": {
+            "left": 562,
+            "top": 40,
+            "bottom": 46,
+            "right": 580
+        }
+    },
+    {
+        "id": 1,
+        "content": "Additional personal particulars",
+        "type": "text",
+        "location": {
+            "left": 238,
+            "top": 46,
+            "bottom": 63,
+            "right": 449
+        }
+    },
+    {
+        "id": 2,
+        "content": "information",
+        "type": "text",
+        "location": {
+            "left": 305,
+            "top": 61,
+            "bottom": 79,
+            "right": 383
+        }
+    },
+    {
+        "id": 3,
+        "content": "1221",
+        "type": "text",
+        "location": {
+            "left": 545,
+            "top": 57,
+            "bottom": 79,
+            "right": 595
+        }
+    },
+    {
+        "id": 4,
+        "content": "Australian Government",
+        "type": "text",
+        "location": {
+            "left": 34,
+            "top": 67,
+            "bottom": 77,
+            "right": 152
+        }
+    },
+    {
+        "id": 5,
+        "content": "Department of Immigration",
+        "type": "text",
+        "location": {
+            "left": 29,
+            "top": 87,
+            "bottom": 98,
+            "right": 157
+        }
+    },
+    {
+        "id": 6,
+        "content": "and Border Protection",
+        "type": "text",
+        "location": {
+            "left": 40,
+            "top": 96,
+            "bottom": 108,
+            "right": 144
+        }
+    },
+    {
+        "id": 7,
+        "content": "Please use a pan, and write neatly in English using ELOCX LETTERS.",
+        "type": "text",
+        "location": {
+            "left": 349,
+            "top": 137,
+            "bottom": 148,
+            "right": 599
+        }
+    },
+    {
+        "id": 8,
+        "content": "Tick where applicable",
+        "type": "text",
+        "location": {
+            "left": 350,
+            "top": 154,
+            "bottom": 164,
+            "right": 425
+        }
+    },
+    {
+        "id": 9,
+        "content": "Part 1- Your details",
+        "type": "text",
+        "location": {
+            "left": 347,
+            "top": 181,
+            "bottom": 194,
+            "right": 473
+        }
+    },
+    {
+        "id": 10,
+        "content": "Your full name",
+        "type": "text",
+        "location": {
+            "left": 349,
+            "top": 210,
+            "bottom": 219,
+            "right": 400
+        }
+    },
+    {
+        "id": 11,
+        "content": "( as shown in your passport or travel document)",
+        "type": "text",
+        "location": {
+            "left": 347,
+            "top": 224,
+            "bottom": 236,
+            "right": 520
+        }
+    },
+    {
+        "id": 12,
+        "content": "Family name",
+        "type": "text",
+        "location": {
+            "left": 349,
+            "top": 241,
+            "bottom": 252,
+            "right": 394
+        }
+    },
+    {
+        "id": 13,
+        "content": "Given names",
+        "type": "text",
+        "location": {
+            "left": 348,
+            "top": 263,
+            "bottom": 272,
+            "right": 394
+        }
+    },
+    {
+        "id": 14,
+        "content": "About this form",
+        "type": "text",
+        "location": {
+            "left": 19,
+            "top": 137,
+            "bottom": 148,
+            "right": 94
+        }
+    },
+    {
+        "id": 15,
+        "content": "This is a supplementary form required to support your visa",
+        "type": "text",
+        "location": {
+            "left": 19,
+            "top": 155,
+            "bottom": 168,
+            "right": 275
+        }
+    },
+    {
+        "id": 16,
+        "content": "application and is to be completed by all applicants who are",
+        "type": "text",
+        "location": {
+            "left": 19,
+            "top": 164,
+            "bottom": 178,
+            "right": 278
+        }
+    },
+    {
+        "id": 17,
+        "content": "18 years of age or over",
+        "type": "text",
+        "location": {
+            "left": 20,
+            "top": 175,
+            "bottom": 190,
+            "right": 118
+        }
+    },
+    {
+        "id": 18,
+        "content": "Important- Please read this information carefully before you",
+        "type": "text",
+        "location": {
+            "left": 19,
+            "top": 195,
+            "bottom": 206,
+            "right": 283
+        }
+    },
+    {
+        "id": 19,
+        "content": "complete this form. Once you have completed this form we",
+        "type": "text",
+        "location": {
+            "left": 19,
+            "top": 204,
+            "bottom": 218,
+            "right": 278
+        }
+    },
+    {
+        "id": 20,
+        "content": "strongly advise that you keep a copy for your records.",
+        "type": "text",
+        "location": {
+            "left": 19,
+            "top": 216,
+            "bottom": 230,
+            "right": 252
+        }
+    },
+    {
+        "id": 21,
+        "content": "Integrity of application",
+        "type": "text",
+        "location": {
+            "left": 20,
+            "top": 245,
+            "bottom": 258,
+            "right": 130
+        }
+    },
+    {
+        "id": 22,
+        "content": "The Department of Immigration and Border Protection",
+        "type": "text",
+        "location": {
+            "left": 19,
+            "top": 263,
+            "bottom": 274,
+            "right": 256
+        }
+    },
+    {
+        "id": 23,
+        "content": "( the department) is committed to maintaining the Integrity of",
+        "type": "text",
+        "location": {
+            "left": 20,
+            "top": 273,
+            "bottom": 287,
+            "right": 285
+        }
+    },
+    {
+        "id": 24,
+        "content": "the visa and citizenship programs. Please be aware that if you",
+        "type": "text",
+        "location": {
+            "left": 19,
+            "top": 285,
+            "bottom": 299,
+            "right": 281
+        }
+    },
+    {
+        "id": 25,
+        "content": "provide us with fraudulent documents or claims, this may result",
+        "type": "text",
+        "location": {
+            "left": 20,
+            "top": 297,
+            "bottom": 310,
+            "right": 293
+        }
+    },
+    {
+        "id": 26,
+        "content": "in processing delays and possibly your application being refused.",
+        "type": "text",
+        "location": {
+            "left": 19,
+            "top": 308,
+            "bottom": 322,
+            "right": 298
+        }
+    },
+    {
+        "id": 27,
+        "content": "Important information about privacy",
+        "type": "text",
+        "location": {
+            "left": 20,
+            "top": 337,
+            "bottom": 350,
+            "right": 197
+        }
+    },
+    {
+        "id": 28,
+        "content": "Your personal information is protected by law, including the",
+        "type": "text",
+        "location": {
+            "left": 19,
+            "top": 356,
+            "bottom": 367,
+            "right": 279
+        }
+    },
+    {
+        "id": 29,
+        "content": "Privacy Act 1988. Important Information about the collection,",
+        "type": "text",
+        "location": {
+            "left": 19,
+            "top": 365,
+            "bottom": 379,
+            "right": 288
+        }
+    },
+    {
+        "id": 30,
+        "content": "use and disclosure to other agencies and third parties,",
+        "type": "text",
+        "location": {
+            "left": 19,
+            "top": 377,
+            "bottom": 391,
+            "right": 259
+        }
+    },
+    {
+        "id": 31,
+        "content": "Including overseas entitles) of your personal Information,",
+        "type": "text",
+        "location": {
+            "left": 20,
+            "top": 388,
+            "bottom": 402,
+            "right": 269
+        }
+    },
+    {
+        "id": 32,
+        "content": "Including sensitive Information, is contained in form 14421",
+        "type": "text",
+        "location": {
+            "left": 20,
+            "top": 400,
+            "bottom": 414,
+            "right": 273
+        }
+    },
+    {
+        "id": 33,
+        "content": "Privacy notice. Form 14421 Is available from the department's",
+        "type": "text",
+        "location": {
+            "left": 19,
+            "top": 415,
+            "bottom": 426,
+            "right": 287
+        }
+    },
+    {
+        "id": 34,
+        "content": "website www.border.gov.au/allforms/ or offices of the",
+        "type": "text",
+        "location": {
+            "left": 19,
+            "top": 425,
+            "bottom": 438,
+            "right": 265
+        }
+    },
+    {
+        "id": 35,
+        "content": "department. You should ensure that you read and understand",
+        "type": "text",
+        "location": {
+            "left": 19,
+            "top": 436,
+            "bottom": 452,
+            "right": 288
+        }
+    },
+    {
+        "id": 36,
+        "content": "form 14421 before completing this form.",
+        "type": "text",
+        "location": {
+            "left": 20,
+            "top": 448,
+            "bottom": 462,
+            "right": 193
+        }
+    },
+    {
+        "id": 37,
+        "content": "2 Other names you are, or have been, known by",
+        "type": "text",
+        "location": {
+            "left": 331,
+            "top": 309,
+            "bottom": 320,
+            "right": 515
+        }
+    },
+    {
+        "id": 38,
+        "content": "( including rame at bith, previous maried remes, aliases)",
+        "type": "text",
+        "location": {
+            "left": 349,
+            "top": 320,
+            "bottom": 334,
+            "right": 560
+        }
+    },
+    {
+        "id": 39,
+        "content": "3 Name in your own language or script fif applicable)",
+        "type": "text",
+        "location": {
+            "left": 331,
+            "top": 387,
+            "bottom": 399,
+            "right": 533
+        }
+    },
+    {
+        "id": 40,
+        "content": "4 Name in Chinese Commercial Code Numbers( if applicable)",
+        "type": "text",
+        "location": {
+            "left": 331,
+            "top": 452,
+            "bottom": 464,
+            "right": 563
+        }
+    },
+    {
+        "id": 41,
+        "content": "DAY",
+        "type": "text",
+        "location": {
+            "left": 412,
+            "top": 498,
+            "bottom": 503,
+            "right": 421
+        }
+    },
+    {
+        "id": 42,
+        "content": "MONTH",
+        "type": "text",
+        "location": {
+            "left": 439,
+            "top": 498,
+            "bottom": 503,
+            "right": 455
+        }
+    },
+    {
+        "id": 43,
+        "content": "YEAR",
+        "type": "text",
+        "location": {
+            "left": 474,
+            "top": 498,
+            "bottom": 502,
+            "right": 485
+        }
+    },
+    {
+        "id": 44,
+        "content": "5 Date of birth",
+        "type": "text",
+        "location": {
+            "left": 331,
+            "top": 509,
+            "bottom": 518,
+            "right": 393
+        }
+    },
+    {
+        "id": 45,
+        "content": "Home page",
+        "type": "text",
+        "location": {
+            "left": 49,
+            "top": 515,
+            "bottom": 528,
+            "right": 100
+        }
+    },
+    {
+        "id": 46,
+        "content": "www.border.gov.au",
+        "type": "text",
+        "location": {
+            "left": 115,
+            "top": 513,
+            "bottom": 528,
+            "right": 230
+        }
+    },
+    {
+        "id": 47,
+        "content": "General Tolophone 131 881 during business hours",
+        "type": "text",
+        "location": {
+            "left": 65,
+            "top": 534,
+            "bottom": 547,
+            "right": 268
+        }
+    },
+    {
+        "id": 48,
+        "content": "enquiry line",
+        "type": "text",
+        "location": {
+            "left": 44,
+            "top": 547,
+            "bottom": 560,
+            "right": 100
+        }
+    },
+    {
+        "id": 49,
+        "content": "in Australia to speak to an operator( recorded",
+        "type": "text",
+        "location": {
+            "left": 115,
+            "top": 544,
+            "bottom": 559,
+            "right": 277
+        }
+    },
+    {
+        "id": 50,
+        "content": "information available outside these hours).",
+        "type": "text",
+        "location": {
+            "left": 115,
+            "top": 557,
+            "bottom": 571,
+            "right": 268
+        }
+    },
+    {
+        "id": 51,
+        "content": "If you are outside Australia, please contact",
+        "type": "text",
+        "location": {
+            "left": 115,
+            "top": 569,
+            "bottom": 584,
+            "right": 269
+        }
+    },
+    {
+        "id": 52,
+        "content": "your nearest Australian mission.",
+        "type": "text",
+        "location": {
+            "left": 114,
+            "top": 582,
+            "bottom": 597,
+            "right": 231
+        }
+    },
+    {
+        "id": 53,
+        "content": "6 Place of birth",
+        "type": "text",
+        "location": {
+            "left": 331,
+            "top": 539,
+            "bottom": 549,
+            "right": 395
+        }
+    },
+    {
+        "id": 54,
+        "content": "Suburb and",
+        "type": "text",
+        "location": {
+            "left": 349,
+            "top": 558,
+            "bottom": 566,
+            "right": 390
+        }
+    },
+    {
+        "id": 55,
+        "content": "town/ city",
+        "type": "text",
+        "location": {
+            "left": 348,
+            "top": 567,
+            "bottom": 577,
+            "right": 381
+        }
+    },
+    {
+        "id": 56,
+        "content": "State/ province)",
+        "type": "text",
+        "location": {
+            "left": 349,
+            "top": 584,
+            "bottom": 596,
+            "right": 401
+        }
+    },
+    {
+        "id": 57,
+        "content": "region",
+        "type": "text",
+        "location": {
+            "left": 348,
+            "top": 594,
+            "bottom": 605,
+            "right": 370
+        }
+    },
+    {
+        "id": 58,
+        "content": "Country",
+        "type": "text",
+        "location": {
+            "left": 349,
+            "top": 614,
+            "bottom": 625,
+            "right": 376
+        }
+    },
+    {
+        "id": 59,
+        "content": "7 Sex",
+        "type": "text",
+        "location": {
+            "left": 331,
+            "top": 643,
+            "bottom": 652,
+            "right": 361
+        }
+    },
+    {
+        "id": 60,
+        "content": "Male",
+        "type": "text",
+        "location": {
+            "left": 405,
+            "top": 644,
+            "bottom": 652,
+            "right": 421
+        }
+    },
+    {
+        "id": 61,
+        "content": "Female",
+        "type": "text",
+        "location": {
+            "left": 458,
+            "top": 644,
+            "bottom": 651,
+            "right": 483
+        }
+    },
+    {
+        "id": 62,
+        "content": "8 Relationship status",
+        "type": "text",
+        "location": {
+            "left": 331,
+            "top": 673,
+            "bottom": 686,
+            "right": 416
+        }
+    },
+    {
+        "id": 63,
+        "content": "Married",
+        "type": "text",
+        "location": {
+            "left": 373,
+            "top": 692,
+            "bottom": 701,
+            "right": 400
+        }
+    },
+    {
+        "id": 64,
+        "content": "Engaged",
+        "type": "text",
+        "location": {
+            "left": 369,
+            "top": 709,
+            "bottom": 720,
+            "right": 400
+        }
+    },
+    {
+        "id": 65,
+        "content": "De facto",
+        "type": "text",
+        "location": {
+            "left": 369,
+            "top": 727,
+            "bottom": 736,
+            "right": 399
+        }
+    },
+    {
+        "id": 66,
+        "content": "Separated",
+        "type": "text",
+        "location": {
+            "left": 445,
+            "top": 692,
+            "bottom": 702,
+            "right": 481
+        }
+    },
+    {
+        "id": 67,
+        "content": "Divorced",
+        "type": "text",
+        "location": {
+            "left": 452,
+            "top": 709,
+            "bottom": 717,
+            "right": 482
+        }
+    },
+    {
+        "id": 68,
+        "content": "Widowed",
+        "type": "text",
+        "location": {
+            "left": 450,
+            "top": 727,
+            "bottom": 736,
+            "right": 482
+        }
+    },
+    {
+        "id": 69,
+        "content": "Never married or",
+        "type": "text",
+        "location": {
+            "left": 531,
+            "top": 692,
+            "bottom": 701,
+            "right": 591
+        }
+    },
+    {
+        "id": 70,
+        "content": "been in a de facto",
+        "type": "text",
+        "location": {
+            "left": 526,
+            "top": 700,
+            "bottom": 712,
+            "right": 591
+        }
+    },
+    {
+        "id": 71,
+        "content": "relationship",
+        "type": "text",
+        "location": {
+            "left": 549,
+            "top": 715,
+            "bottom": 725,
+            "right": 590
+        }
+    },
+    {
+        "id": 72,
+        "content": "9 Citizenship or nationality give details of all held",
+        "type": "text",
+        "location": {
+            "left": 332,
+            "top": 756,
+            "bottom": 768,
+            "right": 521
+        }
+    },
+    {
+        "id": 73,
+        "content": "DAY",
+        "type": "text",
+        "location": {
+            "left": 412,
+            "top": 811,
+            "bottom": 815,
+            "right": 421
+        }
+    },
+    {
+        "id": 74,
+        "content": "MONTH",
+        "type": "text",
+        "location": {
+            "left": 439,
+            "top": 811,
+            "bottom": 815,
+            "right": 455
+        }
+    },
+    {
+        "id": 75,
+        "content": "YEAH",
+        "type": "text",
+        "location": {
+            "left": 474,
+            "top": 811,
+            "bottom": 815,
+            "right": 485
+        }
+    },
+    {
+        "id": 76,
+        "content": "Date granted",
+        "type": "text",
+        "location": {
+            "left": 348,
+            "top": 822,
+            "bottom": 833,
+            "right": 396
+        }
+    },
+    {
+        "id": 77,
+        "content": "COMIVONWEALTH OF AUSTRALIA 2015",
+        "type": "text",
+        "location": {
+            "left": 272,
+            "top": 892,
+            "bottom": 898,
+            "right": 365
+        }
+    },
+    {
+        "id": 78,
+        "content": "1221 Design",
+        "type": "text",
+        "location": {
+            "left": 537,
+            "top": 892,
+            "bottom": 899,
+            "right": 566
+        }
+    },
+    {
+        "id": 79,
+        "content": "1019- Page 1",
+        "type": "text",
+        "location": {
+            "left": 581,
+            "top": 892,
+            "bottom": 899,
+            "right": 616
+        }
+    }
+]
