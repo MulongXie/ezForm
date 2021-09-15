@@ -18,7 +18,7 @@ $(document).ready(function () {
             }
             else{
                 let descpDetectionScroolTop = despDetection.offset().top + despDetection.height() - $(this).scrollTop()
-                console.log($(window).height() - descpDetectionScroolTop)
+                // console.log($(window).height() - descpDetectionScroolTop)
                 if (descpDetectionScroolTop > 0){
                     if ($(window).height() - descpDetectionScroolTop > 300){
                         despFilling.slideDown()
@@ -772,4 +772,34 @@ $('#btn-export').on('click', function () {
             }
         })
     })
+})
+
+
+//**************************************
+//***** Export Generated Form Page *****
+//**************************************
+function zipFile(zip, fileID){
+    if (fileID < resultPaths.length) {
+        $.get(resultPaths[fileID].resultPage, function (html) {
+            html = html.replace('xml.css', 'form.css')
+            let page = zip.folder('page' + fileID.toString())
+            page.file('form.html', html)
+            $.get(resultPaths[fileID].resultPage.replace('html', 'css'), function (css) {
+                page.file('form.css', css)
+                zipFile(zip, fileID + 1)
+            })
+        })
+    }
+    else{
+        zip.generateAsync({type:"blob"}, function () {
+        }).then(function(content) {
+            // see FileSaver.js
+            saveAs(content, "form application.zip");
+        });
+    }
+}
+
+$('#btn-download-page').on('click', function () {
+    let zip = new JSZip()
+    zipFile(zip, 0)
 })
